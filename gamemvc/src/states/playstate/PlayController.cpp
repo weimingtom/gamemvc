@@ -7,8 +7,6 @@
 
 #include "PlayController.h"
 
-#include <misc/log.h>
-
 #include "PlayModel.h"
 #include "PlayView.h"
 

@@ -1,17 +1,13 @@
-#include <iostream>
+#include "CIntroState.h"
 
-#include <misc/log.h>
 #include <misc/debug.h>
 
 #include <MyGame.h>
-#include <game/CGameEngine.h>
 #include <states/menustate/CMenuState.h>
 
 #include "IntroModel.h"
 #include "IntroView.h"
 #include "IntroController.h"
-
-#include "CIntroState.h"
 
 void CIntroState::Init() {
 
@@ -19,8 +15,7 @@ void CIntroState::Init() {
 	m_view = new IntroView( m_model );
 	m_view->initialize(); // Aqui creamos el controlador asociado a la vista.
 
-	LAPP_
-<<	"CIntroState Init";
+//	LAPP_ <<	"CIntroState Init";
 
 }
 
@@ -30,22 +25,19 @@ void CIntroState::Cleanup() {
 	delete m_view;
 	delete m_model;
 
-	LAPP_
-<<	"CIntroState Cleanup";
+//	LAPP_ <<	"CIntroState Cleanup";
 
 }
 
 void CIntroState::Pause() {
 
-	LAPP_
-<<	"CIntroState Pause";
+//	LAPP_ <<	"CIntroState Pause";
 
 }
 
 void CIntroState::Resume() {
 
-	LAPP_
-<<	"CIntroState Resume";
+//	LAPP_ <<	"CIntroState Resume";
 
 }
 

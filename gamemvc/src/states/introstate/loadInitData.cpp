@@ -13,7 +13,6 @@
 #include <guichan.hpp>
 
 #include <misc/CrtlThread.h>
-#include <misc/log.h>
 
 #include <CParam.h>
 

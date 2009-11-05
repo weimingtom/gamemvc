@@ -10,8 +10,6 @@
 #include <sstream>
 #include <string>
 
-#include <misc/log.h>
-
 MouseMap::MouseMap( const std::string fileName ) :
 	m_surface_( gcn::Image::load( fileName ) ) {
 	init();
@@ -87,7 +85,7 @@ void MouseMap::init() {
 
 			++it;
 		}
-		LAPP_ << s.str(); // "\n";
+		// LAPP_ << s.str(); // "\n";
 	}
 
 }

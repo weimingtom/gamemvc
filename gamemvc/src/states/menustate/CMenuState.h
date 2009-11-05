@@ -1,14 +1,12 @@
 #ifndef MENUSTATE_H
 #define MENUSTATE_H
 
-#include <game/CGameEngine.h>
+#include <game/gamestate.h>
 #include <misc/Singleton.hpp>
-
-class MyGame;
 
 class MenuModel;
 class MenuView;
-class MenuController;
+
 namespace gcn {
 	class Widget;
 }

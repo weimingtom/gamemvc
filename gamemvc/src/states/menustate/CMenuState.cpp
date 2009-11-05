@@ -1,18 +1,15 @@
-#include <iostream>
-#include <guichan.hpp>
-#include <xmlgui.h>
+#include "CMenuState.h"
 
-#include <misc/log.h>
 #include <misc/debug.h>
 
-#include "CMenuState.h"
-#include "MyGame.h"
+#include <MyGame.h>
+#include <states/playstate/CPlayState.h>
 
 #include "MenuModel.h"
 #include "MenuView.h"
 #include "MenuController.h"
 
-#include "states/playstate/CPlayState.h"
+
 
 void CMenuState::Init() {
 
@@ -20,8 +17,7 @@ void CMenuState::Init() {
 	m_view = new MenuView( m_model );
 	m_view->initialize();
 
-	LAPP_
-<<	"CMenuState Init";
+//	LAPP_ <<	"CMenuState Init";
 
 }
 
@@ -31,15 +27,14 @@ void CMenuState::Cleanup() {
 	delete m_view;
 	delete m_model;
 
-	LAPP_
-<<	"CMenuState Cleanup";
+//	LAPP_ <<	"CMenuState Cleanup";
 
 }
 
 void CMenuState::Pause() {
 
 	top = game.getGui().getTop();
-	LAPP_ <<	"CMenuState Pause";
+//	LAPP_ <<	"CMenuState Pause";
 
 }
 
@@ -47,7 +42,7 @@ void CMenuState::Resume() {
 
 	game.getGui().setTop(top);
 	top->requestFocus();
-	LAPP_ <<	"CMenuState Resume";
+//	LAPP_ <<	"CMenuState Resume";
 
 }
 

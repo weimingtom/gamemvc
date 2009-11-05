@@ -11,8 +11,6 @@
 #include <iostream>
 #include <boost/ref.hpp>
 
-#include <misc/log.h>
-
 IntroModel::IntroModel() :
 	Model(),
 	alpha( 255 ),
@@ -65,8 +63,7 @@ void IntroModel::Update() {
 		msg += "Continua el thread .....";
 
 	}
-	LAPP_
-<<	msg;
+//	LAPP_ <<	msg;
 }
 bool IntroModel::isEnd() {
 

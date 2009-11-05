@@ -2,12 +2,11 @@
 
 #include <iostream>
 #include <tinyxml.h>
-#include <misc/log.h>
 
 void CGameEngine::Init() {
 
 	m_running = true;
-	LAPP_ << "CGameEngine Init";
+	// LAPP_ << "CGameEngine Init";
 }
 
 void CGameEngine::Cleanup() {
@@ -16,7 +15,7 @@ void CGameEngine::Cleanup() {
 		states.back()->Cleanup();
 		states.pop_back();
 	}
-	LAPP_ << "CGameEngine Cleanup";
+	// LAPP_ << "CGameEngine Cleanup";
 }
 
 void CGameEngine::ChangeState( CGameState * state ) {

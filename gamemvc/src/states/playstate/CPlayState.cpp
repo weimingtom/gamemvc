@@ -7,14 +7,9 @@
 
 #include "CPlayState.h"
 
-#include <iostream>
-#include <guichan.hpp>
-#include <xmlgui.h>
-
-#include <misc/log.h>
 #include <misc/debug.h>
 
-#include "MyGame.h"
+#include <MyGame.h>
 
 #include "PlayModel.h"
 #include "PlayView.h"
@@ -26,8 +21,7 @@ void CPlayState::Init() {
 	m_view = new PlayView( m_model );
 	m_view->initialize();
 
-	LAPP_
-<<	"CPlayState Init";
+//	LAPP_ <<	"CPlayState Init";
 
 }
 
@@ -37,22 +31,19 @@ void CPlayState::Cleanup() {
 	delete m_view;
 	delete m_model;
 
-	LAPP_
-<<	"CPlayState Cleanup";
+//	LAPP_ <<	"CPlayState Cleanup";
 
 }
 
 void CPlayState::Pause() {
 
-	LAPP_
-<<	"CPlayState Pause";
+//	LAPP_ <<	"CPlayState Pause";
 
 }
 
 void CPlayState::Resume() {
 
-	LAPP_
-<<	"CPlayState Resume";
+//	LAPP_ <<	"CPlayState Resume";
 
 }
 
@@ -84,13 +75,14 @@ void CPlayState::HandleEvents() {
 }
 
 void CPlayState::Update() {
+
 	m_model->Update();
+
 }
 
 void CPlayState::Draw() {
 
 	m_model->notify();
-
 	SDL_Flip( game.getScreen() );
 
 }

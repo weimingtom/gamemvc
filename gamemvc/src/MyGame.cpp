@@ -8,11 +8,8 @@
 #include <SDL/SDL_Image.h>
 #include <SDL/SDL_ttf.h>
 #include <SDL++/SDLException.hpp>
-#include <misc/log.h>
 
 #include "MyGame.h"
-
-extern FILE* new_output_fp;
 
 void MyGame::Init( const std::string config ) {
 
@@ -36,8 +33,7 @@ void MyGame::Init( const std::string config ) {
 	gui->setGraphics( graphics );
 	gui->setInput( input );
 
-	LAPP_
-<<	"MyGame Init";
+//	LAPP_ <<	"MyGame Init";
 
 }
 
@@ -50,13 +46,12 @@ void MyGame::Cleanup() {
 	delete input;
 	delete graphics;
 	delete imageLoader;
-/*
+
 	TTF_Quit();
 	IMG_Quit();
 	SDL_Quit();
-*/
-	LAPP_
-<<	"MyGame Cleanup";
+
+//	LAPP_ <<	"MyGame Cleanup";
 
 }
 

@@ -4,8 +4,6 @@
  *  Created on: 27-mar-2009
  *      Author: 79481180
  */
-#include <misc/log.h>
-
 #include "IntroController.h"
 
 #include <stdexcept>
@@ -25,7 +23,7 @@ IntroController::~IntroController() {
 
 void IntroController::keyPressed( gcn::KeyEvent& keyEvent ) {
 
-	LAPP_ <<	"Key pressed: " << keyEvent.getKey().getValue();
+//	LAPP_ <<	"Key pressed: " << keyEvent.getKey().getValue();
 	if ( keyEvent.getKey().getValue() == gcn::Key::ESCAPE ) {
 
 		this->getModel()->setFinal(); //! Paramos el bucle asi?.......

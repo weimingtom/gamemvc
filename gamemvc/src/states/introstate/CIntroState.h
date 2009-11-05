@@ -1,9 +1,6 @@
 #ifndef INTROSTATE_H
 #define INTROSTATE_H
 
-#include <SDL/SDL.h>
-#include <boost/utility.hpp>
-
 #include <game/gamestate.h>
 #include <misc/Singleton.hpp>
 
