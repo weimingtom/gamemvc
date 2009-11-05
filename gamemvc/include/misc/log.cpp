@@ -34,7 +34,7 @@ void init_logs() {
 
 	g_log_err()->writer().add_formatter( formatter::append_newline_if_needed() );
 	g_log_err()->writer().add_destination( destination::cout() );
-//	g_log_err()->writer().add_destination( destination::cerr() );
+	g_log_err()->writer().add_destination( destination::cerr() );
 
 	// Log dbg
 	g_log_dbg()->writer().add_formatter( 	formatter::idx(),
@@ -42,7 +42,7 @@ void init_logs() {
 	g_log_dbg()->writer().add_formatter( formatter::time("$hh:$mm.$ss ") );
 
 	g_log_dbg()->writer().add_formatter( formatter::append_newline_if_needed() );
-//	g_log_dbg()->writer().add_destination( destination::dbg_window() );
+	g_log_dbg()->writer().add_destination( destination::dbg_window() );
 	g_log_dbg()->writer().add_destination( destination::cout() );
 
 	g_log_app()->mark_as_initialized();

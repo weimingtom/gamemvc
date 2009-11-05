@@ -8,18 +8,15 @@
 #include "PlayView.h"
 
 #include <sstream>
-
 #include <guichan.hpp>
-#include "xmlgui.h"
+#include <xmlgui.h>
 
-#include "MyGame.h"
+#include <misc/debug.h>
+
+#include <MyGame.h>
+
 #include "PlayModel.h"
 #include "PlayController.h"
-
-#include "game/database/CTerrainManager.h" // !TODO que esto esta mal es seguro.
-#include "game/database/CTerrainType.h"
-#include "game/database/CTile.h"
-
 #include "CTerrainMapa.h"
 
 PlayView::PlayView( PlayModel* model ) :
