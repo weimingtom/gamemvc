@@ -10,7 +10,7 @@
 
 #include <string>
 #include <guichan.hpp>
-#include <guichan/sdl.hpp>
+#include <guichan/SDL.hpp>
 #include <boost/utility.hpp>
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/ini_parser.hpp>
@@ -18,11 +18,9 @@
 #include <game/CGameEngine.h>
 #include <misc/Singleton.hpp>
 
-#include "CParam.h"
-
 namespace pt = boost::property_tree;
 
-#define game Singleton < MyGame >::instance()
+#define game Singleton < MyGame >::Instance()
 
 class MyGame:	public CGameEngine
 {

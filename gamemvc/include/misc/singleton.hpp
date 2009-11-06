@@ -20,7 +20,7 @@
 	{
 
 	public:
-		static T& instance() {
+		static T& Instance() {
 			boost::call_once( init, flag );
 			return *t;
 		}

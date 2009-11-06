@@ -16,7 +16,7 @@
 
 #include "MouseMap.hpp"
 
-#define MouseMapManager	Singleton < CMouseMapManager >::instance()
+#define MouseMapManager	Singleton < CMouseMapManager >::Instance()
 #define mouse MouseMapManager.GetMouseMap()
 
 class CMouseMapManager

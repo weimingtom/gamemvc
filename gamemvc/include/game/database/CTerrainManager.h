@@ -19,7 +19,7 @@
 class CTerrainType;
 
 
-#define TerrainManager Singleton < CTerrainManager >::instance()
+#define TerrainManager Singleton < CTerrainManager >::Instance()
 
 class CTerrainManager
 {

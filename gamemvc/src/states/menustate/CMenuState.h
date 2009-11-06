@@ -11,7 +11,7 @@ namespace gcn {
 	class Widget;
 }
 
-#define MenuState Singleton < CMenuState >::instance()
+#define MenuState Singleton < CMenuState >::Instance()
 
 class CMenuState:	public CGameState
 {

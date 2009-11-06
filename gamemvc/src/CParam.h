@@ -12,7 +12,7 @@
 
 #include <misc/Singleton.hpp>
 
-#define param Singleton < CParam >::instance()
+#define param Singleton < CParam >::Instance()
 
 struct CParam
 {

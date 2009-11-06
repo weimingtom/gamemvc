@@ -4,7 +4,7 @@
 #include <game/gamestate.h>
 #include <misc/Singleton.hpp>
 
-#define IntroState Singleton < CIntroState >::instance()
+#define IntroState Singleton < CIntroState >::Instance()
 
 class IntroModel;
 class IntroView;

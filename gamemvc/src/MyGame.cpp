@@ -4,12 +4,16 @@
  *  Created on: 12-mar-2009
  *      Author: 79481180
  */
+#include "MyGame.h"
 
 #include <SDL/SDL_Image.h>
 #include <SDL/SDL_ttf.h>
-#include <SDL++/SDLException.hpp>
 
-#include "MyGame.h"
+#include <SDL++/SDLException.hpp>
+#include <misc/debug.h>
+#include <misc/log.h>
+
+#include "CParam.h"
 
 void MyGame::Init( const std::string config ) {
 
@@ -33,7 +37,7 @@ void MyGame::Init( const std::string config ) {
 	gui->setGraphics( graphics );
 	gui->setInput( input );
 
-//	LAPP_ <<	"MyGame Init";
+	LAPP_ <<	"MyGame Init";
 
 }
 
@@ -51,7 +55,7 @@ void MyGame::Cleanup() {
 	IMG_Quit();
 	SDL_Quit();
 
-//	LAPP_ <<	"MyGame Cleanup";
+	LAPP_ <<	"MyGame Cleanup";
 
 }
 

@@ -17,7 +17,7 @@ class PlayModel;
 class PlayView;
 class PlayController;
 
-#define PlayState Singleton < CPlayState >::instance()
+#define PlayState Singleton < CPlayState >::Instance()
 
 class CPlayState: public CGameState
 {
