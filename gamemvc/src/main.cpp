@@ -79,8 +79,8 @@ int main( 	int argc,
 							20 );
 		while ( game.Running() ) {
 
-			LAPP_
-;			LAPP_ << "Comienzo bucle --- ";
+			LAPP_ <<			" ";
+			LAPP_ << "Comienzo bucle --- ";
 			Uint32 timeStart = SDL_GetTicks();
 
 			game.HandleEvents();
