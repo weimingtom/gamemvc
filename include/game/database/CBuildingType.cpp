@@ -10,19 +10,8 @@
 
 #include <game/GameException.h>
 
-#include <SDL++/Image.h>
-#include <SDL++/Canvas.h>
-
-#include <gameengine/CMouseMapManager.h>
-
-CBuildingType::~CBuildingType() {
-
-	delete m_pImage->GetCanvas();
-	delete m_pImage;
-
-}
 bool CBuildingType::Load(TiXmlElement* pXMLData) {
-
+/*
 	if (!pXMLData)
 		return false;
 
@@ -88,19 +77,29 @@ bool CBuildingType::Load(TiXmlElement* pXMLData) {
 
 	} else
 		THROW_GAME_EXCEPTION_IF( 1==1,"Error image BuildingType no definido");
-
+*/
 	return true;
+
 }
+
+void 			Draw( 	gcn::Graphics* graphics,
+     			      	int destX,
+     			      	int destY ){
+
+}
+/*
 void CBuildingType::Draw(CCanvas* pDestSurface, CPoint puntoDest) {
 
 	m_pImage->Put(pDestSurface,puntoDest+m_adjust);
 
 }
-
-string CBuildingType::GetNameBuildingType() {
+*/
+/*
+std::string CBuildingType::GetNameBuildingType() {
 
 	return m_Name;
 }
+*/
 int CBuildingType::GetSpace(){
 
 	return m_space;

@@ -21,8 +21,7 @@
 
 #include <game/database/CMouseMapManager.h>
 #include <game/database/CTerrainManager.h>
-#include <game/database/CTerrainType.h> // Quitar esto despues de probar.
-// #include <game/database/CBuildingManager.h>
+#include <game/database/CBuildingManager.h>
 // #include <game/database/CActorManager.h>
 // #include <game/database/CResourceManager.h>
 
@@ -89,9 +88,9 @@ bool loadInitData::LoadXML( TiXmlElement* pXMLData ) {
 	MouseMapManager.Init( m );
 
 	if ( !TerrainManager.Load( pXMLData->FirstChildElement( "terrain" ) ) ) return false;
-	/*
-	 if ( !BuildingManager->Load( pXMLData->FirstChildElement( "building" ) ) ) return false;
 
+	 if ( !BuildingManager.Load( pXMLData->FirstChildElement( "building" ) ) ) return false;
+	/*
 	 if ( !ResourceManager->Load( pXMLData->FirstChildElement( "resource" ) ) ) return false;
 
 	 if ( !ActorManager->Load( pXMLData->FirstChildElement( "actor" ) ) ) return false;

@@ -8,7 +8,7 @@
 #ifndef CTERRAINMANAGER_H_
 #define CTERRAINMANAGER_H_
 
-#include <tinyxml.h>
+
 #include <map>
 #include <memory>
 #include <string>
@@ -17,7 +17,7 @@
 #include <misc/singleton.hpp>
 
 class CTerrainType;
-
+class TiXmlElement;
 
 #define TerrainManager Singleton < CTerrainManager >::Instance()
 

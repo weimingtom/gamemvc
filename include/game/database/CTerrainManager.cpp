@@ -15,9 +15,6 @@ bool CTerrainManager::Load( TiXmlElement* pXMLData ) {
 
 	if ( !pXMLData ) return false;
 
-	/*!
-	 * Por cada uno de los
-	 */
 	TiXmlElement *pTerrainType = NULL;
 	pTerrainType = pXMLData->FirstChildElement( "TerrainType" );
 	// Loop through each type in the Terrain
