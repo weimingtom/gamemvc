@@ -76,7 +76,7 @@ int main( 	int argc,
 		// main loop
 		SDL_initFramerate( &manager );
 		SDL_setFramerate(	&manager,
-							20 );
+							25 );
 		while ( game.Running() ) {
 
 			LAPP_ <<			" ";
