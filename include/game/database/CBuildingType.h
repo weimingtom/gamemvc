@@ -23,12 +23,12 @@ namespace gcn{
 class CBuildingType {
 public:
 
+	~CBuildingType();
 	bool			Load(TiXmlElement* pXMLData);
 	void 			Draw( 	gcn::Graphics* graphics,
 	     			      	int destX,
 	     			      	int destY );
 
-//	void 			Draw(CCanvas* pDestSurface, CPoint puntoDest);
 	int				GetSpace();
 
 private:

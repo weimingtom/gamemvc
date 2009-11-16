@@ -7,100 +7,104 @@
 #include "CBuildingType.h"
 
 #include <tinyxml.h>
+#include <guichan.hpp>
 
 #include <game/GameException.h>
 
-bool CBuildingType::Load(TiXmlElement* pXMLData) {
-/*
-	if (!pXMLData)
-		return false;
+CBuildingType::~CBuildingType(){
 
-	THROW_GAME_EXCEPTION_IF(!pXMLData->Attribute("name"),"Error m_Name BuildingType no definido");
-	m_Name = pXMLData->Attribute("name");
+	delete m_pImage;
 
+}
 
-	if (pXMLData->Attribute("AnchorX")) {
-		m_iAnchorX = atoi(pXMLData->Attribute("AnchorX"));
+bool CBuildingType::Load( TiXmlElement* pXMLData ) {
+
+	if ( !pXMLData ) return false;
+
+	if ( pXMLData->Attribute( "AnchorX" ) ) {
+		m_iAnchorX = atoi( pXMLData->Attribute( "AnchorX" ) );
 	} else
 		m_iAnchorX = 32;
 
-	if (pXMLData->Attribute("AnchorY")) {
-		m_iAnchorY = atoi(pXMLData->Attribute("AnchorY"));
+	if ( pXMLData->Attribute( "AnchorY" ) ) {
+		m_iAnchorY = atoi( pXMLData->Attribute( "AnchorY" ) );
 	} else
 		m_iAnchorY = 16;
 
-	if (pXMLData->Attribute("space")) {
-		m_space = atoi(pXMLData->Attribute("space"));
+	if ( pXMLData->Attribute( "space" ) ) {
+		m_space = atoi( pXMLData->Attribute( "space" ) );
 	} else
 		m_space = 1;
-	m_adjust = CPoint(0,0);
-	switch (m_space){
+	m_adjust = CPoint(	0,
+						0 );
+	/*
+	switch ( m_space ) {
 
-	case 4:
-		// Centro de los 4 tiles.
-		m_adjust.X() = - mouse->w()/2;
+		case 4:
+			// Centro de los 4 tiles.
+			m_adjust.X() = -mouse->w() / 2;
+
 		break;
 
-	case 6:
-		//Centro de los 6 tiles.
-		// No hay desplazamiento.
+		case 6:
+			//Centro de los 6 tiles.
+			// No hay desplazamiento.
 		break;
 
-	default:
+		default:
 		break;
 
 	}
+	*/
+	if ( pXMLData->Attribute( "image" ) ) {
 
-	int r = 0;
-	int g = 0;
-	int b = 0;
-	if (pXMLData->Attribute("r"))
-		r = atoi(pXMLData->Attribute("r"));
+		std::string s = pXMLData->Attribute( "image" );
+		m_pImage = gcn::Image::load( s );
+/*
 
-	if (pXMLData->Attribute("g"))
-		g = atoi(pXMLData->Attribute("g"));
-
-	if (pXMLData->Attribute("b"))
-		b = atoi(pXMLData->Attribute("b"));
-
-	if (pXMLData->Attribute("image")) {
-		string s = pXMLData->Attribute("image");
-		CCanvas* p = CCanvas::LoadBMPCompatible(s);
+		CCanvas* p = CCanvas::LoadBMPCompatible( s );
 		THROW_GAME_EXCEPTION_IF(!(p->GetSurface()),
-			"Error carga imagen SDL_LoadBMP " + s
-					+ " no existe");
-		CColor tmp(r,g,b);
-		p->SetColorKey(tmp);
-		CRectangle rcSource(0,0,p->GetWidth(),p->GetHeight());
-		CPoint     ptOffset(m_iAnchorX,m_iAnchorY);
-		m_pImage = new CImage(p,rcSource,ptOffset);
-
-	} else
-		THROW_GAME_EXCEPTION_IF( 1==1,"Error image BuildingType no definido");
+				"Error carga imagen SDL_LoadBMP " + s
+				+ " no existe");
+		CColor tmp( r,
+					g,
+					b );
+		p->SetColorKey( tmp );
+		CRectangle rcSource(	0,
+								0,
+								p->GetWidth(),
+								p->GetHeight() );
+		CPoint ptOffset( 	m_iAnchorX,
+							m_iAnchorY );
+		m_pImage = new CImage( 	p,
+								rcSource,
+								ptOffset );
 */
+	} else THROW_GAME_EXCEPTION_IF( 1==1,"Error image BuildingType no definido");
+
 	return true;
 
 }
 
-void 			Draw( 	gcn::Graphics* graphics,
-     			      	int destX,
-     			      	int destY ){
+void Draw( 	gcn::Graphics* graphics,
+			int destX,
+			int destY ) {
 
 }
 /*
-void CBuildingType::Draw(CCanvas* pDestSurface, CPoint puntoDest) {
+ void CBuildingType::Draw(CCanvas* pDestSurface, CPoint puntoDest) {
 
-	m_pImage->Put(pDestSurface,puntoDest+m_adjust);
+ m_pImage->Put(pDestSurface,puntoDest+m_adjust);
 
-}
-*/
+ }
+ */
 /*
-std::string CBuildingType::GetNameBuildingType() {
+ std::string CBuildingType::GetNameBuildingType() {
 
-	return m_Name;
-}
-*/
-int CBuildingType::GetSpace(){
+ return m_Name;
+ }
+ */
+int CBuildingType::GetSpace() {
 
 	return m_space;
 
