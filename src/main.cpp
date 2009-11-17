@@ -34,7 +34,6 @@ int main( 	int argc,
 
 	FPSmanager manager;
 
-
 	try {
 
 #ifdef DEBUG
@@ -42,8 +41,6 @@ int main( 	int argc,
 		char* p = new char[128];
 
 #else
-
-
 
 #endif
 
@@ -84,22 +81,27 @@ int main( 	int argc,
 			game.HandleEvents();
 
 			Uint32 timeHandleEvents = SDL_GetTicks();
-			std::cout << "Time HandleEvents : " << timeHandleEvents - timeStart << std::endl;
+			std::cout << "Time HandleEvents : " << timeHandleEvents - timeStart
+					<< std::endl;
 
 			game.Update();
 
 			Uint32 timeUpdate = SDL_GetTicks();
-			std::cout << "Time Update       : " << timeUpdate - timeHandleEvents<< std::endl;
+			std::cout << "Time Update       : " << timeUpdate
+					- timeHandleEvents << std::endl;
 
 			game.Draw();
 
 			Uint32 timeDraw = SDL_GetTicks();
-			std::cout << "Time Draw         : " << timeDraw - timeUpdate<< std::endl;
+			std::cout << "Time Draw         : " << timeDraw - timeUpdate
+					<< std::endl;
 
-			std::cout << "Tiempo total      : " << SDL_GetTicks() - timeStart<< std::endl;
+			std::cout << "Tiempo total      : " << SDL_GetTicks() - timeStart
+					<< std::endl;
 
 			SDL_framerateDelay( &manager );
-			std::cout << "Tiempo bucle      : " << SDL_GetTicks() - timeStart<< std::endl;
+			std::cout << "Tiempo bucle      : " << SDL_GetTicks() - timeStart
+					<< std::endl;
 
 		}
 
