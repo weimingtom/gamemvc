@@ -11,7 +11,6 @@
 
 #include <SDL++/SDLException.hpp>
 #include <misc/debug.h>
-#include <misc/log.h>
 
 #include "CParam.h"
 
@@ -38,7 +37,7 @@ void MyGame::Init( const std::string config ) {
 	gui->setGraphics( graphics );
 	gui->setInput( input );
 
-	LAPP_ <<	"MyGame Init";
+	std::cout << "MyGame Init" << std::endl;
 
 }
 
@@ -52,15 +51,11 @@ void MyGame::Cleanup() {
 	delete graphics;
 	delete imageLoader;
 
-	LAPP_<<	"MyGame Cleanup";
+	std::cout<<	"MyGame Cleanup" << std::endl;
 
-//	TTF_Quit();
-//	IMG_Quit();
-//	SDL_Quit();
-
-#ifdef DEBUG
-//	new_output_fp = fopen("Debug/nvwaout.txt","w");
-#endif
+	TTF_Quit();
+	IMG_Quit();
+	SDL_Quit();
 
 }
 

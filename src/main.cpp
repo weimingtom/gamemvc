@@ -6,7 +6,6 @@
 #include <boost/property_tree/ini_parser.hpp>
 
 #include <misc/debug.h>
-#include <misc/log.h>
 
 #include <states/introstate/CIntroState.h>
 #include <states/menustate/CMenuState.h>
@@ -23,11 +22,11 @@ namespace po = boost::program_options;
 // seguro que es el catch que hace el SDL para enviarlos
 // a un fichero ...... y posiblemente sea el buffer o similar.
 //
-/*
+
 #ifdef main
 #undef main
 #endif
-*/
+
 #endif
 
 int main( 	int argc,
@@ -35,18 +34,16 @@ int main( 	int argc,
 
 	FPSmanager manager;
 
-	try {
 
-		init_logs();
+	try {
 
 #ifdef DEBUG
 
-		g_log_level()->set_enabled( boost::logging::level::info );
 		char* p = new char[128];
 
 #else
 
-		g_log_level()->set_enabled( boost::logging::level::error );
+
 
 #endif
 
@@ -81,30 +78,28 @@ int main( 	int argc,
 							25 );
 		while ( game.Running() ) {
 
-			LAPP_
-<<			" ";
-			LAPP_ << "Comienzo bucle --- ";
+			std::cout << "Comienzo bucle --- " << std::endl;
 			Uint32 timeStart = SDL_GetTicks();
 
 			game.HandleEvents();
 
 			Uint32 timeHandleEvents = SDL_GetTicks();
-			LAPP_ << "Time HandleEvents : " << timeHandleEvents - timeStart;
+			std::cout << "Time HandleEvents : " << timeHandleEvents - timeStart << std::endl;
 
 			game.Update();
 
 			Uint32 timeUpdate = SDL_GetTicks();
-			LAPP_ << "Time Update       : " << timeUpdate - timeHandleEvents;
+			std::cout << "Time Update       : " << timeUpdate - timeHandleEvents<< std::endl;
 
 			game.Draw();
 
 			Uint32 timeDraw = SDL_GetTicks();
-			LAPP_ << "Time Draw         : " << timeDraw - timeUpdate;
+			std::cout << "Time Draw         : " << timeDraw - timeUpdate<< std::endl;
 
-			LAPP_ << "Tiempo total      : " << SDL_GetTicks() - timeStart;
+			std::cout << "Tiempo total      : " << SDL_GetTicks() - timeStart<< std::endl;
 
 			SDL_framerateDelay( &manager );
-			LAPP_ << "Tiempo bucle      : " << SDL_GetTicks() - timeStart;
+			std::cout << "Tiempo bucle      : " << SDL_GetTicks() - timeStart<< std::endl;
 
 		}
 
@@ -113,27 +108,27 @@ int main( 	int argc,
 
 	} catch ( po::error const &e ) {
 
-		LERR_ << e.what();
+		std::cerr << e.what() << std::endl;
 		return 1;
 
 	} catch ( pt::ini_parser_error const &e ) {
 
-		LERR_ << e.what();
+		std::cerr << e.what() << std::endl;
 		return 1;
 
 	} catch ( gcn::Exception const &e ) {
 
-		LERR_ << e.getMessage();
+		std::cerr << e.getMessage() << std::endl;
 		return 1;
 
 	} catch ( std::exception const &e ) {
 
-		LERR_ << "trapped exception: " << e.what();
+		std::cerr << "trapped exception: " << e.what() << std::endl;
 		return 1;
 
 	} catch ( ... ) {
 
-		LERR_ << "Unknown exception";
+		std::cerr << "Unknown exception" << std::endl;
 		return 1;
 
 	}
