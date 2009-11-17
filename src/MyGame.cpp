@@ -29,7 +29,8 @@ void MyGame::Init( const std::string config ) {
 	input = new gcn::SDLInput();
 
 	font
-			= new gcn::ImageFont(	"fixedfont.bmp",
+			= new
+					gcn::ImageFont( "fixedfont.bmp",
 									" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789" );
 	gcn::Widget::setGlobalFont( font );
 
@@ -51,20 +52,24 @@ void MyGame::Cleanup() {
 	delete graphics;
 	delete imageLoader;
 
-	TTF_Quit();
-	IMG_Quit();
-	SDL_Quit();
+	LAPP_<<	"MyGame Cleanup";
 
-	LAPP_ <<	"MyGame Cleanup";
+//	TTF_Quit();
+//	IMG_Quit();
+//	SDL_Quit();
+
+#ifdef DEBUG
+//	new_output_fp = fopen("Debug/nvwaout.txt","w");
+#endif
 
 }
 
-gcn::Gui& MyGame::getGui() const{
+gcn::Gui& MyGame::getGui() const {
 
 	return *gui;
 
 }
-gcn::SDLInput& MyGame::getInput() const{
+gcn::SDLInput& MyGame::getInput() const {
 
 	return *input;
 
@@ -99,15 +104,12 @@ void MyGame::InitSDL() {
 
 	// initialize SDL
 	THROW_SDL_EXCEPTION_IF((-1 == SDL_Init(SDL_INIT_VIDEO)), "Can't initialize SDL:");
-	atexit( SDL_Quit );
 
 	// Init SDL_image
 	THROW_SDL_EXCEPTION_IF(( -1 == IMG_Init(IMG_INIT_PNG)),"Can't initialize TTF:");
-	atexit( IMG_Quit );
 
 	// Init SDL_ttf
 	THROW_SDL_EXCEPTION_IF(( -1 == TTF_Init()),"Can't initialize TTF:");
-	atexit( TTF_Quit );
 
 	// Load Icon Bitmap...
 	SDL_Surface* Icon = IMG_Load( "icon.bmp" ); // No tenemos pantalla aun .......

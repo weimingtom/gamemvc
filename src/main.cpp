@@ -23,11 +23,11 @@ namespace po = boost::program_options;
 // seguro que es el catch que hace el SDL para enviarlos
 // a un fichero ...... y posiblemente sea el buffer o similar.
 //
-
+/*
 #ifdef main
 #undef main
 #endif
-
+*/
 #endif
 
 int main( 	int argc,
@@ -81,7 +81,8 @@ int main( 	int argc,
 							25 );
 		while ( game.Running() ) {
 
-			LAPP_ <<			" ";
+			LAPP_
+<<			" ";
 			LAPP_ << "Comienzo bucle --- ";
 			Uint32 timeStart = SDL_GetTicks();
 
