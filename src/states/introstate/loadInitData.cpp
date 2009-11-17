@@ -88,9 +88,9 @@ bool loadInitData::LoadXML( TiXmlElement* pXMLData ) {
 	MouseMapManager.Init( m );
 
 	if ( !TerrainManager.Load( pXMLData->FirstChildElement( "terrain" ) ) ) return false;
-
-	 if ( !BuildingManager.Load( pXMLData->FirstChildElement( "building" ) ) ) return false;
 	/*
+	 if ( !BuildingManager.Load( pXMLData->FirstChildElement( "building" ) ) ) return false;
+
 	 if ( !ResourceManager->Load( pXMLData->FirstChildElement( "resource" ) ) ) return false;
 
 	 if ( !ActorManager->Load( pXMLData->FirstChildElement( "actor" ) ) ) return false;

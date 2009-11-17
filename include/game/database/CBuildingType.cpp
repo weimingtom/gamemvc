@@ -11,7 +11,7 @@
 
 #include <game/GameException.h>
 
-CBuildingType::~CBuildingType(){
+CBuildingType::~CBuildingType() {
 
 	delete m_pImage;
 
@@ -38,57 +38,47 @@ bool CBuildingType::Load( TiXmlElement* pXMLData ) {
 	m_adjust = CPoint(	0,
 						0 );
 	/*
-	switch ( m_space ) {
+	 switch ( m_space ) {
 
-		case 4:
-			// Centro de los 4 tiles.
-			m_adjust.X() = -mouse->w() / 2;
+	 case 4:
+	 // Centro de los 4 tiles.
+	 m_adjust.X() = -mouse->w() / 2;
 
-		break;
+	 break;
 
-		case 6:
-			//Centro de los 6 tiles.
-			// No hay desplazamiento.
-		break;
+	 case 6:
+	 //Centro de los 6 tiles.
+	 // No hay desplazamiento.
+	 break;
 
-		default:
-		break;
+	 default:
+	 break;
 
-	}
-	*/
+	 }
+	 */
 	if ( pXMLData->Attribute( "image" ) ) {
 
 		std::string s = pXMLData->Attribute( "image" );
 		m_pImage = gcn::Image::load( s );
-/*
+		/*
 
-		CCanvas* p = CCanvas::LoadBMPCompatible( s );
-		THROW_GAME_EXCEPTION_IF(!(p->GetSurface()),
-				"Error carga imagen SDL_LoadBMP " + s
-				+ " no existe");
-		CColor tmp( r,
-					g,
-					b );
-		p->SetColorKey( tmp );
-		CRectangle rcSource(	0,
-								0,
-								p->GetWidth(),
-								p->GetHeight() );
-		CPoint ptOffset( 	m_iAnchorX,
-							m_iAnchorY );
-		m_pImage = new CImage( 	p,
-								rcSource,
-								ptOffset );
-*/
+		 CRectangle rcSource(	0,	 0,	 p->GetWidth(),	 p->GetHeight() );
+		 CPoint ptOffset( 	m_iAnchorX,	 m_iAnchorY );
+		 m_pImage = new CImage( 	p,	 rcSource,	 ptOffset );
+		 */
 	} else THROW_GAME_EXCEPTION_IF( 1==1,"Error image BuildingType no definido");
 
 	return true;
 
 }
 
-void Draw( 	gcn::Graphics* graphics,
-			int destX,
-			int destY ) {
+void CBuildingType::Draw( 	gcn::Graphics* graphics,
+							int destX,
+							int destY ) {
+
+	graphics->drawImage( 	m_pImage,
+							destX - m_iAnchorX,
+							destY - m_iAnchorY );
 
 }
 /*

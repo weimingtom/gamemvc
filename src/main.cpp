@@ -23,6 +23,7 @@ namespace po = boost::program_options;
 // seguro que es el catch que hace el SDL para enviarlos
 // a un fichero ...... y posiblemente sea el buffer o similar.
 //
+
 #ifdef main
 #undef main
 #endif
@@ -41,6 +42,7 @@ int main( 	int argc,
 #ifdef DEBUG
 
 		g_log_level()->set_enabled( boost::logging::level::info );
+		char* p = new char[128];
 
 #else
 
