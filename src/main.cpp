@@ -29,8 +29,7 @@ namespace po = boost::program_options;
 
 #endif
 
-int main( 	int argc,
-			char *argv[] ) {
+int main(int argc, char *argv[]) {
 
 	FPSmanager manager;
 
@@ -38,6 +37,7 @@ int main( 	int argc,
 
 #ifdef DEBUG
 
+//		new_output_fp = fopen("stderr-NVWA.txt","w");
 		char* p = new char[128];
 
 #else
@@ -45,35 +45,30 @@ int main( 	int argc,
 #endif
 
 		std::string config;
-		po::options_description desc( "Allowed options" );
-		desc.add_options()( "help",
-							"produce help message" )(	"config",
-														po::value < std::string >( &config )->default_value( "game.ini" ),
-														"Optionally provide a path to a file that contains configuration settings" );
+		po::options_description desc("Allowed options");
+		desc.add_options()("help", "produce help message")("config", po::value<
+				std::string>(&config)->default_value("game.ini"),
+				"Optionally provide a path to a file that contains configuration settings");
 
 		po::variables_map vm;
-		po::store( 	po::parse_command_line( argc,
-											argv,
-											desc ),
-					vm );
-		po::notify( vm );
+		po::store(po::parse_command_line(argc, argv, desc), vm);
+		po::notify(vm);
 
-		if ( vm.count( "help" ) ) {
+		if (vm.count("help")) {
 			std::cout << desc << std::endl;
 			return 1;
 		}
 
 		// initialize the engine
-		game.Init( config );
+		game.Init(config);
 
 		// load the intro
-		game.ChangeState( &IntroState );
+		game.ChangeState(&IntroState);
 
 		// main loop
-		SDL_initFramerate( &manager );
-		SDL_setFramerate(	&manager,
-							25 );
-		while ( game.Running() ) {
+		SDL_initFramerate(&manager);
+		SDL_setFramerate(&manager, 25);
+		while (game.Running()) {
 
 			std::cout << "Comienzo bucle --- " << std::endl;
 			Uint32 timeStart = SDL_GetTicks();
@@ -99,7 +94,7 @@ int main( 	int argc,
 			std::cout << "Tiempo total      : " << SDL_GetTicks() - timeStart
 					<< std::endl;
 
-			SDL_framerateDelay( &manager );
+			SDL_framerateDelay(&manager);
 			std::cout << "Tiempo bucle      : " << SDL_GetTicks() - timeStart
 					<< std::endl;
 
@@ -108,31 +103,31 @@ int main( 	int argc,
 		// cleanup the engine
 		game.Cleanup();
 
-	} catch ( po::error const &e ) {
+	} catch (po::error const &e) {
 
 		std::cerr << e.what() << std::endl;
-		return 1;
+		return EXIT_FAILURE;
 
-	} catch ( pt::ini_parser_error const &e ) {
+	} catch (pt::ini_parser_error const &e) {
 
 		std::cerr << e.what() << std::endl;
-		return 1;
+		return EXIT_FAILURE;
 
-	} catch ( gcn::Exception const &e ) {
+	} catch (gcn::Exception const &e) {
 
 		std::cerr << e.getMessage() << std::endl;
-		return 1;
+		return EXIT_FAILURE;
 
-	} catch ( std::exception const &e ) {
+	} catch (std::exception const &e) {
 
 		std::cerr << "trapped exception: " << e.what() << std::endl;
-		return 1;
+		return EXIT_FAILURE;
 
-	} catch ( ... ) {
+	} catch (...) {
 
 		std::cerr << "Unknown exception" << std::endl;
-		return 1;
+		return EXIT_FAILURE;
 
 	}
-	return 0;
+	return EXIT_SUCCESS;
 }

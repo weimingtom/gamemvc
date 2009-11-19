@@ -57,6 +57,10 @@ void MyGame::Cleanup() {
 	IMG_Quit();
 	SDL_Quit();
 
+#ifdef DEBUG
+//	new_output_fp = fopen("qq.lst","w");
+#endif
+
 }
 
 gcn::Gui& MyGame::getGui() const {
