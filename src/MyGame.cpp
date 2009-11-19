@@ -14,30 +14,26 @@
 
 #include "CParam.h"
 
-void MyGame::Init( const std::string config ) {
+void MyGame::Init(const std::string config) {
 
 	CGameEngine::Init();
 
-	InitParam( config );
+	InitParam(config);
 	InitSDL();
 
 	imageLoader = new gcn::SDLImageLoader();
-	gcn::Image::setImageLoader( imageLoader );
+	gcn::Image::setImageLoader(imageLoader);
 	graphics = new gcn::SDLGraphics();
-	graphics->setTarget( screen );
+	graphics->setTarget(screen);
 	input = new gcn::SDLInput();
 
-	font
-			= new
-					gcn::ImageFont( "fixedfont.bmp",
-									" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789" );
-	gcn::Widget::setGlobalFont( font );
+	font = new gcn::ImageFont("fixedfont.bmp",
+			" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789");
+	gcn::Widget::setGlobalFont(font);
 
 	gui = new gcn::Gui();
-	gui->setGraphics( graphics );
-	gui->setInput( input );
-
-	std::cout << "MyGame Init" << std::endl;
+	gui->setGraphics(graphics);
+	gui->setInput(input);
 
 }
 
@@ -51,15 +47,9 @@ void MyGame::Cleanup() {
 	delete graphics;
 	delete imageLoader;
 
-	std::cout<<	"MyGame Cleanup" << std::endl;
-
 	TTF_Quit();
 	IMG_Quit();
 	SDL_Quit();
-
-#ifdef DEBUG
-//	new_output_fp = fopen("qq.lst","w");
-#endif
 
 }
 
@@ -81,19 +71,15 @@ SDL_Surface* MyGame::getScreen() {
 /*
  * Procedimientos privados.
  */
-void MyGame::InitParam( const std::string config ) {
+void MyGame::InitParam(const std::string config) {
 
 	pt::ptree pt;
-	pt::read_ini( 	config,
-					pt );
+	pt::read_ini(config, pt);
 
-	param.screen.X = pt.get(	"screen.width",
-								640 );
-	param.screen.Y = pt.get(	"screen.height",
-								480 );
-	param.screen.full = pt.get( "screen.fullscreen",
-								false );
-	param.gamedata = pt.get < std::string > ( "game.gamedata" );
+	param.screen.X = pt.get("screen.width", 640);
+	param.screen.Y = pt.get("screen.height", 480);
+	param.screen.full = pt.get("screen.fullscreen", false);
+	param.gamedata = pt.get<std::string> ("game.gamedata");
 
 }
 void MyGame::InitSDL() {
@@ -111,27 +97,24 @@ void MyGame::InitSDL() {
 	THROW_SDL_EXCEPTION_IF(( -1 == TTF_Init()),"Can't initialize TTF:");
 
 	// Load Icon Bitmap...
-	SDL_Surface* Icon = IMG_Load( "icon.bmp" ); // No tenemos pantalla aun .......
+	SDL_Surface* Icon = IMG_Load("icon.bmp"); // No tenemos pantalla aun .......
 	THROW_SDL_EXCEPTION_IF(0 == Icon,"Can't load program icon");
-	SDL_WM_SetIcon( Icon,
-					NULL );
+	SDL_WM_SetIcon(Icon, NULL);
 
 	const SDL_VideoInfo* info = SDL_GetVideoInfo();
-	if ( info->vfmt->BitsPerPixel > 8 ) {
+	if (info->vfmt->BitsPerPixel > 8) {
 		bpp = info->vfmt->BitsPerPixel;
 	} else {
 		bpp = 16;
 	}
-	if ( info->hw_available ) flags |= SDL_DOUBLEBUF;
-	if ( param.screen.full ) flags |= SDL_FULLSCREEN;
+	if (info->hw_available)
+		flags |= SDL_DOUBLEBUF;
+	if (param.screen.full)
+		flags |= SDL_FULLSCREEN;
 
-	SDL_putenv( (char *) "SDL_VIDEO_CENTERED=center" );
-	screen = SDL_SetVideoMode( 	param.screen.X,
-								param.screen.Y,
-								bpp,
-								flags );
-	SDL_EnableUNICODE( 1 );
-	SDL_EnableKeyRepeat( 	SDL_DEFAULT_REPEAT_DELAY,
-							SDL_DEFAULT_REPEAT_INTERVAL );
+	SDL_putenv((char *) "SDL_VIDEO_CENTERED=center");
+	screen = SDL_SetVideoMode(param.screen.X, param.screen.Y, bpp, flags);
+	SDL_EnableUNICODE(1);
+	SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY, SDL_DEFAULT_REPEAT_INTERVAL);
 
 }

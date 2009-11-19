@@ -34,13 +34,16 @@ int main(int argc, char *argv[]) {
 	FPSmanager manager;
 
 	try {
-
+//		init_logs();
 #ifdef DEBUG
 
-//		new_output_fp = fopen("stderr-NVWA.txt","w");
 		char* p = new char[128];
+		//		g_l_level()->set_enabled(bl::level::debug);
+		//		g_l()->turn_cache_off();
 
 #else
+
+		//		g_l_level()->set_enabled(bl::level::error);
 
 #endif
 
