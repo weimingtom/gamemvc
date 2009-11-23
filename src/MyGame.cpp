@@ -11,6 +11,7 @@
 
 #include <SDL++/SDLException.hpp>
 #include <misc/debug.h>
+#include <misc/Log.h>
 
 #include "CParam.h"
 
@@ -35,6 +36,8 @@ void MyGame::Init(const std::string config) {
 	gui->setGraphics(graphics);
 	gui->setInput(input);
 
+	L_(debug) << "MyGame::Init";
+
 }
 
 void MyGame::Cleanup() {
@@ -50,6 +53,8 @@ void MyGame::Cleanup() {
 	TTF_Quit();
 	IMG_Quit();
 	SDL_Quit();
+
+	L_(debug) << "MyGame::Cleanup";
 
 }
 
