@@ -37,17 +37,17 @@ int main(int argc, char *argv[]) {
 
 	try {
 
-		char* env = getenv("DATOS");
+//		char* env = getenv("DATOS");
 //		std::cout << "Environment: " << env << std::endl;
 		init_logs();
 
 #ifdef DEBUG
 
-		char* q = new char[128];
+		char* q = new char[128]; // Solo esta para forzar el error en NVWA
 		g_l_level()->set_enabled(bl::level::debug);
 		//
 		// De momento no funciona el paso de variables de entorno
-		// bajo el dbg ... por lo tanto no lo fuerzo.
+		// bajo el gdb ... por lo tanto no lo fuerzo.
 		//
 		/*
 		char* p = getenv("GDB");
