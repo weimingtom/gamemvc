@@ -10,7 +10,7 @@
 
 #include <boost/utility.hpp>
 
-#include <misc/Singleton.hpp>
+#include <misc/singleton.hpp>
 
 #define param Singleton < CParam >::Instance()
 

@@ -2,7 +2,7 @@
 #define INTROSTATE_H
 
 #include <game/gamestate.h>
-#include <misc/Singleton.hpp>
+#include <misc/singleton.hpp>
 
 #define IntroState Singleton < CIntroState >::Instance()
 

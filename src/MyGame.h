@@ -10,13 +10,13 @@
 
 #include <string>
 #include <guichan.hpp>
-#include <guichan/SDL.hpp>
+#include <guichan/sdl.hpp>
 #include <boost/utility.hpp>
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/ini_parser.hpp>
 
 #include <game/CGameEngine.h>
-#include <misc/Singleton.hpp>
+#include <misc/singleton.hpp>
 
 namespace pt = boost::property_tree;
 

@@ -11,7 +11,7 @@
 #include <string>
 #include <map>
 #include <boost/shared_ptr.hpp>
-#include <misc/Singleton.hpp>
+#include <misc/singleton.hpp>
 
 class CBuildingType;
 class TiXmlElement;

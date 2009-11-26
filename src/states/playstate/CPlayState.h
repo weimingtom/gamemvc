@@ -9,7 +9,7 @@
 #define CPLAYSTATE_H_
 
 #include <game/CGameEngine.h>
-#include <misc/Singleton.hpp>
+#include <misc/singleton.hpp>
 
 class MyGame;
 

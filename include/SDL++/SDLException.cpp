@@ -7,7 +7,7 @@
 #include <config.h>
 #endif
 
-#include "SdlException.hpp"
+#include "SDLException.hpp"
 
 #include <SDL/SDL.h>
 

@@ -12,7 +12,7 @@
 
 #include <boost/utility.hpp>
 
-#include <misc/Singleton.hpp>
+#include <misc/singleton.hpp>
 
 #include "MouseMap.hpp"
 

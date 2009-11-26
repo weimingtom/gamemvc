@@ -2,7 +2,7 @@
 #define MENUSTATE_H
 
 #include <game/gamestate.h>
-#include <misc/Singleton.hpp>
+#include <misc/singleton.hpp>
 
 class MenuModel;
 class MenuView;

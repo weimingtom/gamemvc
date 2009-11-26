@@ -6,7 +6,7 @@
  */
 #include "MyGame.h"
 
-#include <SDL/SDL_Image.h>
+#include <SDL/SDL_image.h>
 #include <SDL/SDL_ttf.h>
 
 #include <SDL++/SDLException.hpp>
@@ -51,7 +51,7 @@ void MyGame::Cleanup() {
 	delete imageLoader;
 
 	TTF_Quit();
-	IMG_Quit();
+//	IMG_Quit();
 	SDL_Quit();
 
 	L_(debug) << "MyGame::Cleanup";
@@ -96,7 +96,7 @@ void MyGame::InitSDL() {
 	THROW_SDL_EXCEPTION_IF((-1 == SDL_Init(SDL_INIT_VIDEO)), "Can't initialize SDL:");
 
 	// Init SDL_image
-	THROW_SDL_EXCEPTION_IF(( -1 == IMG_Init(IMG_INIT_PNG)),"Can't initialize TTF:");
+//	THROW_SDL_EXCEPTION_IF(( -1 == IMG_Init(IMG_INIT_PNG)),"Can't initialize TTF:");
 
 	// Init SDL_ttf
 	THROW_SDL_EXCEPTION_IF(( -1 == TTF_Init()),"Can't initialize TTF:");
