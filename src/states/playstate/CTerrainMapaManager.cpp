@@ -32,7 +32,7 @@ bool CTerrainMapaManager::Load( TiXmlElement* pXMLData ) {
 	THROW_GAME_EXCEPTION_IF(!pXMLData->Attribute( "default" ), "Error Mapa: terreno por defecto no definido");
 	sTerrain = pXMLData->Attribute( "default" );
 
-	CTerrainType* pTerrain = &TerrainManager.GetTerrainType( sTerrain );
+	CTerrainType* pTerrain = TerrainManager.GetTerrainType( sTerrain );
 	THROW_GAME_EXCEPTION_IF(!( pTerrain ) ,"Error Mapa: el tipo de terreno " + sTerrain);
 
 	int basex = 0;

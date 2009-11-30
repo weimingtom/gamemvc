@@ -19,7 +19,6 @@ namespace gcn {
 
 class PlayModel;
 class CTile;
-class CCanvas;
 
 class CTerrainMapa: public BaseGameEntity
 {

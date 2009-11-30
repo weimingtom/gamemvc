@@ -56,17 +56,16 @@ bool CBuildingType::Load( TiXmlElement* pXMLData ) {
 
 	 }
 	 */
-	if ( pXMLData->Attribute( "image" ) ) {
+	THROW_GAME_EXCEPTION_IF( !pXMLData->Attribute( "image" ),"Error image BuildingType no definido");
 
-		std::string s = pXMLData->Attribute( "image" );
-		m_pImage = gcn::Image::load( s );
-		/*
+	std::string s( pXMLData->Attribute( "image" ) );
+	m_pImage = gcn::Image::load( s );
+	/*
 
-		 CRectangle rcSource(	0,	 0,	 p->GetWidth(),	 p->GetHeight() );
-		 CPoint ptOffset( 	m_iAnchorX,	 m_iAnchorY );
-		 m_pImage = new CImage( 	p,	 rcSource,	 ptOffset );
-		 */
-	} else THROW_GAME_EXCEPTION_IF( 1==1,"Error image BuildingType no definido");
+	 CRectangle rcSource(	0,	 0,	 p->GetWidth(),	 p->GetHeight() );
+	 CPoint ptOffset( 	m_iAnchorX,	 m_iAnchorY );
+	 m_pImage = new CImage( 	p,	 rcSource,	 ptOffset );
+	 */
 
 	return true;
 
@@ -81,19 +80,7 @@ void CBuildingType::Draw( 	gcn::Graphics* graphics,
 							destY - m_iAnchorY );
 
 }
-/*
- void CBuildingType::Draw(CCanvas* pDestSurface, CPoint puntoDest) {
 
- m_pImage->Put(pDestSurface,puntoDest+m_adjust);
-
- }
- */
-/*
- std::string CBuildingType::GetNameBuildingType() {
-
- return m_Name;
- }
- */
 int CBuildingType::GetSpace() {
 
 	return m_space;

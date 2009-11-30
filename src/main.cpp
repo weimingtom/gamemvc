@@ -43,22 +43,9 @@ int main(int argc, char *argv[]) {
 
 #ifdef DEBUG
 
-		char* q = new char[128]; // Solo esta para forzar el error en NVWA
+//		char* q = new char[128]; // Solo esta para forzar el error en NVWA
+
 		g_l_level()->set_enabled(bl::level::debug);
-		//
-		// De momento no funciona el paso de variables de entorno
-		// bajo el gdb ... por lo tanto no lo fuerzo.
-		//
-		/*
-		char* p = getenv("GDB");
-		int gdb = atoi(p);
-		if (0 != gdb ) {
-			std::cout.setf(std::ios::unitbuf);
-			L_(debug) << "Estoy bajo GDB y Eclipse";
-		} else {
-			L_(debug) << "No estoy bajo Eclipse y GDB";
-		}
-		*/
 		std::cout.setf(std::ios::unitbuf); // Quito el buffer al estar bajo debug....
 
 #else

@@ -16,6 +16,7 @@
 
 #include "CellMapaPartition.h"
 #include "CTerrainMapaManager.h"
+#include "CBuildingMapaManager.h"
 
 class TiXmlElement;
 
@@ -53,6 +54,8 @@ public:
 	void Update();
 
 	std::vector < CTerrainMapa* > ObtainTerrainCell( const CPoint& pLocal );
+	std::vector < CBuildingMapa* > ObtainBuildingCell( const CPoint& pLocal );
+
 
 private:
 
@@ -70,15 +73,17 @@ private:
 
 	std::auto_ptr < CellPartition > m_pCellPartition; //! Division del mapa isometrico?.
 
-
 	typedef std::auto_ptr < CTerrainMapaManager > CTerrainMapaManager_ptr;
+	typedef std::auto_ptr < CBuildingMapaManager > CBuildingMapaManager_ptr;
 
 	CTerrainMapaManager_ptr m_pTerrainMapaManager;
+	CBuildingMapaManager_ptr m_pBuildingMapaManager;
 
 	void loadGame( const std::string& mapData );
 	bool loadXML( TiXmlElement* pXMLData );
 	//
 	bool loadTerrain( TiXmlElement* pXMLData );
+	bool loadBuilding( TiXmlElement* pXMLData );
 
 };
 

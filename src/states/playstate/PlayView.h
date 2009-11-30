@@ -114,6 +114,7 @@ private:
 							CPoint fromPoint,
 							int puntos = 1 );
 		void PaintAllTerrain( const CPoint& paintPoint );
+		void PaintAllBuilding( const CPoint& paintPoint );
 
 		CPoint WorldToScreen( 	int wx,
 								int wy );

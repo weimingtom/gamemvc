@@ -7,6 +7,7 @@
 
 #include "PlayView.h"
 
+#include <functional>
 #include <sstream>
 #include <guichan.hpp>
 #include <xmlgui.h>
@@ -18,6 +19,7 @@
 #include "PlayModel.h"
 #include "PlayController.h"
 #include "CTerrainMapa.h"
+#include "CBuildingMapa.h"
 
 PlayView::PlayView( PlayModel* model ) :
 	View < PlayModel, PlayController > ( model ) {
@@ -218,20 +220,21 @@ void PlayView::PlayZoneView::draw() {
 	//
 	// Dibujamos el Terrain.
 	//
-	std::vector < CPoint >::iterator iter;
-	for ( iter = allPoints.begin(); iter != allPoints.end(); iter++ ) {
-
-		PaintAllTerrain( ( *iter ) );
-
-	}
+	std::for_each( 	allPoints.begin(),
+					allPoints.end(),
+					boost::bind(	&PlayView::PlayZoneView::PaintAllTerrain,
+									this,
+									_1 ) );
+	//
+	// Dibujamos los Buildings.
+	//
+	std::for_each( 	allPoints.begin(),
+					allPoints.end(),
+					boost::bind(	&PlayView::PlayZoneView::PaintAllBuilding,
+									this,
+									_1 ) );
 
 	/*
-	 //
-	 // Dibujamos los Buildings.
-	 //
-	 for ( iter = allPoints.begin(); iter != allPoints.end(); iter++ ) {
-	 PaintAllBuilding( ( *iter ) );
-	 }
 	 //
 	 // Dibujamos los Actores.
 	 //
@@ -561,19 +564,38 @@ void PlayView::PlayZoneView::PaintAllTerrain( const CPoint& paintPoint ) {
 	// punto isometrico calculado.
 	//
 	CPoint pLocal = m_play.getModel()->IsoToLocal( paintPoint );
-	CPoint pScreen = LocalToScreen( pLocal.GetX(),
-									pLocal.GetY() );
 
 	std::vector < CTerrainMapa* > terrainCell =
 			m_play.getModel()->ObtainTerrainCell( pLocal );
-	std::vector < CTerrainMapa* >::iterator iter;
-	for ( iter = terrainCell.begin(); iter != terrainCell.end(); iter++ ) {
 
-		( *iter )->Draw( 	game.getGui().getGraphics(),
-							pScreen.GetX(),
-							pScreen.GetY() );
+	CPoint pScreen = LocalToScreen( pLocal.GetX(),
+									pLocal.GetY() );
 
-	}
+	std::for_each( 	terrainCell.begin(),
+					terrainCell.end(),
+					boost::bind(	&CTerrainMapa::Draw,
+									_1,
+									game.getGui().getGraphics(),
+									pScreen.GetX(),
+									pScreen.GetY() ) );
+
+}
+void PlayView::PlayZoneView::PaintAllBuilding( const CPoint& paintPoint ) {
+
+	CPoint pLocal = m_play.getModel()->IsoToLocal( paintPoint );
+
+	std::vector < CBuildingMapa* > buildingCell =
+			m_play.getModel()->ObtainBuildingCell( pLocal );
+
+	CPoint pScreen = LocalToScreen( pLocal.GetX(),
+									pLocal.GetY() );
+	std::for_each( 	buildingCell.begin(),
+					buildingCell.end(),
+					boost::bind(	&CBuildingMapa::Draw,
+									_1,
+									game.getGui().getGraphics(),
+									pScreen.GetX(),
+									pScreen.GetY() ) );
 
 }
 void PlayView::PlayZoneView::moveView( 	int x,

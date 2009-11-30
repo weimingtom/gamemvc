@@ -23,18 +23,16 @@ bool CTile::Load( TiXmlElement* pXMLData ) {
 
 	if ( !pXMLData ) return false;
 
-	if ( pXMLData->GetText() ) {
-
-		string imagen = pXMLData->GetText();
-		gcn::Image* image = gcn::Image::load( imagen );
-		laLoseta.first = image;
-		laLoseta.second.SetX( image->getWidth() / 2 );
-		laLoseta.second.SetY( image->getHeight() / 2 - 1 );
-
-	} else THROW_GAME_EXCEPTION_IF(1==1,"Error imagen Tile no definido");
+	THROW_GAME_EXCEPTION_IF((!pXMLData->Attribute( "image" ) ),"Error imagen Tile no definido");
+	std::string imagen( pXMLData->Attribute( "image" ) );
+	gcn::Image* image = gcn::Image::load( imagen );
+	laLoseta.first = image;
+	laLoseta.second.SetX( image->getWidth() / 2 );
+	laLoseta.second.SetY( image->getHeight() / 2 - 1 );
 
 	return true;
 }
+
 void CTile::Draw( 	gcn::Graphics* graphics,
 					int destX,
 					int destY ) {

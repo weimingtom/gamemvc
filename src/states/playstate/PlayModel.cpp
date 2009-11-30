@@ -15,6 +15,7 @@
 #include <game/database/CMouseMapManager.h>
 
 #include "CTerrainMapa.h"
+#include "CBuildingMapa.h"
 
 PlayModel::PlayModel() :
 	Model(), m_endtype( PlayModel::CONTINUE ), m_pCellPartition( NULL ) {
@@ -90,6 +91,26 @@ std::vector < CTerrainMapa* > PlayModel::ObtainTerrainCell( const CPoint& pLocal
 	}
 	return terrainCell;
 }
+std::vector < CBuildingMapa* > PlayModel::ObtainBuildingCell( const CPoint& pLocal ) {
+
+	std::vector < CBuildingMapa* > buildingCell;
+
+	CellMapa < BaseGameEntity* > cell =
+			GetCellPartition()->GetCell( Vector2D( 	pLocal.GetX(),
+													pLocal.GetY() ) );
+
+	std::list < BaseGameEntity* >::iterator iter;
+	for ( iter = cell.Members.begin(); iter != cell.Members.end(); ++iter ) {
+
+		if ( ( *iter )->EntityType() == BaseGameEntity::building ) {
+
+			CBuildingMapa* terrain = static_cast < CBuildingMapa* > ( *iter );
+			buildingCell.push_back( terrain );
+
+		}
+	}
+	return buildingCell;
+}
 int PlayModel::getResolution() {
 
 	return m_iResolution;
@@ -149,7 +170,7 @@ void PlayModel::loadGame( const std::string& mapData ) {
 	 */
 	loadTerrain( pXMLData );
 	//	loadResource( pXMLData );
-	//	loadBuilding( pXMLData );
+	loadBuilding( pXMLData );
 
 	return;
 }
@@ -187,4 +208,16 @@ bool PlayModel::loadTerrain( TiXmlElement* pXMLData ) {
 
 	return true;
 
+}
+bool PlayModel::loadBuilding( TiXmlElement* pXMLData ) {
+	/*
+	 * Cargamos datos iniciales de Buildings.
+	 */
+	m_pBuildingMapaManager.reset(new CBuildingMapaManager(this));
+
+	if ( m_pBuildingMapaManager->Load( pXMLData->FirstChildElement( "BuildingGroup" ) )
+			== false )
+		return false;
+
+	return true;
 }

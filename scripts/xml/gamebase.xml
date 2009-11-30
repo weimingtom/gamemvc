@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-	<!--Definicion de todas los elementos fijos del juego.-->
+	<!--Definicion de todos los elementos fijos del juego.-->
 <gamebase MouseMap="./data/iso_64.bmp">
 	<terrain>
 		<TerrainType name="Desierto">
-			<tile>./data/terrain/desierto/G1500001.PNG
-			</tile>
-			<tile>./data/terrain/desierto/G1500002.PNG
-			</tile>
-			<tile>./data/terrain/desierto/G1500003.PNG
-			</tile>
-			<tile>./data/terrain/desierto/G1500004.PNG
-			</tile>
-			<tile>./data/terrain/desierto/G1500005.PNG
-			</tile>
-			<tile>./data/terrain/desierto/G1500006.PNG
-			</tile>
-			<tile>./data/terrain/desierto/G1500007.PNG
-			</tile>
-			<tile>./data/terrain/desierto/G1500008.PNG
-			</tile>
-			<tile>./data/terrain/desierto/G1500009.PNG
-			</tile>
+			<tile image="./data/terrain/desierto/G1500001.PNG" />
+			<tile image="./data/terrain/desierto/G1500002.PNG" />
+			<tile image="./data/terrain/desierto/G1500003.PNG" />
+			<tile image="./data/terrain/desierto/G1500004.PNG" />
+			<tile image="./data/terrain/desierto/G1500005.PNG" />
+			<tile image="./data/terrain/desierto/G1500006.PNG" />
+			<tile image="./data/terrain/desierto/G1500007.PNG" />
+			<tile image="./data/terrain/desierto/G1500008.PNG" />
+			<tile image="./data/terrain/desierto/G1500009.PNG" />
 		</TerrainType>
 	</terrain>
+	<building>
+		<BuildingType AnchorX="42" AnchorY="36"
+			image="./data/building/casa/G0002101.PNG" name="Casa" space="4">
+		</BuildingType>
+		<BuildingType AnchorX="95" AnchorY="72"
+			image="./data/building/cuartel/G0006102.BMP" name="Cuartel" space="6">
+		</BuildingType>
+
+	</building>
 	<actor>
 		<ActorType name="Harry" script="./scripts/Lua/harry.lua">
 			<Personality name="none">
@@ -237,7 +237,8 @@
 						</frame>
 					</dir>
 					<dir name="NE" r="106" g="78" b="50">
-						<frame AnchorX="32" AnchorY="46" image="./data/actor/lilly/stopped0005.bmp">
+						<frame AnchorX="32" AnchorY="46"
+							image="./data/actor/lilly/stopped0005.bmp">
 						</frame>
 					</dir>
 					<dir name="E" r="106" g="78" b="50">
@@ -1009,17 +1010,10 @@
 
 		</ActorType>
 	</actor>
-	<building>
-		<BuildingType AnchorX="42" AnchorY="36"
-			image="./data/building/casa/G0002101.BMP" name="Casa" space="4">
-		</BuildingType>
-		<BuildingType AnchorX="95" AnchorY="72"
-			image="./data/building/cuartel/G0006102.BMP" name="Cuartel" space="6">
-		</BuildingType>
-		
-	</building>
+
 	<resource>
 		<ResourceType AnchorX="57" AnchorY="39"
 			image="./data/resource/arbol/G0000001.BMP" name="Arbol" space="4">
 		</ResourceType>
-	</resource></gamebase>
+	</resource>
+</gamebase>
