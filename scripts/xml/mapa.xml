@@ -4,8 +4,9 @@
 	</TerrainGroup>
 	<BuildingGroup>
 		<building x="1" y="5">Casa</building>
-<!--  		
 		<building x="3" y="8">Casa</building>
+		<!--  		
+		
 		<building x="8" y="8">Cuartel</building>
 -->
 	</BuildingGroup>
