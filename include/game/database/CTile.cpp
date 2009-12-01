@@ -28,7 +28,7 @@ bool CTile::Load( TiXmlElement* pXMLData ) {
 	gcn::Image* image = gcn::Image::load( imagen );
 	laLoseta.first = image;
 	laLoseta.second.SetX( image->getWidth() / 2 );
-	laLoseta.second.SetY( image->getHeight() / 2 - 1 );
+	laLoseta.second.SetY( image->getHeight() / 2 );
 
 	return true;
 }

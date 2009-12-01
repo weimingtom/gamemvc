@@ -48,6 +48,8 @@ public:
 	void moveZone( 	int X,
 					int Y );
 	void resetMoveZone();
+	void moveView( 	int X,
+					int Y );
 
 private:
 
@@ -62,9 +64,10 @@ private:
 								int Y );
 		void resetMove();
 
+		void moveView( 	int x,
+						int y );
+
 	private:
-
-
 
 		enum Direction
 		{
@@ -98,9 +101,9 @@ private:
 		int m_MapX; //! Desplazamiento costado WorldX con respecto screenX.
 		int m_MapY; //! Desplazamiento costado WorldY con respecto screenY.
 
-		bool	m_move;
-		int		moveX;
-		int 	moveY;
+		bool m_move;
+		int moveX;
+		int moveY;
 
 		std::vector < CPoint > allPoints; // Puntos Isometricos a dibujar.
 
@@ -123,8 +126,6 @@ private:
 								int lY );
 		CPoint LocalToScreen( 	int lX,
 								int lY );
-		void moveView( 	int x,
-						int y );
 
 	};
 	class PlayMsgLeftView

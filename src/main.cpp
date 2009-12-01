@@ -17,7 +17,6 @@
 namespace po = boost::program_options;
 
 #ifdef DEBUG
-
 // Con esto los mensajes en la consola.
 //
 // Sin esto no funciona el nvwa ....
@@ -31,22 +30,23 @@ namespace po = boost::program_options;
 
 #endif
 
-int main(int argc, char *argv[]) {
+int main( 	int argc,
+			char *argv[] ) {
 
 	FPSmanager manager;
 
 	try {
 
-//		char* env = getenv("DATOS");
-//		std::cout << "Environment: " << env << std::endl;
+		//		char* env = getenv("DATOS");
+		//		std::cout << "Environment: " << env << std::endl;
 		init_logs();
 
 #ifdef DEBUG
 
-//		char* q = new char[128]; // Solo esta para forzar el error en NVWA
+		//		char* q = new char[128]; // Solo esta para forzar el error en NVWA
 
-		g_l_level()->set_enabled(bl::level::debug);
-		std::cout.setf(std::ios::unitbuf); // Quito el buffer al estar bajo debug....
+		g_l_level()->set_enabled( bl::level::debug );
+		std::cout.setf( std::ios::unitbuf ); // Quito el buffer al estar bajo debug....
 
 #else
 
@@ -54,31 +54,38 @@ int main(int argc, char *argv[]) {
 
 #endif
 
+//		Q_(debug,"Hola como esta" << "y mas cosas" << 1) //!TODO No funciona
+
 		std::string config;
-		po::options_description desc("Allowed options");
-		desc.add_options()("help", "produce help message")("config", po::value<
-				std::string>(&config)->default_value("game.ini"),
-				"Optionally provide a path to a file that contains configuration settings");
+		po::options_description desc( "Allowed options" );
+		desc.add_options()( "help",
+							"produce help message" )(	"config",
+														po::value < std::string >( &config )->default_value( "game.ini" ),
+														"Optionally provide a path to a file that contains configuration settings" );
 
 		po::variables_map vm;
-		po::store(po::parse_command_line(argc, argv, desc), vm);
-		po::notify(vm);
+		po::store( 	po::parse_command_line( argc,
+											argv,
+											desc ),
+					vm );
+		po::notify( vm );
 
-		if (vm.count("help")) {
+		if ( vm.count( "help" ) ) {
 			std::cout << desc << std::endl;
 			return 1;
 		}
 
 		// initialize the engine
-		game.Init(config);
+		game.Init( config );
 
 		// load the intro
-		game.ChangeState(&IntroState);
+		game.ChangeState( &IntroState );
 
 		// main loop
-		SDL_initFramerate(&manager);
-		SDL_setFramerate(&manager, 25);
-		while (game.Running()) {
+		SDL_initFramerate( &manager );
+		SDL_setFramerate(	&manager,
+							25 );
+		while ( game.Running() ) {
 
 			//			std::cout << "Comienzo bucle --- " << std::endl;
 			L_(debug)

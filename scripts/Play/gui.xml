@@ -1,10 +1,15 @@
 <container name="top" x="0" y="0" width="640" height="480"
 	focusable="true">
-
+ 
 	<container name="zone" x="0" y="0" width="640" height="384" basecolor="0x00000000">
 
 	</container>
 
+<!--
+	<container name="zone" x="0" y="0" width="192" height="96" basecolor="0x00000000">
+
+	</container>
+-->		
 	<container name="msgleft" x="0" y="384" width="160" height="96">
 	
 		<textfield name="name" x="10" y="10" width="60" height="20"/>

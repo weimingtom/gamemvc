@@ -95,12 +95,22 @@ XmlGui& PlayView::getXmlGui() const {
 }
 void PlayView::moveZone( 	int X,
 							int Y ) {
+
 	m_ZoneView->updateMoveView( X,
 								Y );
 
 }
 void PlayView::resetMoveZone() {
+
 	m_ZoneView->resetMove();
+
+}
+void PlayView::moveView( 	int X,
+							int Y ) {
+
+	m_ZoneView->moveView( 	X,
+							Y );
+
 }
 //-------------------------------------------------------------------
 //
@@ -457,6 +467,25 @@ bool PlayView::PlayZoneView::validIso( CPoint p ) {
 	else
 		return true;
 }
+
+CPoint PlayView::PlayZoneView::calculaIso( 	int wx,
+											int wy ) {
+
+	CPoint rejilla;
+	CPoint p;
+
+	rejilla = calcularRejilla( CPoint( 	wx,
+										wy ) );
+	p = tileWalk( 	EAST,
+					CPoint( 0,
+							0 ),
+					rejilla.X() );
+	p = tileWalk( 	SOUTH,
+					p,
+					rejilla.Y() );
+
+	return p;
+}
 CPoint PlayView::PlayZoneView::calcularRejilla( CPoint punto ) {
 
 	CPoint rejilla;
@@ -504,24 +533,6 @@ CPoint PlayView::PlayZoneView::calcularRejilla( CPoint punto ) {
 
 	return rejilla;
 
-}
-CPoint PlayView::PlayZoneView::calculaIso( 	int wx,
-											int wy ) {
-
-	CPoint rejilla;
-	CPoint p;
-
-	rejilla = calcularRejilla( CPoint( 	wx,
-										wy ) );
-	p = tileWalk( 	EAST,
-					CPoint( 0,
-							0 ),
-					rejilla.X() );
-	p = tileWalk( 	SOUTH,
-					p,
-					rejilla.Y() );
-
-	return p;
 }
 CPoint PlayView::PlayZoneView::WorldToScreen( 	int wx,
 												int wy ) {

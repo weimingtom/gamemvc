@@ -10,6 +10,7 @@
 #include <guichan.hpp>
 
 #include <game/GameException.h>
+#include <game/database/CMouseMapManager.h>
 
 CBuildingType::~CBuildingType() {
 
@@ -37,25 +38,25 @@ bool CBuildingType::Load( TiXmlElement* pXMLData ) {
 		m_space = 1;
 	m_adjust = CPoint(	0,
 						0 );
-	/*
-	 switch ( m_space ) {
 
-	 case 4:
-	 // Centro de los 4 tiles.
-	 m_adjust.X() = -mouse->w() / 2;
+	switch ( m_space ) {
 
-	 break;
+		case 4:
+			// Centro de los 4 tiles.
+			m_adjust.X() = -mouse->w() / 2;
 
-	 case 6:
-	 //Centro de los 6 tiles.
-	 // No hay desplazamiento.
-	 break;
+		break;
 
-	 default:
-	 break;
+		case 6:
+			//Centro de los 6 tiles.
+			// No hay desplazamiento.
+		break;
 
-	 }
-	 */
+		default:
+		break;
+
+	}
+
 	THROW_GAME_EXCEPTION_IF( !pXMLData->Attribute( "image" ),"Error image BuildingType no definido");
 
 	std::string s( pXMLData->Attribute( "image" ) );

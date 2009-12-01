@@ -18,7 +18,9 @@
 #include "CBuildingMapa.h"
 
 PlayModel::PlayModel() :
-	Model(), m_endtype( PlayModel::CONTINUE ), m_pCellPartition( NULL ) {
+	Model(),
+	m_endtype( PlayModel::CONTINUE ),
+	m_pCellPartition( NULL ) {
 
 	//
 	//	Cargar los datos de este juego.

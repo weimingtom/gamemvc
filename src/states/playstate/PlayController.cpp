@@ -75,6 +75,22 @@ void PlayController::Zone::mouseEntered( gcn::MouseEvent& mouseEvent ) {
 	mouseEvent.consume();
 
 }
+void PlayController::Zone::mouseWheelMovedDown( gcn::MouseEvent & mouseEvent ) {
+	m_play->getView()->setMouse(	"Zone",
+									mouseEvent.getX(),
+									mouseEvent.getY() );
+	m_play->getView()->moveView( 	0,
+									+3 );
+	mouseEvent.consume();
+}
+void PlayController::Zone::mouseWheelMovedUp( gcn::MouseEvent & mouseEvent ) {
+	m_play->getView()->setMouse(	"Zone",
+									mouseEvent.getX(),
+									mouseEvent.getY() );
+	m_play->getView()->moveView( 	0,
+									-3 );
+	mouseEvent.consume();
+}
 void PlayController::Zone::mouseExited( gcn::MouseEvent& mouseEvent ) {
 
 	m_play->getView()->resetMouse();
