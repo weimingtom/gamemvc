@@ -15,7 +15,7 @@
 
 #include "CParam.h"
 
-void MyGame::Init(const std::string config) {
+void MyGame::Init(const std::string& config) {
 
 	CGameEngine::Init();
 
@@ -76,7 +76,7 @@ SDL_Surface* MyGame::getScreen() {
 /*
  * Procedimientos privados.
  */
-void MyGame::InitParam(const std::string config) {
+void MyGame::InitParam(const std::string& config) {
 
 	pt::ptree pt;
 	pt::read_ini(config, pt);

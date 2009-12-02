@@ -10,7 +10,7 @@
 #include <sstream>
 #include <string>
 
-MouseMap::MouseMap( const std::string fileName ) :
+MouseMap::MouseMap( const std::string& fileName ) :
 	m_surface_( gcn::Image::load( fileName ) ) {
 	init();
 }

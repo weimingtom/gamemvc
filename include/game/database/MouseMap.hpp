@@ -32,7 +32,7 @@ public:
 	};
 
 	//! Constructor.
-	MouseMap(const std::string fileName );
+	MouseMap(const std::string& fileName );
 
 	//! Destructor.
 	virtual ~MouseMap();

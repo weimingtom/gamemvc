@@ -26,8 +26,8 @@ class CTerrainManager
 public:
 
 	bool Load( TiXmlElement* pXMLData );
-	bool TerrainExist( std::string elTerreno );
-	CTerrainType* GetTerrainType( const std::string elTerreno );
+	bool TerrainExist( const std::string& elTerreno );
+	CTerrainType* GetTerrainType( const std::string& elTerreno );
 
 private:
 

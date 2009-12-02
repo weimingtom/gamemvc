@@ -26,7 +26,7 @@ class MyGame:	public CGameEngine
 {
 public:
 
-	void Init( const std::string config );
+	void Init( const std::string& config );
 	void Cleanup();
 
 	gcn::Gui& 		getGui() const;
@@ -46,7 +46,7 @@ private:
 	/*
 	 * Procedimientos privados.
 	 */
-	void InitParam( const std::string config );
+	void InitParam( const std::string& config );
 	void InitSDL();
 
 };
