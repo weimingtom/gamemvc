@@ -18,8 +18,8 @@
 		<BuildingType AnchorX="42" AnchorY="36"
 			image="./data/building/casa/G0002101.PNG" name="Casa" space="4">
 		</BuildingType>
-		<BuildingType AnchorX="95" AnchorY="72"
-			image="./data/building/cuartel/G0006102.BMP" name="Cuartel" space="6">
+		<BuildingType AnchorX="95" AnchorY="80"
+			image="./data/building/cuartel/G0001901.PNG" name="Cuartel" space="6">
 		</BuildingType>
 
 	</building>

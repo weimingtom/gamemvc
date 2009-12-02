@@ -18,9 +18,7 @@
 #include "CBuildingMapa.h"
 
 PlayModel::PlayModel() :
-	Model(),
-	m_endtype( PlayModel::CONTINUE ),
-	m_pCellPartition( NULL ) {
+	Model(), m_endtype( PlayModel::CONTINUE ), m_pCellPartition( NULL ) {
 
 	//
 	//	Cargar los datos de este juego.
@@ -170,9 +168,9 @@ void PlayModel::loadGame( const std::string& mapData ) {
 	 *  3.- Los Buildings.
 	 *
 	 */
-	loadTerrain( pXMLData );
+	THROW_GAME_EXCEPTION_IF(!loadTerrain( pXMLData ),"Error loadTerrain");
 	//	loadResource( pXMLData );
-	loadBuilding( pXMLData );
+	THROW_GAME_EXCEPTION_IF(!loadBuilding( pXMLData ), "Error loadBuilding");
 
 	return;
 }
@@ -198,28 +196,18 @@ bool PlayModel::loadXML( TiXmlElement* pXMLData ) {
 //-------------------------------------------------------------------
 bool PlayModel::loadTerrain( TiXmlElement* pXMLData ) {
 
-	/*
-	 * Procesamos el terreno.
-	 *
-	 * Vemos si tenemos el terreno por defecto para crearlo como tal.
-	 *
-	 */
+	//
+	// Procesamos el terreno.
+	//
 	m_pTerrainMapaManager.reset( new CTerrainMapaManager( this ) );
-	if ( m_pTerrainMapaManager->Load( pXMLData->FirstChildElement( "TerrainGroup" ) )
-			== false ) return false;
-
-	return true;
+	return m_pTerrainMapaManager->Load( pXMLData->FirstChildElement( "TerrainGroup" ) );
 
 }
 bool PlayModel::loadBuilding( TiXmlElement* pXMLData ) {
-	/*
-	 * Cargamos datos iniciales de Buildings.
-	 */
-	m_pBuildingMapaManager.reset(new CBuildingMapaManager(this));
+	//
+	// Cargamos datos iniciales de Buildings.
+	//
+	m_pBuildingMapaManager.reset( new CBuildingMapaManager( this ) );
+	return m_pBuildingMapaManager->Load( pXMLData->FirstChildElement( "BuildingGroup" ) );
 
-	if ( m_pBuildingMapaManager->Load( pXMLData->FirstChildElement( "BuildingGroup" ) )
-			== false )
-		return false;
-
-	return true;
 }
