@@ -3,17 +3,18 @@
 <map name="SDL++" resolution="18" toppadding="32">
 
 <!-- 
-<map name="SDL Pruebas" resolution="3" toppadding="0">
+<map name="SDL Pruebas" resolution="2" toppadding="0">
 -->
 	<TerrainGroup default="Desierto">
 	</TerrainGroup>
 	<BuildingGroup>
-
-		<building x="1" y="5">Casa</building>
-		<building x="3" y="8">Casa</building>
-<!-- 	
-		<building x="8" y="8">Cuartel</building>
--->
+	<!--
+		<building x="1" y="0">Casa</building>
+	-->	
+			<building x="1" y="5">Casa</building>
+			<building x="3"	y="8">Casa</building>
+			<building x="8" y="8">Cuartel</building>
+		
 	</BuildingGroup>
 	<ActorGroup>
 		<!-- -->

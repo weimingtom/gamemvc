@@ -77,8 +77,8 @@ void CBuildingType::Draw( 	gcn::Graphics* graphics,
 							int destY ) {
 
 	graphics->drawImage( 	m_pImage,
-							destX - m_iAnchorX,
-							destY - m_iAnchorY );
+							destX - m_iAnchorX + m_adjust.X(),
+							destY - m_iAnchorY + m_adjust.Y());
 
 }
 

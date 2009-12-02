@@ -8,9 +8,8 @@
 #ifndef LOG_H_
 #define LOG_H_
 
-#define BOOST_LOG_TSS_USE_BOOST
 #include <boost/logging/format_fwd.hpp>
-#include <boost/logging/writer/on_dedicated_thread.hpp>
+// #include <boost/logging/writer/on_dedicated_thread.hpp>
 
 #ifndef BOOST_LOG_COMPILE_FAST
 #include <boost/logging/format.hpp>
@@ -21,8 +20,11 @@ namespace bl = boost::logging;
 
 // Step 3 : Specify your logging class(es)
 //default_, default_, writer::threading::on_dedicated_thread
+/*
 typedef bl::logger_format_write < bl::default_, bl::default_,
 		bl::writer::threading::on_dedicated_thread > logger_type;
+*/
+typedef bl::logger_format_write <> logger_type;
 typedef bl::level::holder filter_type;
 BOOST_DECLARE_LOG_FILTER(g_l_level, filter_type)
 BOOST_DECLARE_LOG(g_l, logger_type)
