@@ -21,10 +21,10 @@ namespace bl = boost::logging;
 // Step 3 : Specify your logging class(es)
 //default_, default_, writer::threading::on_dedicated_thread
 
-typedef bl::logger_format_write < bl::default_, bl::default_,
-		bl::writer::threading::on_dedicated_thread > logger_type;
+// typedef bl::logger_format_write < bl::default_, bl::default_,
+//		bl::writer::threading::on_dedicated_thread > logger_type;
 
-// typedef bl::logger_format_write <> logger_type;
+typedef bl::logger_format_write <> logger_type;
 typedef bl::level::holder filter_type;
 BOOST_DECLARE_LOG_FILTER(g_l_level, filter_type)
 BOOST_DECLARE_LOG(g_l, logger_type)
