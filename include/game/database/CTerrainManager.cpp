@@ -21,7 +21,7 @@ bool CTerrainManager::Load( TiXmlElement* pXMLData ) {
 	while ( pTerrainType ) {
 
 		THROW_GAME_EXCEPTION_IF(!pTerrainType->Attribute("name"),"Error m_Name TerrainType no definido ");
-		std::string name = pTerrainType->Attribute( "name" );
+		std::string name( pTerrainType->Attribute( "name" ));
 		CTerrainType_ptr terrainType( new CTerrainType() );
 		m_mTerrainManager[name] = terrainType;
 		if ( terrainType->Load( pTerrainType ) == false ) return false;

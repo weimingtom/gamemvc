@@ -24,7 +24,7 @@ bool CBuildingManager::Load( TiXmlElement* pXMLData ) {
 
 		// create a new Building type.
 		THROW_GAME_EXCEPTION_IF(!pBuildingType->Attribute("name"),"Error m_Name BuildingType no definido ");
-		std::string name = pBuildingType->Attribute( "name" );
+		std::string name( pBuildingType->Attribute( "name" ));
 		CBuildingType_ptr elBuildingType( new CBuildingType() );
 		m_mBuildingManager[name] = elBuildingType;
 		if ( elBuildingType->Load( pBuildingType ) == false ) return false;
@@ -35,11 +35,11 @@ bool CBuildingManager::Load( TiXmlElement* pXMLData ) {
 	return true;
 
 }
-bool CBuildingManager::BuildingExist( const std::string elBuilding ) {
+bool CBuildingManager::BuildingExist( const std::string& elBuilding ) {
 	return m_mBuildingManager.find( elBuilding ) != m_mBuildingManager.end();
 }
 
-CBuildingType* CBuildingManager::GetBuildingType( const std::string elBuilding ) {
+CBuildingType* CBuildingManager::GetBuildingType( const std::string& elBuilding ) {
 
 	THROW_GAME_EXCEPTION_IF(!BuildingExist(elBuilding),"Error GetBuildingType elBuilding no definido ");
 	return m_mBuildingManager[elBuilding].get();

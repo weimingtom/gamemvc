@@ -28,9 +28,8 @@ bool CTerrainMapaManager::Load( TiXmlElement* pXMLData ) {
 
 	if ( !pXMLData ) return false;
 
-	string sTerrain; // Nombre del terreno base.
 	THROW_GAME_EXCEPTION_IF(!pXMLData->Attribute( "default" ), "Error Mapa: terreno por defecto no definido");
-	sTerrain = pXMLData->Attribute( "default" );
+	std::string sTerrain( pXMLData->Attribute( "default" ) );
 
 	CTerrainType* pTerrain = TerrainManager.GetTerrainType( sTerrain );
 	THROW_GAME_EXCEPTION_IF(!( pTerrain ) ,"Error Mapa: el tipo de terreno " + sTerrain);

@@ -22,8 +22,8 @@ class CBuildingManager {
 public:
 
 	bool			Load(TiXmlElement* pXMLData);
-	bool 			BuildingExist( const std::string elBuilding );
-	CBuildingType*	GetBuildingType(const std::string elBuilding);
+	bool 			BuildingExist( const std::string& elBuilding );
+	CBuildingType*	GetBuildingType(const std::string& elBuilding);
 
 private:
 

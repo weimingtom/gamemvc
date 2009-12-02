@@ -84,7 +84,7 @@ bool loadInitData::LoadXML( TiXmlElement* pXMLData ) {
 	THROW_GAME_EXCEPTION_IF( !( pXMLData->Attribute( "MouseMap" ) ),
 			"Error MouseMap no definido" );
 
-	std::string m = pXMLData->Attribute( "MouseMap" );
+	std::string m(pXMLData->Attribute( "MouseMap" ));
 	MouseMapManager.Init( m );
 
 	if ( !TerrainManager.Load( pXMLData->FirstChildElement( "terrain" ) ) ) return false;
