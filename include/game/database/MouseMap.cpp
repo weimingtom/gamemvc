@@ -90,7 +90,7 @@ void MouseMap::init() {
 
 }
 
-MouseMap::Location MouseMap::computeLocation( const CPoint& fineScreenPosition ) const {
+MouseMap::Location MouseMap::computeLocation( const gcn::Point& fineScreenPosition ) const {
 	return m_data_.at( fineScreenPosition.GetX() + fineScreenPosition.GetY()
 			* w() );
 }

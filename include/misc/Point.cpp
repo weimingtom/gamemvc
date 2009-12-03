@@ -1,247 +1,221 @@
 #include "Point.h"
 #include <cmath>
+namespace gcn {
+	//constructor
+	Point::Point( int x,
+					int y ) {
+		//set the x and y of the point
+		Set( 	x,
+				y );
+	}
 
-//constructor
-CPoint::CPoint ( int x , int y )
-{
-	//set the x and y of the point
-	Set ( x , y ) ;
-}
+	Point::Point( const Point& pt ) {
+		//set x and y of the point
+		X() = pt.GetX();
+		Y() = pt.GetY();
+	}
 
-CPoint::CPoint ( const CPoint& pt )
-{
-	//set x and y of the point
-	X()= pt.GetX ( );
-	Y()= pt.GetY ( );
-}
+	//destructor
+	Point::~Point() {
+		//do nothing
+	}
 
+	//properties
+	int& Point::X() {
+		//return x component
+		return ( m_x );
+	}
 
-//destructor
-CPoint::~CPoint ( )
-{
-	//do nothing
-}
+	int& Point::Y() {
+		//return y component
+		return ( m_y );
+	}
 
+	int Point::GetX() const {
+		//return x component
+		return ( m_x );
+	}
 
-//properties
-int& CPoint::X ( )
-{
-	//return x component
-	return ( m_x ) ;
-}
+	int Point::GetY() const {
+		//return y component
+		return ( m_y );
+	}
 
-int& CPoint::Y ( )
-{
-	//return y component
-	return ( m_y ) ;
-}
+	void Point::SetX( int x ) {
+		//assign new value to x component
+		m_x = x;
+	}
 
-int CPoint::GetX ( ) const
-{
-	//return x component
-	return ( m_x ) ;
-}
+	void Point::SetY( int y ) {
+		//assign new value to y component
+		m_y = y;
+	}
 
-int CPoint::GetY ( ) const
-{
-	//return y component
-	return ( m_y ) ;
-}
+	//setter
+	Point& Point::Set( 	int x,
+							int y ) {
+		//set x and y
+		X() = x;
+		Y() = y;
+		//return this point
+		return ( *this );
+	}
 
-void CPoint::SetX ( int x )
-{
-	//assign new value to x component
-	m_x = x ;
-}
+	Point& Point::Copy( Point& pt ) {
+		//copy x and y
+		X() = pt.X();
+		Y() = pt.Y();
+		//return this point
+		return ( *this );
+	}
 
-void CPoint::SetY ( int y )
-{
-	//assign new value to y component
-	m_y = y ;
-}
+	//move
+	Point& Point::Move( 	int dx,
+							int dy ) {
+		//move x and y
+		X() += dx;
+		Y() += dy;
+		//return this point
+		return ( *this );
+	}
 
-//setter
-CPoint& CPoint::Set ( int x , int y )
-{
-	//set x and y
-	X ( ) = x ;
-	Y ( ) = y ;
-	//return this point
-	return ( *this ) ;
-}
+	Point& Point::Add( Point& pt ) {
+		//add point to this point
+		( *this ) += pt;
+		//return this point
+		return ( *this );
+	}
 
-CPoint& CPoint::Copy ( CPoint& pt )
-{
-	//copy x and y
-	X ( ) = pt.X ( ) ;
-	Y ( ) = pt.Y ( ) ;
-	//return this point
-	return ( *this ) ;
-}
+	Point& Point::Subtract( Point& pt ) {
+		//subtract point from this point
+		( *this ) -= pt;
+		//return this point
+		return ( *this );
+	}
 
-//move
-CPoint& CPoint::Move ( int dx , int dy )
-{
-	//move x and y
-	X ( ) += dx ;
-	Y ( ) += dy ;
-	//return this point
-	return ( *this ) ;
-}
+	//scale
+	Point& Point::Scale( int scalar ) {
+		//multiply this point by a scalar
+		( *this ) *= scalar;
+		//return this point
+		return ( *this );
+	}
 
-CPoint& CPoint::Add ( CPoint& pt )
-{
-	//add point to this point
-	( *this ) += pt ;
-	//return this point
-	return ( *this ) ;
-}
+	//distance
+	int Point::Distance( Point& pt ) {
+		//calculate distance
+		int distance = X() * X() + Y() * Y();
+		distance = (int) sqrt( distance );
+		//return the distance
+		return ( distance );
+	}
 
-CPoint& CPoint::Subtract ( CPoint& pt )
-{
-	//subtract point from this point
-	( *this ) -= pt ;
-	//return this point
-	return ( *this ) ;
-}
+	//operators
+	//assignment
+	Point& Point::operator =( const Point& pt ) {
+		//copy x and y
+		X() = pt.GetX();
+		Y() = pt.GetY();
+		//return this point
+		return ( *this );
+	}
 
-//scale
-CPoint& CPoint::Scale ( int scalar )
-{
-	//multiply this point by a scalar
-	( *this ) *= scalar ;
-	//return this point
-	return ( *this ) ;
-}
+	Point& Point::operator +=( Point& pt ) {
+		//add to x and y
+		X() += pt.X();
+		Y() += pt.Y();
+		//return this point
+		return ( *this );
+	}
 
-//distance
-int CPoint::Distance ( CPoint& pt )
-{
-	//calculate distance
-	int distance = X ( ) * X ( ) + Y ( ) * Y ( ) ;
-	distance = ( int ) sqrt ( distance ) ;
-	//return the distance
-	return ( distance ) ;
-}
+	Point& Point::operator -=( Point& pt ) {
+		//subtract x and y
+		X() -= pt.X();
+		Y() -= pt.Y();
+		//return this point
+		return ( *this );
+	}
 
-//operators
-//assignment
-CPoint& CPoint::operator = ( const CPoint& pt )
-{
-	//copy x and y
-	X ( ) = pt.GetX ( ) ;
-	Y ( ) = pt.GetY ( ) ;
-	//return this point
-	return ( *this ) ;
-}
+	Point& Point::operator *=( int scalar ) {
+		//multiply by scalar
+		X() *= scalar;
+		Y() *= scalar;
+		//return this point
+		return ( *this );
+	}
 
-CPoint& CPoint::operator += ( CPoint& pt )
-{
-	//add to x and y
-	X ( ) += pt.X ( ) ;
-	Y ( ) += pt.Y ( ) ;
-	//return this point
-	return ( *this ) ;
-}
+	Point& Point::operator /=( int scalar ) {
+		//divide by scalar
+		X() /= scalar;
+		//return this point
+		return ( *this );
+	}
 
-CPoint& CPoint::operator -= ( CPoint& pt )
-{
-	//subtract x and y
-	X ( ) -= pt.X ( ) ;
-	Y ( ) -= pt.Y ( ) ;
-	//return this point
-	return ( *this ) ;
-}
+	//unary
+	Point Point::operator -() {
+		//unary negativeness--multiply by -1
+		Point pt = ( *this );
+		pt *= -1;
+		return ( pt );
+	}
 
-CPoint& CPoint::operator *= ( int scalar )
-{
-	//multiply by scalar
-	X ( ) *= scalar ;
-	Y ( ) *= scalar ;
-	//return this point
-	return ( *this ) ;
-}
+	Point Point::operator +() {
+		//unary positiveness
+		return ( *this );
+	}
 
-CPoint& CPoint::operator /= ( int scalar )
-{
-	//divide by scalar
-	X ( ) /= scalar ;
-	//return this point
-	return ( *this ) ;
-}
+	Point Point::operator +( Point& pt ) {
+		//add points together
+		Point result;
+		result = ( *this );
+		result += pt;
+		//return new point
+		return ( result );
+	}
 
-//unary
-CPoint CPoint::operator - ( )
-{
-	//unary negativeness--multiply by -1
-	CPoint pt = ( *this ) ;
-	pt *= -1 ;
-	return ( pt ) ;
-}
+	Point Point::operator -( Point& pt ) {
+		//subtract points
+		Point result;
+		result = ( *this );
+		result -= pt;
+		//return new point
+		return ( result );
+	}
 
-CPoint CPoint::operator + ( )
-{
-	//unary positiveness
-	return ( *this ) ;
-}
+	Point Point::operator *( int scalar ) {
+		//multiply point by scalar
+		Point result;
+		result = ( *this );
+		result *= scalar;
+		//return new point
+		return ( result );
+	}
 
-CPoint CPoint::operator + ( CPoint& pt )
-{
-	//add points together
-	CPoint result ;
-	result = ( *this ) ;
-	result += pt ;
-	//return new point
-	return ( result ) ;
-}
+	Point Point::operator /( int scalar ) {
+		//divide by scalar
+		Point result;
+		result = ( *this );
+		result /= scalar;
+		//return new point
+		return ( result );
+	}
 
-CPoint CPoint::operator - ( CPoint& pt )
-{
-	//subtract points
-	CPoint result ;
-	result = ( *this ) ;
-	result -= pt ;
-	//return new point
-	return ( result ) ;
-}
+	//comparison
+	bool Point::operator ==( Point& pt ) {
+		//check for equality
+		return ( X() == pt.X() && Y() == pt.Y() );
+	}
 
-CPoint CPoint::operator * ( int scalar )
-{
-	//multiply point by scalar
-	CPoint result ;
-	result = ( *this ) ;
-	result *= scalar ;
-	//return new point
-	return ( result ) ;
-}
+	bool Point::operator !=( Point& pt ) {
+		//check for inequality
+		return ( !( ( *this ) == pt ) );
+	}
 
-CPoint CPoint::operator / ( int scalar )
-{
-	//divide by scalar
-	CPoint result ;
-	result = ( *this ) ;
-	result /= scalar ;
-	//return new point
-	return ( result ) ;
-}
-
-//comparison
-bool CPoint::operator == ( CPoint& pt )
-{
-	//check for equality
-	return ( X ( ) == pt.X ( ) && Y ( ) == pt.Y ( ) ) ;
-}
-
-bool CPoint::operator != ( CPoint& pt )
-{
-	//check for inequality
-	return ( !( ( *this ) == pt ) ) ;
-}
-
-CPoint operator * ( int scalar , CPoint& pt )
-{
-	//scalar*pt rather than pt*scalar, still the same idea...
-	CPoint result = pt;
-	result *= scalar;
-	return ( result ) ;
+	Point operator *( 	int scalar,
+						Point& pt ) {
+		//scalar*pt rather than pt*scalar, still the same idea...
+		Point result = pt;
+		result *= scalar;
+		return ( result );
+	}
 }

@@ -105,27 +105,27 @@ private:
 		int moveX;
 		int moveY;
 
-		std::vector < CPoint > allPoints; // Puntos Isometricos a dibujar.
+		std::vector < gcn::Point > allPoints; // Puntos Isometricos a dibujar.
 
 		void getPointPaint();
 
-		bool validIso( CPoint p );
-		CPoint calculaIso( 	int wx,
-							int wy );
-		CPoint calcularRejilla( CPoint punto );
-		CPoint tileWalk( 	Direction direction,
-							CPoint fromPoint,
-							int puntos = 1 );
-		void PaintAllTerrain( const CPoint& paintPoint );
-		void PaintAllBuilding( const CPoint& paintPoint );
-
-		CPoint WorldToScreen( 	int wx,
+		bool validIso( const gcn::Point& p );
+		gcn::Point calculaIso( 	int wx,
 								int wy );
-		CPoint WorldToScreen( CPoint p );
-		CPoint LocalToWorld( 	int lX,
-								int lY );
-		CPoint LocalToScreen( 	int lX,
-								int lY );
+		gcn::Point calcularRejilla( const gcn::Point& punto );
+		gcn::Point tileWalk( 	Direction direction,
+								const gcn::Point& fromPoint,
+								int puntos = 1 );
+		void PaintAllTerrain( const gcn::Point& paintPoint );
+		void PaintAllBuilding( const gcn::Point& paintPoint );
+
+		gcn::Point WorldToScreen( 	int wx,
+									int wy );
+		gcn::Point WorldToScreen( const gcn::Point& p );
+		gcn::Point LocalToWorld( 	int lX,
+									int lY );
+		gcn::Point LocalToScreen( 	int lX,
+									int lY );
 
 	};
 	class PlayMsgLeftView

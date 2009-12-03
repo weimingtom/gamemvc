@@ -48,13 +48,13 @@ public:
 
 	Vector2D IsoToLocal( 	int ix,
 							int iy ); //! Utilizado por ActorMapaManager
-	Vector2D IsoToLocal( Vector2D p );
-	CPoint IsoToLocal( CPoint p );
+	Vector2D IsoToLocal( const Vector2D& p );
+	gcn::Point IsoToLocal( const gcn::Point& p );
 
 	void Update();
 
-	std::vector < CTerrainMapa* > ObtainTerrainCell( const CPoint& pLocal );
-	std::vector < CBuildingMapa* > ObtainBuildingCell( const CPoint& pLocal );
+	std::vector < CTerrainMapa* > ObtainTerrainCell( const gcn::Point& pLocal );
+	std::vector < CBuildingMapa* > ObtainBuildingCell( const gcn::Point& pLocal );
 
 
 private:

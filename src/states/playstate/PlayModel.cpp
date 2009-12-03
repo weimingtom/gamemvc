@@ -47,7 +47,7 @@ PlayModel::EndTypes PlayModel::getEnd() const {
 	return m_endtype;
 
 }
-Vector2D PlayModel::IsoToLocal( Vector2D p ) {
+Vector2D PlayModel::IsoToLocal( const Vector2D& p ) {
 
 	Vector2D local;
 	local.x = p.x * mouse->w() + mouse->w() / 2;
@@ -56,11 +56,11 @@ Vector2D PlayModel::IsoToLocal( Vector2D p ) {
 	return local;
 }
 
-CPoint PlayModel::IsoToLocal( CPoint p ) {
+gcn::Point PlayModel::IsoToLocal( const gcn::Point& p ) {
 
-	CPoint local;
-	local.X() = p.X() * mouse->w() + mouse->w() / 2;
-	local.Y() = p.Y() * mouse->w() + mouse->w() / 2;
+	gcn::Point local;
+	local.X() = p.GetX() * mouse->w() + mouse->w() / 2;
+	local.Y() = p.GetY() * mouse->w() + mouse->w() / 2;
 
 	return local;
 }
@@ -71,7 +71,7 @@ Vector2D PlayModel::IsoToLocal( int ix,
 									iy ) );
 
 }
-std::vector < CTerrainMapa* > PlayModel::ObtainTerrainCell( const CPoint& pLocal ) {
+std::vector < CTerrainMapa* > PlayModel::ObtainTerrainCell( const gcn::Point& pLocal ) {
 
 	std::vector < CTerrainMapa* > terrainCell;
 
@@ -91,7 +91,7 @@ std::vector < CTerrainMapa* > PlayModel::ObtainTerrainCell( const CPoint& pLocal
 	}
 	return terrainCell;
 }
-std::vector < CBuildingMapa* > PlayModel::ObtainBuildingCell( const CPoint& pLocal ) {
+std::vector < CBuildingMapa* > PlayModel::ObtainBuildingCell( const gcn::Point& pLocal ) {
 
 	std::vector < CBuildingMapa* > buildingCell;
 

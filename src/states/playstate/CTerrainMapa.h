@@ -27,7 +27,7 @@ public:
 	CTerrainMapa( PlayModel* world );
 	virtual ~CTerrainMapa();
 
-	void SetTile(CTile* tile, const CPoint& p);
+	void SetTile(CTile* tile, const gcn::Point& p);
 
 	void Draw( 	gcn::Graphics* graphics,
 				int destX,

@@ -36,8 +36,8 @@ bool CBuildingType::Load( TiXmlElement* pXMLData ) {
 		m_space = atoi( pXMLData->Attribute( "space" ) );
 	} else
 		m_space = 1;
-	m_adjust = CPoint(	0,
-						0 );
+	m_adjust = gcn::Point(	0,
+							0 );
 
 	switch ( m_space ) {
 
@@ -78,7 +78,7 @@ void CBuildingType::Draw( 	gcn::Graphics* graphics,
 
 	graphics->drawImage( 	m_pImage,
 							destX - m_iAnchorX + m_adjust.X(),
-							destY - m_iAnchorY + m_adjust.Y());
+							destY - m_iAnchorY + m_adjust.Y() );
 
 }
 

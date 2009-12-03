@@ -40,7 +40,7 @@ public:
 	/**
 	 * @brief Compute tile location based on the fine screen position.
 	 */
-	virtual Location computeLocation(const CPoint& fineScreenPosition) const;
+	virtual Location computeLocation(const gcn::Point& fineScreenPosition) const;
 
 	virtual int w() const;
 

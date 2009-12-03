@@ -33,7 +33,7 @@ public:
 
 private:
 
-	std::pair < gcn::Image*, CPoint > laLoseta; //! Definimos la loseta con su offset.
+	std::pair < gcn::Image*, gcn::Point > laLoseta; //! Definimos la loseta con su offset.
 
 };
 

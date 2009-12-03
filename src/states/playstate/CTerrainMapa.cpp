@@ -23,7 +23,7 @@ CTerrainMapa::~CTerrainMapa() {
 
 }
 void CTerrainMapa::SetTile( CTile* tile,
-							const CPoint& p ) {
+							const gcn::Point& p ) {
 	m_pTerrain = tile;
 
 	SetPos( m_pModel->IsoToLocal( 	p.GetX(),

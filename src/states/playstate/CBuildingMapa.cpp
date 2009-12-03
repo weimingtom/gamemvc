@@ -28,7 +28,7 @@ CBuildingMapa::CBuildingMapa( PlayModel* model ) :
 bool CBuildingMapa::Load( TiXmlElement* pXMLData ) {
 
 	if ( !pXMLData ) return false;
-	CPoint p;
+	gcn::Point p;
 	THROW_GAME_EXCEPTION_IF(!pXMLData->Attribute("x"),"Error x BuildingMapa no definido")
 	p.X() = atoi( pXMLData->Attribute( "x" ) );
 

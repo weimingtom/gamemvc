@@ -255,12 +255,12 @@ void PlayView::PlayZoneView::draw() {
 	game.getGui().getGraphics()->popClipArea();
 
 }
-CPoint PlayView::PlayZoneView::tileWalk( 	Direction direction,
-											CPoint fromPoint,
-											int puntos ) {
+gcn::Point PlayView::PlayZoneView::tileWalk( 	Direction direction,
+												const gcn::Point& fromPoint,
+												int puntos ) {
 
-	int x = fromPoint.X();
-	int y = fromPoint.Y();
+	int x = fromPoint.GetX();
+	int y = fromPoint.GetY();
 
 	switch ( direction ) {
 		case NORTH: {
@@ -313,8 +313,8 @@ CPoint PlayView::PlayZoneView::tileWalk( 	Direction direction,
 			assert( true );
 		break;
 	}
-	return CPoint( 	x,
-					y );
+	return gcn::Point( 	x,
+						y );
 }
 void PlayView::PlayZoneView::getPointPaint() {
 
@@ -335,16 +335,16 @@ void PlayView::PlayZoneView::getPointPaint() {
 	// Empecemos con los calculos del dibujo.
 	//
 	// Coordenadas de las esquinas.
-	CPoint supIzq;
-	CPoint supDch;
-	CPoint infIzq;
-	CPoint infDch;
+	gcn::Point supIzq;
+	gcn::Point supDch;
+	gcn::Point infIzq;
+	gcn::Point infDch;
 	// Coordenanda de la rejilla.
-	CPoint rejilla;
+	gcn::Point rejilla;
 	//Variables para recorrer filas y casillas
-	CPoint filaInicio;
-	CPoint filaFin;
-	CPoint filaActual;
+	gcn::Point filaInicio;
+	gcn::Point filaFin;
+	gcn::Point filaActual;
 	// Contador para filas pares impares.
 	int contadorFilas = 0;
 	//Centinelas
@@ -459,25 +459,25 @@ void PlayView::PlayZoneView::getPointPaint() {
 	}
 
 }
-bool PlayView::PlayZoneView::validIso( CPoint p ) {
+bool PlayView::PlayZoneView::validIso( const gcn::Point& p ) {
 
-	if ( ( p.X() < 0 ) || ( p.Y() < 0 ) || ( p.X() >= m_iNumRows ) || ( p.Y()
+	if ( ( p.GetX() < 0 ) || ( p.GetY() < 0 ) || ( p.GetX() >= m_iNumRows ) || ( p.GetY()
 			>= m_iNumCols ) )
 		return false;
 	else
 		return true;
 }
 
-CPoint PlayView::PlayZoneView::calculaIso( 	int wx,
+gcn::Point PlayView::PlayZoneView::calculaIso( 	int wx,
 											int wy ) {
 
-	CPoint rejilla;
-	CPoint p;
+	gcn::Point rejilla;
+	gcn::Point p;
 
-	rejilla = calcularRejilla( CPoint( 	wx,
+	rejilla = calcularRejilla( gcn::Point( 	wx,
 										wy ) );
 	p = tileWalk( 	EAST,
-					CPoint( 0,
+					gcn::Point( 0,
 							0 ),
 					rejilla.X() );
 	p = tileWalk( 	SOUTH,
@@ -486,15 +486,15 @@ CPoint PlayView::PlayZoneView::calculaIso( 	int wx,
 
 	return p;
 }
-CPoint PlayView::PlayZoneView::calcularRejilla( CPoint punto ) {
+gcn::Point PlayView::PlayZoneView::calcularRejilla( const gcn::Point& punto ) {
 
-	CPoint rejilla;
-	CPoint indice;
+	gcn::Point rejilla;
+	gcn::Point indice;
 
-	rejilla.X() = ( punto.X() + m_iTile_HalfW ) / m_iTile_W;
-	rejilla.Y() = punto.Y() / m_iTile_H;
-	indice.X() = ( punto.X() + m_iTile_HalfW ) % m_iTile_W;
-	indice.Y() = punto.Y() % m_iTile_H;
+	rejilla.X() = ( punto.GetX() + m_iTile_HalfW ) / m_iTile_W;
+	rejilla.Y() = punto.GetY() / m_iTile_H;
+	indice.X() = ( punto.GetX() + m_iTile_HalfW ) % m_iTile_W;
+	indice.Y() = punto.GetY() % m_iTile_H;
 	if ( indice.X() < 0 ) {
 		indice.X() += m_iTile_W;
 		--rejilla.X();
@@ -534,23 +534,23 @@ CPoint PlayView::PlayZoneView::calcularRejilla( CPoint punto ) {
 	return rejilla;
 
 }
-CPoint PlayView::PlayZoneView::WorldToScreen( 	int wx,
-												int wy ) {
+gcn::Point PlayView::PlayZoneView::WorldToScreen( 	int wx,
+													int wy ) {
 
-	return CPoint( 	wx + m_MapX,
-					wy + m_MapY );
-
-}
-CPoint PlayView::PlayZoneView::WorldToScreen( CPoint p ) {
-
-	return WorldToScreen( 	p.X(),
-							p.Y() );
+	return gcn::Point( 	wx + m_MapX,
+						wy + m_MapY );
 
 }
-CPoint PlayView::PlayZoneView::LocalToWorld( 	int lX,
+gcn::Point PlayView::PlayZoneView::WorldToScreen( const gcn::Point& p ) {
+
+	return WorldToScreen( 	p.GetX(),
+							p.GetY() );
+
+}
+gcn::Point PlayView::PlayZoneView::LocalToWorld( 	int lX,
 												int lY ) {
 
-	CPoint pW;
+	gcn::Point pW;
 
 	pW.X() = m_hOffset + m_iTile_HalfW - ( lY / 2 ) + ( lX / 2 );
 	pW.Y() = m_vOffset + ( lY / 4 ) + ( lX / 4 );
@@ -558,7 +558,7 @@ CPoint PlayView::PlayZoneView::LocalToWorld( 	int lX,
 	return pW;
 
 }
-CPoint PlayView::PlayZoneView::LocalToScreen( 	int lX,
+gcn::Point PlayView::PlayZoneView::LocalToScreen( 	int lX,
 												int lY ) {
 
 	return WorldToScreen( LocalToWorld( lX,
@@ -566,7 +566,7 @@ CPoint PlayView::PlayZoneView::LocalToScreen( 	int lX,
 
 }
 
-void PlayView::PlayZoneView::PaintAllTerrain( const CPoint& paintPoint ) {
+void PlayView::PlayZoneView::PaintAllTerrain( const gcn::Point& paintPoint ) {
 
 	//	std::cout << "(" << paintPoint.GetX() << "," << paintPoint.GetY() << ")";
 
@@ -574,12 +574,12 @@ void PlayView::PlayZoneView::PaintAllTerrain( const CPoint& paintPoint ) {
 	// Obtener el tile que se ha de pintar en funcion del
 	// punto isometrico calculado.
 	//
-	CPoint pLocal = m_play.getModel()->IsoToLocal( paintPoint );
+	gcn::Point pLocal = m_play.getModel()->IsoToLocal( paintPoint );
 
 	std::vector < CTerrainMapa* > terrainCell =
 			m_play.getModel()->ObtainTerrainCell( pLocal );
 
-	CPoint pScreen = LocalToScreen( pLocal.GetX(),
+	gcn::Point pScreen = LocalToScreen( pLocal.GetX(),
 									pLocal.GetY() );
 
 	std::for_each( 	terrainCell.begin(),
@@ -591,14 +591,14 @@ void PlayView::PlayZoneView::PaintAllTerrain( const CPoint& paintPoint ) {
 									pScreen.GetY() ) );
 
 }
-void PlayView::PlayZoneView::PaintAllBuilding( const CPoint& paintPoint ) {
+void PlayView::PlayZoneView::PaintAllBuilding( const gcn::Point& paintPoint ) {
 
-	CPoint pLocal = m_play.getModel()->IsoToLocal( paintPoint );
+	gcn::Point pLocal = m_play.getModel()->IsoToLocal( paintPoint );
 
 	std::vector < CBuildingMapa* > buildingCell =
 			m_play.getModel()->ObtainBuildingCell( pLocal );
 
-	CPoint pScreen = LocalToScreen( pLocal.GetX(),
+	gcn::Point pScreen = LocalToScreen( pLocal.GetX(),
 									pLocal.GetY() );
 	std::for_each( 	buildingCell.begin(),
 					buildingCell.end(),

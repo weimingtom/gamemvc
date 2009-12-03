@@ -2,69 +2,77 @@
 #ifndef __POINT_H__
 #define __POINT_H__
 
-//point class
-class CPoint
-{
-private:
-	//x and y
-	int m_x ;
-	int m_y ;
-public:
-	//constructor
-	CPoint ( int x = 0 , int y  = 0 ) ;
-	CPoint ( const CPoint& pt ) ;
+#include "guichan/platform.hpp"
 
-	//destructor
-	virtual ~CPoint ( ) ;
+namespace gcn {
 
-	//properties
-	int& X ( ) ;
-	int& Y ( ) ;
+	//point class
+	class Point
+	{
+	private:
+		//x and y
+		int m_x;
+		int m_y;
+	public:
+		//constructor
+		Point( int x = 0,
+				int y = 0 );
+		Point( const Point& pt );
 
-	int GetX ( ) const ;
-	int GetY ( ) const ;
-	void SetX ( int x ) ;
-	void SetY ( int y ) ;
+		//destructor
+		virtual ~Point();
 
-	//setter
-	CPoint& Set ( int x , int y ) ;
-	CPoint& Copy ( CPoint& pt ) ;
+		//properties
+		int& X();
+		int& Y();
 
-	//move
-	CPoint& Move ( int dx , int dy ) ;
-	CPoint& Add ( CPoint& pt ) ;
-	CPoint& Subtract ( CPoint& pt ) ;
+		int GetX() const;
+		int GetY() const;
+		void SetX( int x );
+		void SetY( int y );
 
-	//scale
-	CPoint& Scale ( int scalar ) ;
+		//setter
+		Point& Set( 	int x,
+						int y );
+		Point& Copy( Point& pt );
 
-	//distance
-	int Distance ( CPoint& pt ) ;
+		//move
+		Point& Move( 	int dx,
+						int dy );
+		Point& Add( Point& pt );
+		Point& Subtract( Point& pt );
 
-	//operators
-	//assignment
-	CPoint& operator = ( const CPoint& pt ) ;
-	CPoint& operator += ( CPoint& pt ) ;
-	CPoint& operator -= ( CPoint& pt ) ;
-	CPoint& operator *= ( int scalar ) ;
-	CPoint& operator /= ( int scalar ) ;
+		//scale
+		Point& Scale( int scalar );
 
-	//unary
-	CPoint operator - ( ) ;
-	CPoint operator + ( ) ;
+		//distance
+		int Distance( Point& pt );
 
-	CPoint operator + ( CPoint& pt ) ;
-	CPoint operator - ( CPoint& pt ) ;
-	CPoint operator * ( int scalar ) ;
-	CPoint operator / ( int scalar ) ;
+		//operators
+		//assignment
+		Point& operator =( const Point& pt );
+		Point& operator +=( Point& pt );
+		Point& operator -=( Point& pt );
+		Point& operator *=( int scalar );
+		Point& operator /=( int scalar );
 
-	//comparison
-	bool operator == ( CPoint& pt ) ;
-	bool operator != ( CPoint& pt ) ;
+		//unary
+		Point operator -();
+		Point operator +();
 
-};
+		Point operator +( Point& pt );
+		Point operator -( Point& pt );
+		Point operator *( int scalar );
+		Point operator /( int scalar );
 
-CPoint operator * ( int scalar , CPoint& pt ) ;
+		//comparison
+		bool operator ==( Point& pt );
+		bool operator !=( Point& pt );
 
+	};
+
+	Point operator *( 	int scalar,
+						Point& pt );
+}
 //sentinel
 #endif

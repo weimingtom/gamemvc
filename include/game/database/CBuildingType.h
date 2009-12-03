@@ -37,7 +37,7 @@ private:
 	int				m_iAnchorX;
 	int				m_iAnchorY;
 	gcn::Image*		m_pImage;
-	CPoint			m_adjust;
+	gcn::Point		m_adjust;
 	int				m_space;
 
 };

@@ -44,7 +44,9 @@ bool CTerrainMapaManager::Load( TiXmlElement* pXMLData ) {
 		for ( int x = 0; x < m_pModel->getResolution(); x++ ) {
 
 			CTerrainMapa_ptr terrain( new CTerrainMapa( m_pModel ) );
-			terrain->SetTile(pTerrain->GetTile(basex),CPoint(x,y));
+			terrain->SetTile( 	pTerrain->GetTile( basex ),
+								gcn::Point( x,
+											y ) );
 			m_TerrainMapa.push_back( terrain );
 
 			basex = ( ( basex + 1 ) % raiz ) + basey * raiz;
