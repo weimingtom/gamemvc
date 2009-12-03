@@ -4,12 +4,12 @@
  *  Created on: 19/11/2009
  *      Author: uberiain
  */
-// my_app_log.h - DECLARE your loggers & filters here
+// log.h - DECLARE your loggers & filters here
 #ifndef LOG_H_
 #define LOG_H_
 
-#include <boost/logging/writer/on_dedicated_thread.hpp>
 #include <boost/logging/format/named_write_fwd.hpp>
+// #include <boost/logging/writer/on_dedicated_thread.hpp>
 
 namespace bl = boost::logging;
 typedef bl::named_logger<>::type logger_type;
