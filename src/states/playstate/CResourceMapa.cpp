@@ -1,0 +1,71 @@
+/*
+ * CResourceMapa.cpp
+ *
+ *  Created on: 30-dic-2008
+ *      Author: 79481180
+ */
+
+#include "CResourceMapa.h"
+
+#include <tinyxml.h>
+#include <guichan.hpp>
+
+#include <game/GameException.h>
+
+#include <game/database/BaseGameEntity.h>
+#include <game/database/CResourceManager.h>
+#include <game/database/CResourceType.h>
+
+#include "CResourceMapaManager.h"
+#include "PlayModel.h"
+
+CResourceMapa::CResourceMapa( PlayModel* model ) :
+	BaseGameEntity( BaseGameEntity::resource ), m_pModel( model ) {
+
+}
+
+bool CResourceMapa::Load( TiXmlElement* pXMLData ) {
+
+	if ( !pXMLData ) return false;
+	gcn::Point p;
+	THROW_GAME_EXCEPTION_IF(!pXMLData->Attribute("x"),"Error x ResourceMapa no definido")
+	p.X() = atoi( pXMLData->Attribute( "x" ) );
+
+	THROW_GAME_EXCEPTION_IF(!pXMLData->Attribute("y"),"Error y ResourceMapa no definido")
+	p.Y() = atoi( pXMLData->Attribute( "y" ) );
+
+	string s( pXMLData->GetText() );
+	m_pResourceType = ResourceManager.GetResourceType( s );
+	/*
+	 switch ( m_pResourceType->GetSpace() ) {
+
+	 case 4:
+	 m_pWorld->Free4Nodes( p );
+	 break;
+
+	 case 6:
+	 m_pWorld->Free6Nodes( p );
+	 break;
+
+	 default:
+	 m_pWorld->FreeNode( p );
+	 break;
+
+	 }
+	 */
+	SetPos( m_pModel->IsoToLocal( 	p.GetX(),
+									p.GetY() ) );
+	m_pModel->GetCellPartition()->AddEntity( this );
+	return true;
+}
+void CResourceMapa::Draw( 	gcn::Graphics* graphics,
+							int destX,
+							int destY ) {
+
+	m_pResourceType->Draw( 	graphics,
+							destX,
+							destY );
+
+}
+
+

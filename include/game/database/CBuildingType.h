@@ -13,32 +13,33 @@
 
 class TiXmlElement;
 
-namespace gcn{
+namespace gcn {
 
 	class Image;
 	class Graphics;
 
 }
 
-class CBuildingType {
+class CBuildingType
+{
 public:
 
-	~CBuildingType();
-	bool			Load(TiXmlElement* pXMLData);
-	void 			Draw( 	gcn::Graphics* graphics,
-	     			      	int destX,
-	     			      	int destY );
+	virtual ~CBuildingType();
+	bool Load( TiXmlElement* pXMLData );
+	void Draw( 	gcn::Graphics* graphics,
+				int destX,
+				int destY );
 
-	int				GetSpace();
+	int GetSpace();
 
 private:
 
-	std::string		m_Name;
-	int				m_iAnchorX;
-	int				m_iAnchorY;
-	gcn::Image*		m_pImage;
-	gcn::Point		m_adjust;
-	int				m_space;
+	std::string m_Name;
+	int m_iAnchorX;
+	int m_iAnchorY;
+	gcn::Image* m_pImage;
+	gcn::Point m_adjust;
+	int m_space;
 
 };
 

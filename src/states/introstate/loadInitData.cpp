@@ -22,14 +22,13 @@
 #include <game/database/CMouseMapManager.h>
 #include <game/database/CTerrainManager.h>
 #include <game/database/CBuildingManager.h>
+#include <game/database/CResourceManager.h>
 // #include <game/database/CActorManager.h>
-// #include <game/database/CResourceManager.h>
-
 
 //----------------------------------------------------------------------------
 
 loadInitData::loadInitData( CrtlThread& control ) :
-	m_control( control ){
+	m_control( control ) {
 
 }
 
@@ -84,15 +83,15 @@ bool loadInitData::LoadXML( TiXmlElement* pXMLData ) {
 	THROW_GAME_EXCEPTION_IF( !( pXMLData->Attribute( "MouseMap" ) ),
 			"Error MouseMap no definido" );
 
-	std::string m(pXMLData->Attribute( "MouseMap" ));
+	std::string m( pXMLData->Attribute( "MouseMap" ) );
 	MouseMapManager.Init( m );
 
 	if ( !TerrainManager.Load( pXMLData->FirstChildElement( "terrain" ) ) ) return false;
 
 	if ( !BuildingManager.Load( pXMLData->FirstChildElement( "building" ) ) ) return false;
-	/*
-	 if ( !ResourceManager->Load( pXMLData->FirstChildElement( "resource" ) ) ) return false;
 
+	if ( !ResourceManager.Load( pXMLData->FirstChildElement( "resource" ) ) ) return false;
+	/*
 	 if ( !ActorManager->Load( pXMLData->FirstChildElement( "actor" ) ) ) return false;
 	 */
 	return true;

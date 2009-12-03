@@ -9,7 +9,6 @@
 #include <tinyxml.h>
 
 #include <game/GameException.h>
-#include <misc/utils.h>
 
 #include "CBuildingType.h"
 

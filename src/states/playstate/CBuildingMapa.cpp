@@ -7,12 +7,12 @@
 #include "CBuildingMapa.h"
 
 #include <tinyxml.h>
+#include <guichan.hpp>
 
 #include <game/GameException.h>
 
 #include <game/database/BaseGameEntity.h>
 #include <game/database/CTile.h>
-#include <guichan.hpp>
 
 #include <game/database/CBuildingManager.h>
 #include <game/database/CBuildingType.h>
