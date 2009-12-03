@@ -8,8 +8,8 @@
 #ifndef LOG_H_
 #define LOG_H_
 
+#include <boost/logging/writer/on_dedicated_thread.hpp>
 #include <boost/logging/format/named_write_fwd.hpp>
-#include <boost/logging/writer/on_dedicated_thread.hpp> // uncomment if you want to do logging on a dedicated thread
 
 namespace bl = boost::logging;
 typedef bl::named_logger<>::type logger_type;
