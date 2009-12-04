@@ -10,25 +10,27 @@
 
 #include <map>
 #include <string>
-using namespace std;
 #include <tinyxml.h>
 
 class CDir;
 
-class CStatus {
+class CStatus
+{
 public:
 
 	~CStatus();
-	bool 	Load(TiXmlElement* pXMLData);
-	string	GetName(){return m_Name;}
-	CDir*	GetDir(string laDir);
-	int		GetFrames();
+	bool Load( TiXmlElement* pXMLData );
+	string GetName() {
+		return m_Name;
+	}
+	CDir* GetDir( std::string& laDir );
+	int GetFrames();
 
 private:
 
-	string	m_Name; 				//!Nombre del estado.
-	int		m_iFrames;				//! Contador de cambio de frames.
-	map <string, CDir* >	m_mDir;
+	std::string m_Name; //!Nombre del estado.
+	int m_iFrames; //! Contador de cambio de frames.
+	map < std::string, CDir* > m_mDir;
 };
 
 #endif /* CSTATUS_H_ */

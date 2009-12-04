@@ -9,7 +9,6 @@
 #include <tinyxml.h>
 
 #include <sstream>
-using namespace std;
 
 #include "game/GameException.h"
 #include <gameengine/CGameEngine.h>

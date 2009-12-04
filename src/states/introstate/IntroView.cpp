@@ -47,10 +47,10 @@ void IntroView::initialize() {
 
 void IntroView::draw() {
 
-	std::ostringstream stm;
+	std::stringstream stm;
 
 	// Output an int
-	stm << setfill( '0' ) << setw( 5 ) << this->getModel()->getAlpha();
+	stm << std::setfill( '0' ) << std::setw( 5 ) << this->getModel()->getAlpha();
 	text->setText( stm.str() );
 	game.getGui().draw();
 

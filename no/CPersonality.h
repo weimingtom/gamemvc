@@ -10,7 +10,6 @@
 
 #include <map>
 #include <string>
-using namespace std;
 #include <tinyxml.h>
 
 class CStatus;
@@ -21,14 +20,14 @@ public:
 
 	virtual ~CPersonality();
 
-	bool 		Load(TiXmlElement* pXMLData);
-	string		GetNamePersonality();
-	CStatus*	GetStatus(string status);
+	bool Load( TiXmlElement* pXMLData );
+	string GetNamePersonality();
+	CStatus* GetStatus( const std::string& status );
 
 private:
 
-	string		m_Name;
-	map<string,CStatus*> m_mStatus;
+	std::string m_Name;
+	map < std::string, CStatus* > m_mStatus;
 
 };
 

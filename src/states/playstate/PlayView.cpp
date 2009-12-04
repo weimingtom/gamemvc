@@ -20,6 +20,7 @@
 #include "PlayController.h"
 #include "CTerrainMapa.h"
 #include "CBuildingMapa.h"
+#include "CResourceMapa.h"
 
 PlayView::PlayView( PlayModel* model ) :
 	View < PlayModel, PlayController > ( model ) {
@@ -75,7 +76,7 @@ void PlayView::setMouse(	const std::string& text,
 							const int &X,
 							const int &Y ) {
 
-	std::ostringstream ox, oy;
+	std::stringstream ox, oy;
 	ox << X;
 	oy << Y;
 	m_MsgLeftView->setName( text );
@@ -241,6 +242,14 @@ void PlayView::PlayZoneView::draw() {
 	std::for_each( 	allPoints.begin(),
 					allPoints.end(),
 					boost::bind(	&PlayView::PlayZoneView::PaintAllBuilding,
+									this,
+									_1 ) );
+	//
+	// Dibujamos los Resource.
+	//
+	std::for_each( 	allPoints.begin(),
+					allPoints.end(),
+					boost::bind(	&PlayView::PlayZoneView::PaintAllResource,
 									this,
 									_1 ) );
 
@@ -603,6 +612,24 @@ void PlayView::PlayZoneView::PaintAllBuilding( const gcn::Point& paintPoint ) {
 	std::for_each( 	buildingCell.begin(),
 					buildingCell.end(),
 					boost::bind(	&CBuildingMapa::Draw,
+									_1,
+									game.getGui().getGraphics(),
+									pScreen.GetX(),
+									pScreen.GetY() ) );
+
+}
+void PlayView::PlayZoneView::PaintAllResource( const gcn::Point& paintPoint ) {
+
+	gcn::Point pLocal = m_play.getModel()->IsoToLocal( paintPoint );
+
+	std::vector < CResourceMapa* > ResourceCell =
+			m_play.getModel()->ObtainResourceCell( pLocal );
+
+	gcn::Point pScreen = LocalToScreen( pLocal.GetX(),
+									pLocal.GetY() );
+	std::for_each( 	ResourceCell.begin(),
+					ResourceCell.end(),
+					boost::bind(	&CResourceMapa::Draw,
 									_1,
 									game.getGui().getGraphics(),
 									pScreen.GetX(),

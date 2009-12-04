@@ -118,6 +118,7 @@ private:
 								int puntos = 1 );
 		void PaintAllTerrain( const gcn::Point& paintPoint );
 		void PaintAllBuilding( const gcn::Point& paintPoint );
+		void PaintAllResource( const gcn::Point& paintPoint );
 
 		gcn::Point WorldToScreen( 	int wx,
 									int wy );

@@ -11,7 +11,6 @@
 
 #include <map>
 #include <string>
-using namespace std;
 
 #include <lua.hpp>
 #include <luabind/luabind.hpp>

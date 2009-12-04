@@ -11,12 +11,13 @@
 #include <memory>
 #include <string>
 #include <2d/Vector2D.h>
-#include "mvc/Model.h"
-#include "misc/Point.h"
+#include <mvc/Model.h>
+#include <misc/Point.h>
 
 #include "CellMapaPartition.h"
 #include "CTerrainMapaManager.h"
 #include "CBuildingMapaManager.h"
+#include "CResourceMapaManager.h"
 
 class TiXmlElement;
 
@@ -54,8 +55,10 @@ public:
 	void Update();
 
 	std::vector < CTerrainMapa* > ObtainTerrainCell( const gcn::Point& pLocal );
-	std::vector < CBuildingMapa* > ObtainBuildingCell( const gcn::Point& pLocal );
-
+	std::vector < CBuildingMapa* >
+			ObtainBuildingCell( const gcn::Point& pLocal );
+	std::vector < CResourceMapa* >
+			ObtainResourceCell( const gcn::Point& pLocal );
 
 private:
 
@@ -71,19 +74,22 @@ private:
 	int m_iCellsX;
 	int m_iCellsY;
 
-	std::auto_ptr < CellPartition > m_pCellPartition; //! Division del mapa isometrico?.
+	std::auto_ptr < CellPartition > m_pCellPartition; //! Division del mapa del juego.
 
 	typedef std::auto_ptr < CTerrainMapaManager > CTerrainMapaManager_ptr;
 	typedef std::auto_ptr < CBuildingMapaManager > CBuildingMapaManager_ptr;
+	typedef std::auto_ptr < CResourceMapaManager > CResourceMapaManager_ptr;
 
 	CTerrainMapaManager_ptr m_pTerrainMapaManager;
 	CBuildingMapaManager_ptr m_pBuildingMapaManager;
+	CResourceMapaManager_ptr m_pResourceMapaManager;
 
 	void loadGame( const std::string& mapData );
 	bool loadXML( TiXmlElement* pXMLData );
 	//
 	bool loadTerrain( TiXmlElement* pXMLData );
 	bool loadBuilding( TiXmlElement* pXMLData );
+	bool loadResource( TiXmlElement* pXMLData );
 
 };
 

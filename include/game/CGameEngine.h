@@ -4,8 +4,6 @@
 #include "gamestate.h"
 
 #include <vector>
-#include <string>
-using namespace std;
 
 class TiXmlElement;
 
@@ -44,7 +42,7 @@ protected:
 private:
 
 	// the stack of states
-	vector < CGameState* > states;
+	std::vector < CGameState* > states;
 	bool m_running;
 
 };

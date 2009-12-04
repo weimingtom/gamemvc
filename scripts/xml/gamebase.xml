@@ -14,6 +14,12 @@
 			<tile image="./data/terrain/desierto/G1500009.PNG" />
 		</TerrainType>
 	</terrain>
+	<resource>
+		<ResourceType AnchorX="57" AnchorY="39"
+			image="./data/resource/arbol/G0000001.PNG" name="Arbol" space="4" />
+		<ResourceType AnchorX="16" AnchorY="71"
+			image="./data/resource/arbol/G0015001.PNG" name="Arbol1" space="1" />
+	</resource>
 	<building>
 		<BuildingType AnchorX="42" AnchorY="36"
 			image="./data/building/casa/G0002101.PNG" name="Casa" space="4">
@@ -1007,13 +1013,6 @@
 					</dir>
 				</status>
 			</Personality>
-
 		</ActorType>
 	</actor>
-
-	<resource>
-		<ResourceType AnchorX="57" AnchorY="39"
-			image="./data/resource/arbol/G0000001.BMP" name="Arbol" space="4">
-		</ResourceType>
-	</resource>
 </gamebase>

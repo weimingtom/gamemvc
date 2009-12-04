@@ -34,7 +34,7 @@ bool CResourceMapa::Load( TiXmlElement* pXMLData ) {
 	THROW_GAME_EXCEPTION_IF(!pXMLData->Attribute("y"),"Error y ResourceMapa no definido")
 	p.Y() = atoi( pXMLData->Attribute( "y" ) );
 
-	string s( pXMLData->GetText() );
+	std::string s( pXMLData->GetText() );
 	m_pResourceType = ResourceManager.GetResourceType( s );
 	/*
 	 switch ( m_pResourceType->GetSpace() ) {

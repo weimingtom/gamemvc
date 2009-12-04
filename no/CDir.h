@@ -10,7 +10,6 @@
 
 #include <vector>
 #include <string>
-using namespace std;
 
 class TiXmlElement;
 class CImage;

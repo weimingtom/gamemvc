@@ -12,29 +12,28 @@
 
 #include <string>
 #include <map>
-using namespace std;
 
 #include <lua.hpp>
 
-#include <misc/Singleton.h>
+#include <misc/singleton.hpp>
 
 class CGameEngine;
 class CActorType;
 
-#define ActorManager	Singleton<CActorManager>::GetSingletonPtr()
+#define ActorManager	Singleton<CActorManager>::Instance()
 class CActorManager
 {
 public:
 
 	~CActorManager();
-	bool Load(TiXmlElement* pXMLData);
-	bool ActorExist(string elActor);
-	CActorType* GetActorType(string elActor);
+	bool Load( TiXmlElement* pXMLData );
+	bool ActorExist( const std::string& elActor );
+	CActorType* GetActorType( const std::string& elActor );
 	CGameEngine* GetGame();
 
 private:
 
-	map<string , CActorType*> m_mActorManager;
+	map < std::string, CActorType* > m_mActorManager;
 
 };
 

@@ -16,6 +16,7 @@
 
 #include "CTerrainMapa.h"
 #include "CBuildingMapa.h"
+#include "CResourceMapa.h"
 
 PlayModel::PlayModel() :
 	Model(), m_endtype( PlayModel::CONTINUE ), m_pCellPartition( NULL ) {
@@ -111,6 +112,26 @@ std::vector < CBuildingMapa* > PlayModel::ObtainBuildingCell( const gcn::Point& 
 	}
 	return buildingCell;
 }
+std::vector < CResourceMapa* > PlayModel::ObtainResourceCell( const gcn::Point& pLocal ) {
+
+	std::vector < CResourceMapa* > ResourceCell;
+
+	CellMapa < BaseGameEntity* > cell =
+			GetCellPartition()->GetCell( Vector2D( 	pLocal.GetX(),
+													pLocal.GetY() ) );
+
+	std::list < BaseGameEntity* >::iterator iter;
+	for ( iter = cell.Members.begin(); iter != cell.Members.end(); ++iter ) {
+
+		if ( ( *iter )->EntityType() == BaseGameEntity::resource ) {
+
+			CResourceMapa* terrain = static_cast < CResourceMapa* > ( *iter );
+			ResourceCell.push_back( terrain );
+
+		}
+	}
+	return ResourceCell;
+}
 int PlayModel::getResolution() {
 
 	return m_iResolution;
@@ -169,7 +190,7 @@ void PlayModel::loadGame( const std::string& mapData ) {
 	 *
 	 */
 	THROW_GAME_EXCEPTION_IF(!loadTerrain( pXMLData ),"Error loadTerrain");
-	//	loadResource( pXMLData );
+	THROW_GAME_EXCEPTION_IF(!loadResource( pXMLData ),"Error loadResource");
 	THROW_GAME_EXCEPTION_IF(!loadBuilding( pXMLData ), "Error loadBuilding");
 
 	return;
@@ -209,5 +230,13 @@ bool PlayModel::loadBuilding( TiXmlElement* pXMLData ) {
 	//
 	m_pBuildingMapaManager.reset( new CBuildingMapaManager( this ) );
 	return m_pBuildingMapaManager->Load( pXMLData->FirstChildElement( "BuildingGroup" ) );
+
+}
+bool PlayModel::loadResource( TiXmlElement* pXMLData ) {
+	//
+	// Cargamos datos iniciales de Resources.
+	//
+	m_pResourceMapaManager.reset( new CResourceMapaManager( this ) );
+	return m_pResourceMapaManager->Load( pXMLData->FirstChildElement( "ResourceGroup" ) );
 
 }

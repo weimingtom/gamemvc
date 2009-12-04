@@ -11,7 +11,6 @@
 #include <sstream>
 #include <iostream>
 #include <exception>
-using namespace std;
 
 class GameException: public std::exception {
 
@@ -33,8 +32,8 @@ public:
 #define THROW_GAME_EXCEPTION_IF(condition, e) \
     if (condition) \
     { \
-    	stringstream msg; \
-    	msg << e << " en " << __FILE__ << " linea " << __LINE__ << ends; \
+    	std::stringstream msg; \
+    	msg << e << " en " << __FILE__ << " linea " << __LINE__ << std::ends; \
         throw GameException( \
         		(char*) msg.str().c_str()); \
     }
