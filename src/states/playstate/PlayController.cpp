@@ -80,7 +80,7 @@ void PlayController::Zone::mouseWheelMovedDown( gcn::MouseEvent & mouseEvent ) {
 									mouseEvent.getX(),
 									mouseEvent.getY() );
 	m_play->getView()->moveView( 	0,
-									+3 );
+									+10 );
 	mouseEvent.consume();
 }
 void PlayController::Zone::mouseWheelMovedUp( gcn::MouseEvent & mouseEvent ) {
@@ -88,7 +88,7 @@ void PlayController::Zone::mouseWheelMovedUp( gcn::MouseEvent & mouseEvent ) {
 									mouseEvent.getX(),
 									mouseEvent.getY() );
 	m_play->getView()->moveView( 	0,
-									-3 );
+									-10 );
 	mouseEvent.consume();
 }
 void PlayController::Zone::mouseExited( gcn::MouseEvent& mouseEvent ) {
