@@ -13,6 +13,7 @@
 #include <2d/Vector2D.h>
 #include <mvc/Model.h>
 #include <misc/Point.h>
+#include <game/IsoDiamonMap.h>
 
 #include "CellMapaPartition.h"
 #include "CTerrainMapaManager.h"
@@ -47,18 +48,14 @@ public:
 
 	CellPartition* const GetCellPartition() const;
 
-	Vector2D IsoToLocal( 	int ix,
-							int iy ); //! Utilizado por ActorMapaManager
-	Vector2D IsoToLocal( const Vector2D& p );
-	gcn::Point IsoToLocal( const gcn::Point& p );
-
 	void Update();
 
 	std::vector < CTerrainMapa* > ObtainTerrainCell( const gcn::Point& pLocal );
 	std::vector < CBuildingMapa* >
-			ObtainBuildingCell( const gcn::Point& pLocal );
+	ObtainBuildingCell( const gcn::Point& pLocal );
 	std::vector < CResourceMapa* >
-			ObtainResourceCell( const gcn::Point& pLocal );
+	ObtainResourceCell( const gcn::Point& pLocal );
+	IsoDiamonMap& getMap();
 
 private:
 
@@ -75,6 +72,8 @@ private:
 	int m_iCellsY;
 
 	std::auto_ptr < CellPartition > m_pCellPartition; //! Division del mapa del juego.
+
+	std::auto_ptr < IsoDiamonMap > m_map;
 
 	typedef std::auto_ptr < CTerrainMapaManager > CTerrainMapaManager_ptr;
 	typedef std::auto_ptr < CBuildingMapaManager > CBuildingMapaManager_ptr;

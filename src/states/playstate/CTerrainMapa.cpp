@@ -14,8 +14,7 @@
 #include "PlayModel.h"
 
 CTerrainMapa::CTerrainMapa( PlayModel* model ) :
-	BaseGameEntity( BaseGameEntity::terrain ),
-	m_pModel( model ) {
+	BaseGameEntity( BaseGameEntity::terrain ), m_pModel( model ) {
 
 }
 
@@ -26,8 +25,8 @@ void CTerrainMapa::SetTile( CTile* tile,
 							const gcn::Point& p ) {
 	m_pTerrain = tile;
 
-	SetPos( m_pModel->IsoToLocal( 	p.GetX(),
-									p.GetY() ) );
+	SetPos( m_pModel->getMap().IsoToLocal( 	p.GetX(),
+											p.GetY() ) );
 	m_pModel->GetCellPartition()->AddEntity( this );
 
 }

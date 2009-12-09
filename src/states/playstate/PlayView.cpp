@@ -470,24 +470,24 @@ void PlayView::PlayZoneView::getPointPaint() {
 }
 bool PlayView::PlayZoneView::validIso( const gcn::Point& p ) {
 
-	if ( ( p.GetX() < 0 ) || ( p.GetY() < 0 ) || ( p.GetX() >= m_iNumRows ) || ( p.GetY()
-			>= m_iNumCols ) )
+	if ( ( p.GetX() < 0 ) || ( p.GetY() < 0 ) || ( p.GetX() >= m_iNumRows )
+			|| ( p.GetY() >= m_iNumCols ) )
 		return false;
 	else
 		return true;
 }
 
 gcn::Point PlayView::PlayZoneView::calculaIso( 	int wx,
-											int wy ) {
+												int wy ) {
 
 	gcn::Point rejilla;
 	gcn::Point p;
 
 	rejilla = calcularRejilla( gcn::Point( 	wx,
-										wy ) );
+											wy ) );
 	p = tileWalk( 	EAST,
 					gcn::Point( 0,
-							0 ),
+								0 ),
 					rejilla.X() );
 	p = tileWalk( 	SOUTH,
 					p,
@@ -557,7 +557,7 @@ gcn::Point PlayView::PlayZoneView::WorldToScreen( const gcn::Point& p ) {
 
 }
 gcn::Point PlayView::PlayZoneView::LocalToWorld( 	int lX,
-												int lY ) {
+													int lY ) {
 
 	gcn::Point pW;
 
@@ -568,7 +568,7 @@ gcn::Point PlayView::PlayZoneView::LocalToWorld( 	int lX,
 
 }
 gcn::Point PlayView::PlayZoneView::LocalToScreen( 	int lX,
-												int lY ) {
+													int lY ) {
 
 	return WorldToScreen( LocalToWorld( lX,
 										lY ) );
@@ -583,13 +583,13 @@ void PlayView::PlayZoneView::PaintAllTerrain( const gcn::Point& paintPoint ) {
 	// Obtener el tile que se ha de pintar en funcion del
 	// punto isometrico calculado.
 	//
-	gcn::Point pLocal = m_play.getModel()->IsoToLocal( paintPoint );
+	gcn::Point pLocal = m_play.getModel()->getMap().IsoToLocal( paintPoint );
 
 	std::vector < CTerrainMapa* > terrainCell =
 			m_play.getModel()->ObtainTerrainCell( pLocal );
 
 	gcn::Point pScreen = LocalToScreen( pLocal.GetX(),
-									pLocal.GetY() );
+										pLocal.GetY() );
 
 	std::for_each( 	terrainCell.begin(),
 					terrainCell.end(),
@@ -602,13 +602,13 @@ void PlayView::PlayZoneView::PaintAllTerrain( const gcn::Point& paintPoint ) {
 }
 void PlayView::PlayZoneView::PaintAllBuilding( const gcn::Point& paintPoint ) {
 
-	gcn::Point pLocal = m_play.getModel()->IsoToLocal( paintPoint );
+	gcn::Point pLocal = m_play.getModel()->getMap().IsoToLocal( paintPoint );
 
 	std::vector < CBuildingMapa* > buildingCell =
 			m_play.getModel()->ObtainBuildingCell( pLocal );
 
 	gcn::Point pScreen = LocalToScreen( pLocal.GetX(),
-									pLocal.GetY() );
+										pLocal.GetY() );
 	std::for_each( 	buildingCell.begin(),
 					buildingCell.end(),
 					boost::bind(	&CBuildingMapa::Draw,
@@ -620,13 +620,13 @@ void PlayView::PlayZoneView::PaintAllBuilding( const gcn::Point& paintPoint ) {
 }
 void PlayView::PlayZoneView::PaintAllResource( const gcn::Point& paintPoint ) {
 
-	gcn::Point pLocal = m_play.getModel()->IsoToLocal( paintPoint );
+	gcn::Point pLocal = m_play.getModel()->getMap().IsoToLocal( paintPoint );
 
 	std::vector < CResourceMapa* > ResourceCell =
 			m_play.getModel()->ObtainResourceCell( pLocal );
 
 	gcn::Point pScreen = LocalToScreen( pLocal.GetX(),
-									pLocal.GetY() );
+										pLocal.GetY() );
 	std::for_each( 	ResourceCell.begin(),
 					ResourceCell.end(),
 					boost::bind(	&CResourceMapa::Draw,

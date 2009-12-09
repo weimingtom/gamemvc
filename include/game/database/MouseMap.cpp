@@ -85,7 +85,7 @@ void MouseMap::init() {
 
 			++it;
 		}
-		// LAPP_ << s.str(); // "\n";
+
 	}
 
 }
