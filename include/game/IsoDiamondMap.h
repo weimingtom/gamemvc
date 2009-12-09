@@ -5,8 +5,8 @@
  *      Author: 79481180
  */
 
-#ifndef ISODIAMONMAP_H_
-#define ISODIAMONMAP_H_
+#ifndef ISODIAMONDMAP_H_
+#define ISODIAMONDMAP_H_
 /**
  *  @brief Isometric diamond map.
  *
@@ -26,18 +26,23 @@
 #include <misc/Point.h>
 #include "Map.h"
 
-class IsoDiamonMap: public Map
+class IsoDiamondMap: public Map
 {
 public:
 
-	IsoDiamonMap( const MouseMap& mouseMap );
-	virtual ~IsoDiamonMap();
+	IsoDiamondMap( const MouseMap& mouseMap );
+	virtual ~IsoDiamondMap();
 
 	Vector2D MapToLocal( const Vector2D& p ) const;
 	Vector2D MapToLocal( 	int ix,
 							int iy ) const;
 	gcn::Point MapToLocal(const gcn::Point& p ) const;
 
+private:
+
+	IsoDiamondMap(); // Unimplemented.
+	IsoDiamondMap& operator=(const IsoDiamondMap&); // Unimplemented.
+
 };
 
-#endif /* ISODIAMONMAP_H_ */
+#endif /* ISODIAMONDMAP_H_ */

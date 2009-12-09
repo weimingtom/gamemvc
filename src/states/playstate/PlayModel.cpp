@@ -123,7 +123,7 @@ PlayModel::CellPartition* const PlayModel::GetCellPartition() const {
 	return m_pCellPartition.get();
 
 }
-IsoDiamonMap&PlayModel::getMap(){
+IsoDiamondMap& PlayModel::getMap(){
 
 
 	return *m_map.get();
@@ -151,7 +151,7 @@ void PlayModel::loadGame( const std::string& mapData ) {
 	// procedemos crear el mapa donde
 	// los vamos a representar.
 	//
-	m_map.reset( new IsoDiamonMap( *mouse ) );
+	m_map.reset( new IsoDiamondMap( *mouse ) );
 	//
 	// Aqui creo que es un buen momento para definir lo relativo a
 	// path finder, tenemos el terreno base y su tamao.

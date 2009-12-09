@@ -13,7 +13,7 @@
 #include <2d/Vector2D.h>
 #include <mvc/Model.h>
 #include <misc/Point.h>
-#include <game/IsoDiamonMap.h>
+#include <game/IsoDiamondMap.h>
 
 #include "CellMapaPartition.h"
 #include "CTerrainMapaManager.h"
@@ -55,7 +55,7 @@ public:
 	ObtainBuildingCell( const gcn::Point& pLocal );
 	std::vector < CResourceMapa* >
 	ObtainResourceCell( const gcn::Point& pLocal );
-	IsoDiamonMap& getMap();
+	IsoDiamondMap& getMap();
 
 private:
 
@@ -73,7 +73,7 @@ private:
 
 	std::auto_ptr < CellPartition > m_pCellPartition; //! Division del mapa del juego.
 
-	std::auto_ptr < IsoDiamonMap > m_map;
+	std::auto_ptr < IsoDiamondMap > m_map;
 
 	typedef std::auto_ptr < CTerrainMapaManager > CTerrainMapaManager_ptr;
 	typedef std::auto_ptr < CBuildingMapaManager > CBuildingMapaManager_ptr;

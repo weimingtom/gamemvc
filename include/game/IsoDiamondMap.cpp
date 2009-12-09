@@ -5,18 +5,18 @@
  *      Author: 79481180
  */
 
-#include "IsoDiamonMap.h"
+#include "IsoDiamondMap.h"
 
-IsoDiamonMap::IsoDiamonMap( const MouseMap& mouseMap ) :
+IsoDiamondMap::IsoDiamondMap( const MouseMap& mouseMap ) :
 	Map( mouseMap ) {
 
 }
 
-IsoDiamonMap::~IsoDiamonMap() {
+IsoDiamondMap::~IsoDiamondMap() {
 
 }
 
-Vector2D IsoDiamonMap::MapToLocal( const Vector2D& p ) const {
+Vector2D IsoDiamondMap::MapToLocal( const Vector2D& p ) const {
 
 	Vector2D local;
 	local.x = p.x * mouseMap().w() + mouseMap().w() / 2;
@@ -25,14 +25,14 @@ Vector2D IsoDiamonMap::MapToLocal( const Vector2D& p ) const {
 	return local;
 }
 
-Vector2D IsoDiamonMap::MapToLocal( 	int ix,
+Vector2D IsoDiamondMap::MapToLocal( 	int ix,
 									int iy ) const {
 
 	return MapToLocal( Vector2D( 	ix,
 									iy ) );
 
 }
-gcn::Point IsoDiamonMap::MapToLocal(const gcn::Point& p ) const{
+gcn::Point IsoDiamondMap::MapToLocal(const gcn::Point& p ) const{
 
 	gcn::Point local;
 	local.X() = p.GetX() * mouseMap().w() + mouseMap().w() / 2;
