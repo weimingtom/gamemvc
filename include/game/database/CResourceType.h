@@ -10,7 +10,7 @@
 
 #include <string>
 
-#include <misc/point.h>
+#include <misc/Point.h>
 
 class TiXmlElement;
 namespace gcn{
