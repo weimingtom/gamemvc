@@ -17,6 +17,7 @@
 #include "mvc/View.h"
 #include "misc/Point.h"
 #include "game/database/CMouseMapManager.h"
+#include "game/Scroller.h"
 
 class PlayModel;
 class PlayController;
@@ -57,7 +58,7 @@ private:
 	{
 	public:
 
-		PlayZoneView( PlayView& play );
+		PlayZoneView( const PlayView& play );
 		void initialize();
 		void draw();
 		void updateMoveView( 	int X,
@@ -69,64 +70,18 @@ private:
 
 	private:
 
-		enum Direction
-		{
-			NORTH = 0,
-			NORTH_EAST,
-			EAST,
-			SOUTH_EAST,
-			SOUTH,
-			SOUTH_WEST,
-			WEST,
-			NORTH_WEST
-		};
-
-		PlayView& m_play;
+		const PlayView& m_play;
 		gcn::Widget* m_zone;
-
-		gcn::Rectangle m_areaZone; //! Dimension del area del widget.
-		int m_iNumRows; //! Numero de filas mapa isometrico.
-		int m_iNumCols; //! Numero columnas mapa isometico.
-		int m_iTile_W; //! Ancho del tile.
-		int m_iTile_H; //! Alto del tile.
-		int m_iTile_HalfW; //! Mitad tamaño ancho tile.
-		int m_iTile_HalfH; //! Mitad tamaño alto tile.
-		double m_TileRatio; //! Proporcion tamaño tile
-		int m_hOffset; //! Desplazamiento horizontal en el World Space.
-		int m_vOffset; //! Desplazamiento vertical en el World Space.
-		int m_iWorldWidth; //! Ancho en pixel del World map.
-		int m_iWorldHeight; //! Alto en pixel del World map.
-		int m_MaxMapX; //! Maximo desplazamiento en X.
-		int m_MaxMapY; //! Maximo desplazamiento en Y;
-		int m_MapX; //! Desplazamiento costado WorldX con respecto screenX.
-		int m_MapY; //! Desplazamiento costado WorldY con respecto screenY.
+		gcn::Rectangle m_areaZone;
+		std::auto_ptr<Scroller> m_scroller;
 
 		bool m_move;
 		int moveX;
 		int moveY;
 
-		std::vector < gcn::Point > allPoints; // Puntos Isometricos a dibujar.
-
-		void getPointPaint();
-
-		bool validIso( const gcn::Point& p );
-		gcn::Point calculaIso( 	int wx,
-								int wy );
-		gcn::Point calcularRejilla( const gcn::Point& punto );
-		gcn::Point tileWalk( 	Direction direction,
-								const gcn::Point& fromPoint,
-								int puntos = 1 );
 		void PaintAllTerrain( const gcn::Point& paintPoint );
 		void PaintAllBuilding( const gcn::Point& paintPoint );
 		void PaintAllResource( const gcn::Point& paintPoint );
-
-		gcn::Point WorldToScreen( 	int wx,
-									int wy );
-		gcn::Point WorldToScreen( const gcn::Point& p );
-		gcn::Point LocalToWorld( 	int lX,
-									int lY );
-		gcn::Point LocalToScreen( 	int lX,
-									int lY );
 
 	};
 	class PlayMsgLeftView

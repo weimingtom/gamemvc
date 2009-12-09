@@ -33,10 +33,10 @@ public:
 	IsoDiamonMap( const MouseMap& mouseMap );
 	virtual ~IsoDiamonMap();
 
-	Vector2D IsoToLocal( const Vector2D& p ) const;
-	Vector2D IsoToLocal( 	int ix,
+	Vector2D MapToLocal( const Vector2D& p ) const;
+	Vector2D MapToLocal( 	int ix,
 							int iy ) const;
-	gcn::Point IsoToLocal(const gcn::Point& p ) const;
+	gcn::Point MapToLocal(const gcn::Point& p ) const;
 
 };
 

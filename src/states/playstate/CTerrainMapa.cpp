@@ -25,7 +25,7 @@ void CTerrainMapa::SetTile( CTile* tile,
 							const gcn::Point& p ) {
 	m_pTerrain = tile;
 
-	SetPos( m_pModel->getMap().IsoToLocal( 	p.GetX(),
+	SetPos( m_pModel->getMap().MapToLocal( 	p.GetX(),
 											p.GetY() ) );
 	m_pModel->GetCellPartition()->AddEntity( this );
 

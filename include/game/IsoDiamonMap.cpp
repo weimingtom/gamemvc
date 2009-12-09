@@ -16,7 +16,7 @@ IsoDiamonMap::~IsoDiamonMap() {
 
 }
 
-Vector2D IsoDiamonMap::IsoToLocal( const Vector2D& p ) const {
+Vector2D IsoDiamonMap::MapToLocal( const Vector2D& p ) const {
 
 	Vector2D local;
 	local.x = p.x * mouseMap().w() + mouseMap().w() / 2;
@@ -25,14 +25,14 @@ Vector2D IsoDiamonMap::IsoToLocal( const Vector2D& p ) const {
 	return local;
 }
 
-Vector2D IsoDiamonMap::IsoToLocal( 	int ix,
+Vector2D IsoDiamonMap::MapToLocal( 	int ix,
 									int iy ) const {
 
-	return IsoToLocal( Vector2D( 	ix,
+	return MapToLocal( Vector2D( 	ix,
 									iy ) );
 
 }
-gcn::Point IsoDiamonMap::IsoToLocal(const gcn::Point& p ) const{
+gcn::Point IsoDiamonMap::MapToLocal(const gcn::Point& p ) const{
 
 	gcn::Point local;
 	local.X() = p.GetX() * mouseMap().w() + mouseMap().w() / 2;

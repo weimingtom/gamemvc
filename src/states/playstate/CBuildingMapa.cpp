@@ -54,7 +54,7 @@ bool CBuildingMapa::Load( TiXmlElement* pXMLData ) {
 
 	 }
 	 */
-	SetPos( m_pModel->getMap().IsoToLocal( 	p.GetX(),
+	SetPos( m_pModel->getMap().MapToLocal( 	p.GetX(),
 											p.GetY() ) );
 	m_pModel->GetCellPartition()->AddEntity( this );
 	return true;
