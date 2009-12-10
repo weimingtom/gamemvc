@@ -36,12 +36,16 @@ public:
 	Vector2D MapToLocal( const Vector2D& p ) const;
 	Vector2D MapToLocal( 	int ix,
 							int iy ) const;
-	gcn::Point MapToLocal(const gcn::Point& p ) const;
+	gcn::Point MapToLocal( const gcn::Point& p ) const;
+
+	gcn::Point moveUnrestricted( 	Direction direction,
+									const gcn::Point& fromPoint,
+									int puntos ) const;
 
 private:
 
 	IsoDiamondMap(); // Unimplemented.
-	IsoDiamondMap& operator=(const IsoDiamondMap&); // Unimplemented.
+	IsoDiamondMap& operator=( const IsoDiamondMap& ); // Unimplemented.
 
 };
 

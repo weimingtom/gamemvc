@@ -40,67 +40,6 @@ Scroller::Scroller( const Map& map,
 
 }
 
-gcn::Point Scroller::tileWalk( 	Direction direction,
-								const gcn::Point& fromPoint,
-								int puntos ) {
-
-	int x = fromPoint.GetX();
-	int y = fromPoint.GetY();
-
-	switch ( direction ) {
-		case NORTH: {
-			x -= puntos;
-			y -= puntos;
-		}
-		break;
-
-		case NORTH_EAST: {
-			y -= puntos;
-		}
-		break;
-
-		case EAST: {
-			x += puntos;
-			y -= puntos;
-		}
-		break;
-
-		case SOUTH_EAST: {
-			x += puntos;
-		}
-		break;
-
-		case SOUTH: {
-			x += puntos;
-			y += puntos;
-		}
-		break;
-
-		case SOUTH_WEST: {
-			y += puntos;
-		}
-		break;
-
-		case WEST: {
-			x -= puntos;
-			y += puntos;
-		}
-		break;
-
-		case NORTH_WEST: {
-			x -= puntos;
-		}
-		break;
-
-		default:
-			// This should never be reached as all cases should have been
-			// handled above.
-			assert( true );
-		break;
-	}
-	return gcn::Point( 	x,
-						y );
-}
 std::vector < gcn::Point >& Scroller::getPointPaint() {
 
 	//
@@ -164,27 +103,27 @@ std::vector < gcn::Point >& Scroller::getPointPaint() {
 	//
 
 	//Desplazamos cada esquina para alejarnos de la pantalla
-	supIzq = tileWalk( 	NORTH_WEST,
-						supIzq,
-						1 );
-	supDch = tileWalk( 	NORTH_EAST,
-						supDch,
-						1 );
-	infIzq = tileWalk( 	SOUTH_WEST,
-						infIzq,
-						1 );
-	infDch = tileWalk( 	SOUTH_EAST,
-						infDch,
-						1 );
+	supIzq = m_map_.moveUnrestricted( 	NORTH_WEST,
+										supIzq,
+										1 );
+	supDch = m_map_.moveUnrestricted( 	NORTH_EAST,
+										supDch,
+										1 );
+	infIzq = m_map_.moveUnrestricted( 	SOUTH_WEST,
+										infIzq,
+										1 );
+	infDch = m_map_.moveUnrestricted( 	SOUTH_EAST,
+										infDch,
+										1 );
 
 	//Desplazamos las esquinas inferiores 2 pasos al sur para
 	//compensar por los objetos altos
-	infIzq = tileWalk( 	SOUTH,
-						infIzq,
-						2 );
-	infDch = tileWalk( 	SOUTH,
-						infDch,
-						2 );
+	infIzq = m_map_.moveUnrestricted( 	SOUTH,
+										infIzq,
+										2 );
+	infDch = m_map_.moveUnrestricted( 	SOUTH,
+										infDch,
+										2 );
 
 	//
 	// FASE 3 - Bucle de dibujado
@@ -211,9 +150,9 @@ std::vector < gcn::Point >& Scroller::getPointPaint() {
 			if ( filaActual == filaFin )
 				terminadoFila = true;
 			else
-				filaActual = tileWalk( 	EAST,
-										filaActual,
-										1 );
+				filaActual = m_map_.moveUnrestricted( 	EAST,
+														filaActual,
+														1 );
 		}
 
 		//Comprobamos si la fila recorrida era la ultima
@@ -224,20 +163,20 @@ std::vector < gcn::Point >& Scroller::getPointPaint() {
 			//hacia abajo para comenzar con la siguiente
 			if ( contadorFilas & 1 ) {
 				//Fila impar
-				filaInicio = tileWalk( 	SOUTH_WEST,
-										filaInicio,
-										1 );
-				filaFin = tileWalk( SOUTH_EAST,
-									filaFin,
-									1 );
+				filaInicio = m_map_.moveUnrestricted( 	SOUTH_WEST,
+														filaInicio,
+														1 );
+				filaFin = m_map_.moveUnrestricted( 	SOUTH_EAST,
+													filaFin,
+													1 );
 			} else {
 				//Fila par
-				filaInicio = tileWalk( 	SOUTH_EAST,
-										filaInicio,
-										1 );
-				filaFin = tileWalk( SOUTH_WEST,
-									filaFin,
-									1 );
+				filaInicio = m_map_.moveUnrestricted( 	SOUTH_EAST,
+														filaInicio,
+														1 );
+				filaFin = m_map_.moveUnrestricted( 	SOUTH_WEST,
+													filaFin,
+													1 );
 			}
 			++contadorFilas;
 		}
@@ -261,13 +200,13 @@ gcn::Point Scroller::calculaIso( 	int wx,
 
 	rejilla = calcularRejilla( gcn::Point( 	wx,
 											wy ) );
-	p = tileWalk( 	EAST,
-					gcn::Point( 0,
-								0 ),
-					rejilla.X() );
-	p = tileWalk( 	SOUTH,
-					p,
-					rejilla.Y() );
+	p = m_map_.moveUnrestricted( 	EAST,
+									gcn::Point( 0,
+												0 ),
+									rejilla.X() );
+	p = m_map_.moveUnrestricted( 	SOUTH,
+									p,
+									rejilla.Y() );
 
 	return p;
 }
@@ -294,20 +233,20 @@ gcn::Point Scroller::calcularRejilla( const gcn::Point& punto ) {
 			// No hacemos nada
 		break;
 		case MouseMap::NORTH_EAST:
-			tileWalk( 	NORTH_EAST,
-						rejilla );
+			m_map_.moveUnrestricted( 	NORTH_EAST,
+										rejilla );
 		break;
 		case MouseMap::NORTH_WEST:
-			tileWalk( 	NORTH_WEST,
-						rejilla );
+			m_map_.moveUnrestricted( 	NORTH_WEST,
+										rejilla );
 		break;
 		case MouseMap::SOUTH_EAST:
-			tileWalk( 	SOUTH_EAST,
-						rejilla );
+			m_map_.moveUnrestricted( 	SOUTH_EAST,
+										rejilla );
 		break;
 		case MouseMap::SOUTH_WEST:
-			tileWalk( 	SOUTH_WEST,
-						rejilla );
+			m_map_.moveUnrestricted( 	SOUTH_WEST,
+										rejilla );
 		break;
 		default:
 			// This should never be reached as all cases should have been

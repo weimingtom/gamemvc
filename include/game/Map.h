@@ -10,13 +10,18 @@
 
 #include <game/database/MouseMap.hpp>
 
+#include "Direction.h"
+
 class Map
 {
 public:
 
-	Map(const MouseMap& mouseMap );
+	Map( const MouseMap& mouseMap );
 	virtual ~Map();
 	const MouseMap& mouseMap() const;
+	virtual gcn::Point moveUnrestricted( 	Direction direction,
+											const gcn::Point& fromPoint,
+											int puntos = 1 ) const =0;
 
 private:
 
