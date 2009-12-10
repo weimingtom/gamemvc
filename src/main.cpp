@@ -59,9 +59,10 @@ int main( 	int argc,
 		std::string config;
 		po::options_description desc( "Allowed options" );
 		desc.add_options()( "help",
-							"produce help message" )(	"config",
-														po::value < std::string >( &config )->default_value( "game.ini" ),
-														"Optionally provide a path to a file that contains configuration settings" );
+							"produce help message" )
+						(	"config",
+							po::value < std::string >( &config )->default_value( "game.ini" ),
+							"Optionally provide a path to a file that contains configuration settings" );
 
 		po::variables_map vm;
 		po::store( 	po::parse_command_line( argc,
@@ -72,7 +73,7 @@ int main( 	int argc,
 
 		if ( vm.count( "help" ) ) {
 			std::cout << desc << std::endl;
-			return 1;
+			return EXIT_SUCCESS;
 		}
 
 		// initialize the engine
