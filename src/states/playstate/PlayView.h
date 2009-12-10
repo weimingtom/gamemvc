@@ -79,9 +79,9 @@ private:
 		int moveX;
 		int moveY;
 
-		void PaintAllTerrain( const gcn::Point& paintPoint );
-		void PaintAllBuilding( const gcn::Point& paintPoint );
-		void PaintAllResource( const gcn::Point& paintPoint );
+		void PaintAllTerrain( const gcn::Point& pLocal);
+		void PaintAllBuilding( const gcn::Point& pLocal );
+		void PaintAllResource( const gcn::Point& pLocal );
 
 	};
 	class PlayMsgLeftView

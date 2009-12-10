@@ -104,17 +104,13 @@ std::vector < gcn::Point >& Scroller::getPointPaint() {
 
 	//Desplazamos cada esquina para alejarnos de la pantalla
 	supIzq = m_map_.moveUnrestricted( 	NORTH_WEST,
-										supIzq,
-										1 );
+										supIzq );
 	supDch = m_map_.moveUnrestricted( 	NORTH_EAST,
-										supDch,
-										1 );
+										supDch );
 	infIzq = m_map_.moveUnrestricted( 	SOUTH_WEST,
-										infIzq,
-										1 );
+										infIzq );
 	infDch = m_map_.moveUnrestricted( 	SOUTH_EAST,
-										infDch,
-										1 );
+										infDch );
 
 	//Desplazamos las esquinas inferiores 2 pasos al sur para
 	//compensar por los objetos altos
@@ -143,7 +139,7 @@ std::vector < gcn::Point >& Scroller::getPointPaint() {
 			// filaActual es el tile a pintar... ?.
 			if ( validIso( filaActual ) )
 
-			allPoints.push_back( filaActual );
+			allPoints.push_back( m_map_.MapToLocal( filaActual ) );
 
 			//Comprobamos si hemos llegado al final de la fila y si no,
 			//nos movemos a la siguiente casilla
@@ -151,8 +147,7 @@ std::vector < gcn::Point >& Scroller::getPointPaint() {
 				terminadoFila = true;
 			else
 				filaActual = m_map_.moveUnrestricted( 	EAST,
-														filaActual,
-														1 );
+														filaActual );
 		}
 
 		//Comprobamos si la fila recorrida era la ultima
@@ -164,19 +159,15 @@ std::vector < gcn::Point >& Scroller::getPointPaint() {
 			if ( contadorFilas & 1 ) {
 				//Fila impar
 				filaInicio = m_map_.moveUnrestricted( 	SOUTH_WEST,
-														filaInicio,
-														1 );
+														filaInicio );
 				filaFin = m_map_.moveUnrestricted( 	SOUTH_EAST,
-													filaFin,
-													1 );
+													filaFin );
 			} else {
 				//Fila par
 				filaInicio = m_map_.moveUnrestricted( 	SOUTH_EAST,
-														filaInicio,
-														1 );
+														filaInicio );
 				filaFin = m_map_.moveUnrestricted( 	SOUTH_WEST,
-													filaFin,
-													1 );
+													filaFin );
 			}
 			++contadorFilas;
 		}

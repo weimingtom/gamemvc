@@ -234,16 +234,12 @@ void PlayView::PlayZoneView::draw() {
 
 }
 
-void PlayView::PlayZoneView::PaintAllTerrain( const gcn::Point& paintPoint ) {
-
-	//	std::cout << "(" << paintPoint.GetX() << "," << paintPoint.GetY() << ")";
+void PlayView::PlayZoneView::PaintAllTerrain( const gcn::Point& pLocal ) {
 
 	//
 	// Obtener el tile que se ha de pintar en funcion del
 	// punto isometrico calculado.
 	//
-	gcn::Point pLocal = m_play.getModel()->getMap().MapToLocal( paintPoint );
-
 	std::vector < CTerrainMapa* > terrainCell =
 			m_play.getModel()->ObtainTerrainCell( pLocal );
 
@@ -259,9 +255,7 @@ void PlayView::PlayZoneView::PaintAllTerrain( const gcn::Point& paintPoint ) {
 									pScreen.GetY() ) );
 
 }
-void PlayView::PlayZoneView::PaintAllBuilding( const gcn::Point& paintPoint ) {
-
-	gcn::Point pLocal = m_play.getModel()->getMap().MapToLocal( paintPoint );
+void PlayView::PlayZoneView::PaintAllBuilding( const gcn::Point& pLocal ) {
 
 	std::vector < CBuildingMapa* > buildingCell =
 			m_play.getModel()->ObtainBuildingCell( pLocal );
@@ -277,9 +271,7 @@ void PlayView::PlayZoneView::PaintAllBuilding( const gcn::Point& paintPoint ) {
 									pScreen.GetY() ) );
 
 }
-void PlayView::PlayZoneView::PaintAllResource( const gcn::Point& paintPoint ) {
-
-	gcn::Point pLocal = m_play.getModel()->getMap().MapToLocal( paintPoint );
+void PlayView::PlayZoneView::PaintAllResource( const gcn::Point& pLocal ) {
 
 	std::vector < CResourceMapa* > ResourceCell =
 			m_play.getModel()->ObtainResourceCell( pLocal );
@@ -353,6 +345,7 @@ void PlayView::PlayMsgCenterView::initialize() {
 
 }
 void PlayView::PlayMsgCenterView::draw() {
+
 	// Pintamos la parte del MsgCenter
 
 	game.getGui().getGraphics()->pushClipArea( m_msgcenter->getDimension() );

@@ -19,6 +19,9 @@ public:
 	Map( const MouseMap& mouseMap );
 	virtual ~Map();
 	const MouseMap& mouseMap() const;
+
+	virtual gcn::Point MapToLocal(const gcn::Point& mapPoint) const = 0;
+
 	virtual gcn::Point moveUnrestricted( 	Direction direction,
 											const gcn::Point& fromPoint,
 											int puntos = 1 ) const =0;
