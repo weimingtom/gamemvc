@@ -55,7 +55,7 @@ public:
 	ObtainBuildingCell( const gcn::Point& pLocal );
 	std::vector < CResourceMapa* >
 	ObtainResourceCell( const gcn::Point& pLocal );
-	IsoDiamondMap& getMap();
+	IsoDiamondMap& getMap() const;
 
 private:
 

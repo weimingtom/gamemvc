@@ -123,7 +123,7 @@ PlayModel::CellPartition* const PlayModel::GetCellPartition() const {
 	return m_pCellPartition.get();
 
 }
-IsoDiamondMap& PlayModel::getMap(){
+IsoDiamondMap& PlayModel::getMap() const {
 
 
 	return *m_map.get();
