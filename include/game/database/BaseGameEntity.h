@@ -36,11 +36,11 @@ public:
 
 	virtual void Update( double time_elapsed ) {
 	}
-	;
+
 
 	virtual void Render() {
 	}
-	;
+
 
 	virtual bool HandleMessage( const Telegram& msg ) {
 		return false;
@@ -98,6 +98,7 @@ public:
 	void SetEntityType( int new_type ) {
 		m_EntityType = new_type;
 	}
+
 private:
 
 	//each entity has a unique ID
