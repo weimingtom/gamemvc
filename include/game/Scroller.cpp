@@ -120,10 +120,10 @@ std::vector < gcn::Point >& Scroller::getPointPaint() {
 	//compensar por los objetos altos
 	infIzq = m_map_.moveUnrestricted( 	SOUTH,
 										infIzq,
-										2 );
+										1 ); // <---- Es 2
 	infDch = m_map_.moveUnrestricted( 	SOUTH,
 										infDch,
-										2 );
+										1 ); // <---- Es 2
 
 	//
 	// FASE 3 - Bucle de dibujado
