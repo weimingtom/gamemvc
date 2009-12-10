@@ -17,7 +17,11 @@
 #include "misc/utils.h"
 
 struct Telegram;
+namespace gcn {
 
+	class Graphics;
+
+}
 class BaseGameEntity
 {
 public:
@@ -37,10 +41,12 @@ public:
 	virtual void Update( double time_elapsed ) {
 	}
 
-
 	virtual void Render() {
 	}
 
+	virtual void Draw( 	gcn::Graphics* graphics,
+						int destX,
+						int destY )=0;
 
 	virtual bool HandleMessage( const Telegram& msg ) {
 		return false;
@@ -83,13 +89,16 @@ public:
 		return m_vScale;
 	}
 	void SetScale( Vector2D val ) {
-		m_dBoundingRadius *= MaxOf( val.x, val.y ) / MaxOf( m_vScale.x,
-															m_vScale.y );
+		m_dBoundingRadius *= MaxOf( val.x,
+									val.y ) / MaxOf( 	m_vScale.x,
+														m_vScale.y );
 		m_vScale = val;
 	}
 	void SetScale( double val ) {
-		m_dBoundingRadius *= ( val / MaxOf( m_vScale.x, m_vScale.y ) );
-		m_vScale = Vector2D( val, val );
+		m_dBoundingRadius *= ( val / MaxOf( m_vScale.x,
+											m_vScale.y ) );
+		m_vScale = Vector2D( 	val,
+								val );
 	}
 
 	int EntityType() const {
@@ -127,32 +136,26 @@ protected:
 	double m_dBoundingRadius;
 
 	BaseGameEntity() :
-		m_ID( NextValidID() ),
-		m_EntityType( default_entity_type ),
-		m_bTag( false ),
-		m_vPos( Vector2D() ),
-		m_vScale( Vector2D( 1.0, 1.0 ) ),
-		m_dBoundingRadius( 0.0 ) {
+		m_ID( NextValidID() ), m_EntityType( default_entity_type ),
+				m_bTag( false ), m_vPos( Vector2D() ),
+				m_vScale( Vector2D( 1.0,
+									1.0 ) ), m_dBoundingRadius( 0.0 ) {
 	}
 
 	BaseGameEntity( int entity_type ) :
-		m_ID( NextValidID() ),
-		m_EntityType( entity_type ),
-		m_bTag( false ),
-		m_vPos( Vector2D() ),
-		m_vScale( Vector2D( 1.0, 1.0 ) ),
-		m_dBoundingRadius( 0.0 ) {
+		m_ID( NextValidID() ), m_EntityType( entity_type ), m_bTag( false ),
+				m_vPos( Vector2D() ), m_vScale( Vector2D(	1.0,
+															1.0 ) ),
+				m_dBoundingRadius( 0.0 ) {
 	}
 
 	BaseGameEntity( int entity_type,
 					Vector2D pos,
 					double r ) :
-		m_ID( NextValidID() ),
-		m_EntityType( entity_type ),
-		m_bTag( false ),
-		m_vPos( pos ),
-		m_vScale( Vector2D( 1.0, 1.0 ) ),
-		m_dBoundingRadius( r ) {
+		m_ID( NextValidID() ), m_EntityType( entity_type ), m_bTag( false ),
+				m_vPos( pos ), m_vScale( Vector2D(	1.0,
+													1.0 ) ),
+				m_dBoundingRadius( r ) {
 	}
 
 	//this can be used to create an entity with a 'forced' ID. It can be used
@@ -162,12 +165,10 @@ protected:
 	//USE WITH CAUTION!
 	BaseGameEntity( int entity_type,
 					int ForcedID ) :
-		m_ID( ForcedID ),
-		m_EntityType( entity_type ),
-		m_bTag( false ),
-		m_vPos( Vector2D() ),
-		m_vScale( Vector2D( 1.0, 1.0 ) ),
-		m_dBoundingRadius( 0.0 ) {
+		m_ID( ForcedID ), m_EntityType( entity_type ), m_bTag( false ),
+				m_vPos( Vector2D() ), m_vScale( Vector2D(	1.0,
+															1.0 ) ),
+				m_dBoundingRadius( 0.0 ) {
 	}
 
 };
