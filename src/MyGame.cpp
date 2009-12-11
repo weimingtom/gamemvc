@@ -128,7 +128,7 @@ void MyGame::InitSDL() {
 }
 void MyGame::InitLua() {
 
-	LuaManager.RunLuaDoFile(param.lua.c_str());
+	LuaManager.RunLuaDoFile(param.lua);
 
 //	RegisterToLuaCrudeTimer(LuaManager->GetLua());
 //	RegisterToLuaVector2D(LuaManager->GetLua());

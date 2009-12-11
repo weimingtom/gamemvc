@@ -8,6 +8,7 @@
 #ifndef CLUAMANAGER_H_
 #define CLUAMANAGER_H_
 
+#include <string>
 #include <lua.hpp>
 #include <luabind/luabind.hpp>
 #include <misc/singleton.hpp>
@@ -25,8 +26,8 @@ public:
 	lua_State* GetLua() {
 		return Lua;
 	}
-	void RunLuaDoFile( const char* script_name );
-	void RunLuaDoString( const char* thestring );
+	void RunLuaDoFile( const std::string& script_name );
+	void RunLuaDoString( const std::string& thestring );
 
 private:
 	lua_State* Lua;
