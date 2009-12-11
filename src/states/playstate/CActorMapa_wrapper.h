@@ -19,7 +19,7 @@
 struct ActorMapa_wrapper: CActorMapa, wrap_base
 {
 
-	ActorMapa_wrapper( 	GameWorld* elGameWorld,
+	ActorMapa_wrapper( 	PlayModel* elGameWorld,
 						Vector2D laPosicion,
 						CActorType* elActorTipo ) :
 		CActorMapa( elGameWorld, laPosicion, elActorTipo ) {

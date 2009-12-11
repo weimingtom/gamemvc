@@ -46,7 +46,7 @@ public:
 
 	virtual void Draw( 	gcn::Graphics* graphics,
 						int destX,
-						int destY )=0;
+						int destY ){}
 
 	virtual bool HandleMessage( const Telegram& msg ) {
 		return false;

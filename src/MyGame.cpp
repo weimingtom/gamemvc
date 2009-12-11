@@ -15,6 +15,7 @@
 #include <Lua/CLuaManager.h>
 
 #include "CParam.h"
+#include "RegisterToLua.h"
 
 void MyGame::Init(const std::string& config) {
 
@@ -130,23 +131,23 @@ void MyGame::InitLua() {
 
 	LuaManager.RunLuaDoFile(param.lua);
 
-//	RegisterToLuaCrudeTimer(LuaManager->GetLua());
-//	RegisterToLuaVector2D(LuaManager->GetLua());
-//	RegisterToLuaTelegram(LuaManager->GetLua());
-//	RegisterToLuaCActorType(LuaManager->GetLua());
-//	RegisterToLuaModel(LuaManager->GetLua());
-//	RegisterToLuaGameWorld(LuaManager->GetLua());
-//	RegisterToLuaBaseGameEntity(LuaManager->GetLua());
-//	RegisterToLuaMovingEntity(LuaManager->GetLua());
-//	RegisterToLuaActorMapa(LuaManager->GetLua());
-//	RegisterToLuaGoal(LuaManager->GetLua());
-//	RegisterToLuaSteeringBehavior(LuaManager->GetLua());
+	RegisterToLuaCrudeTimer(LuaManager.GetLua());
+	RegisterToLuaVector2D(LuaManager.GetLua());
+	RegisterToLuaTelegram(LuaManager.GetLua());
+	RegisterToLuaCActorType(LuaManager.GetLua());
+//	RegisterToLuaModel(LuaManager.GetLua());
+//	RegisterToLuaGameWorld(LuaManager.GetLua());
+	RegisterToLuaBaseGameEntity(LuaManager.GetLua());
+	RegisterToLuaMovingEntity(LuaManager.GetLua());
+	RegisterToLuaActorMapa(LuaManager.GetLua());
+	RegisterToLuaGoal(LuaManager.GetLua());
+	RegisterToLuaSteeringBehavior(LuaManager.GetLua());
 
 
-//	RegisterToLuaMessageDispacher(LuaManager->GetLua());
+//	RegisterToLuaMessageDispacher(LuaManager.GetLua());
 //
-//	RegisterToLuaScriptedStateMachine(LuaManager->GetLua());
-//	RegisterToLuaCTileMapa(LuaManager->GetLua());
-//	RegisterToLuaCActor_PathPlanner(LuaManager->GetLua());
+//	RegisterToLuaScriptedStateMachine(LuaManager.GetLua());
+//	RegisterToLuaCTileMapa(LuaManager.GetLua());
+//	RegisterToLuaCActor_PathPlanner(LuaManager.GetLua());
 
 }
