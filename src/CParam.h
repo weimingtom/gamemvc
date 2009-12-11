@@ -26,7 +26,8 @@ struct CParam
 
 	} screen;
 
-	std::string gamedata; // Fichero datos iniciales del game.
+	std::string gamedata; 	// Fichero datos iniciales del game.
+	std::string lua;		// Fichero carga inicial Lua.
 
 };
 

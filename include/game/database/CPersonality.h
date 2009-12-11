@@ -10,24 +10,25 @@
 
 #include <map>
 #include <string>
-#include <tinyxml.h>
+#include <boost/shared_ptr.hpp>
 
 class CStatus;
+class TiXmlElement;
 
 class CPersonality
 {
 public:
 
-	virtual ~CPersonality();
-
 	bool Load( TiXmlElement* pXMLData );
-	string GetNamePersonality();
+	bool StatusExist( const std::string& status);
 	CStatus* GetStatus( const std::string& status );
 
 private:
 
-	std::string m_Name;
-	map < std::string, CStatus* > m_mStatus;
+	typedef boost::shared_ptr < CStatus > CStatus_ptr;
+	typedef std::map<std::string , CStatus_ptr > CActorType_map;
+
+	CActorType_map m_mStatus;
 
 };
 

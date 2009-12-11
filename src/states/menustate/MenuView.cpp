@@ -18,7 +18,7 @@ MenuView::MenuView( MenuModel* model ) :
 	View < MenuModel, MenuController > ( model ) {
 
 	xmlgui.reset( new XmlGui() );
-	xmlgui->parse( "./scripts/Menu/gui.xml" );
+	xmlgui->parse( "./scripts/gui/Menu/gui.xml" );
 	game.getGui().setTop( top = xmlgui->getWidget( "top" ) );
 
 	top->setFocusable( true );

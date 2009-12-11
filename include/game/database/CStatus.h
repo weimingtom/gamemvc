@@ -10,27 +10,27 @@
 
 #include <map>
 #include <string>
-#include <tinyxml.h>
+#include <boost/shared_ptr.hpp>
 
+class TiXmlElement;
 class CDir;
 
 class CStatus
 {
 public:
 
-	~CStatus();
 	bool Load( TiXmlElement* pXMLData );
-	string GetName() {
-		return m_Name;
-	}
-	CDir* GetDir( std::string& laDir );
+	bool DirExist( const std::string& laDir);
+	CDir* GetDir( const std::string& laDir );
 	int GetFrames();
 
 private:
 
-	std::string m_Name; //!Nombre del estado.
 	int m_iFrames; //! Contador de cambio de frames.
-	map < std::string, CDir* > m_mDir;
+
+	typedef boost::shared_ptr < CDir > CDir_ptr;
+	typedef std::map<std::string , CDir_ptr > CDir_map;
+	CDir_map m_mDir;
 };
 
 #endif /* CSTATUS_H_ */

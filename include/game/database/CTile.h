@@ -8,7 +8,6 @@
 #ifndef CTILE_H_
 #define CTILE_H_
 
-#include <string>
 #include <utility>
 
 #include <tinyxml.h>
@@ -33,7 +32,7 @@ public:
 
 private:
 
-	std::pair < gcn::Image*, gcn::Point > laLoseta; //! Definimos la loseta con su offset.
+	std::pair < gcn::Image*, gcn::Point > m_laLoseta; //! Definimos la loseta con su offset.
 
 };
 

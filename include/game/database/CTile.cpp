@@ -16,7 +16,7 @@
 
 CTile::~CTile() {
 
-	delete laLoseta.first;
+	delete m_laLoseta.first;
 
 }
 bool CTile::Load( TiXmlElement* pXMLData ) {
@@ -26,9 +26,9 @@ bool CTile::Load( TiXmlElement* pXMLData ) {
 	THROW_GAME_EXCEPTION_IF((!pXMLData->Attribute( "image" ) ),"Error imagen Tile no definido");
 	std::string imagen( pXMLData->Attribute( "image" ) );
 	gcn::Image* image = gcn::Image::load( imagen );
-	laLoseta.first = image;
-	laLoseta.second.SetX( image->getWidth() / 2 );
-	laLoseta.second.SetY( image->getHeight() / 2 );
+	m_laLoseta.first = image;
+	m_laLoseta.second.SetX( image->getWidth() / 2 );
+	m_laLoseta.second.SetY( image->getHeight() / 2 );
 
 	return true;
 }
@@ -37,8 +37,8 @@ void CTile::Draw( 	gcn::Graphics* graphics,
 					int destX,
 					int destY ) {
 
-	graphics->drawImage( 	laLoseta.first,
-							destX - laLoseta.second.GetX(),
-							destY - laLoseta.second.GetY() );
+	graphics->drawImage( 	m_laLoseta.first,
+							destX - m_laLoseta.second.GetX(),
+							destY - m_laLoseta.second.GetY() );
 
 }

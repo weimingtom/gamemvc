@@ -12,6 +12,7 @@
 #include <SDL++/SDLException.hpp>
 #include <misc/debug.h>
 #include <misc/Log.h>
+#include <Lua/CLuaManager.h>
 
 #include "CParam.h"
 
@@ -21,6 +22,7 @@ void MyGame::Init(const std::string& config) {
 
 	InitParam(config);
 	InitSDL();
+	InitLua();
 
 	imageLoader = new gcn::SDLImageLoader();
 	gcn::Image::setImageLoader(imageLoader);
@@ -85,6 +87,7 @@ void MyGame::InitParam(const std::string& config) {
 	param.screen.Y = pt.get("screen.height", 480);
 	param.screen.full = pt.get("screen.fullscreen", false);
 	param.gamedata = pt.get<std::string> ("game.gamedata");
+	param.lua = pt.get<std::string>("game.lua");
 
 }
 void MyGame::InitSDL() {
@@ -121,5 +124,29 @@ void MyGame::InitSDL() {
 	screen = SDL_SetVideoMode(param.screen.X, param.screen.Y, bpp, flags);
 	SDL_EnableUNICODE(1);
 	SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY, SDL_DEFAULT_REPEAT_INTERVAL);
+
+}
+void MyGame::InitLua() {
+
+	LuaManager.RunLuaDoFile(param.lua.c_str());
+
+//	RegisterToLuaCrudeTimer(LuaManager->GetLua());
+//	RegisterToLuaVector2D(LuaManager->GetLua());
+//	RegisterToLuaTelegram(LuaManager->GetLua());
+//	RegisterToLuaCActorType(LuaManager->GetLua());
+//	RegisterToLuaModel(LuaManager->GetLua());
+//	RegisterToLuaGameWorld(LuaManager->GetLua());
+//	RegisterToLuaBaseGameEntity(LuaManager->GetLua());
+//	RegisterToLuaMovingEntity(LuaManager->GetLua());
+//	RegisterToLuaActorMapa(LuaManager->GetLua());
+//	RegisterToLuaGoal(LuaManager->GetLua());
+//	RegisterToLuaSteeringBehavior(LuaManager->GetLua());
+
+
+//	RegisterToLuaMessageDispacher(LuaManager->GetLua());
+//
+//	RegisterToLuaScriptedStateMachine(LuaManager->GetLua());
+//	RegisterToLuaCTileMapa(LuaManager->GetLua());
+//	RegisterToLuaCActor_PathPlanner(LuaManager->GetLua());
 
 }

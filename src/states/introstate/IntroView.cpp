@@ -20,7 +20,7 @@ IntroView::IntroView( IntroModel* model ) :
 	View < IntroModel, IntroController > ( model ) {
 
 	xmlgui.reset( new XmlGui() );
-	xmlgui->parse( "./scripts/Intro/gui.xml" );
+	xmlgui->parse( "./scripts/gui/Intro/gui.xml" );
 
 	game.getGui().setTop( top = xmlgui->getWidget( "top" ) );
 	top->setFocusable( true );

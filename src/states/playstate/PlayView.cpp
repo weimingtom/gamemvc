@@ -26,7 +26,7 @@ PlayView::PlayView( PlayModel* model ) :
 	View < PlayModel, PlayController > ( model ) {
 
 	xmlgui.reset( new XmlGui() );
-	xmlgui->parse( "./scripts/Play/gui.xml" );
+	xmlgui->parse( "./scripts/gui/Play/gui.xml" );
 	game.getGui().setTop( top = xmlgui->getWidget( "top" ) );
 
 	top->requestFocus();

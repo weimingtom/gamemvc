@@ -61,13 +61,6 @@ bool CBuildingType::Load( TiXmlElement* pXMLData ) {
 
 	std::string s( pXMLData->Attribute( "image" ) );
 	m_pImage = gcn::Image::load( s );
-	/*
-
-	 CRectangle rcSource(	0,	 0,	 p->GetWidth(),	 p->GetHeight() );
-	 CPoint ptOffset( 	m_iAnchorX,	 m_iAnchorY );
-	 m_pImage = new CImage( 	p,	 rcSource,	 ptOffset );
-	 */
-
 	return true;
 
 }

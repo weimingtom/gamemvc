@@ -48,6 +48,7 @@ private:
 	 */
 	void InitParam( const std::string& config );
 	void InitSDL();
+	void InitLua();
 
 };
 
