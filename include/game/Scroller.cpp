@@ -13,8 +13,11 @@ Scroller::Scroller( const Map& map,
 					const int& resolution,
 					const int& toppadding,
 					const gcn::Rectangle& areaZone ) :
-	m_map_( map ), m_mouseMap_( map.mouseMap() ), m_Resolution_( resolution ),
-			m_TopPadding_( toppadding ), m_areaZone_( areaZone ) {
+	m_map_( map ),
+	m_mouseMap_( map.mouseMap() ),
+	m_Resolution_( resolution ),
+	m_TopPadding_( toppadding ),
+	m_areaZone_( areaZone ) {
 
 	const int iTile_W = m_mouseMap_.w();
 	const int iTile_H = m_mouseMap_.h();
