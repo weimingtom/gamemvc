@@ -1,5 +1,6 @@
 #include "CActor_PathPlanner.h"
-#include "GameWorld.h"
+
+#include "PlayModel.h"
 #include "misc/utils.h"
 #include "Graph/NodeTypeEnumerations.h"
 #include "Graph/GraphAlgorithms.h"
@@ -8,8 +9,6 @@
 
 #include "Messaging/MessageDispatcher.h"
 #include "Graph/NodeTypeEnumerations.h"
-
-#include "Graphics/SDLgdi.h"
 
 #include "CActorMapa.h"
 #include "lua/Raven_Scriptor.h"
@@ -303,7 +302,7 @@ bool CActor_PathPlanner::RequestPathToPosition( Vector2D TargetPos ) {
 #endif
 
 	//create an instance of a the distributed A* search class
-	typedef Graph_SearchAStar_TS < GameWorld::NavGraph, Heuristic_Euclid >
+	typedef Graph_SearchAStar_TS < PlayModel::NavGraph, Heuristic_Euclid >
 			AStar;
 
 	m_pCurrentSearch
@@ -347,7 +346,7 @@ bool CActor_PathPlanner::RequestPathToItem( unsigned int ItemType ) {
 
 	//create an instance of the search algorithm
 	typedef FindActiveTrigger < Trigger < CActorMapa > > t_con;
-	typedef Graph_SearchDijkstras_TS < GameWorld::NavGraph, t_con > DijSearch;
+	typedef Graph_SearchDijkstras_TS < PlayModel::NavGraph, t_con > DijSearch;
 
 	m_pCurrentSearch = new DijSearch( m_NavGraph, ClosestNodeToBot, ItemType );
 
@@ -367,7 +366,7 @@ Vector2D CActor_PathPlanner::GetNodePosition( int idx ) const {
 	return m_NavGraph.GetNode( idx ).Pos();
 }
 void CActor_PathPlanner::Render() {
-
+/*
 	if ( m_pCurrentSearch ) {
 		Path m_Path = GetPath();
 		//render all the path waypoints remaining on the path list
@@ -382,6 +381,6 @@ void CActor_PathPlanner::Render() {
 
 		}
 	}
-
+*/
 }
 

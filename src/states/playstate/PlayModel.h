@@ -10,17 +10,33 @@
 
 #include <memory>
 #include <string>
+
 #include <2d/Vector2D.h>
 #include <mvc/Model.h>
 #include <misc/Point.h>
+#include <misc/CellSpacePartition.h>
 #include <game/IsoDiamondMap.h>
+#include <game/EntityFunctionTemplates.h>
+
+#include <Graph/GraphEdgeTypes.h>
+#include <Graph/GraphNodeTypes.h>
+#include <Graph/SparseGraph.h>
+
+#include "Triggers/Trigger.h"
+#include "Triggers/TriggerSystem.h"
+
+#include "navigation/PathManager.h"
 
 #include "CellMapaPartition.h"
 #include "CTerrainMapaManager.h"
 #include "CBuildingMapaManager.h"
 #include "CResourceMapaManager.h"
+#include "CActorMapaManager.h"
 
 class TiXmlElement;
+class CActor_PathPlanner;
+class CActorMapa;
+class Wall2D;
 
 class PlayModel: public Model
 {
@@ -36,6 +52,13 @@ public:
 
 	typedef CellMapaPartition < BaseGameEntity* > CellPartition;
 
+	typedef NavGraphNode < Trigger < CActorMapa >* > GraphNode;
+	typedef SparseGraph < GraphNode, NavGraphEdge > NavGraph;
+	typedef CellSpacePartition < NavGraph::NodeType* > CellSpace;
+
+	typedef Trigger < CActorMapa > TriggerType;
+	typedef TriggerSystem < TriggerType > TheTriggerSystem;
+
 	PlayModel();
 	virtual ~PlayModel();
 
@@ -46,8 +69,6 @@ public:
 	int getResolution();
 	int getTopPadding();
 
-	CellPartition* const GetCellPartition() const;
-
 	void Update();
 
 	std::vector < CTerrainMapa* > ObtainTerrainCell( const gcn::Point& pLocal );
@@ -57,6 +78,34 @@ public:
 	ObtainResourceCell( const gcn::Point& pLocal );
 	IsoDiamondMap& getMap() const;
 
+	NavGraph& GetNavGraph() const {
+		return *m_pNavGraph;
+	}
+	PathManager < CActor_PathPlanner >* const GetPathManager() {
+		return m_pPathManager;
+	}
+
+	CellSpace* const GetCellSpace() const {
+		return m_pSpacePartition;
+	}
+	CellPartition* const GetCellMapa() const {
+		return m_pMapaPartition.get();
+	}
+	const std::vector < Wall2D* >& GetWalls() const {
+		return m_Walls;
+	}
+	const std::vector < CActorMapa* >& GetAllBots() {
+		return m_Vehicles;
+	}
+	void TagVehiclesWithinViewRange( 	BaseGameEntity* pVehicle,
+										double range ) {
+		TagNeighbors( 	pVehicle,
+						m_Vehicles,
+						range );
+	}
+	bool isPathObstructed( 	Vector2D A,
+							Vector2D B,
+							double BoundingRadius ) const;
 private:
 
 	PlayModel::EndTypes m_endtype;
@@ -71,9 +120,23 @@ private:
 	int m_iCellsX;
 	int m_iCellsY;
 
-	std::auto_ptr < CellPartition > m_pCellPartition; //! Division del mapa del juego.
+	std::auto_ptr < CellPartition > m_pMapaPartition; //! Division del mapa isometrico?.
+
+	//the graph nodes will be partitioned enabling fast lookup
+	CellSpace* m_pSpacePartition;
 
 	std::auto_ptr < IsoDiamondMap > m_map;
+
+	NavGraph* m_pNavGraph; //! This Map navigation graph.
+
+	//this class manages all the path planning requests
+	PathManager < CActor_PathPlanner >* m_pPathManager;
+
+	//the walls that comprise the current map's architecture.
+	std::vector < Wall2D* > m_Walls;
+
+	//a container of all the moving entities
+	std::vector < CActorMapa* > m_Vehicles;
 
 	typedef std::auto_ptr < CTerrainMapaManager > CTerrainMapaManager_ptr;
 	typedef std::auto_ptr < CBuildingMapaManager > CBuildingMapaManager_ptr;

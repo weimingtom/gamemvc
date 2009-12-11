@@ -1,6 +1,7 @@
 #include "Goal_FollowPath.h"
+
 #include "../CActorMapa.h"
-#include "../GameWorld.h"
+#include "../PlayModel.h"
 
 #include "Goal_TraverseEdge.h"
 
@@ -86,7 +87,7 @@ int Goal_FollowPath::Process() {
 //---------------------------- Render -----------------------------------------
 //-----------------------------------------------------------------------------
 void Goal_FollowPath::Render() {
-
+/*
 	//render all the path waypoints remaining on the path list
 	std::list < PathEdge >::iterator it;
 	for ( it = m_Path.begin(); it != m_Path.end(); ++it ) {
@@ -100,6 +101,6 @@ void Goal_FollowPath::Render() {
 
 	//forward the request to the subgoals
 	Goal_Composite < CActorMapa >::Render();
-
+*/
 }
 

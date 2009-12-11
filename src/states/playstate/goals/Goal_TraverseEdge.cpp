@@ -4,7 +4,6 @@
 #include "../SteeringBehaviors.h"
 #include "Time/CrudeTimer.h"
 #include "../CActor_PathPlanner.h"
-// #include "Graphics/SDLgdi.h"
 #include "../lua/Raven_Scriptor.h"
 
 //---------------------------- ctor -------------------------------------------
@@ -132,7 +131,7 @@ void Goal_TraverseEdge::Terminate() {
 //----------------------------- Render ----------------------------------------
 //-----------------------------------------------------------------------------
 void Goal_TraverseEdge::Render() {
-
+/*
 	if ( m_iStatus == active ) {
 		gdi->SetPenColor( CColor::Blue );
 		gdi->LineISO( m_pOwner->Pos(), m_Edge.Destination() );
@@ -140,5 +139,6 @@ void Goal_TraverseEdge::Render() {
 		gdi->SetPenColor( CColor::Black );
 		gdi->CircleISO( m_Edge.Destination(), 3 );
 	}
+*/
 }
 

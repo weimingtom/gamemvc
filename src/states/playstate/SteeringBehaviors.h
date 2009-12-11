@@ -18,7 +18,7 @@
 class CActorMapa;
 class Wall2D;
 class BaseGameEntity;
-class GameWorld;
+class PlayModel;
 
 //--------------------------- Constants ----------------------------------
 
@@ -42,7 +42,7 @@ public:
 		dithered
 	};
 
-	SteeringBehavior( 	GameWorld* world,
+	SteeringBehavior( 	PlayModel* world,
 						CActorMapa* agent );
 
 	virtual ~SteeringBehavior();
@@ -158,7 +158,7 @@ private:
 private:
 
 	//pointer to the world data
-	GameWorld* m_pWorld;
+	PlayModel* m_pWorld;
 
 	//a pointer to the owner of this instance
 	CActorMapa* m_pCActorMapa;

@@ -56,7 +56,7 @@ bool CBuildingMapa::Load( TiXmlElement* pXMLData ) {
 	 */
 	SetPos( m_pModel->getMap().MapToLocal( 	p.GetX(),
 											p.GetY() ) );
-	m_pModel->GetCellPartition()->AddEntity( this );
+	m_pModel->GetCellMapa()->AddEntity( this );
 	return true;
 }
 void CBuildingMapa::Draw( 	gcn::Graphics* graphics,

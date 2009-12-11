@@ -13,20 +13,17 @@ using namespace std;
 
 #include <boost/shared_ptr.hpp>
 
-#include <SDL++/Point.h>
-
-#include "misc/Smoother.h"
-
-#include "game/MovingEntity.h"
+#include <misc/Point.h>
+#include <misc/Smoother.h>
 #include <Goals/Goal.h>
+#include "game/MovingEntity.h"
 
-class GameWorld;
+class PlayModel;
 class Vector2D;
 class CActorType;
 class CActor_PathPlanner;
 class Goal_Think;
 class SteeringBehavior;
-class CCanvas;
 class ModifierGoalActor;
 
 class CActorMapa: public MovingEntity
@@ -44,18 +41,18 @@ public:
 
 	/*!
 	 *
-	 * @param elGameWorld
+	 * @param elPlayModel
 	 * @param laPosicion
 	 * @param elActorTipo
 	 * @return
 	 */
-	CActorMapa( GameWorld* elGameWorld,
+	CActorMapa( PlayModel* elPlayModel,
 				Vector2D laPosicion,
 				CActorType* elActorTipo );
 	virtual ~CActorMapa();
 	//-------------------------------------------accessor methods
 
-	GameWorld* const World() const {
+	PlayModel* const World() const {
 		return m_pWorld;
 	}
 
@@ -120,8 +117,10 @@ public:
 
 	void Update( long iElapsedTicks );
 	virtual bool HandleMessage( const Telegram& msg );
+	/*
 	void Draw( 	CCanvas* pDestSurface,
-				CPoint point );
+				gcn::Point point );
+	*/
 	void Render();
 
 	bool isAtPosition( Vector2D pos ) const;
@@ -179,7 +178,7 @@ public:
 private:
 	//a pointer to the world data. So a vehicle can access any obstacle,
 	//path, wall or agent data
-	GameWorld* m_pWorld;
+	PlayModel* m_pWorld;
 
 	CActorType* m_elActorTipo; //! Puntero al tipo de actor que estamos tratando.
 

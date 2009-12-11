@@ -11,7 +11,7 @@
 //  Author: Mat Buckland (fup@ai-junkie.com)
 //
 //------------------------------------------------------------------------
-#include "Graphics/SDLgdi.h"
+
 #include "2d/Vector2D.h"
 #include <fstream>
 
@@ -33,12 +33,15 @@ public:
 	Wall2D() {
 	}
 
-	Wall2D( Vector2D A, Vector2D B ) :
+	Wall2D( Vector2D A,
+			Vector2D B ) :
 		m_vA( A ), m_vB( B ) {
 		CalculateNormal();
 	}
 
-	Wall2D( Vector2D A, Vector2D B, Vector2D N ) :
+	Wall2D( Vector2D A,
+			Vector2D B,
+			Vector2D N ) :
 		m_vA( A ), m_vB( B ), m_vN( N ) {
 	}
 
@@ -47,21 +50,21 @@ public:
 	}
 
 	virtual void Render( bool RenderNormals = false ) const {
+		/*
+		 //		gdi->GreenPen();
+		 gdi->LineISO( m_vA, m_vB );
 
-		//		gdi->GreenPen();
-		gdi->LineISO( m_vA, m_vB );
+		 //render the normals if rqd
+		 if ( RenderNormals ) {
+		 int MidX = (int) ( ( m_vA.x + m_vB.x ) / 2 );
+		 int MidY = (int) ( ( m_vA.y + m_vB.y ) / 2 );
 
-		//render the normals if rqd
-		if ( RenderNormals ) {
-			int MidX = (int) ( ( m_vA.x + m_vB.x ) / 2 );
-			int MidY = (int) ( ( m_vA.y + m_vB.y ) / 2 );
-
-			gdi->LineISO( 	MidX,
-							MidY,
-							(int) ( MidX + ( m_vN.x * 5 ) ),
-							(int) ( MidY + ( m_vN.y * 5 ) ) );
-		}
-
+		 gdi->LineISO( 	MidX,
+		 MidY,
+		 (int) ( MidX + ( m_vN.x * 5 ) ),
+		 (int) ( MidY + ( m_vN.y * 5 ) ) );
+		 }
+		 */
 	}
 
 	Vector2D From() const {
@@ -103,13 +106,16 @@ public:
 		double x, y;
 
 		in >> x >> y;
-		SetFrom( Vector2D( x, y ) );
+		SetFrom( Vector2D( 	x,
+							y ) );
 
 		in >> x >> y;
-		SetTo( Vector2D( x, y ) );
+		SetTo( Vector2D( 	x,
+							y ) );
 
 		in >> x >> y;
-		SetNormal( Vector2D( x, y ) );
+		SetNormal( Vector2D( 	x,
+								y ) );
 	}
 
 };

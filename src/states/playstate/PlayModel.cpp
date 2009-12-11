@@ -11,6 +11,8 @@
 
 #include <misc/debug.h>
 
+#include <2d/WallIntersectionTests.h>
+
 #include <game/GameException.h>
 #include <game/database/CMouseMapManager.h>
 
@@ -19,7 +21,7 @@
 #include "CResourceMapa.h"
 
 PlayModel::PlayModel() :
-	Model(), m_endtype( PlayModel::CONTINUE ), m_pCellPartition( NULL ) {
+	Model(), m_endtype( PlayModel::CONTINUE ), m_pMapaPartition( NULL ) {
 
 	//
 	//	Cargar los datos de este juego.
@@ -53,8 +55,8 @@ std::vector < CTerrainMapa* > PlayModel::ObtainTerrainCell( const gcn::Point& pL
 	std::vector < CTerrainMapa* > terrainCell;
 
 	CellMapa < BaseGameEntity* > cell =
-			GetCellPartition()->GetCell( Vector2D( 	pLocal.GetX(),
-													pLocal.GetY() ) );
+			GetCellMapa()->GetCell( Vector2D( 	pLocal.GetX(),
+												pLocal.GetY() ) );
 
 	std::list < BaseGameEntity* >::iterator iter;
 	for ( iter = cell.Members.begin(); iter != cell.Members.end(); ++iter ) {
@@ -73,8 +75,8 @@ std::vector < CBuildingMapa* > PlayModel::ObtainBuildingCell( const gcn::Point& 
 	std::vector < CBuildingMapa* > buildingCell;
 
 	CellMapa < BaseGameEntity* > cell =
-			GetCellPartition()->GetCell( Vector2D( 	pLocal.GetX(),
-													pLocal.GetY() ) );
+			GetCellMapa()->GetCell( Vector2D( 	pLocal.GetX(),
+												pLocal.GetY() ) );
 
 	std::list < BaseGameEntity* >::iterator iter;
 	for ( iter = cell.Members.begin(); iter != cell.Members.end(); ++iter ) {
@@ -86,6 +88,7 @@ std::vector < CBuildingMapa* > PlayModel::ObtainBuildingCell( const gcn::Point& 
 
 		}
 	}
+
 	return buildingCell;
 }
 std::vector < CResourceMapa* > PlayModel::ObtainResourceCell( const gcn::Point& pLocal ) {
@@ -93,8 +96,8 @@ std::vector < CResourceMapa* > PlayModel::ObtainResourceCell( const gcn::Point& 
 	std::vector < CResourceMapa* > ResourceCell;
 
 	CellMapa < BaseGameEntity* > cell =
-			GetCellPartition()->GetCell( Vector2D( 	pLocal.GetX(),
-													pLocal.GetY() ) );
+			GetCellMapa()->GetCell( Vector2D( 	pLocal.GetX(),
+												pLocal.GetY() ) );
 
 	std::list < BaseGameEntity* >::iterator iter;
 	for ( iter = cell.Members.begin(); iter != cell.Members.end(); ++iter ) {
@@ -106,6 +109,7 @@ std::vector < CResourceMapa* > PlayModel::ObtainResourceCell( const gcn::Point& 
 
 		}
 	}
+
 	return ResourceCell;
 }
 int PlayModel::getResolution() {
@@ -118,16 +122,40 @@ int PlayModel::getTopPadding() {
 	return m_iTopPadding;
 
 }
-PlayModel::CellPartition* const PlayModel::GetCellPartition() const {
-
-	return m_pCellPartition.get();
-
-}
 IsoDiamondMap& PlayModel::getMap() const {
-
 
 	return *m_map.get();
 
+}
+//------------------------- isPathObstructed ----------------------------------
+//
+//  returns true if a bot cannot move from A to B without bumping into
+//  world geometry. It achieves this by stepping from A to B in steps of
+//  size BoundingRadius and testing for intersection with world geometry at
+//  each point.
+//-----------------------------------------------------------------------------
+bool PlayModel::isPathObstructed( 	Vector2D A,
+									Vector2D B,
+									double BoundingRadius ) const {
+	Vector2D ToB = Vec2DNormalize( B - A );
+
+	Vector2D curPos = A;
+
+	while ( Vec2DDistanceSq( 	curPos,
+								B ) > BoundingRadius * BoundingRadius ) {
+		//advance curPos one step
+		curPos += ToB * 0.5 * BoundingRadius;
+
+		//test all walls against the new position
+		if ( doWallsIntersectCircle( 	GetWalls(),
+										curPos,
+										BoundingRadius ) ) {
+			return true;
+		}
+
+	}
+
+	return false;
 }
 /*
  * ---------------------------------------------------------------------------------
@@ -162,7 +190,7 @@ void PlayModel::loadGame( const std::string& mapData ) {
 	m_iCellsX = m_iResolution;
 	m_iCellsY = m_iResolution;
 
-	m_pCellPartition.reset( new
+	m_pMapaPartition.reset( new
 			CellMapaPartition < BaseGameEntity* > ( m_iSizeX,
 													m_iSizeY,
 													m_iCellsX,

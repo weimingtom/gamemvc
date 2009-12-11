@@ -27,7 +27,7 @@ void CTerrainMapa::SetTile( CTile* tile,
 
 	SetPos( m_pModel->getMap().MapToLocal( 	p.GetX(),
 											p.GetY() ) );
-	m_pModel->GetCellPartition()->AddEntity( this );
+	m_pModel->GetCellMapa()->AddEntity( this );
 
 }
 void CTerrainMapa::Draw( 	gcn::Graphics* graphics,

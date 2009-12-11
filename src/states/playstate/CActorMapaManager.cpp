@@ -8,26 +8,23 @@
 
 #include <luabind/luabind.hpp>
 #include <luabind/adopt_policy.hpp>
-using namespace luabind;
 
 #include <tinyxml.h>
 
 #include <misc/utils.h>
-
 #include <game/GameException.h>
 #include <game/EntityManager.h>
-
-#include <gameengine/CActorManager.h>
-#include <gameengine/CActorType.h>
+#include <game/database/CActorManager.h>
+#include <game/database/CActorType.h>
 
 #include <Lua/CLuaManager.h>
 
-#include "GameWorld.h"
+#include "PlayModel.h"
 
 #include "CActorMapa.h"
 
-CActorMapaManager::CActorMapaManager( GameWorld* pWorld ) :
-	m_pWorld( pWorld ) {
+CActorMapaManager::CActorMapaManager( PlayModel* pModel ) :
+	m_pModel( pModel ) {
 
 }
 
@@ -41,8 +38,7 @@ bool CActorMapaManager::Load( TiXmlElement* pXMLData ) {
 
 	int x;
 	int y;
-	if ( !pXMLData )
-		return false;
+	if ( !pXMLData ) return false;
 
 	TiXmlElement *pActorMapa = NULL;
 	pActorMapa = pXMLData->FirstChildElement( "actor" );
@@ -77,17 +73,19 @@ bool CActorMapaManager::Load( TiXmlElement* pXMLData ) {
 		 *
 		 */
 		string elActor = pActorMapa->GetText();
-		CActorType* elActorTipo = ActorManager->GetActorType( elActor );
-		Vector2D pos = m_pWorld->IsoToLocal( x, y );
+		CActorType* elActorTipo = ActorManager.GetActorType( elActor );
+		/*
+		Vector2D pos = m_pModel->MapToLocal( 	x,
+												y );
 		CActorMapa* elActorMapa =
-				call_function < CActorMapa* > ( LuaManager->GetLua(),
+				call_function < CActorMapa* > ( LuaManager.GetLua(),
 												elActor.c_str(),
-												m_pWorld,
+												m_pModel,
 												pos, // Pasamos un valor esto deja memoria suelta
 												elActorTipo )[adopt( result )];
-
-		m_ActorMapa.push_back( elActorMapa );
-		EntityMgr->RegisterEntity(elActorMapa);
+		*/
+//		m_ActorMapa.push_back( elActorMapa );
+//		EntityMgr->RegisterEntity( elActorMapa );
 		pActorMapa = pActorMapa->NextSiblingElement( "actor" );
 
 	}

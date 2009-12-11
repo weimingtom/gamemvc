@@ -3,8 +3,7 @@
 #include "2d/Wall2D.h"
 #include "2d/Transformations.h"
 #include "misc/utils.h"
-// #include "Graphics/SDLgdi.h"
-#include "GameWorld.h"
+#include "PlayModel.h"
 #include "2d/geometry.h"
 #include "lua/Raven_Scriptor.h"
 
@@ -16,7 +15,7 @@ using std::vector;
 //------------------------- ctor -----------------------------------------
 //
 //------------------------------------------------------------------------
-SteeringBehavior::SteeringBehavior( GameWorld* world, CActorMapa* agent ) :
+SteeringBehavior::SteeringBehavior( PlayModel* world, CActorMapa* agent ) :
 
 			m_pWorld( world ),
 			m_pCActorMapa( agent ),

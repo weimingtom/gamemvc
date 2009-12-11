@@ -13,7 +13,6 @@
 
 #include <stdexcept>
 struct Telegram;
-#include "Graphics/SDLgdi.h"
 #include "misc/TypeToString.h"
 
 #include "2d/Vector2D.h"
@@ -134,7 +133,7 @@ void Goal < entity_type >::ActivateIfInactive() {
 
 template < class entity_type >
 void Goal < entity_type >::RenderAtPos( Vector2D& pos, TypeToString* tts ) const {
-
+/*
 	CColor color;
 	pos.y += 15;
 	//  gdi->TransparentText();
@@ -148,7 +147,7 @@ void Goal < entity_type >::RenderAtPos( Vector2D& pos, TypeToString* tts ) const
 		color = CColor::Blue; // gdi->TextColor( 0, 0, 255 );
 
 	gdi->TextAtPosISO( pos.x, pos.y, tts->Convert( GetType() ), color );
-
+*/
 }
 
 #endif

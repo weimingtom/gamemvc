@@ -3,8 +3,6 @@
 #include "../SteeringBehaviors.h"
 #include "Time/CrudeTimer.h"
 #include "../CActor_PathPlanner.h"
-#include "Graphics/SDLgdi.h"
-
 
 //---------------------------- ctor -------------------------------------------
 //-----------------------------------------------------------------------------
@@ -98,7 +96,7 @@ void Goal_SeekToPosition::Terminate() {
 //----------------------------- Render ----------------------------------------
 //-----------------------------------------------------------------------------
 void Goal_SeekToPosition::Render() {
-
+/*
 	if ( m_iStatus == active ) {
 		//    gdi->GreenBrush();
 		gdi->SetPenColor(CColor::Red);
@@ -110,6 +108,6 @@ void Goal_SeekToPosition::Render() {
 		gdi->SetPenColor(CColor::Red);
 		gdi->CircleISO( m_vPosition, 3 );
 	}
-
+*/
 }
 

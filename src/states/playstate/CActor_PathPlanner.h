@@ -14,7 +14,7 @@
 #include "Graph/GraphAlgorithms.h"
 #include "Graph/SparseGraph.h"
 #include "navigation/PathEdge.h"
-#include "GameWorld.h"
+#include "PlayModel.h"
 
 class CActorMapa;
 
@@ -31,8 +31,8 @@ private:
 public:
 
 	//for ease of use typdef the graph edge/node types used by the navgraph
-	typedef GameWorld::NavGraph::EdgeType EdgeType;
-	typedef GameWorld::NavGraph::NodeType NodeType;
+	typedef PlayModel::NavGraph::EdgeType EdgeType;
+	typedef PlayModel::NavGraph::NodeType NodeType;
 	typedef std::list<PathEdge> Path;
 
 private:
@@ -41,7 +41,7 @@ private:
 	CActorMapa* m_pOwner;
 
 	//a reference to the navgraph
-	const GameWorld::NavGraph& m_NavGraph;
+	const PlayModel::NavGraph& m_NavGraph;
 
 	//a pointer to an instance of the current graph search algorithm.
 	Graph_SearchTimeSliced<EdgeType>* m_pCurrentSearch;

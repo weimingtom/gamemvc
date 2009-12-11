@@ -3,12 +3,10 @@ using namespace luabind;
 
 #include "Goal_MoveToPosition.h"
 #include "../CActorMapa.h"
-#include "../GameWorld.h"
 #include "../CActor_PathPlanner.h"
 #include "../SteeringBehaviors.h"
 #include "Messaging/Telegram.h"
 #include "Messaging/MessageDispatcher.h"
-#include "Graphics/SDLgdi.h"
 #include "Lua/CLuaManager.h"
 
 #include "Goal_SeekToPosition.h"
@@ -150,7 +148,7 @@ bool Goal_MoveToPosition::HandleMessage( const Telegram& msg ) {
 //-------------------------------- Render -------------------------------------
 //-----------------------------------------------------------------------------
 void Goal_MoveToPosition::Render() {
-
+/*
 	//forward the request to the subgoals
 	Goal_Composite < CActorMapa >::Render();
 
@@ -164,6 +162,6 @@ void Goal_MoveToPosition::Render() {
 	//	gdi->YellowBrush();
 	gdi->SetPenColor( CColor::Yellow );
 	gdi->CircleISO( m_vDestination, 2 );
-
+*/
 }
 

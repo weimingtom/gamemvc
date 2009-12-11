@@ -9,26 +9,28 @@
 #define CACTORMAPAMANAGER_H_
 
 #include <vector>
-using namespace std;
 
 class TiXmlElement;
 class CActorMapa;
-class GameWorld;
+class PlayModel;
 
-class CActorMapaManager {
+#include "CActorMapa.h"
+
+class CActorMapaManager
+{
 public:
 
-	CActorMapaManager(GameWorld* pWorld);
+	CActorMapaManager( PlayModel* pModel );
 	~CActorMapaManager();
 
-	bool 		Load(TiXmlElement* pXMLData);
+	bool Load( TiXmlElement* pXMLData );
 
-	vector<CActorMapa*>& _getActors();
+	std::vector < CActorMapa* >& _getActors();
 
 private:
 
-	GameWorld*						m_pWorld;
-	vector<CActorMapa*>				m_ActorMapa;
+	PlayModel* m_pModel;
+	std::vector < CActorMapa* > m_ActorMapa;
 
 };
 

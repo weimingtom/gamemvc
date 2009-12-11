@@ -8,18 +8,13 @@
 
 #include <cmath>
 #include <luabind/luabind.hpp>
-using namespace luabind;
-
-#include <Graphics/SDLgdi.h>
-#include <SDL++/Canvas.h>
-#include <SDL++/Image.h>
 
 #include <states/playstate/lua/Raven_Scriptor.h>
 
-#include "gameengine/CActorType.h"
-#include "gameengine/CPersonality.h"
-#include "gameengine/CStatus.h"
-#include "gameengine/CDir.h"
+#include "game/database/CActorType.h"
+#include "game/database/CPersonality.h"
+#include "game/database/CStatus.h"
+#include "game/database/CDir.h"
 #include "2d/Vector2D.h"
 #include "2d/geometry.h"
 
@@ -34,10 +29,10 @@ using namespace luabind;
 
 #include "CActor_PathPlanner.h"
 #include "SteeringBehaviors.h"
-#include "GameWorld.h"
+#include "PlayModel.h"
 #include "ModifierGoalActor.h"
 
-CActorMapa::CActorMapa( GameWorld* elGameWorld,
+CActorMapa::CActorMapa( PlayModel* elPlayModel,
 						Vector2D laPosicion,
 						CActorType* elActorTipo ) :
 	MovingEntity( 	laPosicion,
@@ -55,7 +50,7 @@ CActorMapa::CActorMapa( GameWorld* elGameWorld,
 
 					script->GetDouble( "MaxHeadTurnRate" ),
 					script->GetDouble( "MaxSteeringForce" ) ),
-			m_pWorld( elGameWorld ),
+			m_pWorld( elPlayModel ),
 			m_elActorTipo( elActorTipo ),
 			m_LastTimeElapsed( 0 ),
 			m_bSelect( false ),
@@ -67,7 +62,7 @@ CActorMapa::CActorMapa( GameWorld* elGameWorld,
 	InitializeBuffer();
 
 	//set up the steering behavior class
-	m_pSteering = new SteeringBehavior( elGameWorld, this );
+	m_pSteering = new SteeringBehavior( elPlayModel, this );
 	//create the navigation module
 	m_pPathPlanner = new CActor_PathPlanner( this );
 	//set up the smoother
@@ -93,7 +88,7 @@ void CActorMapa::SetBrain(Goal_Think* brain){
 		m_pBrain = brain;
 }
 int CActorMapa::GetMaxFrames() const {
-	return m_elActorTipo->GetPersonality(m_Personality)->GetStatus( m_State )->GetDir( m_Dir )->GetMaxImages();
+	return m_elActorTipo->GetPersonality(m_Personality)->GetStatus( m_State )->GetDir( m_Dir )->GetMaxFrames();
 }
 void CActorMapa::Update( long iElapsedTicks ) {
 
@@ -162,7 +157,7 @@ void CActorMapa::UpdateMovement( double time_elapsed ) {
 
 	}
 	//treat the screen as a Rectangle
-	WrapInside( m_vPos, m_pWorld->cxClient(), m_pWorld->cyClient() );
+//	WrapInside( m_vPos, m_pWorld->cxClient(), m_pWorld->cyClient() );
 
 	m_pWorld->GetCellMapa()->UpdateEntity(this,OldPos);
 
@@ -190,6 +185,7 @@ bool CActorMapa::HandleMessage( const Telegram& msg ) {
 	return false;
 
 }
+/*
 void CActorMapa::Draw( 	CCanvas* pDestSurface,
 						CPoint puntoDest ) {
 
@@ -216,9 +212,11 @@ void CActorMapa::Draw( 	CCanvas* pDestSurface,
 	}
 
 }
+*/
 //-------------------------------- Render -------------------------------------
 //-----------------------------------------------------------------------------
 void CActorMapa::Render() {
+	/*
 	//a vector to hold the transformed vertices
 	static std::vector < Vector2D > m_vecVehicleVBTrans;
 
@@ -268,7 +266,7 @@ void CActorMapa::Render() {
 
 		GetBrain()->RenderAtPos( p, GoalTypeToString::Instance() );
 	}
-
+*/
 }
 
 //------------------------ isAtPosition ---------------------------------------
