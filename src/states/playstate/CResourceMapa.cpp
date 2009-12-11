@@ -12,7 +12,7 @@
 
 #include <game/GameException.h>
 
-#include <game/database/BaseGameEntity.h>
+#include <game/BaseGameEntity.h>
 #include <game/database/CResourceManager.h>
 #include <game/database/CResourceType.h>
 

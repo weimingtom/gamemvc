@@ -14,7 +14,7 @@
 #include "2d/Vector2D.h"
 #include "2d/InvertedAABBox2D.h"
 
-#include "game/database/BaseGameEntity.h"
+#include "game/BaseGameEntity.h"
 
 template < class entity >
 struct CellMapa

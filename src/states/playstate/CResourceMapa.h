@@ -9,7 +9,7 @@
 #define CRESOURCEMAPA_H_
 
 #include <misc/Point.h>
-#include "game/database/BaseGameEntity.h"
+#include "game/BaseGameEntity.h"
 
 class TiXmlElement;
 class CResourceType;

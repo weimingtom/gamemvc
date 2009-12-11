@@ -8,7 +8,7 @@
 #ifndef CTERRAINMAPA_H_
 #define CTERRAINMAPA_H_
 
-#include <game/database/BaseGameEntity.h>
+#include <game/BaseGameEntity.h>
 #include <misc/Point.h>
 
 namespace gcn {

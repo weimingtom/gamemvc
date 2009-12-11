@@ -11,7 +11,7 @@
 
 #include <game/GameException.h>
 
-#include <game/database/BaseGameEntity.h>
+#include <game/BaseGameEntity.h>
 #include <game/database/CTile.h>
 
 #include <game/database/CBuildingManager.h>

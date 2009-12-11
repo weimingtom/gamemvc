@@ -7,7 +7,7 @@
 
 #include "CTerrainMapa.h"
 
-#include <game/database/BaseGameEntity.h>
+#include <game/BaseGameEntity.h>
 #include <game/database/CTile.h>
 #include <guichan.hpp>
 
