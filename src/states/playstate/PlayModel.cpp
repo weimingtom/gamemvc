@@ -202,11 +202,13 @@ void PlayModel::loadGame( const std::string& mapData ) {
 	 * 	1.- El terreno ( en funcion del tipo se modifica el path finder ).
 	 *  2.- Los recursos ( arboles , minas, etc... ).
 	 *  3.- Los Buildings.
+	 *  4.- Los Actores.
 	 *
 	 */
 	THROW_GAME_EXCEPTION_IF(!loadTerrain( pXMLData ),"Error loadTerrain");
 	THROW_GAME_EXCEPTION_IF(!loadResource( pXMLData ),"Error loadResource");
 	THROW_GAME_EXCEPTION_IF(!loadBuilding( pXMLData ), "Error loadBuilding");
+	THROW_GAME_EXCEPTION_IF(!loadActor( pXMLData ), "Error loadBuilding");
 
 	return;
 }
@@ -253,5 +255,13 @@ bool PlayModel::loadResource( TiXmlElement* pXMLData ) {
 	//
 	m_pResourceMapaManager.reset( new CResourceMapaManager( this ) );
 	return m_pResourceMapaManager->Load( pXMLData->FirstChildElement( "ResourceGroup" ) );
+
+}
+bool PlayModel::loadActor( TiXmlElement* pXMLData ) {
+	//
+	// Cargamos datos iniciales de Resources.
+	//
+	m_pActorMapaManager.reset( new CActorMapaManager( this ) );
+	return m_pActorMapaManager->Load( pXMLData->FirstChildElement( "ActorGroup" ) );
 
 }

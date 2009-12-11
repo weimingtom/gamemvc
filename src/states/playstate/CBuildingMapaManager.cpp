@@ -20,8 +20,7 @@ bool CBuildingMapaManager::Load( TiXmlElement* pXMLData ) {
 
 	if ( !pXMLData ) return false;
 
-	TiXmlElement *pBuildingMapa = NULL;
-	pBuildingMapa = pXMLData->FirstChildElement( "building" );
+	TiXmlElement *pBuildingMapa  = pXMLData->FirstChildElement( "building" );
 	// Loop through each type in the Actor
 
 	while ( pBuildingMapa ) {

@@ -28,12 +28,6 @@ CActorMapaManager::CActorMapaManager( PlayModel* pModel ) :
 
 }
 
-CActorMapaManager::~CActorMapaManager() {
-
-	DeleteSTLContainer( m_ActorMapa );
-
-}
-
 bool CActorMapaManager::Load( TiXmlElement* pXMLData ) {
 
 	int x;
@@ -72,28 +66,30 @@ bool CActorMapaManager::Load( TiXmlElement* pXMLData ) {
 		 *  	isometrica.
 		 *
 		 */
-		string elActor = pActorMapa->GetText();
+		std::string elActor = pActorMapa->GetText();
 		CActorType* elActorTipo = ActorManager.GetActorType( elActor );
-		/*
-		Vector2D pos = m_pModel->MapToLocal( 	x,
-												y );
-		CActorMapa* elActorMapa =
-				call_function < CActorMapa* > ( LuaManager.GetLua(),
-												elActor.c_str(),
-												m_pModel,
-												pos, // Pasamos un valor esto deja memoria suelta
-												elActorTipo )[adopt( result )];
-		*/
-//		m_ActorMapa.push_back( elActorMapa );
-//		EntityMgr->RegisterEntity( elActorMapa );
+
+		Vector2D pos = m_pModel->getMap().MapToLocal( 	x,
+														y );
+		CActorMapa_ptr
+				elActorMapa( luabind::call_function < CActorMapa* >( 	LuaManager.GetLua(),
+																		elActor.c_str(),
+																		m_pModel,
+																		pos, // Pasamos un valor esto deja memoria suelta
+																		elActorTipo )[luabind::adopt( luabind::result )] );
+
+		m_ActorMapa.push_back( elActorMapa );
+		EntityMgr->RegisterEntity( elActorMapa.get() );
 		pActorMapa = pActorMapa->NextSiblingElement( "actor" );
 
 	}
 	return true;
 }
-vector < CActorMapa* >& CActorMapaManager::_getActors() {
+/*
+ vector < CActorMapa* >& CActorMapaManager::_getActors() {
 
-	return m_ActorMapa;
+ return m_ActorMapa;
 
-}
+ }
+ */
 

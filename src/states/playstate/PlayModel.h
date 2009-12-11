@@ -141,10 +141,12 @@ private:
 	typedef std::auto_ptr < CTerrainMapaManager > CTerrainMapaManager_ptr;
 	typedef std::auto_ptr < CBuildingMapaManager > CBuildingMapaManager_ptr;
 	typedef std::auto_ptr < CResourceMapaManager > CResourceMapaManager_ptr;
+	typedef std::auto_ptr < CActorMapaManager > CActorMapaManager_ptr;
 
 	CTerrainMapaManager_ptr m_pTerrainMapaManager;
 	CBuildingMapaManager_ptr m_pBuildingMapaManager;
 	CResourceMapaManager_ptr m_pResourceMapaManager;
+	CActorMapaManager_ptr	m_pActorMapaManager;
 
 	void loadGame( const std::string& mapData );
 	bool loadXML( TiXmlElement* pXMLData );
@@ -152,6 +154,7 @@ private:
 	bool loadTerrain( TiXmlElement* pXMLData );
 	bool loadBuilding( TiXmlElement* pXMLData );
 	bool loadResource( TiXmlElement* pXMLData );
+	bool loadActor( TiXmlElement* pXMLData );
 
 };
 
