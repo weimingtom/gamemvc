@@ -38,7 +38,7 @@ bool CActorType::Load( TiXmlElement* pXMLData ) {
 	//
 	// Se ha de ejecutar despues de registrar las funciones lua.
 	//
-//	LuaManager->RunLuaDoFile( luaScript.c_str() );
+	LuaManager.RunLuaDoFile( luaScript );
 	return true;
 
 }
