@@ -85,11 +85,4 @@ bool CActorMapaManager::Load( TiXmlElement* pXMLData ) {
 	}
 	return true;
 }
-/*
- vector < CActorMapa* >& CActorMapaManager::_getActors() {
-
- return m_ActorMapa;
-
- }
- */
 

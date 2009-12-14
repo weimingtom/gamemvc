@@ -21,12 +21,7 @@ class CActorMapaManager
 public:
 
 	CActorMapaManager( PlayModel* pModel );
-
 	bool Load( TiXmlElement* pXMLData );
-
-
-
-//	std::vector < CActorMapa* >& _getActors();
 
 private:
 

@@ -91,7 +91,7 @@ public:
 		return m_pSpacePartition;
 	}
 	CellPartition* const GetCellMapa() const {
-		return m_pMapaPartition.get();
+		return m_pMapaPartition;
 	}
 	const std::vector < Wall2D* >& GetWalls() const {
 		return m_Walls;
@@ -122,7 +122,7 @@ private:
 	int m_iCellsX;
 	int m_iCellsY;
 
-	std::auto_ptr < CellPartition > m_pMapaPartition; //! Division del mapa isometrico?.
+	CellPartition* m_pMapaPartition; //! Division del mapa isometrico?.
 
 	//the graph nodes will be partitioned enabling fast lookup
 	CellSpace* m_pSpacePartition;
@@ -140,15 +140,10 @@ private:
 	//a container of all the moving entities
 	std::vector < CActorMapa* > m_Vehicles;
 
-	typedef std::auto_ptr < CTerrainMapaManager > CTerrainMapaManager_ptr;
-	typedef std::auto_ptr < CBuildingMapaManager > CBuildingMapaManager_ptr;
-	typedef std::auto_ptr < CResourceMapaManager > CResourceMapaManager_ptr;
-	typedef std::auto_ptr < CActorMapaManager > CActorMapaManager_ptr;
-
-	CTerrainMapaManager_ptr m_pTerrainMapaManager;
-	CBuildingMapaManager_ptr m_pBuildingMapaManager;
-	CResourceMapaManager_ptr m_pResourceMapaManager;
-	CActorMapaManager_ptr m_pActorMapaManager;
+	CTerrainMapaManager*  	m_pTerrainMapaManager;
+	CBuildingMapaManager* 	m_pBuildingMapaManager;
+	CResourceMapaManager* 	m_pResourceMapaManager;
+	CActorMapaManager* 		m_pActorMapaManager;
 
 	void loadGame( const std::string& mapData );
 	bool loadXML( TiXmlElement* pXMLData );

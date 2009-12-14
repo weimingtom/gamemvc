@@ -15,13 +15,18 @@
 
 #include <game/GameException.h>
 #include <game/database/CMouseMapManager.h>
+#include <Lua/CLuaManager.h>
+
+#include "lua/Raven_Scriptor.h"
 
 #include "CTerrainMapa.h"
 #include "CBuildingMapa.h"
 #include "CResourceMapa.h"
 
 PlayModel::PlayModel() :
-	Model(), m_endtype( PlayModel::CONTINUE ), m_pMapaPartition( NULL ) {
+	Model(), m_endtype( PlayModel::CONTINUE ), m_pMapaPartition( NULL ),
+			m_pSpacePartition( NULL ), m_pNavGraph( NULL ),
+			m_pPathManager( NULL ) {
 
 	//
 	//	Cargar los datos de este juego.
@@ -31,6 +36,21 @@ PlayModel::PlayModel() :
 }
 
 PlayModel::~PlayModel() {
+
+	delete m_pMapaPartition;
+	delete m_pNavGraph;
+	delete m_pSpacePartition;
+
+	delete m_pActorMapaManager;
+	delete m_pBuildingMapaManager;
+	delete m_pResourceMapaManager;
+	delete m_pTerrainMapaManager;
+
+	delete m_pPathManager;
+
+	DeleteSTLContainer( m_Walls );
+
+	LuaManager.RunLuaDoString( "collectgarbage (\"collect\")" ); // Recojemos Lua para no dejar memoria suelta.
 
 }
 void PlayModel::Update() {
@@ -211,11 +231,10 @@ void PlayModel::loadGame( const std::string& mapData ) {
 	m_iCellsX = m_iResolution;
 	m_iCellsY = m_iResolution;
 
-	m_pMapaPartition.reset( new
-			CellMapaPartition < BaseGameEntity* > ( m_iSizeX,
-													m_iSizeY,
-													m_iCellsX,
-													m_iCellsY ) );
+	m_pMapaPartition = new CellMapaPartition < BaseGameEntity* > ( 	m_iSizeX,
+																	m_iSizeY,
+																	m_iCellsX,
+																	m_iCellsY );
 	/*
 	 * Cargar los datos de los objetos del juego, que modifican
 	 * el posible calculo del pathfinder.
@@ -230,6 +249,10 @@ void PlayModel::loadGame( const std::string& mapData ) {
 	THROW_GAME_EXCEPTION_IF(!loadResource( pXMLData ),"Error loadResource");
 	THROW_GAME_EXCEPTION_IF(!loadBuilding( pXMLData ), "Error loadBuilding");
 	THROW_GAME_EXCEPTION_IF(!loadActor( pXMLData ), "Error loadBuilding");
+
+	m_pPathManager
+			= new
+					PathManager < CActor_PathPlanner > ( script->GetDouble( "MaxSearchCyclesPerUpdateStep" ) );
 
 	return;
 }
@@ -258,7 +281,7 @@ bool PlayModel::loadTerrain( TiXmlElement* pXMLData ) {
 	//
 	// Procesamos el terreno.
 	//
-	m_pTerrainMapaManager.reset( new CTerrainMapaManager( this ) );
+	m_pTerrainMapaManager = new CTerrainMapaManager( this );
 	return m_pTerrainMapaManager->Load( pXMLData->FirstChildElement( "TerrainGroup" ) );
 
 }
@@ -266,7 +289,7 @@ bool PlayModel::loadBuilding( TiXmlElement* pXMLData ) {
 	//
 	// Cargamos datos iniciales de Buildings.
 	//
-	m_pBuildingMapaManager.reset( new CBuildingMapaManager( this ) );
+	m_pBuildingMapaManager = new CBuildingMapaManager( this );
 	return m_pBuildingMapaManager->Load( pXMLData->FirstChildElement( "BuildingGroup" ) );
 
 }
@@ -274,7 +297,7 @@ bool PlayModel::loadResource( TiXmlElement* pXMLData ) {
 	//
 	// Cargamos datos iniciales de Resources.
 	//
-	m_pResourceMapaManager.reset( new CResourceMapaManager( this ) );
+	m_pResourceMapaManager = new CResourceMapaManager( this );
 	return m_pResourceMapaManager->Load( pXMLData->FirstChildElement( "ResourceGroup" ) );
 
 }
@@ -282,7 +305,7 @@ bool PlayModel::loadActor( TiXmlElement* pXMLData ) {
 	//
 	// Cargamos datos iniciales de Resources.
 	//
-	m_pActorMapaManager.reset( new CActorMapaManager( this ) );
+	m_pActorMapaManager = new CActorMapaManager( this );
 	return m_pActorMapaManager->Load( pXMLData->FirstChildElement( "ActorGroup" ) );
 
 }
