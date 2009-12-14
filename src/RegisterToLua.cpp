@@ -6,8 +6,6 @@
  */
 #include "RegisterToLua.h"
 
-#include <boost/shared_ptr.hpp>
-
 #include "Messaging/Telegram.h"
 #include "Messaging/MessageDispatcher.h"
 #include "Time/CrudeTimer.h"
@@ -19,7 +17,6 @@
 #include "states/playstate/PlayModel.h"
 #include "states/playstate/SteeringBehaviors.h"
 #include "states/playstate/CActor_PathPlanner.h"
-// #include "states/playstate/CModel.h"
 
 #include <Goals/Goal.h>
 #include <Goals/Goal_Composite.h>
