@@ -135,8 +135,8 @@ void MyGame::InitLua() {
 	RegisterToLuaVector2D(LuaManager.GetLua());
 	RegisterToLuaTelegram(LuaManager.GetLua());
 	RegisterToLuaCActorType(LuaManager.GetLua());
-//	RegisterToLuaModel(LuaManager.GetLua());
-//	RegisterToLuaGameWorld(LuaManager.GetLua());
+	RegisterToLuaModel(LuaManager.GetLua());
+	RegisterToLuaGameWorld(LuaManager.GetLua());
 	RegisterToLuaBaseGameEntity(LuaManager.GetLua());
 	RegisterToLuaMovingEntity(LuaManager.GetLua());
 	RegisterToLuaActorMapa(LuaManager.GetLua());

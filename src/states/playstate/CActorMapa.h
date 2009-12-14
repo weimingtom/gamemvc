@@ -117,10 +117,11 @@ public:
 
 	void Update( long iElapsedTicks );
 	virtual bool HandleMessage( const Telegram& msg );
-	/*
-	void Draw( 	CCanvas* pDestSurface,
-				gcn::Point point );
-	*/
+
+	void Draw( 	gcn::Graphics* graphics,
+				int destX,
+				int destY );
+
 	void Render();
 
 	bool isAtPosition( Vector2D pos ) const;

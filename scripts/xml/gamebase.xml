@@ -35,181 +35,181 @@
 				<status name="stopped" frames="2000">
 					<dir name="S" >
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/stopped0000.bmp" />
+							image="./data/actor/harry/stopped0000.png" />
 					</dir>
 					<dir name="SW" >
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/stopped0001.bmp" />
+							image="./data/actor/harry/stopped0001.png" />
 					</dir>
 					<dir name="W" >
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/stopped0002.bmp" />
+							image="./data/actor/harry/stopped0002.png" />
 					</dir>
 					<dir name="NW" >
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/stopped0003.bmp" />
+							image="./data/actor/harry/stopped0003.png" />
 					</dir>
 					<dir name="N" >
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/stopped0004.bmp" />
+							image="./data/actor/harry/stopped0004.png" />
 					</dir>
 					<dir name="NE" >
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/stopped0005.bmp" />
+							image="./data/actor/harry/stopped0005.png" />
 					</dir>
 					<dir name="E" >
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/stopped0006.bmp" />
+							image="./data/actor/harry/stopped0006.png" />
 					</dir>
 					<dir name="SE" >
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/stopped0007.bmp" />
+							image="./data/actor/harry/stopped0007.png" />
 					</dir>
 				</status>
 				<status name="walking" frames="60">
 					<dir name="N" >
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking n0000.bmp" />
+							image="./data/actor/harry/walking n0000.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking n0001.bmp" />
+							image="./data/actor/harry/walking n0001.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking n0002.bmp" />
+							image="./data/actor/harry/walking n0002.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking n0003.bmp" />
+							image="./data/actor/harry/walking n0003.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking n0004.bmp" />
+							image="./data/actor/harry/walking n0004.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking n0005.bmp" />
+							image="./data/actor/harry/walking n0005.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking n0006.bmp" />
+							image="./data/actor/harry/walking n0006.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking n0007.bmp" />
+							image="./data/actor/harry/walking n0007.png" />
 					</dir>
 					<dir name="NE" >
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking ne0000.bmp" />
+							image="./data/actor/harry/walking ne0000.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking ne0001.bmp" />
+							image="./data/actor/harry/walking ne0001.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking ne0002.bmp" />
+							image="./data/actor/harry/walking ne0002.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking ne0003.bmp" />
+							image="./data/actor/harry/walking ne0003.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking ne0004.bmp" />
+							image="./data/actor/harry/walking ne0004.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking ne0005.bmp" />
+							image="./data/actor/harry/walking ne0005.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking ne0006.bmp" />
+							image="./data/actor/harry/walking ne0006.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking ne0007.bmp" />
+							image="./data/actor/harry/walking ne0007.png" />
 					</dir>
 					<dir name="E" >
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking e0000.bmp" />
+							image="./data/actor/harry/walking e0000.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking e0001.bmp" />
+							image="./data/actor/harry/walking e0001.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking e0002.bmp" />
+							image="./data/actor/harry/walking e0002.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking e0003.bmp" />
+							image="./data/actor/harry/walking e0003.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking e0004.bmp" />
+							image="./data/actor/harry/walking e0004.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking e0005.bmp" />
+							image="./data/actor/harry/walking e0005.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking e0006.bmp" />
+							image="./data/actor/harry/walking e0006.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking e0007.bmp" />
+							image="./data/actor/harry/walking e0007.png" />
 					</dir>
 					<dir name="SE" >
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking se0000.bmp" />
+							image="./data/actor/harry/walking se0000.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking se0001.bmp" />
+							image="./data/actor/harry/walking se0001.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking se0002.bmp" />
+							image="./data/actor/harry/walking se0002.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking se0003.bmp" />
+							image="./data/actor/harry/walking se0003.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking se0004.bmp" />
+							image="./data/actor/harry/walking se0004.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking se0005.bmp" />
+							image="./data/actor/harry/walking se0005.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking se0006.bmp" />
+							image="./data/actor/harry/walking se0006.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking se0007.bmp" />
+							image="./data/actor/harry/walking se0007.png" />
 					</dir>
 					<dir name="S" >
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking s0000.bmp" />
+							image="./data/actor/harry/walking s0000.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking s0001.bmp" />
+							image="./data/actor/harry/walking s0001.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking s0002.bmp" />
+							image="./data/actor/harry/walking s0002.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking s0003.bmp" />
+							image="./data/actor/harry/walking s0003.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking s0004.bmp" />
+							image="./data/actor/harry/walking s0004.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking s0005.bmp" />
+							image="./data/actor/harry/walking s0005.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking s0006.bmp" />
+							image="./data/actor/harry/walking s0006.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking s0007.bmp" />
+							image="./data/actor/harry/walking s0007.png" />
 					</dir>
 					<dir name="SW" >
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking sw0000.bmp" />
+							image="./data/actor/harry/walking sw0000.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking sw0001.bmp" />
+							image="./data/actor/harry/walking sw0001.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking sw0002.bmp" />
+							image="./data/actor/harry/walking sw0002.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking sw0003.bmp" />
+							image="./data/actor/harry/walking sw0003.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking sw0004.bmp" />
+							image="./data/actor/harry/walking sw0004.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking sw0005.bmp" />
+							image="./data/actor/harry/walking sw0005.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking sw0006.bmp" />
+							image="./data/actor/harry/walking sw0006.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking sw0007.bmp" />
+							image="./data/actor/harry/walking sw0007.png" />
 					</dir>
 					<dir name="W" >
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking w0000.bmp" />
+							image="./data/actor/harry/walking w0000.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking w0001.bmp" />
+							image="./data/actor/harry/walking w0001.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking w0002.bmp" />
+							image="./data/actor/harry/walking w0002.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking w0003.bmp" />
+							image="./data/actor/harry/walking w0003.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking w0004.bmp" />
+							image="./data/actor/harry/walking w0004.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking w0005.bmp" />
+							image="./data/actor/harry/walking w0005.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking w0006.bmp" />
+							image="./data/actor/harry/walking w0006.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking w0007.bmp" />
+							image="./data/actor/harry/walking w0007.png" />
 					</dir>
 					<dir name="NW" >
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking nw0000.bmp" />
+							image="./data/actor/harry/walking nw0000.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking nw0001.bmp" />
+							image="./data/actor/harry/walking nw0001.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking nw0002.bmp" />
+							image="./data/actor/harry/walking nw0002.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking nw0003.bmp" />
+							image="./data/actor/harry/walking nw0003.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking nw0004.bmp" />
+							image="./data/actor/harry/walking nw0004.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking nw0005.bmp" />
+							image="./data/actor/harry/walking nw0005.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking nw0006.bmp" />
+							image="./data/actor/harry/walking nw0006.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/harry/walking nw0007.bmp" />
+							image="./data/actor/harry/walking nw0007.png" />
 					</dir>
 				</status>
 			</Personality>
@@ -219,181 +219,181 @@
 				<status name="stopped" frames="2000">
 					<dir name="S" >
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/stopped0000.bmp" />
+							image="./data/actor/lilly/stopped0000.png" />
 					</dir>
 					<dir name="SW" >
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/stopped0001.bmp" />
+							image="./data/actor/lilly/stopped0001.png" />
 					</dir>
 					<dir name="W" >
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/stopped0002.bmp" />
+							image="./data/actor/lilly/stopped0002.png" />
 					</dir>
 					<dir name="NW" >
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/stopped0003.bmp" />
+							image="./data/actor/lilly/stopped0003.png" />
 					</dir>
 					<dir name="N" >
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/stopped0004.bmp" />
+							image="./data/actor/lilly/stopped0004.png" />
 					</dir>
 					<dir name="NE" >
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/stopped0005.bmp" />
+							image="./data/actor/lilly/stopped0005.png" />
 					</dir>
 					<dir name="E" >
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/stopped0006.bmp" />
+							image="./data/actor/lilly/stopped0006.png" />
 					</dir>
 					<dir name="SE" >
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/stopped0007.bmp" />
+							image="./data/actor/lilly/stopped0007.png" />
 					</dir>
 				</status>
 				<status name="walking" frames="60">
 					<dir name="N" >
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking n0000.bmp" />
+							image="./data/actor/lilly/walking n0000.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking n0001.bmp" />
+							image="./data/actor/lilly/walking n0001.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking n0002.bmp" />
+							image="./data/actor/lilly/walking n0002.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking n0003.bmp" />
+							image="./data/actor/lilly/walking n0003.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking n0004.bmp" />
+							image="./data/actor/lilly/walking n0004.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking n0005.bmp" />
+							image="./data/actor/lilly/walking n0005.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking n0006.bmp" />
+							image="./data/actor/lilly/walking n0006.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking n0007.bmp" />
+							image="./data/actor/lilly/walking n0007.png" />
 					</dir>
 					<dir name="NE" >
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking ne0000.bmp" />
+							image="./data/actor/lilly/walking ne0000.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking ne0001.bmp" />
+							image="./data/actor/lilly/walking ne0001.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking ne0002.bmp" />
+							image="./data/actor/lilly/walking ne0002.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking ne0003.bmp" />
+							image="./data/actor/lilly/walking ne0003.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking ne0004.bmp" />
+							image="./data/actor/lilly/walking ne0004.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking ne0005.bmp" />
+							image="./data/actor/lilly/walking ne0005.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking ne0006.bmp" />
+							image="./data/actor/lilly/walking ne0006.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking ne0007.bmp" />
+							image="./data/actor/lilly/walking ne0007.png" />
 					</dir>
 					<dir name="E" >
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking e0000.bmp" />
+							image="./data/actor/lilly/walking e0000.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking e0001.bmp" />
+							image="./data/actor/lilly/walking e0001.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking e0002.bmp" />
+							image="./data/actor/lilly/walking e0002.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking e0003.bmp" />
+							image="./data/actor/lilly/walking e0003.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking e0004.bmp" />
+							image="./data/actor/lilly/walking e0004.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking e0005.bmp" />
+							image="./data/actor/lilly/walking e0005.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking e0006.bmp" />
+							image="./data/actor/lilly/walking e0006.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking e0007.bmp" />
+							image="./data/actor/lilly/walking e0007.png" />
 					</dir>
 					<dir name="SE" >
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking se0000.bmp" />
+							image="./data/actor/lilly/walking se0000.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking se0001.bmp" />
+							image="./data/actor/lilly/walking se0001.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking se0002.bmp" />
+							image="./data/actor/lilly/walking se0002.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking se0003.bmp" />
+							image="./data/actor/lilly/walking se0003.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking se0004.bmp" />
+							image="./data/actor/lilly/walking se0004.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking se0005.bmp" />
+							image="./data/actor/lilly/walking se0005.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking se0006.bmp" />
+							image="./data/actor/lilly/walking se0006.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking se0007.bmp" />
+							image="./data/actor/lilly/walking se0007.png" />
 					</dir>
 					<dir name="S" >
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking s0000.bmp" />
+							image="./data/actor/lilly/walking s0000.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking s0001.bmp" />
+							image="./data/actor/lilly/walking s0001.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking s0002.bmp" />
+							image="./data/actor/lilly/walking s0002.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking s0003.bmp" />
+							image="./data/actor/lilly/walking s0003.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking s0004.bmp" />
+							image="./data/actor/lilly/walking s0004.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking s0005.bmp" />
+							image="./data/actor/lilly/walking s0005.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking s0006.bmp" />
+							image="./data/actor/lilly/walking s0006.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking s0007.bmp" />
+							image="./data/actor/lilly/walking s0007.png" />
 					</dir>
 					<dir name="SW" >
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking sw0000.bmp" />
+							image="./data/actor/lilly/walking sw0000.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking sw0001.bmp" />
+							image="./data/actor/lilly/walking sw0001.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking sw0002.bmp" />
+							image="./data/actor/lilly/walking sw0002.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking sw0003.bmp" />
+							image="./data/actor/lilly/walking sw0003.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking sw0004.bmp" />
+							image="./data/actor/lilly/walking sw0004.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking sw0005.bmp" />
+							image="./data/actor/lilly/walking sw0005.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking sw0006.bmp" />
+							image="./data/actor/lilly/walking sw0006.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking sw0007.bmp" />
+							image="./data/actor/lilly/walking sw0007.png" />
 					</dir>
 					<dir name="W" >
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking w0000.bmp" />
+							image="./data/actor/lilly/walking w0000.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking w0001.bmp" />
+							image="./data/actor/lilly/walking w0001.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking w0002.bmp" />
+							image="./data/actor/lilly/walking w0002.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking w0003.bmp" />
+							image="./data/actor/lilly/walking w0003.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking w0004.bmp" />
+							image="./data/actor/lilly/walking w0004.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking w0005.bmp" />
+							image="./data/actor/lilly/walking w0005.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking w0006.bmp" />
+							image="./data/actor/lilly/walking w0006.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking w0007.bmp" />
+							image="./data/actor/lilly/walking w0007.png" />
 					</dir>
 					<dir name="NW" >
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking nw0000.bmp" />
+							image="./data/actor/lilly/walking nw0000.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking nw0001.bmp" />
+							image="./data/actor/lilly/walking nw0001.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking nw0002.bmp" />
+							image="./data/actor/lilly/walking nw0002.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking nw0003.bmp" />
+							image="./data/actor/lilly/walking nw0003.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking nw0004.bmp" />
+							image="./data/actor/lilly/walking nw0004.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking nw0005.bmp" />
+							image="./data/actor/lilly/walking nw0005.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking nw0006.bmp" />
+							image="./data/actor/lilly/walking nw0006.png" />
 						<frame AnchorX="32" AnchorY="46"
-							image="./data/actor/lilly/walking nw0007.bmp" />
+							image="./data/actor/lilly/walking nw0007.png" />
 					</dir>
 				</status>
 			</Personality>
@@ -403,540 +403,540 @@
 				<status name="stopped" frames="80">
 					<dir name="S">
 						<frame AnchorX="11" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00418/S/G0041801.bmp">
+							image="./data/actor/Aldeano/none/Frames00418/S/G0041801.png">
 						</frame>
 						<frame AnchorX="11" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00418/S/G0041802.bmp">
+							image="./data/actor/Aldeano/none/Frames00418/S/G0041802.png">
 						</frame>
 						<frame AnchorX="11" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00418/S/G0041803.bmp">
+							image="./data/actor/Aldeano/none/Frames00418/S/G0041803.png">
 						</frame>
 						<frame AnchorX="11" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00418/S/G0041804.bmp">
+							image="./data/actor/Aldeano/none/Frames00418/S/G0041804.png">
 						</frame>
 						<frame AnchorX="11" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00418/S/G0041805.bmp">
+							image="./data/actor/Aldeano/none/Frames00418/S/G0041805.png">
 						</frame>
 						<frame AnchorX="11" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00418/S/G0041806.bmp">
+							image="./data/actor/Aldeano/none/Frames00418/S/G0041806.png">
 						</frame>
 					</dir>
 					<dir name="SW">
 						<frame AnchorX="10" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00418/SW/G0041807.bmp">
+							image="./data/actor/Aldeano/none/Frames00418/SW/G0041807.png">
 						</frame>
 						<frame AnchorX="10" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00418/SW/G0041808.bmp">
+							image="./data/actor/Aldeano/none/Frames00418/SW/G0041808.png">
 						</frame>
 						<frame AnchorX="10" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00418/SW/G0041809.bmp">
+							image="./data/actor/Aldeano/none/Frames00418/SW/G0041809.png">
 						</frame>
 						<frame AnchorX="10" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00418/SW/G0041810.bmp">
+							image="./data/actor/Aldeano/none/Frames00418/SW/G0041810.png">
 						</frame>
 						<frame AnchorX="10" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00418/SW/G0041811.bmp">
+							image="./data/actor/Aldeano/none/Frames00418/SW/G0041811.png">
 						</frame>
 						<frame AnchorX="10" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00418/SW/G0041812.bmp">
+							image="./data/actor/Aldeano/none/Frames00418/SW/G0041812.png">
 						</frame>
 					</dir>
 					<dir name="W">
 						<frame AnchorX="8" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00418/W/G0041813.bmp">
+							image="./data/actor/Aldeano/none/Frames00418/W/G0041813.png">
 						</frame>
 						<frame AnchorX="8" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00418/W/G0041814.bmp">
+							image="./data/actor/Aldeano/none/Frames00418/W/G0041814.png">
 						</frame>
 						<frame AnchorX="8" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00418/W/G0041815.bmp">
+							image="./data/actor/Aldeano/none/Frames00418/W/G0041815.png">
 						</frame>
 						<frame AnchorX="8" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00418/W/G0041816.bmp">
+							image="./data/actor/Aldeano/none/Frames00418/W/G0041816.png">
 						</frame>
 						<frame AnchorX="8" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00418/W/G0041817.bmp">
+							image="./data/actor/Aldeano/none/Frames00418/W/G0041817.png">
 						</frame>
 						<frame AnchorX="8" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00418/W/G0041818.bmp">
+							image="./data/actor/Aldeano/none/Frames00418/W/G0041818.png">
 						</frame>
 					</dir>
 					<dir name="NW">
 						<frame AnchorX="9" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00418/NW/G0041819.bmp">
+							image="./data/actor/Aldeano/none/Frames00418/NW/G0041819.png">
 						</frame>
 						<frame AnchorX="8" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00418/NW/G0041820.bmp">
+							image="./data/actor/Aldeano/none/Frames00418/NW/G0041820.png">
 						</frame>
 						<frame AnchorX="8" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00418/NW/G0041821.bmp">
+							image="./data/actor/Aldeano/none/Frames00418/NW/G0041821.png">
 						</frame>
 						<frame AnchorX="8" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00418/NW/G0041822.bmp">
+							image="./data/actor/Aldeano/none/Frames00418/NW/G0041822.png">
 						</frame>
 						<frame AnchorX="9" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00418/NW/G0041823.bmp">
+							image="./data/actor/Aldeano/none/Frames00418/NW/G0041823.png">
 						</frame>
 						<frame AnchorX="9" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00418/NW/G0041824.bmp">
+							image="./data/actor/Aldeano/none/Frames00418/NW/G0041824.png">
 						</frame>
 					</dir>
 					<dir name="N">
 						<frame AnchorX="10" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00418/N/G0041825.bmp">
+							image="./data/actor/Aldeano/none/Frames00418/N/G0041825.png">
 						</frame>
 						<frame AnchorX="10" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00418/N/G0041826.bmp">
+							image="./data/actor/Aldeano/none/Frames00418/N/G0041826.png">
 						</frame>
 						<frame AnchorX="10" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00418/N/G0041827.bmp">
+							image="./data/actor/Aldeano/none/Frames00418/N/G0041827.png">
 						</frame>
 						<frame AnchorX="10" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00418/N/G0041828.bmp">
+							image="./data/actor/Aldeano/none/Frames00418/N/G0041828.png">
 						</frame>
 						<frame AnchorX="10" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00418/N/G0041829.bmp">
+							image="./data/actor/Aldeano/none/Frames00418/N/G0041829.png">
 						</frame>
 						<frame AnchorX="10" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00418/N/G0041830.bmp">
+							image="./data/actor/Aldeano/none/Frames00418/N/G0041830.png">
 						</frame>
 					</dir>
 					<dir name="SE">
 						<frame AnchorX="6" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00418/SE/G0041807.bmp">
+							image="./data/actor/Aldeano/none/Frames00418/SE/G0041807.png">
 						</frame>
 						<frame AnchorX="7" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00418/SE/G0041808.bmp">
+							image="./data/actor/Aldeano/none/Frames00418/SE/G0041808.png">
 						</frame>
 						<frame AnchorX="7" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00418/SE/G0041809.bmp">
+							image="./data/actor/Aldeano/none/Frames00418/SE/G0041809.png">
 						</frame>
 						<frame AnchorX="7" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00418/SE/G0041810.bmp">
+							image="./data/actor/Aldeano/none/Frames00418/SE/G0041810.png">
 						</frame>
 						<frame AnchorX="7" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00418/SE/G0041811.bmp">
+							image="./data/actor/Aldeano/none/Frames00418/SE/G0041811.png">
 						</frame>
 						<frame AnchorX="6" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00418/SE/G0041812.bmp">
+							image="./data/actor/Aldeano/none/Frames00418/SE/G0041812.png">
 						</frame>
 					</dir>
 					<dir name="E">
 						<frame AnchorX="4" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00418/E/G0041813.bmp">
+							image="./data/actor/Aldeano/none/Frames00418/E/G0041813.png">
 						</frame>
 						<frame AnchorX="4" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00418/E/G0041814.bmp">
+							image="./data/actor/Aldeano/none/Frames00418/E/G0041814.png">
 						</frame>
 						<frame AnchorX="4" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00418/E/G0041815.bmp">
+							image="./data/actor/Aldeano/none/Frames00418/E/G0041815.png">
 						</frame>
 						<frame AnchorX="4" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00418/E/G0041816.bmp">
+							image="./data/actor/Aldeano/none/Frames00418/E/G0041816.png">
 						</frame>
 						<frame AnchorX="4" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00418/E/G0041817.bmp">
+							image="./data/actor/Aldeano/none/Frames00418/E/G0041817.png">
 						</frame>
 						<frame AnchorX="4" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00418/E/G0041818.bmp">
+							image="./data/actor/Aldeano/none/Frames00418/E/G0041818.png">
 						</frame>
 					</dir>
 					<dir name="NE">
 						<frame AnchorX="8" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00418/NE/G0041819.bmp">
+							image="./data/actor/Aldeano/none/Frames00418/NE/G0041819.png">
 						</frame>
 						<frame AnchorX="7" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00418/NE/G0041820.bmp">
+							image="./data/actor/Aldeano/none/Frames00418/NE/G0041820.png">
 						</frame>
 						<frame AnchorX="7" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00418/NE/G0041821.bmp">
+							image="./data/actor/Aldeano/none/Frames00418/NE/G0041821.png">
 						</frame>
 						<frame AnchorX="7" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00418/NE/G0041822.bmp">
+							image="./data/actor/Aldeano/none/Frames00418/NE/G0041822.png">
 						</frame>
 						<frame AnchorX="8" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00418/NE/G0041823.bmp">
+							image="./data/actor/Aldeano/none/Frames00418/NE/G0041823.png">
 						</frame>
 						<frame AnchorX="8" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00418/NE/G0041824.bmp">
+							image="./data/actor/Aldeano/none/Frames00418/NE/G0041824.png">
 						</frame>
 					</dir>
 				</status>
 				<status name="walking" frames="50">
 					<dir name="S">
 						<frame AnchorX="18" AnchorY="30"
-							image="./data/actor/Aldeano/none/Frames00657/S/G0065701.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/S/G0065701.png">
 						</frame>
 						<frame AnchorX="18" AnchorY="30"
-							image="./data/actor/Aldeano/none/Frames00657/S/G0065702.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/S/G0065702.png">
 						</frame>
 						<frame AnchorX="18" AnchorY="30"
-							image="./data/actor/Aldeano/none/Frames00657/S/G0065703.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/S/G0065703.png">
 						</frame>
 						<frame AnchorX="19" AnchorY="31"
-							image="./data/actor/Aldeano/none/Frames00657/S/G0065704.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/S/G0065704.png">
 						</frame>
 						<frame AnchorX="19" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/S/G0065705.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/S/G0065705.png">
 						</frame>
 						<frame AnchorX="19" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/S/G0065706.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/S/G0065706.png">
 						</frame>
 						<frame AnchorX="19" AnchorY="31"
-							image="./data/actor/Aldeano/none/Frames00657/S/G0065707.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/S/G0065707.png">
 						</frame>
 						<frame AnchorX="18" AnchorY="30"
-							image="./data/actor/Aldeano/none/Frames00657/S/G0065708.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/S/G0065708.png">
 						</frame>
 						<frame AnchorX="18" AnchorY="30"
-							image="./data/actor/Aldeano/none/Frames00657/S/G0065709.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/S/G0065709.png">
 						</frame>
 						<frame AnchorX="18" AnchorY="30"
-							image="./data/actor/Aldeano/none/Frames00657/S/G0065710.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/S/G0065710.png">
 						</frame>
 						<frame AnchorX="18" AnchorY="31"
-							image="./data/actor/Aldeano/none/Frames00657/S/G0065711.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/S/G0065711.png">
 						</frame>
 						<frame AnchorX="18" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/S/G0065712.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/S/G0065712.png">
 						</frame>
 						<frame AnchorX="18" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/S/G0065713.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/S/G0065713.png">
 						</frame>
 						<frame AnchorX="18" AnchorY="31"
-							image="./data/actor/Aldeano/none/Frames00657/S/G0065714.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/S/G0065714.png">
 						</frame>
 						<frame AnchorX="18" AnchorY="31"
-							image="./data/actor/Aldeano/none/Frames00657/S/G0065715.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/S/G0065715.png">
 						</frame>
 					</dir>
 					<dir name="SW">
 						<frame AnchorX="17" AnchorY="31"
-							image="./data/actor/Aldeano/none/Frames00657/SW/G0065716.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/SW/G0065716.png">
 						</frame>
 						<frame AnchorX="19" AnchorY="31"
-							image="./data/actor/Aldeano/none/Frames00657/SW/G0065717.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/SW/G0065717.png">
 						</frame>
 						<frame AnchorX="19" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/SW/G0065718.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/SW/G0065718.png">
 						</frame>
 						<frame AnchorX="18" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/SW/G0065719.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/SW/G0065719.png">
 						</frame>
 						<frame AnchorX="18" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/SW/G0065720.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/SW/G0065720.png">
 						</frame>
 						<frame AnchorX="19" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/SW/G0065721.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/SW/G0065721.png">
 						</frame>
 						<frame AnchorX="21" AnchorY="31"
-							image="./data/actor/Aldeano/none/Frames00657/SW/G0065722.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/SW/G0065722.png">
 						</frame>
 						<frame AnchorX="21" AnchorY="30"
-							image="./data/actor/Aldeano/none/Frames00657/SW/G0065723.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/SW/G0065723.png">
 						</frame>
 						<frame AnchorX="19" AnchorY="30"
-							image="./data/actor/Aldeano/none/Frames00657/SW/G0065724.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/SW/G0065724.png">
 						</frame>
 						<frame AnchorX="19" AnchorY="31"
-							image="./data/actor/Aldeano/none/Frames00657/SW/G0065725.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/SW/G0065725.png">
 						</frame>
 						<frame AnchorX="18" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/SW/G0065726.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/SW/G0065726.png">
 						</frame>
 						<frame AnchorX="18" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/SW/G0065727.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/SW/G0065727.png">
 						</frame>
 						<frame AnchorX="18" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/SW/G0065728.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/SW/G0065728.png">
 						</frame>
 						<frame AnchorX="17" AnchorY="31"
-							image="./data/actor/Aldeano/none/Frames00657/SW/G0065729.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/SW/G0065729.png">
 						</frame>
 						<frame AnchorX="17" AnchorY="31"
-							image="./data/actor/Aldeano/none/Frames00657/SW/G0065730.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/SW/G0065730.png">
 						</frame>
 					</dir>
 					<dir name="W">
 						<frame AnchorX="18" AnchorY="31"
-							image="./data/actor/Aldeano/none/Frames00657/W/G0065731.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/W/G0065731.png">
 						</frame>
 						<frame AnchorX="19" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/W/G0065732.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/W/G0065732.png">
 						</frame>
 						<frame AnchorX="19" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00657/W/G0065733.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/W/G0065733.png">
 						</frame>
 						<frame AnchorX="17" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00657/W/G0065734.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/W/G0065734.png">
 						</frame>
 						<frame AnchorX="17" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00657/W/G0065735.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/W/G0065735.png">
 						</frame>
 						<frame AnchorX="17" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/W/G0065736.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/W/G0065736.png">
 						</frame>
 						<frame AnchorX="20" AnchorY="31"
-							image="./data/actor/Aldeano/none/Frames00657/W/G0065737.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/W/G0065737.png">
 						</frame>
 						<frame AnchorX="20" AnchorY="31"
-							image="./data/actor/Aldeano/none/Frames00657/W/G0065738.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/W/G0065738.png">
 						</frame>
 						<frame AnchorX="19" AnchorY="31"
-							image="./data/actor/Aldeano/none/Frames00657/W/G0065739.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/W/G0065739.png">
 						</frame>
 						<frame AnchorX="19" AnchorY="31"
-							image="./data/actor/Aldeano/none/Frames00657/W/G0065740.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/W/G0065740.png">
 						</frame>
 						<frame AnchorX="17" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/W/G0065741.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/W/G0065741.png">
 						</frame>
 						<frame AnchorX="17" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/W/G0065742.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/W/G0065742.png">
 						</frame>
 						<frame AnchorX="17" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/W/G0065743.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/W/G0065743.png">
 						</frame>
 						<frame AnchorX="17" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/W/G0065744.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/W/G0065744.png">
 						</frame>
 						<frame AnchorX="18" AnchorY="31"
-							image="./data/actor/Aldeano/none/Frames00657/W/G0065745.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/W/G0065745.png">
 						</frame>
 					</dir>
 					<dir name="NW">
 						<frame AnchorX="18" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/NW/G0065746.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/NW/G0065746.png">
 						</frame>
 						<frame AnchorX="17" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00657/NW/G0065747.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/NW/G0065747.png">
 						</frame>
 						<frame AnchorX="16" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00657/NW/G0065748.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/NW/G0065748.png">
 						</frame>
 						<frame AnchorX="16" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00657/NW/G0065749.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/NW/G0065749.png">
 						</frame>
 						<frame AnchorX="16" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00657/NW/G0065750.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/NW/G0065750.png">
 						</frame>
 						<frame AnchorX="17" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00657/NW/G0065751.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/NW/G0065751.png">
 						</frame>
 						<frame AnchorX="17" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/NW/G0065752.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/NW/G0065752.png">
 						</frame>
 						<frame AnchorX="17" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/NW/G0065753.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/NW/G0065753.png">
 						</frame>
 						<frame AnchorX="18" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/NW/G0065754.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/NW/G0065754.png">
 						</frame>
 						<frame AnchorX="17" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/NW/G0065755.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/NW/G0065755.png">
 						</frame>
 						<frame AnchorX="17" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00657/NW/G0065756.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/NW/G0065756.png">
 						</frame>
 						<frame AnchorX="17" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00657/NW/G0065757.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/NW/G0065757.png">
 						</frame>
 						<frame AnchorX="17" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/NW/G0065758.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/NW/G0065758.png">
 						</frame>
 						<frame AnchorX="19" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/NW/G0065759.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/NW/G0065759.png">
 						</frame>
 						<frame AnchorX="19" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/NW/G0065760.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/NW/G0065760.png">
 						</frame>
 					</dir>
 					<dir name="N">
 						<frame AnchorX="17" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/N/G0065761.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/N/G0065761.png">
 						</frame>
 						<frame AnchorX="16" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/N/G0065762.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/N/G0065762.png">
 						</frame>
 						<frame AnchorX="16" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00657/N/G0065763.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/N/G0065763.png">
 						</frame>
 						<frame AnchorX="17" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00657/N/G0065764.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/N/G0065764.png">
 						</frame>
 						<frame AnchorX="17" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00657/N/G0065765.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/N/G0065765.png">
 						</frame>
 						<frame AnchorX="17" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00657/N/G0065766.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/N/G0065766.png">
 						</frame>
 						<frame AnchorX="17" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/N/G0065767.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/N/G0065767.png">
 						</frame>
 						<frame AnchorX="17" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/N/G0065768.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/N/G0065768.png">
 						</frame>
 						<frame AnchorX="17" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/N/G0065769.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/N/G0065769.png">
 						</frame>
 						<frame AnchorX="17" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00657/N/G0065770.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/N/G0065770.png">
 						</frame>
 						<frame AnchorX="17" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00657/N/G0065771.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/N/G0065771.png">
 						</frame>
 						<frame AnchorX="17" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00657/N/G0065772.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/N/G0065772.png">
 						</frame>
 						<frame AnchorX="17" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/N/G0065773.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/N/G0065773.png">
 						</frame>
 						<frame AnchorX="17" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/N/G0065774.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/N/G0065774.png">
 						</frame>
 						<frame AnchorX="17" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/N/G0065775.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/N/G0065775.png">
 						</frame>
 					</dir>
 					<dir name="SE">
 						<frame AnchorX="9" AnchorY="31"
-							image="./data/actor/Aldeano/none/Frames00657/SE/G0065716.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/SE/G0065716.png">
 						</frame>
 						<frame AnchorX="9" AnchorY="31"
-							image="./data/actor/Aldeano/none/Frames00657/SE/G0065717.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/SE/G0065717.png">
 						</frame>
 						<frame AnchorX="9" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/SE/G0065718.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/SE/G0065718.png">
 						</frame>
 						<frame AnchorX="8" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/SE/G0065719.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/SE/G0065719.png">
 						</frame>
 						<frame AnchorX="6" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/SE/G0065720.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/SE/G0065720.png">
 						</frame>
 						<frame AnchorX="8" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/SE/G0065721.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/SE/G0065721.png">
 						</frame>
 						<frame AnchorX="10" AnchorY="31"
-							image="./data/actor/Aldeano/none/Frames00657/SE/G0065722.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/SE/G0065722.png">
 						</frame>
 						<frame AnchorX="10" AnchorY="30"
-							image="./data/actor/Aldeano/none/Frames00657/SE/G0065723.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/SE/G0065723.png">
 						</frame>
 						<frame AnchorX="9" AnchorY="30"
-							image="./data/actor/Aldeano/none/Frames00657/SE/G0065724.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/SE/G0065724.png">
 						</frame>
 						<frame AnchorX="7" AnchorY="31"
-							image="./data/actor/Aldeano/none/Frames00657/SE/G0065725.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/SE/G0065725.png">
 						</frame>
 						<frame AnchorX="6" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/SE/G0065726.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/SE/G0065726.png">
 						</frame>
 						<frame AnchorX="6" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/SE/G0065727.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/SE/G0065727.png">
 						</frame>
 						<frame AnchorX="6" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/SE/G0065728.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/SE/G0065728.png">
 						</frame>
 						<frame AnchorX="7" AnchorY="31"
-							image="./data/actor/Aldeano/none/Frames00657/SE/G0065729.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/SE/G0065729.png">
 						</frame>
 						<frame AnchorX="8" AnchorY="31"
-							image="./data/actor/Aldeano/none/Frames00657/SE/G0065730.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/SE/G0065730.png">
 						</frame>
 					</dir>
 					<dir name="E">
 						<frame AnchorX="10" AnchorY="31"
-							image="./data/actor/Aldeano/none/Frames00657/E/G0065731.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/E/G0065731.png">
 						</frame>
 						<frame AnchorX="11" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/E/G0065732.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/E/G0065732.png">
 						</frame>
 						<frame AnchorX="10" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00657/E/G0065733.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/E/G0065733.png">
 						</frame>
 						<frame AnchorX="8" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00657/E/G0065734.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/E/G0065734.png">
 						</frame>
 						<frame AnchorX="6" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00657/E/G0065735.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/E/G0065735.png">
 						</frame>
 						<frame AnchorX="6" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/E/G0065736.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/E/G0065736.png">
 						</frame>
 						<frame AnchorX="8" AnchorY="31"
-							image="./data/actor/Aldeano/none/Frames00657/E/G0065737.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/E/G0065737.png">
 						</frame>
 						<frame AnchorX="10" AnchorY="31"
-							image="./data/actor/Aldeano/none/Frames00657/E/G0065738.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/E/G0065738.png">
 						</frame>
 						<frame AnchorX="11" AnchorY="31"
-							image="./data/actor/Aldeano/none/Frames00657/E/G0065739.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/E/G0065739.png">
 						</frame>
 						<frame AnchorX="9" AnchorY="31"
-							image="./data/actor/Aldeano/none/Frames00657/E/G0065740.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/E/G0065740.png">
 						</frame>
 						<frame AnchorX="8" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/E/G0065741.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/E/G0065741.png">
 						</frame>
 						<frame AnchorX="6" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/E/G0065742.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/E/G0065742.png">
 						</frame>
 						<frame AnchorX="5" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/E/G0065743.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/E/G0065743.png">
 						</frame>
 						<frame AnchorX="7" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/E/G0065744.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/E/G0065744.png">
 						</frame>
 						<frame AnchorX="9" AnchorY="31"
-							image="./data/actor/Aldeano/none/Frames00657/E/G0065745.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/E/G0065745.png">
 						</frame>
 					</dir>
 					<dir name="NE">
 						<frame AnchorX="10" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/NE/G0065746.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/NE/G0065746.png">
 						</frame>
 						<frame AnchorX="9" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00657/NE/G0065747.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/NE/G0065747.png">
 						</frame>
 						<frame AnchorX="8" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00657/NE/G0065748.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/NE/G0065748.png">
 						</frame>
 						<frame AnchorX="8" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00657/NE/G0065749.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/NE/G0065749.png">
 						</frame>
 						<frame AnchorX="7" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00657/NE/G0065750.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/NE/G0065750.png">
 						</frame>
 						<frame AnchorX="7" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00657/NE/G0065751.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/NE/G0065751.png">
 						</frame>
 						<frame AnchorX="8" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/NE/G0065752.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/NE/G0065752.png">
 						</frame>
 						<frame AnchorX="10" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/NE/G0065753.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/NE/G0065753.png">
 						</frame>
 						<frame AnchorX="10" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/NE/G0065754.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/NE/G0065754.png">
 						</frame>
 						<frame AnchorX="10" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/NE/G0065755.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/NE/G0065755.png">
 						</frame>
 						<frame AnchorX="8" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00657/NE/G0065756.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/NE/G0065756.png">
 						</frame>
 						<frame AnchorX="7" AnchorY="33"
-							image="./data/actor/Aldeano/none/Frames00657/NE/G0065757.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/NE/G0065757.png">
 						</frame>
 						<frame AnchorX="7" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/NE/G0065758.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/NE/G0065758.png">
 						</frame>
 						<frame AnchorX="8" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/NE/G0065759.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/NE/G0065759.png">
 						</frame>
 						<frame AnchorX="10" AnchorY="32"
-							image="./data/actor/Aldeano/none/Frames00657/NE/G0065760.bmp">
+							image="./data/actor/Aldeano/none/Frames00657/NE/G0065760.png">
 						</frame>
 					</dir>
 				</status>

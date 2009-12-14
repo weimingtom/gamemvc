@@ -221,15 +221,15 @@ void PlayView::PlayZoneView::draw() {
 					boost::bind(	&PlayView::PlayZoneView::PaintAllResource,
 									this,
 									_1 ) );
-
-	/*
 	 //
 	 // Dibujamos los Actores.
 	 //
-	 for ( iter = allPoints.begin(); iter != allPoints.end(); iter++ ) {
-	 PaintAllActor( ( *iter ) );
-	 }
-	 */
+  	std::for_each( 	allPoints.begin(),
+  	               	allPoints.end(),
+					boost::bind(	&PlayView::PlayZoneView::PaintAllActor,
+									this,
+									_1 ) );
+
 	game.getGui().getGraphics()->popClipArea();
 
 }
@@ -286,6 +286,21 @@ void PlayView::PlayZoneView::PaintAllResource( const gcn::Point& pLocal ) {
 									pScreen.GetX(),
 									pScreen.GetY() ) );
 
+}
+void PlayView::PlayZoneView::PaintAllActor( const gcn::Point& pLocal ){
+
+	std::vector < CActorMapa* > ActorCell =
+			m_play.getModel()->ObtainActorCell( pLocal );
+
+	gcn::Point pScreen = m_scroller->LocalToScreen( pLocal.GetX(),
+													pLocal.GetY() );
+	std::for_each( 	ActorCell.begin(),
+					ActorCell.end(),
+					boost::bind(	&CActorMapa::Draw,
+									_1,
+									game.getGui().getGraphics(),
+									pScreen.GetX(),
+									pScreen.GetY() ) );
 }
 void PlayView::PlayZoneView::moveView( 	int x,
 										int y ) {

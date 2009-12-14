@@ -112,6 +112,27 @@ std::vector < CResourceMapa* > PlayModel::ObtainResourceCell( const gcn::Point& 
 
 	return ResourceCell;
 }
+std::vector < CActorMapa* > PlayModel::ObtainActorCell( const gcn::Point& pLocal ) {
+
+	std::vector < CActorMapa* > ActorCell;
+
+	CellMapa < BaseGameEntity* > cell =
+			GetCellMapa()->GetCell( Vector2D( 	pLocal.GetX(),
+												pLocal.GetY() ) );
+
+	std::list < BaseGameEntity* >::iterator iter;
+	for ( iter = cell.Members.begin(); iter != cell.Members.end(); ++iter ) {
+
+		if ( ( *iter )->EntityType() == BaseGameEntity::actor ) {
+
+			CActorMapa* terrain = static_cast < CActorMapa* > ( *iter );
+			ActorCell.push_back( terrain );
+
+		}
+	}
+
+	return ActorCell;
+}
 int PlayModel::getResolution() {
 
 	return m_iResolution;

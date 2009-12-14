@@ -15,6 +15,7 @@
 #include "game/database/CPersonality.h"
 #include "game/database/CStatus.h"
 #include "game/database/CDir.h"
+#include "game/database/CFrame.h"
 #include "2d/Vector2D.h"
 #include "2d/geometry.h"
 
@@ -185,21 +186,19 @@ bool CActorMapa::HandleMessage( const Telegram& msg ) {
 	return false;
 
 }
-/*
-void CActorMapa::Draw( 	CCanvas* pDestSurface,
-						CPoint puntoDest ) {
+
+void CActorMapa::Draw( 	gcn::Graphics* graphics,
+						int destX,
+						int destY ) {
 
 	Render(); // Dibujar el propio...
-	if (script->GetBool("ShowBrain"))
-		m_pBrain->Render();
-	if (script->GetBool("ShowPath"))
-		m_pPathPlanner->Render();
+	if ( script->GetBool( "ShowBrain" ) ) m_pBrain->Render();
+	if ( script->GetBool( "ShowPath" ) ) m_pPathPlanner->Render();
 
-	CImage
-			* imagen =
-					m_elActorTipo->GetPersonality(m_Personality)->GetStatus( m_State )->GetDir( m_Dir )->GetImage( m_iFrame );
-	imagen->Put( pDestSurface, puntoDest );
-
+	m_elActorTipo->GetPersonality( m_Personality )->GetStatus( m_State )->GetDir( m_Dir )->GetFrame( m_iFrame )->Draw( 	graphics,
+																														destX,
+																														destY );
+/*
 	if ( m_bSelect ) {
 
 		CRectangle rec( imagen->DstRect() );
@@ -207,12 +206,13 @@ void CActorMapa::Draw( 	CCanvas* pDestSurface,
 		rec.Y() -= 4;
 		rec.W() = imagen->GetCanvas()->GetWidth();
 		rec.H() = 3;
-		pDestSurface->FillRect( rec, CColor::Green );
+		pDestSurface->FillRect( rec,
+								CColor::Green );
 
 	}
-
-}
 */
+}
+
 //-------------------------------- Render -------------------------------------
 //-----------------------------------------------------------------------------
 void CActorMapa::Render() {

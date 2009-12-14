@@ -76,6 +76,8 @@ public:
 	ObtainBuildingCell( const gcn::Point& pLocal );
 	std::vector < CResourceMapa* >
 	ObtainResourceCell( const gcn::Point& pLocal );
+	std::vector < CActorMapa* > ObtainActorCell( const gcn::Point& pLocal );
+
 	IsoDiamondMap& getMap() const;
 
 	NavGraph& GetNavGraph() const {
@@ -146,7 +148,7 @@ private:
 	CTerrainMapaManager_ptr m_pTerrainMapaManager;
 	CBuildingMapaManager_ptr m_pBuildingMapaManager;
 	CResourceMapaManager_ptr m_pResourceMapaManager;
-	CActorMapaManager_ptr	m_pActorMapaManager;
+	CActorMapaManager_ptr m_pActorMapaManager;
 
 	void loadGame( const std::string& mapData );
 	bool loadXML( TiXmlElement* pXMLData );

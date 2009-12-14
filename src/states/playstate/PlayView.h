@@ -82,6 +82,7 @@ private:
 		void PaintAllTerrain( const gcn::Point& pLocal);
 		void PaintAllBuilding( const gcn::Point& pLocal );
 		void PaintAllResource( const gcn::Point& pLocal );
+		void PaintAllActor( const gcn::Point& pLocal );
 
 	};
 	class PlayMsgLeftView
