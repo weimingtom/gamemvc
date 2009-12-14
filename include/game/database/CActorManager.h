@@ -23,13 +23,13 @@ class CActorManager
 public:
 
 	bool Load( TiXmlElement* pXMLData );
-	bool ActorExist( const std::string& elActor );
+	bool ActorExist( const std::string& elActor ) const;
 	CActorType* GetActorType( const std::string& elActor );
 
 private:
 
 	typedef boost::shared_ptr < CActorType > CActorType_ptr;
-	typedef std::map<std::string , CActorType_ptr > CActorType_map;
+	typedef std::map < std::string, CActorType_ptr > CActorType_map;
 
 	CActorType_map m_mActorManager;
 

@@ -35,7 +35,7 @@ bool CTile::Load( TiXmlElement* pXMLData ) {
 
 void CTile::Draw( 	gcn::Graphics* graphics,
 					int destX,
-					int destY ) {
+					int destY )const {
 
 	graphics->drawImage( 	m_laLoseta.first,
 							destX - m_laLoseta.second.GetX(),

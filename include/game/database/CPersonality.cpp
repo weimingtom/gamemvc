@@ -32,7 +32,7 @@ bool CPersonality::Load( TiXmlElement* pXMLData ) {
 	return true;
 
 }
-bool CPersonality::StatusExist( const std::string& status ) {
+bool CPersonality::StatusExist( const std::string& status ) const {
 	return m_mStatus.find( status ) != m_mStatus.end();
 }
 CStatus* CPersonality::GetStatus( const std::string& status ) {

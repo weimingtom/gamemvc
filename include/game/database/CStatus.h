@@ -20,9 +20,9 @@ class CStatus
 public:
 
 	bool Load( TiXmlElement* pXMLData );
-	bool DirExist( const std::string& laDir);
+	bool DirExist( const std::string& laDir) const;
 	CDir* GetDir( const std::string& laDir );
-	int GetFrames();
+	int GetFrames() const;
 
 private:
 

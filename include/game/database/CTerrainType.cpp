@@ -27,3 +27,10 @@ bool CTerrainType::Load( TiXmlElement* pXMLData ) {
 	return true;
 
 }
+CTile* CTerrainType::GetTile( int elTile ) {
+	return m_vTileType.at( elTile ).get();
+}
+
+int CTerrainType::GetNumTiles() const {
+	return m_vTileType.size();
+}

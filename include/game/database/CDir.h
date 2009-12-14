@@ -19,8 +19,8 @@ class CDir
 public:
 
 	bool Load( TiXmlElement* pXMLData );
-	CFrame* GetFrame( const int& numImage );
-	int GetMaxFrames();
+	CFrame* const GetFrame( const int& numImage ) const;
+	int GetMaxFrames() const;
 
 private:
 

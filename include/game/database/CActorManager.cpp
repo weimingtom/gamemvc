@@ -37,13 +37,13 @@ bool CActorManager::Load( TiXmlElement* pXMLData ) {
 
 }
 
-bool CActorManager::ActorExist( const std::string& elActor ) {
+bool CActorManager::ActorExist( const std::string& elActor ) const {
 
 	return m_mActorManager.find( elActor ) != m_mActorManager.end();
 
 }
 
-CActorType* CActorManager::GetActorType( const std::string& elActor ) {
+CActorType* CActorManager::GetActorType( const std::string& elActor ){
 
 	THROW_GAME_EXCEPTION_IF(!ActorExist(elActor),"Error GetActorType elActor no definido ");
 	return m_mActorManager[elActor].get();

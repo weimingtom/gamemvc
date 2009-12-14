@@ -20,13 +20,8 @@ class CTerrainType
 public:
 
 	bool Load( TiXmlElement* pXMLData );
-	CTile* GetTile( int elTile ) {
-		return m_vTileType.at( elTile ).get();
-	}
-
-	int GetNumTiles() const {
-		return m_vTileType.size();
-	}
+	CTile* GetTile( int elTile );
+	int GetNumTiles() const;
 
 private:
 

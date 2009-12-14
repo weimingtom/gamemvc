@@ -75,7 +75,7 @@ void CResourceType::Draw( 	gcn::Graphics* graphics,
 
 }
 
-int CResourceType::GetSpace() {
+int CResourceType::GetSpace() const {
 
 	return m_space;
 

@@ -34,7 +34,7 @@ bool CBuildingManager::Load( TiXmlElement* pXMLData ) {
 	return true;
 
 }
-bool CBuildingManager::BuildingExist( const std::string& elBuilding ) {
+bool CBuildingManager::BuildingExist( const std::string& elBuilding ) const {
 	return m_mBuildingManager.find( elBuilding ) != m_mBuildingManager.end();
 }
 

@@ -30,7 +30,7 @@ bool CTerrainManager::Load( TiXmlElement* pXMLData ) {
 	}
 	return true;
 }
-bool CTerrainManager::TerrainExist( const std::string& elTerreno ) {
+bool CTerrainManager::TerrainExist( const std::string& elTerreno ) const {
 	return m_mTerrainManager.find( elTerreno ) != m_mTerrainManager.end();
 }
 CTerrainType* CTerrainManager::GetTerrainType( const std::string& elTerreno ) {

@@ -75,7 +75,7 @@ void CBuildingType::Draw( 	gcn::Graphics* graphics,
 
 }
 
-int CBuildingType::GetSpace() {
+int CBuildingType::GetSpace() const {
 
 	return m_space;
 

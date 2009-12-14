@@ -34,7 +34,7 @@ bool CResourceManager::Load( TiXmlElement* pXMLData ) {
 
 	return true;
 }
-bool CResourceManager::ResourceExist( const std::string& elResource ) {
+bool CResourceManager::ResourceExist( const std::string& elResource ) const {
 	return m_mResourceManager.find( elResource ) != m_mResourceManager.end();
 }
 

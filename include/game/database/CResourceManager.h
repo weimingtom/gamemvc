@@ -23,7 +23,7 @@ class CResourceManager
 {
 public:
 
-	bool ResourceExist( const std::string& elResource );
+	bool ResourceExist( const std::string& elResource ) const;
 	CResourceType*	GetResourceType(const std::string& elResource);
 	bool 			Load(TiXmlElement* pXMLData);
 

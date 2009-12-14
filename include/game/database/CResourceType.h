@@ -13,7 +13,7 @@
 #include <misc/Point.h>
 
 class TiXmlElement;
-namespace gcn{
+namespace gcn {
 
 	class Graphics;
 	class Image;
@@ -30,16 +30,16 @@ public:
 				int destX,
 				int destY );
 
-	int GetSpace();
+	int GetSpace() const;
 
 private:
 
 	std::string m_Name; 	//!
-	int 		m_iAnchorX; //!
-	int			m_iAnchorY; //!
-	gcn::Image* m_pImage; 	//!
-	gcn::Point 	m_adjust; 	//!
-	int 		m_space; 	//!
+	int m_iAnchorX; 		//!
+	int m_iAnchorY; 		//!
+	gcn::Image* m_pImage;	//!
+	gcn::Point m_adjust;	//!
+	int m_space; 			//!
 
 };
 

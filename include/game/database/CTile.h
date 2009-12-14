@@ -28,7 +28,7 @@ public:
 	bool Load( TiXmlElement* pXMLData );
 	void Draw( 	gcn::Graphics* graphics,
 				int destX,
-				int destY );
+				int destY ) const;
 
 private:
 

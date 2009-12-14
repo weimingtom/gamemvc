@@ -43,7 +43,7 @@ bool CFrame::Load( TiXmlElement* pXMLData ) {
 
 void CFrame::Draw( 	gcn::Graphics* graphics,
 					int destX,
-					int destY ) {
+					int destY ) const {
 
 	graphics->drawImage( 	m_Frame.first.get(),
 							destX - m_Frame.second.GetX(),

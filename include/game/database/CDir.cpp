@@ -27,13 +27,13 @@ bool CDir::Load( TiXmlElement* pXMLData ) {
 	return true;
 
 }
-CFrame* CDir::GetFrame( const int& numImage ) {
+CFrame* const CDir::GetFrame( const int& numImage ) const {
 
 	return m_Frame.at( numImage ).get();
 
 }
 
-int CDir::GetMaxFrames() {
+int CDir::GetMaxFrames() const {
 
 	return m_Frame.size();
 

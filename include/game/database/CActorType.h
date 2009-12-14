@@ -21,7 +21,7 @@ class CActorType {
 public:
 
 	bool 			Load(TiXmlElement* pXMLData);
-	bool 			PersonalityExist( const std::string& personality);
+	bool 			PersonalityExist( const std::string& personality) const;
 	CPersonality*	GetPersonality(const std::string& personality);
 
 private:

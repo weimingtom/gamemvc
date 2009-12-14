@@ -36,7 +36,7 @@ bool CStatus::Load( TiXmlElement* pXMLData ) {
 
 	return true;
 }
-bool CStatus::DirExist( const std::string& laDir ) {
+bool CStatus::DirExist( const std::string& laDir ) const {
 	return m_mDir.find( laDir ) != m_mDir.end();
 }
 CDir* CStatus::GetDir( const std::string& laDir ) {
@@ -44,6 +44,6 @@ CDir* CStatus::GetDir( const std::string& laDir ) {
 	return m_mDir[laDir].get();
 
 }
-int CStatus::GetFrames() {
+int CStatus::GetFrames() const {
 	return m_iFrames;
 }

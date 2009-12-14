@@ -30,7 +30,7 @@ public:
 				int destX,
 				int destY );
 
-	int GetSpace();
+	int GetSpace() const;
 
 private:
 

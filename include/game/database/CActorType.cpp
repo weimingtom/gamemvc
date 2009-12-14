@@ -43,8 +43,7 @@ bool CActorType::Load( TiXmlElement* pXMLData ) {
 
 }
 
-
-bool CActorType::PersonalityExist( const std::string& personality) {
+bool CActorType::PersonalityExist( const std::string& personality ) const {
 
 	return m_mPersonality.find( personality ) != m_mPersonality.end();
 
