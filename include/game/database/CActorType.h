@@ -22,7 +22,7 @@ public:
 
 	bool 			Load(TiXmlElement* pXMLData);
 	bool 			PersonalityExist( const std::string& personality) const;
-	const CPersonality*   GetPersonality(const std::string& personality);
+	CPersonality*   GetPersonality(const std::string& personality);
 
 private:
 

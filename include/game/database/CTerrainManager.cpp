@@ -33,7 +33,7 @@ bool CTerrainManager::Load( TiXmlElement* pXMLData ) {
 bool CTerrainManager::TerrainExist( const std::string& elTerreno ) const {
 	return m_mTerrainManager.find( elTerreno ) != m_mTerrainManager.end();
 }
-const CTerrainType* CTerrainManager::GetTerrainType( const std::string& elTerreno ) {
+CTerrainType* CTerrainManager::GetTerrainType( const std::string& elTerreno ) {
 	THROW_GAME_EXCEPTION_IF(!TerrainExist(elTerreno),"Error GetTerrainType elTerreno no definido ");
 	return  m_mTerrainManager[elTerreno].get();
 }

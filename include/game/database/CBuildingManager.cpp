@@ -38,7 +38,7 @@ bool CBuildingManager::BuildingExist( const std::string& elBuilding ) const {
 	return m_mBuildingManager.find( elBuilding ) != m_mBuildingManager.end();
 }
 
-const CBuildingType* CBuildingManager::GetBuildingType( const std::string& elBuilding ){
+CBuildingType* CBuildingManager::GetBuildingType( const std::string& elBuilding ){
 
 	THROW_GAME_EXCEPTION_IF(!BuildingExist(elBuilding),"Error GetBuildingType elBuilding no definido ");
 	return m_mBuildingManager[elBuilding].get();

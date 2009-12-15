@@ -35,7 +35,7 @@ public:
 private:
 
 	PlayModel* m_pModel; //!
-	CBuildingType* m_pBuildingType; //! Tipo de building
+	const CBuildingType* m_pBuildingType; //! Tipo de building
 
 
 };

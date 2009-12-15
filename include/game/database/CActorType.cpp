@@ -48,7 +48,7 @@ bool CActorType::PersonalityExist( const std::string& personality ) const {
 	return m_mPersonality.find( personality ) != m_mPersonality.end();
 
 }
-const CPersonality* CActorType::GetPersonality( const std::string& personality ) {
+CPersonality* CActorType::GetPersonality( const std::string& personality ) {
 
 	THROW_GAME_EXCEPTION_IF(!PersonalityExist(personality),"Error GetPersonality personality no definido ");
 	return m_mPersonality[personality].get();

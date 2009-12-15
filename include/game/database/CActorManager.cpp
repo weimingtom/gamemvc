@@ -43,7 +43,7 @@ bool CActorManager::ActorExist( const std::string& elActor ) const {
 
 }
 
-const CActorType* CActorManager::GetActorType( const std::string& elActor ){
+CActorType* CActorManager::GetActorType( const std::string& elActor ){
 
 	THROW_GAME_EXCEPTION_IF(!ActorExist(elActor),"Error GetActorType elActor no definido ");
 	return m_mActorManager[elActor].get();

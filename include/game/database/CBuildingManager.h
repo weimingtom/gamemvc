@@ -24,7 +24,7 @@ public:
 
 	bool Load( TiXmlElement* pXMLData );
 	bool BuildingExist( const std::string& elBuilding ) const;
-	const CBuildingType* GetBuildingType( const std::string& elBuilding );
+	CBuildingType* GetBuildingType( const std::string& elBuilding );
 
 private:
 

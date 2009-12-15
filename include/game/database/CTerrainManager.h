@@ -27,7 +27,7 @@ public:
 
 	bool Load( TiXmlElement* pXMLData );
 	bool TerrainExist( const std::string& elTerreno ) const;
-	const CTerrainType* GetTerrainType( const std::string& elTerreno );
+	CTerrainType* GetTerrainType( const std::string& elTerreno );
 
 private:
 
