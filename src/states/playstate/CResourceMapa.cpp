@@ -60,7 +60,7 @@ bool CResourceMapa::Load( TiXmlElement* pXMLData ) {
 }
 void CResourceMapa::Draw( 	gcn::Graphics* graphics,
 							int destX,
-							int destY ) {
+							int destY ) const {
 
 	m_pResourceType->Draw( 	graphics,
 							destX,

@@ -61,7 +61,7 @@ bool CBuildingMapa::Load( TiXmlElement* pXMLData ) {
 }
 void CBuildingMapa::Draw( 	gcn::Graphics* graphics,
 							int destX,
-							int destY ) {
+							int destY )const {
 
 	m_pBuildingType->Draw( 	graphics,
 							destX,

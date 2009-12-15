@@ -67,11 +67,11 @@ bool CResourceType::Load( TiXmlElement* pXMLData ) {
 
 void CResourceType::Draw( 	gcn::Graphics* graphics,
 							int destX,
-							int destY ) {
+							int destY )const {
 
 	graphics->drawImage( 	m_pImage,
-							destX - m_iAnchorX + m_adjust.X(),
-							destY - m_iAnchorY + m_adjust.Y() );
+							destX - m_iAnchorX + m_adjust.GetX(),
+							destY - m_iAnchorY + m_adjust.GetY() );
 
 }
 

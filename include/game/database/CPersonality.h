@@ -21,7 +21,7 @@ public:
 
 	bool Load( TiXmlElement* pXMLData );
 	bool StatusExist( const std::string& status) const;
-	CStatus* GetStatus( const std::string& status );
+	CStatus& GetStatus( const std::string& status );
 
 private:
 

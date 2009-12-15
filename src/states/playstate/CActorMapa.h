@@ -9,7 +9,6 @@
 #define CACTORMAPA_H_
 
 #include <string>
-using namespace std;
 
 #include <boost/shared_ptr.hpp>
 
@@ -72,26 +71,26 @@ public:
 	bool isSmoothingOn() const {
 		return m_bSmoothingOn;
 	}
-	string GetPersonality() const {
+	std::string GetPersonality() const {
 		return m_Personality;
 	}
-	void SetPersonality( string personality ) {
+	void SetPersonality( std::string personality ) {
 		m_Personality = personality;
 	}
-	string GetState() const {
+	std::string GetState() const {
 		return m_State;
 	}
 	;
-	void SetState( string elState ) {
+	void SetState( std::string elState ) {
 		m_State = elState;
 	}
 	;
 
-	string GetDir() const {
+	std::string GetDir() const {
 		return m_Dir;
 	}
 	;
-	void SetDir( string laDir ) {
+	void SetDir( std::string laDir ) {
 		m_Dir = laDir;
 	}
 	;
@@ -120,12 +119,12 @@ public:
 
 	void Draw( 	gcn::Graphics* graphics,
 				int destX,
-				int destY );
+				int destY )const;
 
-	void Render();
+	void Render()const;
 
 	bool isAtPosition( Vector2D pos ) const;
-	string isHeadingAt();
+	std::string isHeadingAt();
 
 	void PonSelect() {
 		m_bSelect = true;
@@ -183,9 +182,9 @@ private:
 
 	CActorType* m_elActorTipo; //! Puntero al tipo de actor que estamos tratando.
 
-	string m_Personality;
-	string m_State; //! Estado tabla de bmp.
-	string m_Dir; //! Direccion en la tabla de bmp.
+	std::string m_Personality;
+	std::string m_State; //! Estado tabla de bmp.
+	std::string m_Dir; //! Direccion en la tabla de bmp.
 	int m_iFrame;
 	int m_iTimeElapsed;
 	long m_LastTimeElapsed; //! Tiempo desde ultima actualizacion.

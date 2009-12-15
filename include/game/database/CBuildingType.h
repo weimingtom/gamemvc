@@ -15,20 +15,17 @@ class TiXmlElement;
 
 namespace gcn {
 
-	class Image;
-	class Graphics;
+class Image;
+class Graphics;
 
 }
 
-class CBuildingType
-{
+class CBuildingType {
 public:
 
 	virtual ~CBuildingType();
-	bool Load( TiXmlElement* pXMLData );
-	void Draw( 	gcn::Graphics* graphics,
-				int destX,
-				int destY );
+	bool Load(TiXmlElement* pXMLData);
+	void Draw(gcn::Graphics* graphics, int destX, int destY) const;
 
 	int GetSpace() const;
 

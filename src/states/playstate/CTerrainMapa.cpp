@@ -32,7 +32,7 @@ void CTerrainMapa::SetTile( CTile* tile,
 }
 void CTerrainMapa::Draw( 	gcn::Graphics* graphics,
 							int destX,
-							int destY ) {
+							int destY ) const {
 
 	m_pTerrain->Draw( 	graphics,
 						destX,

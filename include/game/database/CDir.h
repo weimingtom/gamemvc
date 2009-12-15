@@ -18,13 +18,13 @@ class CDir
 {
 public:
 
+	typedef boost::shared_ptr < CFrame > CFrame_ptr;
+
 	bool Load( TiXmlElement* pXMLData );
-	CFrame* const GetFrame( const int& numImage ) const;
+	CDir::CFrame_ptr GetFrame( const int& numImage );
 	int GetMaxFrames() const;
 
 private:
-
-	typedef boost::shared_ptr < CFrame > CFrame_ptr;
 
 	std::vector < CFrame_ptr > m_Frame;
 
