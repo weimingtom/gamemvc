@@ -79,7 +79,7 @@ void CActorMapa::SetBrain(Goal_Think* brain) {
 	m_pBrain = brain;
 }
 int CActorMapa::GetMaxFrames() const {
-	return m_elActorTipo->GetPersonality(m_Personality).GetStatus(m_State).GetDir(m_Dir).GetMaxFrames();
+	return m_elActorTipo->GetPersonality(m_Personality)->GetStatus(m_State)->GetDir(m_Dir)->GetMaxFrames();
 }
 void CActorMapa::Update(long iElapsedTicks) {
 
@@ -159,8 +159,8 @@ void CActorMapa::UpdateMovement(double time_elapsed) {
 void CActorMapa::UpdateFrame(long iElapsedTicks) {
 
 	m_lTotalTick += iElapsedTicks;
-	long frames = m_elActorTipo->GetPersonality(m_Personality).GetStatus(
-			m_State).GetFrames();
+	long frames = m_elActorTipo->GetPersonality(m_Personality)->GetStatus(
+			m_State)->GetFrames();
 
 	m_iFrame = (m_iFrame + (m_lTotalTick / frames)) % GetMaxFrames();
 	m_lTotalTick %= frames;
@@ -183,7 +183,8 @@ void CActorMapa::Draw(gcn::Graphics* graphics, int destX, int destY) const {
 	if (script->GetBool("ShowPath"))
 		m_pPathPlanner->Render();
 
-	m_elActorTipo->GetPersonality(m_Personality).GetStatus(m_State).GetDir(m_Dir).GetFrame(m_iFrame)->Draw(graphics, destX, destY);
+	m_elActorTipo->GetPersonality(m_Personality)->GetStatus(m_State)->GetDir(m_Dir)->GetFrame(m_iFrame)->Draw(graphics, destX, destY);
+
 	/*
 	 if ( m_bSelect ) {
 

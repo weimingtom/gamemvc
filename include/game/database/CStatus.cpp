@@ -39,9 +39,9 @@ bool CStatus::Load( TiXmlElement* pXMLData ) {
 bool CStatus::DirExist( const std::string& laDir ) const {
 	return m_mDir.find( laDir ) != m_mDir.end();
 }
-const CDir& CStatus::GetDir( const std::string& laDir ) {
+CDir* CStatus::GetDir( const std::string& laDir ) {
 
-	return *(m_mDir[laDir]);
+	return m_mDir[laDir].get();
 
 }
 int CStatus::GetFrames() const {

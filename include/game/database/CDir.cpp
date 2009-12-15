@@ -27,9 +27,9 @@ bool CDir::Load( TiXmlElement* pXMLData ) {
 	return true;
 
 }
-CDir::CFrame_ptr CDir::GetFrame( const int& numImage ) {
+CFrame* CDir::GetFrame( const int& numImage ) {
 
-	return m_Frame.at( numImage );
+	return m_Frame.at( numImage ).get();
 
 }
 

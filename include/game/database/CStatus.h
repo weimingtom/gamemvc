@@ -21,7 +21,7 @@ public:
 
 	bool Load( TiXmlElement* pXMLData );
 	bool DirExist( const std::string& laDir) const;
-	const CDir& GetDir( const std::string& laDir );
+	CDir* GetDir( const std::string& laDir );
 	int GetFrames() const;
 
 private:
