@@ -27,7 +27,7 @@ bool CTerrainType::Load( TiXmlElement* pXMLData ) {
 	return true;
 
 }
-CTile* CTerrainType::GetTile( int elTile ) {
+const CTile* CTerrainType::GetTile( int elTile ) {
 	return m_vTileType.at( elTile ).get();
 }
 

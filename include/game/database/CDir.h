@@ -21,7 +21,7 @@ public:
 	typedef boost::shared_ptr < CFrame > CFrame_ptr;
 
 	bool Load( TiXmlElement* pXMLData );
-	CFrame* GetFrame( const int& numImage );
+	const CFrame* GetFrame( const int& numImage );
 	int GetMaxFrames() const;
 
 private:

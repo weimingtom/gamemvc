@@ -18,17 +18,18 @@ class TiXmlElement;
 
 #define BuildingManager	Singleton<CBuildingManager>::Instance()
 
-class CBuildingManager {
+class CBuildingManager
+{
 public:
 
-	bool			Load(TiXmlElement* pXMLData);
-	bool 			BuildingExist( const std::string& elBuilding ) const;
-	CBuildingType*	GetBuildingType(const std::string& elBuilding);
+	bool Load( TiXmlElement* pXMLData );
+	bool BuildingExist( const std::string& elBuilding ) const;
+	const CBuildingType* GetBuildingType( const std::string& elBuilding );
 
 private:
 
 	typedef boost::shared_ptr < CBuildingType > CBuildingType_ptr;
-	typedef std::map<std::string , CBuildingType_ptr > CBuildingType_map;
+	typedef std::map < std::string, CBuildingType_ptr > CBuildingType_map;
 
 	CBuildingType_map m_mBuildingManager;
 

@@ -38,7 +38,7 @@ bool CResourceManager::ResourceExist( const std::string& elResource ) const {
 	return m_mResourceManager.find( elResource ) != m_mResourceManager.end();
 }
 
-CResourceType* CResourceManager::GetResourceType( const std::string& elResource ) {
+const CResourceType* CResourceManager::GetResourceType( const std::string& elResource ) {
 
 	THROW_GAME_EXCEPTION_IF(!ResourceExist(elResource),"Error GetResourceType elResource no definido ");
 	return m_mResourceManager[elResource].get();

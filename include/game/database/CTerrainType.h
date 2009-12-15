@@ -20,7 +20,7 @@ class CTerrainType
 public:
 
 	bool Load( TiXmlElement* pXMLData );
-	CTile* GetTile( int elTile );
+	const CTile* GetTile( int elTile );
 	int GetNumTiles() const;
 
 private:

@@ -35,7 +35,7 @@ bool CPersonality::Load( TiXmlElement* pXMLData ) {
 bool CPersonality::StatusExist( const std::string& status ) const {
 	return m_mStatus.find( status ) != m_mStatus.end();
 }
-CStatus* CPersonality::GetStatus( const std::string& status ) {
+const CStatus* CPersonality::GetStatus( const std::string& status ) {
 
 	THROW_GAME_EXCEPTION_IF(!StatusExist(status),"Error GetStatus status no definido ");
 	return m_mStatus[status].get();
