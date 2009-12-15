@@ -15,8 +15,6 @@ void CIntroState::Init() {
 	m_view = new IntroView( m_model );
 	m_view->initialize(); // Aqui creamos el controlador asociado a la vista.
 
-//	LAPP_ <<	"CIntroState Init";
-
 }
 
 void CIntroState::Cleanup() {
@@ -25,19 +23,13 @@ void CIntroState::Cleanup() {
 	delete m_view;
 	delete m_model;
 
-//	LAPP_ <<	"CIntroState Cleanup";
-
 }
 
 void CIntroState::Pause() {
 
-//	LAPP_ <<	"CIntroState Pause";
-
 }
 
 void CIntroState::Resume() {
-
-//	LAPP_ <<	"CIntroState Resume";
 
 }
 

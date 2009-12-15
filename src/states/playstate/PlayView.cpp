@@ -7,11 +7,13 @@
 
 #include "PlayView.h"
 
+#include <algorithm>
 #include <functional>
 #include <sstream>
 #include <guichan.hpp>
 #include <xmlgui.h>
 
+#include <misc/Point.h>
 #include <misc/debug.h>
 
 #include <MyGame.h>
@@ -23,7 +25,8 @@
 #include "CResourceMapa.h"
 
 PlayView::PlayView( PlayModel* model ) :
-	View < PlayModel, PlayController > ( model ) {
+	View < PlayModel, PlayController > ( model ),
+	m_selection( false ) {
 
 	xmlgui.reset( new XmlGui() );
 	xmlgui->parse( "./scripts/gui/Play/gui.xml" );
@@ -31,7 +34,7 @@ PlayView::PlayView( PlayModel* model ) :
 
 	top->requestFocus();
 
-	m_ZoneView.reset( new PlayZoneView( *this ) );
+	m_ZoneView.reset( new Zone( *this ) );
 	m_MsgLeftView.reset( new PlayMsgLeftView( *this ) );
 	m_MsgCenterView.reset( new PlayMsgCenterView( *this ) );
 
@@ -73,8 +76,8 @@ void PlayView::draw() {
 }
 
 void PlayView::setMouse(	const std::string& text,
-							const int &X,
-							const int &Y ) {
+							const int& X,
+							const int& Y ) {
 
 	std::stringstream ox, oy;
 	ox << X;
@@ -89,6 +92,55 @@ void PlayView::resetMouse() {
 	m_MsgLeftView->setName( "" );
 	m_MsgLeftView->setPosX( "" );
 	m_MsgLeftView->setPosY( "" );
+
+}
+void PlayView::setPressedMouse( const int& X,
+								const int& Y ) {
+
+	m_selection = true; // Comienzo de seleccion de area.
+	m_firstselect = gcn::Point(X,Y);
+	m_selectarea.x = X;
+	m_selectarea.y = Y;
+	m_selectarea.width = 0;
+	m_selectarea.height = 0;
+
+}
+void PlayView::setDraggedMouse( const int& X,
+								const int& Y ) {
+
+	assert(m_selection); // Se supone que siempre es true al entrar aqui.
+	m_selectarea.width = std::abs( m_firstselect.GetX() - X );
+	m_selectarea.height = std::abs( m_firstselect.GetY() - Y );
+	m_selectarea.x = std::min( 	m_firstselect.GetX(),
+								X );
+	m_selectarea.y = std::min( 	m_firstselect.GetY(),
+								Y );
+}
+void PlayView::setReleasedMouse( 	const int& X,
+									const int& Y ) {
+
+	assert(m_selection); // Se supone que siempre es true al entrar aqui.
+	//
+	// Y esta es el area con todos los elementos a seleccionar.
+	//
+	m_selectarea.width = std::abs( m_firstselect.GetX() - X );
+	m_selectarea.height = std::abs( m_firstselect.GetY() - Y );
+	m_selectarea.x = std::min( 	m_firstselect.GetX(),
+								X );
+	m_selectarea.y = std::min( 	m_firstselect.GetY(),
+								Y );
+
+	// Aqui pasamos al model el area a seleccionar creo yo.
+
+	m_selection = false; // Quitamos la seleccion.
+
+}
+bool PlayView::isSelectArea() const {
+	return m_selection;
+}
+const gcn::Rectangle& PlayView::selectedArea() const{
+
+	return m_selectarea;
 
 }
 XmlGui& PlayView::getXmlGui() const {
@@ -115,27 +167,27 @@ void PlayView::moveView( 	int X,
 }
 //-------------------------------------------------------------------
 //
-// PlayZoneView
+// Zone
 //
 
-PlayView::PlayZoneView::PlayZoneView( const PlayView& play ) :
+PlayView::Zone::Zone( const PlayView& play ) :
 	m_play( play ),
 	m_zone( m_play.getXmlGui().getWidget( "zone" ) ),
 	m_areaZone( m_zone->getChildrenArea() ),
 	m_scroller( new	Scroller( 	m_play.getModel()->getMap(),
-	               	          	m_play.getModel()->getResolution(),
-	               	          	m_play.getModel()->getTopPadding(),
-	               	          	m_areaZone ) ),
+								m_play.getModel()->getResolution(),
+								m_play.getModel()->getTopPadding(),
+								m_areaZone ) ),
 	m_move( false ) {
 
 }
-void PlayView::PlayZoneView::initialize() {
+void PlayView::Zone::initialize() {
 
 	m_zone->addMouseListener( m_play.getController()->getZoneMouseListener() );
 
 }
-void PlayView::PlayZoneView::updateMoveView( 	int X,
-												int Y ) {
+void PlayView::Zone::updateMoveView( 	int X,
+										int Y ) {
 
 	m_move = false;
 	moveX = 0;
@@ -164,14 +216,14 @@ void PlayView::PlayZoneView::updateMoveView( 	int X,
 	}
 
 }
-void PlayView::PlayZoneView::resetMove() {
+void PlayView::Zone::resetMove() {
 
 	m_move = false;
 	moveX = 0;
 	moveY = 0;
 
 }
-void PlayView::PlayZoneView::draw() {
+void PlayView::Zone::draw() {
 	//
 	// Vemos si el mouse esta en la zona de movimiento.
 	//
@@ -202,7 +254,7 @@ void PlayView::PlayZoneView::draw() {
 	//
 	std::for_each( 	allPoints.begin(),
 					allPoints.end(),
-					boost::bind(	&PlayView::PlayZoneView::PaintAllTerrain,
+					boost::bind(	&PlayView::Zone::PaintAllTerrain,
 									this,
 									_1 ) );
 	//
@@ -210,7 +262,7 @@ void PlayView::PlayZoneView::draw() {
 	//
 	std::for_each( 	allPoints.begin(),
 					allPoints.end(),
-					boost::bind(	&PlayView::PlayZoneView::PaintAllBuilding,
+					boost::bind(	&PlayView::Zone::PaintAllBuilding,
 									this,
 									_1 ) );
 	//
@@ -218,23 +270,34 @@ void PlayView::PlayZoneView::draw() {
 	//
 	std::for_each( 	allPoints.begin(),
 					allPoints.end(),
-					boost::bind(	&PlayView::PlayZoneView::PaintAllResource,
+					boost::bind(	&PlayView::Zone::PaintAllResource,
 									this,
 									_1 ) );
-	 //
-	 // Dibujamos los Actores.
-	 //
-  	std::for_each( 	allPoints.begin(),
-  	               	allPoints.end(),
-					boost::bind(	&PlayView::PlayZoneView::PaintAllActor,
+	//
+	// Dibujamos los Actores.
+	//
+	std::for_each( 	allPoints.begin(),
+					allPoints.end(),
+					boost::bind(	&PlayView::Zone::PaintAllActor,
 									this,
 									_1 ) );
 
+	//
+	// Si tenemos activada el area de seleccion es hora de pintarla.
+	//
+	if ( m_play.isSelectArea() ) {
+
+		game.getGui().getGraphics()->setColor( gcn::Color( 0xff0000 ) ); // The colour to be used when drawing. From here on, white will be used.
+		game.getGui().getGraphics()->drawRectangle( m_play.selectedArea() );
+
+	}
 	game.getGui().getGraphics()->popClipArea();
 
 }
-
-void PlayView::PlayZoneView::PaintAllTerrain( const gcn::Point& pLocal ) {
+//
+//-------------------------------------------------------------------------------
+//
+void PlayView::Zone::PaintAllTerrain( const gcn::Point& pLocal ) {
 
 	//
 	// Obtener el tile que se ha de pintar en funcion del
@@ -255,7 +318,7 @@ void PlayView::PlayZoneView::PaintAllTerrain( const gcn::Point& pLocal ) {
 									pScreen.GetY() ) );
 
 }
-void PlayView::PlayZoneView::PaintAllBuilding( const gcn::Point& pLocal ) {
+void PlayView::Zone::PaintAllBuilding( const gcn::Point& pLocal ) {
 
 	std::vector < CBuildingMapa* > buildingCell =
 			m_play.getModel()->ObtainBuildingCell( pLocal );
@@ -271,7 +334,7 @@ void PlayView::PlayZoneView::PaintAllBuilding( const gcn::Point& pLocal ) {
 									pScreen.GetY() ) );
 
 }
-void PlayView::PlayZoneView::PaintAllResource( const gcn::Point& pLocal ) {
+void PlayView::Zone::PaintAllResource( const gcn::Point& pLocal ) {
 
 	std::vector < CResourceMapa* > ResourceCell =
 			m_play.getModel()->ObtainResourceCell( pLocal );
@@ -287,7 +350,7 @@ void PlayView::PlayZoneView::PaintAllResource( const gcn::Point& pLocal ) {
 									pScreen.GetY() ) );
 
 }
-void PlayView::PlayZoneView::PaintAllActor( const gcn::Point& pLocal ){
+void PlayView::Zone::PaintAllActor( const gcn::Point& pLocal ) {
 
 	std::vector < CActorMapa* > ActorCell =
 			m_play.getModel()->ObtainActorCell( pLocal );
@@ -302,8 +365,8 @@ void PlayView::PlayZoneView::PaintAllActor( const gcn::Point& pLocal ){
 									pScreen.GetX(),
 									pScreen.GetY() ) );
 }
-void PlayView::PlayZoneView::moveView( 	int x,
-										int y ) {
+void PlayView::Zone::moveView( 	int x,
+								int y ) {
 
 	m_scroller->moveView( 	x,
 							y );
@@ -350,9 +413,9 @@ void PlayView::PlayMsgLeftView::setPosY( const std::string& y ) {
 // PlayMsgCenterView
 //
 PlayView::PlayMsgCenterView::PlayMsgCenterView( PlayView& play ) :
-	m_play( play ) {
+	m_play( play ),
+	m_msgcenter( m_play.getXmlGui().getWidget( "msgcenter" ) ){
 
-	m_msgcenter = m_play.getXmlGui().getWidget( "msgcenter" );
 }
 void PlayView::PlayMsgCenterView::initialize() {
 

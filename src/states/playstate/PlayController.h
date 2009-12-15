@@ -32,6 +32,9 @@ private:
 	public:
 
 		Zone( PlayController* play );
+		void mousePressed( gcn::MouseEvent& mouseEvent );
+		void mouseDragged( gcn::MouseEvent& mouseEvent );
+		void mouseReleased( gcn::MouseEvent& mouseEvent );
 		void mouseMoved( gcn::MouseEvent& mouseEvent );
 		void mouseWheelMovedDown( gcn::MouseEvent& mouseEvent );
 		void mouseWheelMovedUp( gcn::MouseEvent& mouseEvent );

@@ -11,8 +11,9 @@
 #include "PlayView.h"
 
 PlayController::PlayController( PlayView* view ) :
-	Controller < PlayModel, PlayView > ( view ), zoneMouseListener( this ),
-			msgcenterMouseListener( this ) {
+	Controller < PlayModel, PlayView > ( view ),
+	zoneMouseListener( this ),
+	msgcenterMouseListener( this ) {
 
 }
 
@@ -55,6 +56,36 @@ PlayController::Zone::Zone( PlayController* play ) :
 	m_play( play ) {
 
 }
+void PlayController::Zone::mousePressed( gcn::MouseEvent& mouseEvent ) {
+
+	m_play->getView()->setMouse(	"ZoneX",
+									mouseEvent.getX(),
+									mouseEvent.getY() );
+
+	m_play->getView()->setPressedMouse( mouseEvent.getX(),
+										mouseEvent.getY() );
+
+	mouseEvent.consume();
+}
+void PlayController::Zone::mouseDragged( gcn::MouseEvent& mouseEvent ) {
+
+	m_play->getView()->setMouse(	"ZoneE",
+									mouseEvent.getX(),
+									mouseEvent.getY() );
+	m_play->getView()->setDraggedMouse( mouseEvent.getX(),
+										mouseEvent.getY() );
+	mouseEvent.consume();
+}
+void PlayController::Zone::mouseReleased( gcn::MouseEvent& mouseEvent ) {
+
+	m_play->getView()->setMouse(	"ZoneO",
+									mouseEvent.getX(),
+									mouseEvent.getY() );
+
+	m_play->getView()->setReleasedMouse( 	mouseEvent.getX(),
+											mouseEvent.getY() );
+	mouseEvent.consume();
+}
 void PlayController::Zone::mouseMoved( gcn::MouseEvent& mouseEvent ) {
 
 	m_play->getView()->setMouse(	"Zone",
@@ -79,7 +110,7 @@ void PlayController::Zone::mouseWheelMovedDown( gcn::MouseEvent & mouseEvent ) {
 	m_play->getView()->setMouse(	"Zone",
 									mouseEvent.getX(),
 									mouseEvent.getY() );
-	m_play->getView()->moveView( 	0,
+	m_play->getView()->moveView(	0,
 									+10 );
 	mouseEvent.consume();
 }
@@ -87,7 +118,7 @@ void PlayController::Zone::mouseWheelMovedUp( gcn::MouseEvent & mouseEvent ) {
 	m_play->getView()->setMouse(	"Zone",
 									mouseEvent.getX(),
 									mouseEvent.getY() );
-	m_play->getView()->moveView( 	0,
+	m_play->getView()->moveView(	0,
 									-10 );
 	mouseEvent.consume();
 }
