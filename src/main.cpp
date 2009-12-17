@@ -43,7 +43,7 @@ int main( 	int argc,
 
 		//		char* q = new char[128]; // Solo esta para forzar el error en NVWA
 
-		g_l_level()->set_enabled( bl::level::info );
+		g_l_level()->set_enabled( bl::level::debug );
 		std::cout.setf( std::ios::unitbuf ); // Quito el buffer al estar bajo debug....
 
 #else

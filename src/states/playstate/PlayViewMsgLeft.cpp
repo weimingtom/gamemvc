@@ -27,6 +27,16 @@ PlayViewMsgLeft::PlayViewMsgLeft( PlayModel* model, XmlGui& xmlgui ) :
 	m_posX ( static_cast < gcn::TextField* > ( xmlgui.getWidget( "X" ) )),
 	m_posY ( static_cast < gcn::TextField* > ( xmlgui.getWidget( "Y" ) )) {
 
+	int celdasX = getModel()->getResolution();
+	int celdasY = getModel()->getResolution();
+	int pos = 0;
+	for (int Y=0;Y<celdasY;Y++){
+		for (int X=0;X<celdasX;X++){
+			getModel()->GetCellMapa()->GetCell(pos);
+			pos++;
+		}
+	}
+
 }
 void PlayViewMsgLeft::initialize() {
 
@@ -50,9 +60,6 @@ void PlayViewMsgLeft::setMsgLeftY(const int& Y){
 	m_posY->setText( oy.str() );
 
 }
-void PlayViewMsgLeft::draw() {
-
-}
 void PlayViewMsgLeft::resetMsgLeft(){
 
 	m_name->setText( "" );
@@ -60,4 +67,31 @@ void PlayViewMsgLeft::resetMsgLeft(){
 	m_posY->setText( "" );
 
 }
+void PlayViewMsgLeft::draw() {
+	//
+	// Obtener todos las celdas del mapa para pintar el minimapa?.
+	// Fracamente terriblemente pesado.... a no ser que se ejecute
+	// la primera vez, y solo cuando se actualize los elementos del mapa
+	// se actualiza la imagen... pero solo de los elementos que se han actualizado.
+	//
+
+	int celdasX = getModel()->getResolution();
+	int celdasY = getModel()->getResolution();
+	int pos = 0;
+	for ( int Y = 0; Y < celdasY; Y++ ) {
+		for ( int X = 0; X < celdasX; X++ ) {
+
+			CellMapa < BaseGameEntity* > cell =
+					getModel()->GetCellMapa()->GetCell( pos );
+			std::list < BaseGameEntity* >::iterator iter;
+			for ( iter = cell.Members.begin(); iter != cell.Members.end(); ++iter ) {
+
+				BaseGameEntity* base = ( *iter );
+
+			}
+			pos++;
+		}
+	}
+}
+
 

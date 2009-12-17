@@ -17,11 +17,9 @@
 		 
 	</container>
 
-	<container name="msgcenter" x="160" y="384" width="320"
-		height="96" basecolor="0x0000FF00">
+	<container name="msgcenter" x="160" y="384" width="320"	height="96" basecolor="0x0000FF00">
 	</container>
-	<container name="msgright" x="480" y="384" width="160"
-		height="96" basecolor="0x000000FF">
+	<container name="msgright" x="480" y="384" width="160" height="80" basecolor="0x000000FF">
 	</container>
 
 </container>
