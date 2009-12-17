@@ -7,7 +7,7 @@ class "Harry" (CActorMapa)
 function Harry:__init(pGame,laPosicion,elActorTipo)
 	CActorMapa.__init(self,pGame,laPosicion,elActorTipo)
 
-	print("[Harry] constructor")
+--	print("[Harry] constructor")
 	self.m_Personality="none"
 	self:SmoothingOn()					-- Mas suave???
 	self.m_pSteering:WallAvoidanceOn()

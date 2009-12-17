@@ -42,8 +42,7 @@ void MenuView::initialize() {
 void MenuView::draw() {
 
 	game.getGui().draw();
-
-	game.getGui().getGraphics()->_beginDraw();
+	game.getGui().getGraphics()->pushClipArea( top->getDimension() );
 
 	game.getGui().getGraphics()->setColor( gcn::Color( 0xffffff ) ); // The colour to be used when drawing. From here on, white will be used.
 	game.getGui().getGraphics()->drawLine( 10,
@@ -57,6 +56,7 @@ void MenuView::draw() {
 	game.getGui().getGraphics()->drawText( "Texto de prueba",
 											10,
 											10 );
-	game.getGui().getGraphics()->_endDraw();
+
+	game.getGui().getGraphics()->popClipArea();
 
 }

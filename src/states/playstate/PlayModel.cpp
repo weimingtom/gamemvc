@@ -24,9 +24,13 @@
 #include "CResourceMapa.h"
 
 PlayModel::PlayModel() :
-	Model(), m_endtype( PlayModel::CONTINUE ), m_pMapaPartition( NULL ),
-			m_pSpacePartition( NULL ), m_pNavGraph( NULL ),
-			m_pPathManager( NULL ) {
+	Model(),
+	m_endtype( PlayModel::CONTINUE ),
+	m_ismouse(false),
+	m_pMapaPartition( NULL ),
+	m_pSpacePartition( NULL ),
+	m_pNavGraph( NULL ),
+	m_pPathManager( NULL ) {
 
 	//
 	//	Cargar los datos de este juego.
@@ -69,6 +73,29 @@ PlayModel::EndTypes PlayModel::getEnd() const {
 
 	return m_endtype;
 
+}
+void PlayModel::setMouse(	const std::string& name,
+				const int& X,
+				const int& Y ){
+	m_ismouse=true;
+	m_MsgLeftname = name;
+	m_MsgLeftX 	  = X;
+	m_MsgLeftY 	  = Y;
+}
+void PlayModel::resetMouse(){
+	m_ismouse=false;
+}
+bool PlayModel::ismouse() const{
+	return m_ismouse;
+}
+const std::string& PlayModel::getMsgLeftname() const{
+	return m_MsgLeftname;
+}
+int PlayModel::getMsgLeftX() const{
+	return m_MsgLeftX;
+}
+int PlayModel::getMsgLeftY() const{
+	return m_MsgLeftY;
 }
 std::vector < CTerrainMapa* > PlayModel::ObtainTerrainCell( const gcn::Point& pLocal ) {
 

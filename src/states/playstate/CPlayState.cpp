@@ -21,8 +21,6 @@ void CPlayState::Init() {
 	m_view = new PlayView( m_model );
 	m_view->initialize();
 
-//	LAPP_ <<	"CPlayState Init";
-
 }
 
 void CPlayState::Cleanup() {
@@ -31,19 +29,13 @@ void CPlayState::Cleanup() {
 	delete m_view;
 	delete m_model;
 
-//	LAPP_ <<	"CPlayState Cleanup";
-
 }
 
 void CPlayState::Pause() {
 
-//	LAPP_ <<	"CPlayState Pause";
-
 }
 
 void CPlayState::Resume() {
-
-//	LAPP_ <<	"CPlayState Resume";
 
 }
 

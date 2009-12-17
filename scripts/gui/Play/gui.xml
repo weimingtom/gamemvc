@@ -5,10 +5,10 @@
 
 	</container>
 <!--
-	<container name="zone" x="0" y="0" width="128" height="64" basecolor="0x00000000">
+	<container name="zone" x="16" y="32" width="320" height="192" basecolor="0x00000000">
 
 	</container>
--->		
+-->	
 	<container name="msgleft" x="0" y="384" width="160" height="96">
 	
 		<textfield name="name" x="10" y="10" width="60" height="20"/>

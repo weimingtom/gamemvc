@@ -63,7 +63,6 @@ CActorMapa::CActorMapa(PlayModel* elPlayModel, Vector2D laPosicion,
 	m_pWorld->GetCellMapa()->AddEntity(this);
 	m_pModifierGoal = new ModifierGoalActor(m_pWorld->GetCellMapa());
 
-	//	std::cout << "[C++ActorMapa] constructor" << std::endl;
 }
 CActorMapa::~CActorMapa() {
 
@@ -73,7 +72,6 @@ CActorMapa::~CActorMapa() {
 	delete m_pPathPlanner;
 	delete m_pSteering;
 
-	//	std::cout << "[C++ActorMapa] destructor" << std::endl;
 }
 void CActorMapa::SetBrain(Goal_Think* brain) {
 	m_pBrain = brain;

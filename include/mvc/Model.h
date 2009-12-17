@@ -8,7 +8,8 @@
 #ifndef MODEL_H_
 #define MODEL_H_
 
-#include <set>
+#include <vector>
+#include <functional>
 #include <algorithm>
 #include "Observer.h"
 
@@ -16,16 +17,26 @@ class Model
 {
 public:
 
-	void attach( Observer* s ){m_registry.insert(s);}
-	void detach( Observer* s ){m_registry.erase(s);}
+	void attach( Observer* s ) {
+		m_registry.push_back( s ); // Para mantener el orden de insercion...
+	}
+	void detach( Observer* s ) {
+		m_registry.erase( 	std::remove( 	m_registry.begin(),
+											m_registry.end(),
+											s ),
+							m_registry.end() );
+
+	}
 	virtual void notify() {
 
-		std::for_each(m_registry.begin(),m_registry.end(),std::mem_fun(&Observer::update));
+		std::for_each( 	m_registry.begin(),
+						m_registry.end(),
+						std::mem_fun( &Observer::update ) );
 
 	}
 private:
 
-	std::set < Observer* > m_registry;
+	std::vector < Observer* > m_registry;
 };
 
 #endif /* MODEL_H_ */

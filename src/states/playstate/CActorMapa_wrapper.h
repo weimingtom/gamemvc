@@ -23,7 +23,6 @@ struct ActorMapa_wrapper: CActorMapa, wrap_base
 						Vector2D laPosicion,
 						CActorType* elActorTipo ) :
 		CActorMapa( elGameWorld, laPosicion, elActorTipo ) {
-//		std::cout << "[C++ActorMapa_wrapper] constructor" << std::endl;
 	}
 	void UpdateFrame( long iElapsedTicks ) {
 		call< void > ( "UpdateFrame", iElapsedTicks );
@@ -46,7 +45,6 @@ struct ActorMapa_wrapper: CActorMapa, wrap_base
 
 	}
 	virtual ~ActorMapa_wrapper() {
-//		std::cout << "[C++ActorMapa_wrapper] destructor" << std::endl;
 	}
 };
 

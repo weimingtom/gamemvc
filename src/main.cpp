@@ -37,15 +37,13 @@ int main( 	int argc,
 
 	try {
 
-		//		char* env = getenv("DATOS");
-		//		std::cout << "Environment: " << env << std::endl;
 		init_logs();
 
 #ifdef DEBUG
 
 		//		char* q = new char[128]; // Solo esta para forzar el error en NVWA
 
-		g_l_level()->set_enabled( bl::level::debug );
+		g_l_level()->set_enabled( bl::level::info );
 		std::cout.setf( std::ios::unitbuf ); // Quito el buffer al estar bajo debug....
 
 #else
@@ -54,15 +52,14 @@ int main( 	int argc,
 
 #endif
 
-//		Q_(debug,"Hola como esta" << "y mas cosas" << 1) //!TODO No funciona
+		//		Q_(debug,"Hola como esta" << "y mas cosas" << 1) //!TODO No funciona
 
 		std::string config;
 		po::options_description desc( "Allowed options" );
 		desc.add_options()( "help",
-							"produce help message" )
-						(	"config",
-							po::value < std::string >( &config )->default_value( "game.ini" ),
-							"Optionally provide a path to a file that contains configuration settings" );
+							"produce help message" )(	"config",
+														po::value < std::string >( &config )->default_value( "game.ini" ),
+														"Optionally provide a path to a file that contains configuration settings" );
 
 		po::variables_map vm;
 		po::store( 	po::parse_command_line( argc,
@@ -88,7 +85,6 @@ int main( 	int argc,
 							25 );
 		while ( game.Running() ) {
 
-			//			std::cout << "Comienzo bucle --- " << std::endl;
 			L_(debug)
 <<			"Comienzo bucle";
 			Uint32 timeStart = SDL_GetTicks();
@@ -96,32 +92,20 @@ int main( 	int argc,
 			game.HandleEvents();
 
 			Uint32 timeHandleEvents = SDL_GetTicks();
-			//			std::cout << "Time HandleEvents : " << timeHandleEvents - timeStart
-			//					<< std::endl;
 			L_(debug) << "Time HandleEvents : " << timeHandleEvents - timeStart;
 			game.Update();
 
 			Uint32 timeUpdate = SDL_GetTicks();
-			//			std::cout << "Time Update       : " << timeUpdate
-			//					- timeHandleEvents << std::endl;
 			L_(debug) << "Time Update       : " << timeUpdate - timeHandleEvents;
 			game.Draw();
 
 			Uint32 timeDraw = SDL_GetTicks();
-			//			std::cout << "Time Draw         : " << timeDraw - timeUpdate
-			//					<< std::endl;
 			L_(debug)<< "Time Draw         : " << timeDraw - timeUpdate;
-
-			//			std::cout << "Tiempo total      : " << SDL_GetTicks() - timeStart
-			//					<< std::endl;
 
 			L_(debug) << "Tiempo total      : " << SDL_GetTicks() - timeStart;
 
 			SDL_framerateDelay(&manager);
-			//			std::cout << "Tiempo bucle      : " << SDL_GetTicks() - timeStart
-			//					<< std::endl;
 			L_(debug) << "Tiempo bucle      : " << SDL_GetTicks() - timeStart;
-			//			std::cout.flush();
 
 		}
 

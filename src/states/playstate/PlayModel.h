@@ -71,6 +71,15 @@ public:
 
 	void Update();
 
+	void setMouse(	const std::string& name,
+					const int& X,
+					const int& Y );
+	void resetMouse();
+	const std::string& getMsgLeftname() const;
+	int getMsgLeftX() const;
+	int getMsgLeftY() const;
+	bool ismouse() const;
+
 	std::vector < CTerrainMapa* > ObtainTerrainCell( const gcn::Point& pLocal );
 	std::vector < CBuildingMapa* >
 	ObtainBuildingCell( const gcn::Point& pLocal );
@@ -121,6 +130,12 @@ private:
 
 	int m_iCellsX;
 	int m_iCellsY;
+
+	// Datos para sacar en la view con el mouse.
+	bool		m_ismouse;
+	std::string	m_MsgLeftname;
+	int			m_MsgLeftX;
+	int			m_MsgLeftY;
 
 	CellPartition* m_pMapaPartition; //! Division del mapa isometrico?.
 
