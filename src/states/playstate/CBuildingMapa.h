@@ -8,16 +8,12 @@
 #ifndef CBUILDINGMAPA_H_
 #define CBUILDINGMAPA_H_
 
-#include "misc/Point.h"
-#include "game/BaseGameEntity.h"
+#include <guichan.hpp>
+
+#include <game/BaseGameEntity.h>
 
 class TiXmlElement;
 class CBuildingType;
-namespace gcn{
-
-	class Graphics;
-
-}
 class PlayModel;
 
 class CBuildingMapa: public BaseGameEntity

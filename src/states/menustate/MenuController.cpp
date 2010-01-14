@@ -24,13 +24,13 @@ void MenuController::keyPressed( gcn::KeyEvent& keyEvent ) {
 	switch( keyEvent.getKey().getValue()) {
 		case gcn::Key::ESCAPE :
 
-			this->getModel()->setEnd(MenuModel::QUIT);
+			Model().setEnd(MenuModel::QUIT);
 			keyEvent.consume();
 			break;
 
 		case 'P': case 'p':
 
-			this->getModel()->setEnd(MenuModel::PLAY);
+			Model().setEnd(MenuModel::PLAY);
 			keyEvent.consume();
 			break;
 

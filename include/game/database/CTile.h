@@ -9,16 +9,9 @@
 #define CTILE_H_
 
 #include <utility>
-
 #include <tinyxml.h>
-#include "misc/Point.h"
+#include <guichan.hpp>
 
-namespace gcn {
-
-	class Image;
-	class Graphics;
-
-}
 class CTile
 {
 public:

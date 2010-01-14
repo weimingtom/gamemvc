@@ -40,8 +40,8 @@ IntroView::~IntroView() {
 
 void IntroView::initialize() {
 
-	m_controller = new IntroController( this );
-	top->addKeyListener( m_controller );
+	setController( new IntroController( this ));
+	top->addKeyListener( &Controller() );
 
 }
 
@@ -50,7 +50,7 @@ void IntroView::draw() {
 	std::stringstream stm;
 
 	// Output an int
-	stm << std::setfill( '0' ) << std::setw( 5 ) << this->getModel()->getAlpha();
+	stm << std::setfill( '0' ) << std::setw( 5 ) << Model().getAlpha();
 	text->setText( stm.str() );
 	game.getGui().draw();
 

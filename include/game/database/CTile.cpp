@@ -27,18 +27,18 @@ bool CTile::Load( TiXmlElement* pXMLData ) {
 	std::string imagen( pXMLData->Attribute( "image" ) );
 	gcn::Image* image = gcn::Image::load( imagen );
 	m_laLoseta.first = image;
-	m_laLoseta.second.SetX( image->getWidth() / 2 );
-	m_laLoseta.second.SetY( image->getHeight() / 2 );
+	m_laLoseta.second.x = image->getWidth() / 2;
+	m_laLoseta.second.y = image->getHeight() / 2;
 
 	return true;
 }
 
 void CTile::Draw( 	gcn::Graphics* graphics,
 					int destX,
-					int destY )const {
+					int destY ) const {
 
 	graphics->drawImage( 	m_laLoseta.first,
-							destX - m_laLoseta.second.GetX(),
-							destY - m_laLoseta.second.GetY() );
+							destX - m_laLoseta.second.x,
+							destY - m_laLoseta.second.y );
 
 }

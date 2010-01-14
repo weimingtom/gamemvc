@@ -10,12 +10,12 @@
 
 #include <memory>
 #include <string>
+#include <guichan.hpp>
 
 #include <2d/Vector2D.h>
 #include <mvc/Model.h>
-#include <misc/Point.h>
+
 #include <misc/CellSpacePartition.h>
-#include <game/IsoDiamondMap.h>
 #include <game/EntityFunctionTemplates.h>
 
 #include <Graph/GraphEdgeTypes.h>
@@ -32,6 +32,7 @@
 #include "CBuildingMapaManager.h"
 #include "CResourceMapaManager.h"
 #include "CActorMapaManager.h"
+#include "MapLocal.h"
 
 class TiXmlElement;
 class CActor_PathPlanner;
@@ -66,10 +67,13 @@ public:
 	void setEnd( const PlayModel::EndTypes& type );
 	PlayModel::EndTypes getEnd() const;
 
-	int getResolution();
-	int getTopPadding();
+	int getResolution() const;
+	int getTopPadding() const;
+	const std::string& getMouseMap() const;
 
-	void Update();
+	const MapLocal& Map() const;
+
+	void Update(long iElapsedTicks);
 
 	void setMouse(	const std::string& name,
 					const int& X,
@@ -86,8 +90,6 @@ public:
 	std::vector < CResourceMapa* >
 	ObtainResourceCell( const gcn::Point& pLocal );
 	std::vector < CActorMapa* > ObtainActorCell( const gcn::Point& pLocal );
-
-	IsoDiamondMap& getMap() const;
 
 	NavGraph& GetNavGraph() const {
 		return *m_pNavGraph;
@@ -117,13 +119,18 @@ public:
 	bool isPathObstructed( 	Vector2D A,
 							Vector2D B,
 							double BoundingRadius ) const;
+	int cxClient() const;
+	int cyClient() const;
+
 private:
 
 	PlayModel::EndTypes m_endtype;
 
 	std::string m_sMapName;
-	int m_iResolution;
-	int m_iTopPadding;
+	int 		m_iResolution;
+	int 		m_iTopPadding;
+	std::string	m_sMouseMap;
+	MapLocal	m_maplocal;
 
 	int m_iSizeX;
 	int m_iSizeY;
@@ -141,8 +148,6 @@ private:
 
 	//the graph nodes will be partitioned enabling fast lookup
 	CellSpace* m_pSpacePartition;
-
-	std::auto_ptr < IsoDiamondMap > m_map;
 
 	NavGraph* m_pNavGraph; //! This Map navigation graph.
 
@@ -167,6 +172,7 @@ private:
 	bool loadBuilding( TiXmlElement* pXMLData );
 	bool loadResource( TiXmlElement* pXMLData );
 	bool loadActor( TiXmlElement* pXMLData );
+	void PartitionNavGraph();
 
 };
 

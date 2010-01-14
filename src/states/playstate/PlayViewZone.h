@@ -9,13 +9,15 @@
 #define PLAYVIEWZONE_H_
 
 #include <guichan.hpp>
+
+#include <IsoHex/IMap.hpp>
+#include <IsoHex/MouseMap.hpp>
+#include <IsoHex/Scroller.hpp>
+
 #include <mvc/View.h>
-#include <game/Scroller.h>
 
 class PlayControllerZone;
 class PlayModel;
-class PlayView;
-class Scroller;
 class XmlGui;
 
 class PlayViewZone: public View < PlayModel, PlayControllerZone >
@@ -24,8 +26,12 @@ public:
 
 	PlayViewZone( 	PlayModel* model,
 					XmlGui& xmlgui );
+	virtual ~PlayViewZone();
 	void initialize();
 	void draw();
+
+	void Scroll( 	int screenExtent,
+					IMap::Direction screenDirection );
 
 	void updateMoveView( 	int X,
 							int Y );
@@ -46,8 +52,12 @@ public:
 private:
 
 	gcn::Widget* 				m_zone;
-	gcn::Rectangle 				m_areaZone;
-	std::auto_ptr < Scroller >	m_scroller;
+	gcn::Rectangle				m_areaZone;
+	IMouseMapPtrType ptMouseMap;
+	gcn::Point		 m_tileAnchor;
+	IMapPtrType	 	 ptIsoMap;
+	ScrollerPtrType	 ptScroller;
+
 
 	bool m_move;
 	int moveX;

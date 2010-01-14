@@ -8,15 +8,14 @@
 #ifndef CRESOURCEMAPA_H_
 #define CRESOURCEMAPA_H_
 
-#include <misc/Point.h>
-#include "game/BaseGameEntity.h"
+#include <guichan.hpp>
+
+#include <game/BaseGameEntity.h>
 
 class TiXmlElement;
 class CResourceType;
 class PlayModel;
-namespace gcn{
-	class Graphics;
-}
+
 class CResourceMapa: public BaseGameEntity
 {
 public:

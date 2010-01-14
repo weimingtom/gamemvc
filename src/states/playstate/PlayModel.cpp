@@ -12,25 +12,73 @@
 #include <misc/debug.h>
 
 #include <2d/WallIntersectionTests.h>
+#include <Graph/HandyGraphFunctions.h>
+#include <Messaging/MessageDispatcher.h>
 
 #include <game/GameException.h>
-#include <game/database/CMouseMapManager.h>
 #include <Lua/CLuaManager.h>
 
 #include "lua/Raven_Scriptor.h"
+
+#include "CActor_PathPlanner.h"
 
 #include "CTerrainMapa.h"
 #include "CBuildingMapa.h"
 #include "CResourceMapa.h"
 
+const int SIZELOCAL = 64; // Tamaño en puntos de cada cuadrado local....
+//--------------------------- GraphHelper_CreateGrid --------------------------
+//
+//  creates a graph based on a grid layout. This function requires the
+//  dimensions of the environment and the number of cells required horizontally
+//  and vertically
+//-----------------------------------------------------------------------------
+template < class graph_type >
+void GraphHelper_CreateGridOwn( graph_type& graph,
+								int cySize,
+								int cxSize,
+								int NumCellsY,
+								int NumCellsX ) {
+	//need some temporaries to help calculate each node center
+	double CellWidth = (double) cySize / (double) NumCellsX;
+	double CellHeight = (double) cxSize / (double) NumCellsY;
+
+	double midX = CellWidth / 2;
+	double midY = CellHeight / 2;
+
+	//first create all the nodes
+	for ( int row = 0; row < NumCellsY; ++row ) {
+		for ( int col = 0; col < NumCellsX; ++col ) {
+
+			graph.AddNode( NavGraphNode < Trigger < CActorMapa >* > ( 	graph.GetNextFreeNodeIndex(),
+																		Vector2D( 	midX
+																							+ ( col
+																									* CellWidth ),
+																					midY
+																							+ ( row
+																									* CellHeight ) ) ) );
+
+		}
+	}
+	//now to calculate the edges. (A position in a 2d array [x][y] is the
+	//same as [y*NumCellsX + x] in a 1d array). Each cell has up to eight
+	//neighbours.
+	for ( int row = 0; row < NumCellsY; ++row ) {
+		for ( int col = 0; col < NumCellsX; ++col ) {
+			GraphHelper_AddAllNeighboursToGridNode( graph,
+													row,
+													col,
+													NumCellsX,
+													NumCellsY );
+		}
+	}
+}
+
 PlayModel::PlayModel() :
-	Model(),
-	m_endtype( PlayModel::CONTINUE ),
-	m_ismouse(false),
-	m_pMapaPartition( NULL ),
-	m_pSpacePartition( NULL ),
-	m_pNavGraph( NULL ),
-	m_pPathManager( NULL ) {
+	Model(), m_endtype( PlayModel::CONTINUE ), m_maplocal( SIZELOCAL ),
+			m_ismouse( false ), m_pMapaPartition( NULL ),
+			m_pSpacePartition( NULL ), m_pNavGraph( NULL ),
+			m_pPathManager( NULL ) {
 
 	//
 	//	Cargar los datos de este juego.
@@ -57,7 +105,20 @@ PlayModel::~PlayModel() {
 	LuaManager.RunLuaDoString( "collectgarbage (\"collect\")" ); // Recojemos Lua para no dejar memoria suelta.
 
 }
-void PlayModel::Update() {
+void PlayModel::Update(long iElapsedTicks) {
+
+	//update all the queued searches in the path manager
+	m_pPathManager->UpdateSearches();
+	/*
+	 * De momento solo actualizamos los Actores y a lo bruto
+	 * veremos a ver como lo mejoro.
+	 */
+	std::vector < CActorMapa_ptr >::iterator iter;
+	std::vector < CActorMapa_ptr >& actorsMapa = m_pActorMapaManager->_getActors();
+	for ( iter = actorsMapa.begin(); iter != actorsMapa.end(); ++iter ) {
+		( *iter )->Update( iElapsedTicks );
+	}
+	Dispatch->DispatchDelayedMessages();
 
 }
 bool PlayModel::isEnd() {
@@ -75,26 +136,26 @@ PlayModel::EndTypes PlayModel::getEnd() const {
 
 }
 void PlayModel::setMouse(	const std::string& name,
-				const int& X,
-				const int& Y ){
-	m_ismouse=true;
+							const int& X,
+							const int& Y ) {
+	m_ismouse = true;
 	m_MsgLeftname = name;
-	m_MsgLeftX 	  = X;
-	m_MsgLeftY 	  = Y;
+	m_MsgLeftX = X;
+	m_MsgLeftY = Y;
 }
-void PlayModel::resetMouse(){
-	m_ismouse=false;
+void PlayModel::resetMouse() {
+	m_ismouse = false;
 }
-bool PlayModel::ismouse() const{
+bool PlayModel::ismouse() const {
 	return m_ismouse;
 }
-const std::string& PlayModel::getMsgLeftname() const{
+const std::string& PlayModel::getMsgLeftname() const {
 	return m_MsgLeftname;
 }
-int PlayModel::getMsgLeftX() const{
+int PlayModel::getMsgLeftX() const {
 	return m_MsgLeftX;
 }
-int PlayModel::getMsgLeftY() const{
+int PlayModel::getMsgLeftY() const {
 	return m_MsgLeftY;
 }
 std::vector < CTerrainMapa* > PlayModel::ObtainTerrainCell( const gcn::Point& pLocal ) {
@@ -102,8 +163,8 @@ std::vector < CTerrainMapa* > PlayModel::ObtainTerrainCell( const gcn::Point& pL
 	std::vector < CTerrainMapa* > terrainCell;
 
 	CellMapa < BaseGameEntity* > cell =
-			GetCellMapa()->GetCell( Vector2D( 	pLocal.GetX(),
-												pLocal.GetY() ) );
+			GetCellMapa()->GetCell( Vector2D( 	pLocal.x,
+												pLocal.y ) );
 
 	std::list < BaseGameEntity* >::iterator iter;
 	for ( iter = cell.Members.begin(); iter != cell.Members.end(); ++iter ) {
@@ -122,8 +183,8 @@ std::vector < CBuildingMapa* > PlayModel::ObtainBuildingCell( const gcn::Point& 
 	std::vector < CBuildingMapa* > buildingCell;
 
 	CellMapa < BaseGameEntity* > cell =
-			GetCellMapa()->GetCell( Vector2D( 	pLocal.GetX(),
-												pLocal.GetY() ) );
+			GetCellMapa()->GetCell( Vector2D( 	pLocal.x,
+												pLocal.y ) );
 
 	std::list < BaseGameEntity* >::iterator iter;
 	for ( iter = cell.Members.begin(); iter != cell.Members.end(); ++iter ) {
@@ -143,8 +204,8 @@ std::vector < CResourceMapa* > PlayModel::ObtainResourceCell( const gcn::Point& 
 	std::vector < CResourceMapa* > ResourceCell;
 
 	CellMapa < BaseGameEntity* > cell =
-			GetCellMapa()->GetCell( Vector2D( 	pLocal.GetX(),
-												pLocal.GetY() ) );
+			GetCellMapa()->GetCell( Vector2D( 	pLocal.x,
+												pLocal.y ) );
 
 	std::list < BaseGameEntity* >::iterator iter;
 	for ( iter = cell.Members.begin(); iter != cell.Members.end(); ++iter ) {
@@ -164,8 +225,8 @@ std::vector < CActorMapa* > PlayModel::ObtainActorCell( const gcn::Point& pLocal
 	std::vector < CActorMapa* > ActorCell;
 
 	CellMapa < BaseGameEntity* > cell =
-			GetCellMapa()->GetCell( Vector2D( 	pLocal.GetX(),
-												pLocal.GetY() ) );
+			GetCellMapa()->GetCell( Vector2D( 	pLocal.x,
+												pLocal.y ) );
 
 	std::list < BaseGameEntity* >::iterator iter;
 	for ( iter = cell.Members.begin(); iter != cell.Members.end(); ++iter ) {
@@ -180,20 +241,27 @@ std::vector < CActorMapa* > PlayModel::ObtainActorCell( const gcn::Point& pLocal
 
 	return ActorCell;
 }
-int PlayModel::getResolution() {
+int PlayModel::getResolution() const {
 
 	return m_iResolution;
 
 }
-int PlayModel::getTopPadding() {
+int PlayModel::getTopPadding() const {
 
 	return m_iTopPadding;
 
 }
-IsoDiamondMap& PlayModel::getMap() const {
-
-	return *m_map.get();
-
+const std::string& PlayModel::getMouseMap() const {
+	return m_sMouseMap;
+}
+const MapLocal& PlayModel::Map() const {
+	return m_maplocal;
+}
+int PlayModel::cxClient() const{
+	return m_iSizeX;
+}
+int PlayModel::cyClient() const{
+	return m_iSizeY;
 }
 //------------------------- isPathObstructed ----------------------------------
 //
@@ -247,13 +315,13 @@ void PlayModel::loadGame( const std::string& mapData ) {
 	// procedemos crear el mapa donde
 	// los vamos a representar.
 	//
-	m_map.reset( new IsoDiamondMap( *mouse ) );
+
 	//
 	// Aqui creo que es un buen momento para definir lo relativo a
 	// path finder, tenemos el terreno base y su tamao.
 	//
-	m_iSizeX = m_iResolution * m_map->mouseMap().w();
-	m_iSizeY = m_iResolution * m_map->mouseMap().w();
+	m_iSizeX = m_iResolution * SIZELOCAL; //!TODO Esto esta mal ojo....
+	m_iSizeY = m_iResolution * SIZELOCAL; //
 
 	m_iCellsX = m_iResolution;
 	m_iCellsY = m_iResolution;
@@ -262,6 +330,17 @@ void PlayModel::loadGame( const std::string& mapData ) {
 																	m_iSizeY,
 																	m_iCellsX,
 																	m_iCellsY );
+	//delete any old graph
+	delete m_pNavGraph;
+
+	//create the graph
+	m_pNavGraph = new NavGraph( false );//not a digraph
+	GraphHelper_CreateGridOwn(	*m_pNavGraph,
+								m_iSizeX,
+								m_iSizeY,
+								m_iCellsX,
+								m_iCellsY );
+
 	/*
 	 * Cargar los datos de los objetos del juego, que modifican
 	 * el posible calculo del pathfinder.
@@ -275,12 +354,15 @@ void PlayModel::loadGame( const std::string& mapData ) {
 	THROW_GAME_EXCEPTION_IF(!loadTerrain( pXMLData ),"Error loadTerrain");
 	THROW_GAME_EXCEPTION_IF(!loadResource( pXMLData ),"Error loadResource");
 	THROW_GAME_EXCEPTION_IF(!loadBuilding( pXMLData ), "Error loadBuilding");
-	THROW_GAME_EXCEPTION_IF(!loadActor( pXMLData ), "Error loadBuilding");
+
+	//partition the graph nodes
+	PartitionNavGraph();
 
 	m_pPathManager
 			= new
 					PathManager < CActor_PathPlanner > ( script->GetDouble( "MaxSearchCyclesPerUpdateStep" ) );
 
+	THROW_GAME_EXCEPTION_IF(!loadActor( pXMLData ), "Error loadBuilding");
 	return;
 }
 bool PlayModel::loadXML( TiXmlElement* pXMLData ) {
@@ -298,6 +380,10 @@ bool PlayModel::loadXML( TiXmlElement* pXMLData ) {
 	THROW_GAME_EXCEPTION_IF( !pXMLData->Attribute( "toppadding" ),
 			"Error Mapa: Top Padding no definido" );
 	m_iTopPadding = atoi( pXMLData->Attribute( "toppadding" ) );
+
+	THROW_GAME_EXCEPTION_IF(!pXMLData->Attribute("mouse"),"Mouse map no definido");
+	m_sMouseMap = pXMLData->Attribute( "mouse" );
+
 	return true;
 
 }
@@ -333,6 +419,35 @@ bool PlayModel::loadActor( TiXmlElement* pXMLData ) {
 	// Cargamos datos iniciales de Resources.
 	//
 	m_pActorMapaManager = new CActorMapaManager( this );
-	return m_pActorMapaManager->Load( pXMLData->FirstChildElement( "ActorGroup" ) );
+	if (!m_pActorMapaManager->Load( pXMLData->FirstChildElement( "ActorGroup" ) )) return false;
+
+	std::vector < CActorMapa_ptr >::iterator iter;
+	std::vector < CActorMapa_ptr>& actorMapa = m_pActorMapaManager->_getActors();
+	for ( iter = actorMapa.begin(); iter != actorMapa.end(); iter++ )
+		m_Vehicles.push_back( ( *iter ).get() );
+	return true;
 
 }
+
+//-------------------------- PartitionEnvironment -----------------------------
+//-----------------------------------------------------------------------------
+void PlayModel::PartitionNavGraph() {
+
+	if ( m_pSpacePartition )
+		delete m_pSpacePartition;
+
+	m_pSpacePartition
+			= new CellSpacePartition < NavGraph::NodeType* > ( 	m_iSizeX,
+																m_iSizeY,
+																m_iCellsX,
+																m_iCellsY,
+																m_pNavGraph->NumNodes() );
+
+	//add the graph nodes to the space partition
+	NavGraph::NodeIterator NodeItr( *m_pNavGraph );
+	for ( NavGraph::NodeType* pN = NodeItr.begin(); !NodeItr.end(); pN
+			= NodeItr.next() ) {
+		m_pSpacePartition->AddEntity( pN );
+	}
+}
+

@@ -8,14 +8,9 @@
 #ifndef CTERRAINMAPA_H_
 #define CTERRAINMAPA_H_
 
+#include <guichan.hpp>
+
 #include <game/BaseGameEntity.h>
-#include <misc/Point.h>
-
-namespace gcn {
-
-	class Graphics;
-
-}
 
 class PlayModel;
 class CTile;

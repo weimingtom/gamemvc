@@ -18,19 +18,19 @@ PlayControllerMsgCenter::PlayControllerMsgCenter( PlayViewMsgCenter* view ) :
 
 void PlayControllerMsgCenter::mouseMoved( gcn::MouseEvent& mouseEvent ) {
 
-	getModel()->setMouse(	"MsgCenter",
-							mouseEvent.getX(),
-							mouseEvent.getY() );
+	Model().setMouse(	"MsgCenter",
+						mouseEvent.getX(),
+						mouseEvent.getY() );
 	mouseEvent.consume();
 
 }
 void PlayControllerMsgCenter::mouseEntered( gcn::MouseEvent& mouseEvent ) {
-	getModel()->setMouse(	"MsgCenter",
-							mouseEvent.getX(),
-							mouseEvent.getY() );
+	Model().setMouse(	"MsgCenter",
+						mouseEvent.getX(),
+						mouseEvent.getY() );
 	mouseEvent.consume();
 }
 void PlayControllerMsgCenter::mouseExited( gcn::MouseEvent& mouseEvent ) {
-	getModel()->resetMouse();
+	Model().resetMouse();
 	mouseEvent.consume();
 }

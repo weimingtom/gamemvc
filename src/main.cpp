@@ -37,22 +37,20 @@ int main( 	int argc,
 
 	try {
 
-		init_logs();
+
 
 #ifdef DEBUG
 
-		//		char* q = new char[128]; // Solo esta para forzar el error en NVWA
-
-		g_l_level()->set_enabled( bl::level::debug );
 		std::cout.setf( std::ios::unitbuf ); // Quito el buffer al estar bajo debug....
+		init_logs();
+		g_l_level()->set_enabled( bl::level::info );
 
 #else
 
+		init_logs();
 		g_l_level()->set_enabled(bl::level::error);
 
 #endif
-
-		//		Q_(debug,"Hola como esta" << "y mas cosas" << 1) //!TODO No funciona
 
 		std::string config;
 		po::options_description desc( "Allowed options" );

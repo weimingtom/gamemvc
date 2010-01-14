@@ -22,11 +22,11 @@ CTerrainMapa::~CTerrainMapa() {
 
 }
 void CTerrainMapa::SetTile( CTile* tile,
-							const gcn::Point& p ) {
-	m_pTerrain = tile;
+							const gcn::Point& pMap ) {
 
-	SetPos( m_pModel->getMap().MapToLocal( 	p.GetX(),
-											p.GetY() ) );
+	m_pTerrain = tile;
+	SetPos( m_pModel->Map().MapToLocal < Vector2D > ( pMap ) );
+
 	m_pModel->GetCellMapa()->AddEntity( this );
 
 }

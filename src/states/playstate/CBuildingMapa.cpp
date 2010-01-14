@@ -30,10 +30,10 @@ bool CBuildingMapa::Load( TiXmlElement* pXMLData ) {
 	if ( !pXMLData ) return false;
 	gcn::Point p;
 	THROW_GAME_EXCEPTION_IF(!pXMLData->Attribute("x"),"Error x BuildingMapa no definido")
-	p.X() = atoi( pXMLData->Attribute( "x" ) );
+	p.x = atoi( pXMLData->Attribute( "x" ) );
 
 	THROW_GAME_EXCEPTION_IF(!pXMLData->Attribute("y"),"Error y BuildingMapa no definido")
-	p.Y() = atoi( pXMLData->Attribute( "y" ) );
+	p.y = atoi( pXMLData->Attribute( "y" ) );
 
 	std::string s( pXMLData->GetText() );
 	m_pBuildingType = BuildingManager.GetBuildingType( s );
@@ -54,8 +54,10 @@ bool CBuildingMapa::Load( TiXmlElement* pXMLData ) {
 
 	 }
 	 */
+	/*
 	SetPos( m_pModel->getMap().MapToLocal( 	p.GetX(),
 											p.GetY() ) );
+	*/
 	m_pModel->GetCellMapa()->AddEntity( this );
 	return true;
 }

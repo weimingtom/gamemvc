@@ -23,14 +23,14 @@ void PlayController::keyPressed( gcn::KeyEvent& keyEvent ) {
 	switch ( keyEvent.getKey().getValue() ) {
 		case gcn::Key::ESCAPE:
 
-			this->getModel()->setEnd( PlayModel::QUIT );
+			Model().setEnd( PlayModel::QUIT );
 			keyEvent.consume();
 		break;
 
 		case 'M':
 		case 'm':
 
-			this->getModel()->setEnd( PlayModel::MENU );
+			Model().setEnd( PlayModel::MENU );
 			keyEvent.consume();
 		break;
 

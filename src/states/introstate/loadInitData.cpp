@@ -11,15 +11,12 @@
 #include <boost/exception_ptr.hpp>
 #include <boost/random.hpp>
 #include <guichan.hpp>
+#include <IsoHex/SDLException.hpp>
 
 #include <misc/CrtlThread.h>
-
 #include <CParam.h>
-
-#include <SDL++/SDLException.hpp>
 #include <game/GameException.h>
 
-#include <game/database/CMouseMapManager.h>
 #include <game/database/CTerrainManager.h>
 #include <game/database/CBuildingManager.h>
 #include <game/database/CResourceManager.h>
@@ -79,12 +76,6 @@ void loadInitData::operator()() {
 bool loadInitData::LoadXML( TiXmlElement* pXMLData ) {
 
 	if ( !pXMLData ) return false;
-
-	THROW_GAME_EXCEPTION_IF( !( pXMLData->Attribute( "MouseMap" ) ),
-			"Error MouseMap no definido" );
-
-	std::string m( pXMLData->Attribute( "MouseMap" ) );
-	MouseMapManager.Init( m );
 
 	if ( !TerrainManager.Load( pXMLData->FirstChildElement( "terrain" ) ) ) return false;
 

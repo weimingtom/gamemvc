@@ -23,9 +23,9 @@ public:
 	CActorMapaManager( PlayModel* pModel );
 	bool Load( TiXmlElement* pXMLData );
 
-private:
+	std::vector < CActorMapa_ptr >& _getActors();
 
-	typedef boost::shared_ptr < CActorMapa > CActorMapa_ptr;
+private:
 
 	PlayModel* m_pModel;
 	std::vector < CActorMapa_ptr > m_ActorMapa;

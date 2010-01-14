@@ -13,7 +13,6 @@
 #include <guichan.hpp>
 #include <xmlgui.h>
 
-#include <misc/Point.h>
 #include <misc/debug.h>
 
 #include <MyGame.h>
@@ -59,8 +58,8 @@ PlayView::~PlayView() {
 
 void PlayView::initialize() {
 
-	m_controller = new PlayController( this );
-	top->addKeyListener( m_controller );
+	setController( new PlayController( this ) );
+	top->addKeyListener( &Controller() );
 
 	m_ZoneView->initialize();
 	m_MsgLeftView->initialize();
@@ -70,11 +69,11 @@ void PlayView::initialize() {
 
 void PlayView::draw() {
 
-	if (getModel()->ismouse()){
+	if (Model().ismouse()){
 
-		m_MsgLeftView->setMsgLeftname(getModel()->getMsgLeftname());
-		m_MsgLeftView->setMsgLeftX(getModel()->getMsgLeftX());
-		m_MsgLeftView->setMsgLeftY(getModel()->getMsgLeftY());
+		m_MsgLeftView->setMsgLeftname(Model().getMsgLeftname());
+		m_MsgLeftView->setMsgLeftX(Model().getMsgLeftX());
+		m_MsgLeftView->setMsgLeftY(Model().getMsgLeftY());
 
 	} else {
 

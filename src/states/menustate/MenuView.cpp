@@ -34,8 +34,8 @@ MenuView::~MenuView() {
 
 void MenuView::initialize() {
 
-	m_controller = new MenuController( this );
-	top->addKeyListener( m_controller );
+	setController(new MenuController( this ));
+	top->addKeyListener( &Controller() );
 
 }
 

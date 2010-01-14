@@ -11,11 +11,11 @@
 #include <string>
 
 #include <boost/shared_ptr.hpp>
+#include <guichan.hpp>
 
-#include <misc/Point.h>
 #include <misc/Smoother.h>
 #include <Goals/Goal.h>
-#include "game/MovingEntity.h"
+#include <game/MovingEntity.h>
 
 class PlayModel;
 class Vector2D;
@@ -244,5 +244,7 @@ inline std::string MessageToString( CActorMapa::message_type msg ) {
 
 	}
 }
+
+typedef boost::shared_ptr < CActorMapa > CActorMapa_ptr;
 
 #endif /* CACTORMAPA_H_ */

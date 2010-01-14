@@ -29,10 +29,10 @@ bool CResourceMapa::Load( TiXmlElement* pXMLData ) {
 	if ( !pXMLData ) return false;
 	gcn::Point p;
 	THROW_GAME_EXCEPTION_IF(!pXMLData->Attribute("x"),"Error x ResourceMapa no definido")
-	p.X() = atoi( pXMLData->Attribute( "x" ) );
+	p.x = atoi( pXMLData->Attribute( "x" ) );
 
 	THROW_GAME_EXCEPTION_IF(!pXMLData->Attribute("y"),"Error y ResourceMapa no definido")
-	p.Y() = atoi( pXMLData->Attribute( "y" ) );
+	p.y = atoi( pXMLData->Attribute( "y" ) );
 
 	std::string s( pXMLData->GetText() );
 	m_pResourceType = ResourceManager.GetResourceType( s );
@@ -53,8 +53,8 @@ bool CResourceMapa::Load( TiXmlElement* pXMLData ) {
 
 	 }
 	 */
-	SetPos( m_pModel->getMap().MapToLocal( 	p.GetX(),
-											p.GetY() ) );
+//	SetPos( m_pModel->getMap().MapToLocal( 	p.GetX(),
+//											p.GetY() ) );
 	m_pModel->GetCellMapa()->AddEntity( this );
 	return true;
 }

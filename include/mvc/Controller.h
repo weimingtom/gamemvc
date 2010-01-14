@@ -20,7 +20,7 @@ public:
 
 	Controller( V* view ) :
 		m_view( view ) {
-		m_model = m_view->getModel();
+		m_model = &m_view->Model();
 		m_model->attach( this );
 	}
 	virtual ~Controller() {
@@ -30,13 +30,13 @@ public:
 	virtual void update() {
 	} // Default no-op.
 
-	M* getModel() const {
-		return m_model;
+	M& Model() const {
+		return *m_model;
 	}
-	V* getView() const {
-		return m_view;
+	V& View() const {
+		return *m_view;
 	}
-protected:
+private:
 
 	V* m_view;
 	M* m_model;

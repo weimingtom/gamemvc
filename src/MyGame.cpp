@@ -9,7 +9,7 @@
 #include <SDL/SDL_image.h>
 #include <SDL/SDL_ttf.h>
 
-#include <SDL++/SDLException.hpp>
+#include <IsoHex/SDLException.hpp>
 #include <misc/debug.h>
 #include <misc/Log.h>
 #include <Lua/CLuaManager.h>

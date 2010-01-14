@@ -17,7 +17,8 @@ class View: public Observer
 public:
 
 	View( M* model ) :
-		m_model( model ), m_controller( 0 ) {
+		m_model( model ),
+		m_controller( 0 ) {
 		m_model->attach( this );
 	}
 
@@ -34,11 +35,11 @@ public:
 		return last;
 	}
 
-	M* getModel() const {
-		return m_model;
+	M& Model() const {
+		return *m_model;
 	}
-	C* getController() const {
-		return m_controller;
+	C& Controller() const {
+		return *m_controller;
 	}
 
 	/*!
@@ -54,7 +55,7 @@ public:
 
 	virtual void draw() = 0;
 
-protected:
+private:
 
 	M* m_model;
 	C* m_controller;

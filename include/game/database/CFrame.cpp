@@ -34,8 +34,8 @@ bool CFrame::Load( TiXmlElement* pXMLData ) {
 	std::string s( pXMLData->Attribute( "image" ) );
 	gcn::Image* image = gcn::Image::load( s );
 	m_Frame.first.reset( image );
-	m_Frame.second.SetX( anchorX );
-	m_Frame.second.SetY( anchorY );
+	m_Frame.second.x = anchorX;
+	m_Frame.second.y = anchorY;
 
 	return true;
 
@@ -46,7 +46,7 @@ void CFrame::Draw( 	gcn::Graphics* graphics,
 					int destY ) const {
 
 	graphics->drawImage( 	m_Frame.first.get(),
-							destX - m_Frame.second.GetX(),
-							destY - m_Frame.second.GetY() );
+							destX - m_Frame.second.x,
+							destY - m_Frame.second.y );
 
 }

@@ -26,8 +26,8 @@ PlayViewMsgCenter::PlayViewMsgCenter( PlayModel* model, XmlGui& xmlgui ) :
 }
 void PlayViewMsgCenter::initialize() {
 
-	m_controller = new PlayControllerMsgCenter( this );
-	m_msgcenter->addMouseListener( m_controller );
+	setController( new PlayControllerMsgCenter( this ) );
+	m_msgcenter->addMouseListener( &Controller() );
 
 }
 void PlayViewMsgCenter::draw() {

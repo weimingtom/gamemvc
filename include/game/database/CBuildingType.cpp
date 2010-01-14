@@ -10,7 +10,6 @@
 #include <guichan.hpp>
 
 #include <game/GameException.h>
-#include <game/database/CMouseMapManager.h>
 
 CBuildingType::~CBuildingType() {
 
@@ -43,7 +42,7 @@ bool CBuildingType::Load( TiXmlElement* pXMLData ) {
 
 		case 4:
 			// Centro de los 4 tiles.
-			m_adjust.X() = -mouse->w() / 2;
+//!TODO			m_adjust.X() = -mouse->w() / 2;
 
 		break;
 
@@ -70,8 +69,8 @@ void CBuildingType::Draw( 	gcn::Graphics* graphics,
 							int destY ) const {
 
 	graphics->drawImage( 	m_pImage,
-							destX - m_iAnchorX + m_adjust.GetX(),
-							destY - m_iAnchorY + m_adjust.GetY() );
+							destX - m_iAnchorX + m_adjust.x,
+							destY - m_iAnchorY + m_adjust.y );
 
 }
 

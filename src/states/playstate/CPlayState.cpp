@@ -68,7 +68,9 @@ void CPlayState::HandleEvents() {
 
 void CPlayState::Update() {
 
-	m_model->Update();
+	long iElapsedTicks = SDL_GetTicks() - m_lLastTick;
+	m_lLastTick = SDL_GetTicks();
+	m_model->Update(iElapsedTicks);
 
 }
 

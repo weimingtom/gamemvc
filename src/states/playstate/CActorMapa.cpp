@@ -145,7 +145,7 @@ void CActorMapa::UpdateMovement(double time_elapsed) {
 
 	}
 	//treat the screen as a Rectangle
-	//	WrapInside( m_vPos, m_pWorld->cxClient(), m_pWorld->cyClient() );
+	WrapInside( m_vPos, m_pWorld->cxClient(), m_pWorld->cyClient() );
 
 	m_pWorld->GetCellMapa()->UpdateEntity(this, OldPos);
 
@@ -173,29 +173,28 @@ bool CActorMapa::HandleMessage(const Telegram& msg) {
 
 }
 
-void CActorMapa::Draw(gcn::Graphics* graphics, int destX, int destY) const {
+void CActorMapa::Draw( 	gcn::Graphics* graphics,
+						int destX,
+						int destY ) const {
 
 	Render(); // Dibujar el propio...
-	if (script->GetBool("ShowBrain"))
-		m_pBrain->Render();
-	if (script->GetBool("ShowPath"))
-		m_pPathPlanner->Render();
+	if ( script->GetBool( "ShowBrain" ) ) m_pBrain->Render();
+	if ( script->GetBool( "ShowPath" ) ) m_pPathPlanner->Render();
 
-	m_elActorTipo->GetPersonality(m_Personality)->GetStatus(m_State)->GetDir(m_Dir)->GetFrame(m_iFrame)->Draw(graphics, destX, destY);
+	m_elActorTipo->GetPersonality( m_Personality )->GetStatus( m_State )->GetDir( m_Dir )->GetFrame( m_iFrame )->Draw( 	graphics,
+																														destX,
+																														destY );
 
-	/*
-	 if ( m_bSelect ) {
+	if ( m_bSelect ) {
 
-	 CRectangle rec( imagen->DstRect() );
-	 rec += puntoDest;
-	 rec.Y() -= 4;
-	 rec.W() = imagen->GetCanvas()->GetWidth();
-	 rec.H() = 3;
-	 pDestSurface->FillRect( rec,
-	 CColor::Green );
+		graphics->setColor( gcn::Color( 0xffffff ) );
+		graphics->drawRectangle( gcn::Rectangle( 	destX - 2,
+													destY - 2,
+													4,
+													4 ) );
 
-	 }
-	 */
+	}
+
 }
 
 //-------------------------------- Render -------------------------------------

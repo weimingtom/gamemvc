@@ -38,6 +38,9 @@ private:
 	PlayModel* m_model;
 	PlayView * m_view;
 
+	long m_lLastTick; 	//! Last ticks....
+
+
 };
 
 #endif /* CPLAYSTATE_H_ */

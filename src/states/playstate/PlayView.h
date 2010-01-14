@@ -15,9 +15,6 @@
 #include <guichan.hpp>
 
 #include <mvc/View.h>
-#include <misc/Point.h>
-#include <game/database/CMouseMapManager.h>
-#include <game/Scroller.h>
 
 class PlayModel;
 class PlayController;

@@ -9,8 +9,7 @@
 #define CRESOURCETYPE_H_
 
 #include <string>
-
-#include <misc/Point.h>
+#include <guichan.hpp>
 
 class TiXmlElement;
 namespace gcn {

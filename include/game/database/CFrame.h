@@ -10,8 +10,7 @@
 
 #include <utility>
 #include <boost/shared_ptr.hpp>
-
-#include <misc/Point.h>
+#include <guichan.hpp>
 
 class TiXmlElement;
 namespace gcn {

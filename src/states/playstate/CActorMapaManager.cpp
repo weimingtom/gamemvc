@@ -69,8 +69,9 @@ bool CActorMapaManager::Load( TiXmlElement* pXMLData ) {
 		std::string elActor = pActorMapa->GetText();
 		CActorType* elActorTipo = ActorManager.GetActorType( elActor );
 
-		Vector2D pos = m_pModel->getMap().MapToLocal( 	x,
-														y );
+		Vector2D pos =
+				m_pModel->Map().MapToLocal < Vector2D > ( gcn::Point( 	x,
+																		y ) );
 		CActorMapa_ptr
 				elActorMapa( luabind::call_function < CActorMapa* >( 	LuaManager.GetLua(),
 																		elActor.c_str(),
@@ -85,4 +86,8 @@ bool CActorMapaManager::Load( TiXmlElement* pXMLData ) {
 	}
 	return true;
 }
+std::vector < CActorMapa_ptr >& CActorMapaManager::_getActors(){
 
+	return m_ActorMapa;
+
+}
