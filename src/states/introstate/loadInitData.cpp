@@ -11,7 +11,7 @@
 #include <boost/exception_ptr.hpp>
 #include <boost/random.hpp>
 #include <guichan.hpp>
-#include <IsoHex/SDLException.hpp>
+#include <IsoHex/SdlException.hpp>
 
 #include <misc/CrtlThread.h>
 #include <CParam.h>

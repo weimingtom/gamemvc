@@ -9,7 +9,7 @@
 #define MAPLOCAL_H_
 
 #include <2d/Vector2D.h>
-#include <guichan/Point.hpp>
+#include <guichan/point.hpp>
 
 class MapLocal
 {
