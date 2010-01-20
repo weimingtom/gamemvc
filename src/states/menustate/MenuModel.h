@@ -8,7 +8,11 @@
 #ifndef MENUMODEL_H_
 #define MENUMODEL_H_
 
+#include <string>
+
 #include "mvc/Model.h"
+
+class MyGame;
 
 class MenuModel: public Model
 {
@@ -18,10 +22,11 @@ public:
 	{
 		CONTINUE = -1,
 		QUIT,
-		PLAY
+		PLAY,
+		CHANGERESOLUTION,
 	};
 
-	MenuModel();
+	MenuModel(MyGame& game);
 	virtual ~MenuModel();
 
 	bool isEnd();
@@ -30,9 +35,17 @@ public:
 
 	void Update();
 
+	void changeResolution(const std::pair < std::string, bool >& res );
+	const std::pair<std::string,bool>& getResolution() const;
+	int getPosResolution();
+
+	MyGame& game();
+
 private:
 
-	MenuModel::EndTypes m_endtype;
+	MyGame&						m_game_;
+	MenuModel::EndTypes 		m_endtype;
+	std::pair<std::string,bool>	m_res_;
 
 };
 

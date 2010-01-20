@@ -13,6 +13,8 @@
 
 #include "loadInitData.h"
 
+class MyGame;
+
 class IntroModel: public Model
 {
 public:
@@ -24,7 +26,7 @@ public:
 
 	};
 
-	IntroModel();
+	IntroModel(MyGame& game);
 	virtual ~IntroModel();
 	void Update();
 
@@ -36,8 +38,11 @@ public:
 
 	int	 getAlpha();
 
+	MyGame& game();
+
 private:
 
+	MyGame&							m_game_;
 	int					 			alpha;
 	bool 							m_final;
 	IntroModel::EndTypes 			m_endtype;

@@ -37,7 +37,7 @@ int main( 	int argc,
 
 	try {
 
-
+		MyGame	game;
 
 #ifdef DEBUG
 
@@ -83,8 +83,7 @@ int main( 	int argc,
 							25 );
 		while ( game.Running() ) {
 
-			L_(debug)
-<<			"Comienzo bucle";
+			L_(debug) << "Comienzo bucle";
 			Uint32 timeStart = SDL_GetTicks();
 
 			game.HandleEvents();
@@ -96,6 +95,8 @@ int main( 	int argc,
 			Uint32 timeUpdate = SDL_GetTicks();
 			L_(debug) << "Time Update       : " << timeUpdate - timeHandleEvents;
 			game.Draw();
+
+			game.flip();
 
 			Uint32 timeDraw = SDL_GetTicks();
 			L_(debug)<< "Time Draw         : " << timeDraw - timeUpdate;

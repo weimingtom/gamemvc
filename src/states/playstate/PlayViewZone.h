@@ -16,6 +16,8 @@
 
 #include <mvc/View.h>
 
+#include "CActorMapa.h"
+
 class PlayControllerZone;
 class PlayModel;
 class XmlGui;
@@ -40,37 +42,36 @@ public:
 	void moveView( 	int x,
 					int y );
 
-	void setPressedMouse( 	const int& X,
-							const int& Y );
-
-	void setDraggedMouse( 	const int& X,
-							const int& Y );
-
-	void setReleasedMouse( 	const int& X,
-							const int& Y );
+	void paintSelectedArea( const gcn::Rectangle area );
+	void setSelectedArea( const gcn::Rectangle& area );
+	const gcn::Rectangle& area() const;
 
 private:
 
-	gcn::Widget* 				m_zone;
-	gcn::Rectangle				m_areaZone;
+	gcn::Widget* m_zone;
+	gcn::Rectangle m_areaZone;
+	gcn::Rectangle m_pos;
 	IMouseMapPtrType ptMouseMap;
-	gcn::Point		 m_tileAnchor;
-	IMapPtrType	 	 ptIsoMap;
-	ScrollerPtrType	 ptScroller;
-
+	gcn::Point m_tileAnchor;
+	IMapPtrType ptIsoMap;
+	ScrollerPtrType ptScroller;
 
 	bool m_move;
 	int moveX;
 	int moveY;
 
-	bool 			m_selection; // Seleccion activa?.
-	gcn::Point 		m_firstselect; // Primer punto seleccionado;
-	gcn::Rectangle	m_selectarea; // area seleccionada.
+	bool m_selection;
+	gcn::Rectangle m_selectarea;
+	std::vector < CActorMapa* > m_ActorSelected;
 
 	void PaintAllTerrain( const gcn::Point& pLocal );
 	void PaintAllBuilding( const gcn::Point& pLocal );
 	void PaintAllResource( const gcn::Point& pLocal );
 	void PaintAllActor( const gcn::Point& pLocal );
+
+	void selectActor( CActorMapa* actor);
+	void clearSelectActor();
+
 };
 
 #endif /* PLAYVIEWZONE_H_ */

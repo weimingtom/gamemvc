@@ -9,6 +9,7 @@
 #define MENUVIEW_H_
 
 #include <memory>
+#include <string>
 
 #include "mvc/View.h"
 
@@ -19,6 +20,9 @@ class XmlGui;
 namespace gcn {
 
 	class Widget;
+	class Window;
+	class DropDown;
+	class CheckBox;
 
 }
 
@@ -31,10 +35,17 @@ public:
 	void initialize();
 	void draw();
 
+	void ActivateOpt();
+	void DeactivateOpt();
+	void changeResolution();
+
 private:
 
 	std::auto_ptr < XmlGui > xmlgui;
-	gcn::Widget* top;
+	gcn::Widget* 	top;		// Container principal.
+	gcn::Window*	opt;		// Ventana para opciones
+	gcn::DropDown*	optres;		// Opciones de resolucion de pantalla.
+	gcn::CheckBox*	full;
 
 };
 

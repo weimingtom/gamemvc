@@ -13,50 +13,53 @@
 
 //-------------------------------------------------------------------
 PlayControllerZone::PlayControllerZone( PlayViewZone* view ) :
-	Controller < PlayModel, PlayViewZone > ( view ) {
+	Controller < PlayModel, PlayViewZone > ( view ){
 
-}
-void PlayControllerZone::mouseClicked( gcn::MouseEvent& mouseEvent ) {
-
-	std::cout << "mouseClicked" << std::endl;
-	mouseEvent.consume();
 }
 void PlayControllerZone::mousePressed( gcn::MouseEvent& mouseEvent ) {
 
 	std::cout << "mousePressed" << std::endl;
-	switch (mouseEvent.getButton()){
-		case gcn::MouseEvent::LEFT:
-			break;
-		case gcn::MouseEvent::RIGHT:
-			break;
-		default:
-			break;
-	}
 	Model().setMouse(	"ZoneX",
-							mouseEvent.getX(),
-							mouseEvent.getY() );
-	View().setPressedMouse( mouseEvent.getX(),
-								mouseEvent.getY() );
+						mouseEvent.getX(),
+						mouseEvent.getY() );
+
+	m_firstselect.x = mouseEvent.getX();
+	m_firstselect.y = mouseEvent.getY();
+
+	m_selectarea.x = m_firstselect.x;
+	m_selectarea.y = m_firstselect.y;
+	m_selectarea.width = 0;
+	m_selectarea.height = 0;
+
 	mouseEvent.consume();
+
 }
 void PlayControllerZone::mouseDragged( gcn::MouseEvent& mouseEvent ) {
 
 	std::cout << "mouseDragged" << std::endl;
 	Model().setMouse(	"ZoneE",
-							mouseEvent.getX(),
-							mouseEvent.getY() );
-	View().setDraggedMouse( mouseEvent.getX(),
-								mouseEvent.getY() );
+						mouseEvent.getX(),
+						mouseEvent.getY() );
+
+	adjustSelectedArea( mouseEvent.getX(), mouseEvent.getY());
+
+	View().paintSelectedArea( m_selectarea );
 	mouseEvent.consume();
 }
 void PlayControllerZone::mouseReleased( gcn::MouseEvent& mouseEvent ) {
 
 	std::cout << "mouseReleased" << std::endl;
 	Model().setMouse(	"ZoneO",
-							mouseEvent.getX(),
-							mouseEvent.getY() );
-	View().setReleasedMouse( 	mouseEvent.getX(),
-									mouseEvent.getY() );
+						mouseEvent.getX(),
+						mouseEvent.getY() );
+
+	//
+	// Tenemos un area para seleccionar.
+	adjustSelectedArea( mouseEvent.getX(),
+						mouseEvent.getY() );
+
+	View().setSelectedArea( m_selectarea );
+
 	mouseEvent.consume();
 }
 void PlayControllerZone::mouseMoved( gcn::MouseEvent& mouseEvent ) {
@@ -138,4 +141,35 @@ void PlayControllerZone::keyPressed( gcn::KeyEvent& keyEvent ) {
 
 	}
 	keyEvent.consume();
+}
+//-------------------------------------------------------------------------------
+//
+//	Procedimientos privados.
+//
+//-------------------------------------------------------------------------------
+void PlayControllerZone::adjustSelectedArea( 	int X,
+												int Y ) {
+
+	int adjX;
+	int adjY;
+	if ( 0 > X ) {
+		adjX = 0;
+	} else if ( X > View().area().x + View().area().width - 1 ) {
+		adjX = View().area().x + View().area().width - 1;
+	} else
+		adjX = X;
+	if ( 0 > Y ) {
+		adjY = 0;
+	} else if ( Y > View().area().y + View().area().height - 1 ) {
+		adjY = View().area().y + View().area().height - 1;
+	} else
+		adjY = Y;
+	// Tenemos un area para seleccionar.
+	m_selectarea.width = std::abs( m_firstselect.x - X );
+	m_selectarea.height = std::abs( m_firstselect.y - Y );
+	m_selectarea.x = std::min( 	m_firstselect.x,
+								X );
+	m_selectarea.y = std::min( 	m_firstselect.y,
+								Y );
+
 }

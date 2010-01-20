@@ -11,8 +11,9 @@
 #include <iostream>
 #include <boost/ref.hpp>
 
-IntroModel::IntroModel() :
+IntroModel::IntroModel(MyGame& game) :
 	Model(),
+	m_game_(game),
 	alpha( 255 ),
 	m_final( false ),
 	m_endtype( IntroModel::CONTINUE ),
@@ -87,4 +88,7 @@ void IntroModel::setFinal() {
 }
 int IntroModel::getAlpha() {
 	return alpha;
+}
+MyGame& IntroModel::game(){
+	return m_game_;
 }

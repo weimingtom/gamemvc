@@ -26,7 +26,8 @@ public:
 
 private:
 
-	gcn::Widget* m_msgcenter;
+	gcn::Widget*	m_msgcenter;
+	gcn::Rectangle	m_pos; // Posicion absoluta del widget..
 
 };
 

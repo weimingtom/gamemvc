@@ -9,9 +9,10 @@
 #include "IntroView.h"
 #include "IntroController.h"
 
-void CIntroState::Init() {
+void CIntroState::Init( CGameEngine* game ) {
 
-	m_model = new IntroModel();
+	m_game_ = static_cast<MyGame*>(game);
+	m_model = new IntroModel(*m_game_);
 	m_view = new IntroView( m_model );
 	m_view->initialize(); // Aqui creamos el controlador asociado a la vista.
 
@@ -33,7 +34,7 @@ void CIntroState::Resume() {
 
 }
 
-void CIntroState::HandleEvents() {
+void CIntroState::HandleEvents( ) {
 
 	SDL_Event event;
 
@@ -42,21 +43,21 @@ void CIntroState::HandleEvents() {
 		if ( event.type == SDL_QUIT )
 			m_model->setEnd( IntroModel::QUIT );
 		else
-			game.getInput().pushInput( event );
+			m_game_->getInput().pushInput( event );
 	}
-	game.getGui().logic();
+	m_game_->getGui().logic();
 	switch ( m_model->getEnd() ) {
 
 		case IntroModel::QUIT:
-			game.Quit();
-		break;
+			m_game_->Quit();
+			break;
 
 		case IntroModel::MENU:
-			game.ChangeState( &MenuState );
-		break;
+			m_game_->ChangeState( &MenuState );
+			break;
 
 		default:
-		break;
+			break;
 	}
 
 }
@@ -70,6 +71,5 @@ void CIntroState::Update() {
 void CIntroState::Draw() {
 
 	m_model->notify();
-	SDL_Flip( game.getScreen() );
 
 }

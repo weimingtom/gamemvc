@@ -38,6 +38,7 @@ class TiXmlElement;
 class CActor_PathPlanner;
 class CActorMapa;
 class Wall2D;
+class MyGame;
 
 class PlayModel: public Model
 {
@@ -60,7 +61,7 @@ public:
 	typedef Trigger < CActorMapa > TriggerType;
 	typedef TriggerSystem < TriggerType > TheTriggerSystem;
 
-	PlayModel();
+	PlayModel(MyGame& game);
 	virtual ~PlayModel();
 
 	bool isEnd();
@@ -121,9 +122,11 @@ public:
 							double BoundingRadius ) const;
 	int cxClient() const;
 	int cyClient() const;
+	MyGame&	game();
 
 private:
 
+	MyGame&		m_game_;
 	PlayModel::EndTypes m_endtype;
 
 	std::string m_sMapName;

@@ -9,11 +9,14 @@
 class IntroModel;
 class IntroView;
 
+class MyGame;
+class CGameEngine;
+
 class CIntroState:	public CGameState
 {
 public:
 
-	void Init();
+	void Init( CGameEngine* game);
 	void Cleanup();
 
 	void Pause();
@@ -25,8 +28,9 @@ public:
 
 private:
 
+	MyGame*		m_game_;
 	IntroModel* m_model;
-	IntroView* m_view;
+	IntroView* 	m_view;
 
 };
 

@@ -6,18 +6,19 @@
 
 class MenuModel;
 class MenuView;
-
 namespace gcn {
 	class Widget;
 }
+class CGameEngine;
+class MyGame;
 
 #define MenuState Singleton < CMenuState >::Instance()
 
-class CMenuState:	public CGameState
+class CMenuState: public CGameState
 {
 public:
 
-	void Init();
+	void Init( CGameEngine* game );
 	void Cleanup();
 
 	void Pause();
@@ -29,7 +30,8 @@ public:
 
 private:
 
-	gcn::Widget*	top;
+	MyGame*			m_game_;
+	gcn::Widget* 	top;
 	MenuModel* 		m_model;
 	MenuView * 		m_view;
 

@@ -21,16 +21,17 @@ MenuController::~MenuController() {
 
 void MenuController::keyPressed( gcn::KeyEvent& keyEvent ) {
 
-	switch( keyEvent.getKey().getValue()) {
-		case gcn::Key::ESCAPE :
+	switch ( keyEvent.getKey().getValue() ) {
+		case gcn::Key::ESCAPE:
 
-			Model().setEnd(MenuModel::QUIT);
+			Model().setEnd( MenuModel::QUIT );
 			keyEvent.consume();
 			break;
 
-		case 'P': case 'p':
+		case 'P':
+		case 'p':
 
-			Model().setEnd(MenuModel::PLAY);
+			Model().setEnd( MenuModel::PLAY );
 			keyEvent.consume();
 			break;
 
@@ -38,4 +39,19 @@ void MenuController::keyPressed( gcn::KeyEvent& keyEvent ) {
 			break;
 
 	}
+}
+void MenuController::action( const gcn::ActionEvent& actionEvent ) {
+
+	if ( actionEvent.getId() == "b1" ) {
+
+		View().ActivateOpt();
+
+	} else if ( actionEvent.getId() == "Ok" ) {
+		// Cambiar la resolucion
+		View().changeResolution();
+
+	} else if ( actionEvent.getId() == "Cancel" ) {
+		View().DeactivateOpt();
+	}
+
 }

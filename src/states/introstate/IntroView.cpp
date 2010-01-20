@@ -20,9 +20,10 @@ IntroView::IntroView( IntroModel* model ) :
 	View < IntroModel, IntroController > ( model ) {
 
 	xmlgui.reset( new XmlGui() );
-	xmlgui->parse( "./scripts/gui/Intro/gui.xml" );
+	xmlgui->parse(  "./scripts/gui/Intro/" + Model().game().getResolution().first
+	    			+ "/gui.xml" );
 
-	game.getGui().setTop( top = xmlgui->getWidget( "top" ) );
+	Model().game().getGui().setTop( top = xmlgui->getWidget( "top" ) );
 	top->setFocusable( true );
 	top->requestFocus();
 
@@ -34,8 +35,7 @@ IntroView::IntroView( IntroModel* model ) :
 
 IntroView::~IntroView() {
 
-	game.getGui().setTop( NULL );
-
+	Model().game().getGui().setTop(NULL);
 }
 
 void IntroView::initialize() {
@@ -52,6 +52,6 @@ void IntroView::draw() {
 	// Output an int
 	stm << std::setfill( '0' ) << std::setw( 5 ) << Model().getAlpha();
 	text->setText( stm.str() );
-	game.getGui().draw();
+	Model().game().getGui().draw();
 
 }

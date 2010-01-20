@@ -11,6 +11,7 @@
 #include <game/CGameEngine.h>
 #include <misc/singleton.hpp>
 
+class CGameEngine;
 class MyGame;
 
 class PlayModel;
@@ -23,7 +24,7 @@ class CPlayState: public CGameState
 {
 public:
 
-	void Init();
+	void Init(CGameEngine* game  );
 	void Cleanup();
 
 	void Pause();
@@ -35,10 +36,11 @@ public:
 
 private:
 
-	PlayModel* m_model;
-	PlayView * m_view;
+	MyGame*		m_game_;
+	PlayModel*  m_model;
+	PlayView *  m_view;
 
-	long m_lLastTick; 	//! Last ticks....
+	long m_lLastTick; //! Last ticks....
 
 
 };

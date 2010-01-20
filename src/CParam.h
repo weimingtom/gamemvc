@@ -20,8 +20,7 @@ struct CParam
 	struct screen
 	{
 
-		int 	X; // Width pantalla.
-		int	 	Y; // Height pantalla.
+		std::string 	resolution;
 		bool 	full; // Fullscreen.
 
 	} screen;

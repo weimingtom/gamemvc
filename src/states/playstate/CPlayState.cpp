@@ -15,9 +15,10 @@
 #include "PlayView.h"
 #include "PlayController.h"
 
-void CPlayState::Init() {
+void CPlayState::Init( CGameEngine* game ) {
 
-	m_model = new PlayModel();
+	m_game_ = static_cast < MyGame* > ( game );
+	m_model = new PlayModel(*m_game_);
 	m_view = new PlayView( m_model );
 	m_view->initialize();
 
@@ -47,21 +48,21 @@ void CPlayState::HandleEvents() {
 		if ( event.type == SDL_QUIT )
 			m_model->setEnd( PlayModel::QUIT );
 		else
-			game.getInput().pushInput( event );
+			m_game_->getInput().pushInput( event );
 	}
-	game.getGui().logic();
+	m_game_->getGui().logic();
 	switch ( m_model->getEnd() ) {
 
 		case PlayModel::QUIT:
-			game.Quit();
-		break;
+			m_game_->Quit();
+			break;
 
 		case PlayModel::MENU:
-			game.PopState();
-		break;
+			m_game_->PopState();
+			break;
 
 		default:
-		break;
+			break;
 	}
 
 }
@@ -70,13 +71,12 @@ void CPlayState::Update() {
 
 	long iElapsedTicks = SDL_GetTicks() - m_lLastTick;
 	m_lLastTick = SDL_GetTicks();
-	m_model->Update(iElapsedTicks);
+	m_model->Update( iElapsedTicks );
 
 }
 
 void CPlayState::Draw() {
 
 	m_model->notify();
-	SDL_Flip( game.getScreen() );
 
 }

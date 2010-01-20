@@ -16,7 +16,8 @@ class MenuView;
 class MenuModel;
 
 class MenuController:	public Controller < MenuModel, MenuView > ,
-						public gcn::KeyListener
+						public gcn::KeyListener,
+						public gcn::ActionListener
 {
 public:
 	MenuController( MenuView* view );
@@ -25,6 +26,7 @@ public:
 private:
 
 	void keyPressed( gcn::KeyEvent& keyEvent );
+	void action(const gcn::ActionEvent& actionEvent);
 
 };
 

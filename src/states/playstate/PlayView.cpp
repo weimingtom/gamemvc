@@ -32,8 +32,9 @@ PlayView::PlayView( PlayModel* model ) :
 	View < PlayModel, PlayController > ( model ) {
 
 	xmlgui.reset( new XmlGui() );
-	xmlgui->parse( "./scripts/gui/Play/gui.xml" );
-	game.getGui().setTop( top = xmlgui->getWidget( "top" ) );
+	xmlgui->parse( "./scripts/gui/Play/" + Model().game().getResolution().first
+			+ "/gui.xml" );
+	Model().game().getGui().setTop( top = xmlgui->getWidget( "top" ) );
 
 	top->requestFocus();
 
@@ -52,7 +53,7 @@ PlayView::~PlayView() {
 	delete m_MsgLeftView->setController( NULL );
 	delete m_ZoneView->setController( NULL );
 
-	game.getGui().setTop( NULL );
+	Model().game().getGui().setTop(NULL);
 
 }
 
@@ -80,6 +81,6 @@ void PlayView::draw() {
 		m_MsgLeftView->resetMsgLeft();
 
 	}
-	game.getGui().draw();
+	Model().game().getGui().draw();
 
 }

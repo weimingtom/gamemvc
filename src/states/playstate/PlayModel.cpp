@@ -74,8 +74,10 @@ void GraphHelper_CreateGridOwn( graph_type& graph,
 	}
 }
 
-PlayModel::PlayModel() :
-	Model(), m_endtype( PlayModel::CONTINUE ), m_maplocal( SIZELOCAL ),
+PlayModel::PlayModel(MyGame& game) :
+	Model(),
+	m_game_(game),
+	m_endtype( PlayModel::CONTINUE ), m_maplocal( SIZELOCAL ),
 			m_ismouse( false ), m_pMapaPartition( NULL ),
 			m_pSpacePartition( NULL ), m_pNavGraph( NULL ),
 			m_pPathManager( NULL ) {
@@ -262,6 +264,9 @@ int PlayModel::cxClient() const{
 }
 int PlayModel::cyClient() const{
 	return m_iSizeY;
+}
+MyGame& PlayModel::game(){
+	return m_game_;
 }
 //------------------------- isPathObstructed ----------------------------------
 //

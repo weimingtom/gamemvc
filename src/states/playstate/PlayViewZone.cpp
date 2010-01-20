@@ -19,27 +19,28 @@
 #include "CTerrainMapa.h"
 #include "CBuildingMapa.h"
 #include "CResourceMapa.h"
-#include "CActorMapa.h"
 
 PlayViewZone::PlayViewZone( PlayModel* model,
 							XmlGui& xmlgui ) :
 			View < PlayModel, PlayControllerZone > ( model ),
 			m_zone( xmlgui.getWidget( "zone" ) ),
 			m_areaZone( m_zone->getChildrenArea() ),
+			m_pos(m_zone->getClipRectangle()),
 			ptMouseMap( new MouseMap( Model().getMouseMap() ) ),
 			m_tileAnchor( gcn::Point( 	ptMouseMap->w() / 2,
 										ptMouseMap->h() / 2 ) ),
 			ptIsoMap( new MapFactory(	IMap::ISO_DIAMOND_MAP_TYPE,
-						*ptMouseMap )),
+			                         	*ptMouseMap )),
 			ptScroller( new Scroller( 	*ptIsoMap,
 										gcn::Rectangle( 0,
 														0,
 														Model().getResolution(),
 														Model().getResolution() ),
-										m_areaZone,
-										m_tileAnchor,
-										Model().getTopPadding() ) ),
-			m_move( false ) {
+			m_areaZone,
+			m_tileAnchor,
+			Model().getTopPadding() ) ),
+			m_move( false ),
+			m_selection(false){
 
 	ptScroller->Center( ptScroller->plot( gcn::Point(	0,
 														0 ) ) );
@@ -71,7 +72,7 @@ void PlayViewZone::draw() {
 	//
 	// Dibujamos la parte del zone.
 	//
-	game.getGui().getGraphics()->pushClipArea( m_zone->getDimension() );
+	Model().game().getGui().getGraphics()->pushClipArea( m_pos );
 	/*
 	 * Actualizar el campo isometrico.
 	 *
@@ -128,11 +129,11 @@ void PlayViewZone::draw() {
 	//
 	if ( m_selection ) {
 
-		game.getGui().getGraphics()->setColor( gcn::Color( 0xff0000 ) ); // The colour to be used when drawing. From here on, white will be used.
-		game.getGui().getGraphics()->drawRectangle( m_selectarea );
+		Model().game().getGui().getGraphics()->setColor( gcn::Color( 0xff0000 ) ); // The colour to be used when drawing. From here on, white will be used.
+		Model().game().getGui().getGraphics()->drawRectangle( m_selectarea );
 
 	}
-	game.getGui().getGraphics()->popClipArea();
+	Model().game().getGui().getGraphics()->popClipArea();
 
 }
 void PlayViewZone::updateMoveView( 	int X,
@@ -188,57 +189,38 @@ void PlayViewZone::moveView( 	int x,
 								IMap::NORTH );
 
 }
-void PlayViewZone::setPressedMouse( const int& X,
-									const int& Y ) {
 
-	m_selection = true; // Comienzo de seleccion de area.
-	m_firstselect = gcn::Point( X,
-								Y );
-	m_selectarea.x = X;
-	m_selectarea.y = Y;
-	m_selectarea.width = 0;
-	m_selectarea.height = 0;
+void PlayViewZone::paintSelectedArea( const gcn::Rectangle area ){
+
+	m_selectarea = area;
+	m_selection = true;
 
 }
-void PlayViewZone::setDraggedMouse( const int& X,
-									const int& Y ) {
 
-	assert(m_selection); // Se supone que siempre es true al entrar aqui.
-	int adjX;
-	int adjY;
-	if ( 0 > X ) {
-		adjX = 0;
-	} else if ( X > m_areaZone.x + m_areaZone.width - 1 ) {
-		adjX = m_areaZone.x + m_areaZone.width - 1;
-	} else
-		adjX = X;
-	if ( 0 > Y ) {
-		adjY = 0;
-	} else if ( Y > m_areaZone.y + m_areaZone.height - 1 ) {
-		adjY = m_areaZone.y + m_areaZone.height - 1;
-	} else
-		adjY = Y;
-	m_selectarea.width = std::abs( m_firstselect.x - adjX );
-	m_selectarea.height = std::abs( m_firstselect.y - adjY );
-	m_selectarea.x = std::min( 	m_firstselect.x,
-								adjX );
-	m_selectarea.y = std::min( 	m_firstselect.y,
-								adjY );
-}
-void PlayViewZone::setReleasedMouse( 	const int& X,
-										const int& Y ) {
+void PlayViewZone::setSelectedArea( const gcn::Rectangle& area ) {
 
-	if ( m_selection ) {
-
+	//
+	// Y esta es el area con todos los elementos a seleccionar.
+	//
+	m_selectarea = area;
+	clearSelectActor();
+	if ( m_selectarea.width == 0 && m_selectarea.height == 0 ) {
 		//
-		// Y esta es el area con todos los elementos a seleccionar.
+		// Solo tenemos un punto seleccionado, veamos el actor que contiene.
 		//
-		m_selectarea.width = std::abs( m_firstselect.x - X );
-		m_selectarea.height = std::abs( m_firstselect.y - Y );
-		m_selectarea.x = std::min( 	m_firstselect.x,
-									X );
-		m_selectarea.y = std::min( 	m_firstselect.y,
-									Y );
+		gcn::Point pScreen( m_selectarea.x,
+							m_selectarea.y );
+		gcn::Point pMap = ptScroller->map( pScreen );
+		std::vector < CActorMapa* >
+				actorCell = Model().ObtainActorCell( Model().Map().MapToLocal <
+						gcn::Point > ( pMap ) );
+		std::for_each( 	actorCell.begin(),
+						actorCell.end(),
+						boost::bind(	&PlayViewZone::selectActor,
+										this,
+										_1 ) );
+
+	} else {
 		//
 		// Tenemos el area a seleccionar.
 		// seleccionemos los actores.
@@ -256,20 +238,21 @@ void PlayViewZone::setReleasedMouse( 	const int& X,
 								gcn::Point > ( ( *it ) ) );
 				std::for_each( 	actorCell.begin(),
 								actorCell.end(),
-								boost::bind(	&CActorMapa::PonSelect,
+								boost::bind(	&PlayViewZone::selectActor,
+												this,
 												_1 ) );
 			}
 
 		}
-
-		m_selection = false; // Quitamos la seleccion.
-
-	} else {
-		// Se ha liberado el mouse pero no teniamos seleccion activa.
-		// Posiblemente venimos de mover la rueda del raton, que genera un
-		// mouse released al final de su movimiento.
-		Model().resetMouse();
 	}
+
+	m_selection = false; // Quitamos la seleccion.
+
+
+}
+const gcn::Rectangle& PlayViewZone::area() const{
+
+	return m_areaZone;
 
 }
 void PlayViewZone::Scroll( 	int screenExtent,
@@ -300,7 +283,7 @@ void PlayViewZone::PaintAllTerrain( const gcn::Point& pMap ) {
 					terrainCell.end(),
 					boost::bind(	&CTerrainMapa::Draw,
 									_1,
-									game.getGui().getGraphics(),
+									Model().game().getGui().getGraphics(),
 									pScreen.x,
 									pScreen.y ) );
 
@@ -317,7 +300,7 @@ void PlayViewZone::PaintAllBuilding( const gcn::Point& pLocal ) {
 	 buildingCell.end(),
 	 boost::bind(	&CBuildingMapa::Draw,
 	 _1,
-	 game.getGui().getGraphics(),
+	 Model().game().getGui().getGraphics(),
 	 pScreen.x,
 	 pScreen.y ) );
 	 */
@@ -333,7 +316,7 @@ void PlayViewZone::PaintAllResource( const gcn::Point& pLocal ) {
 	 ResourceCell.end(),
 	 boost::bind(	&CResourceMapa::Draw,
 	 _1,
-	 game.getGui().getGraphics(),
+	 Model().game().getGui().getGraphics(),
 	 pScreen.x,
 	 pScreen.y ) );
 	 */
@@ -353,7 +336,7 @@ void PlayViewZone::PaintAllActor( const gcn::Point& pMap ) {
 		desp.y = static_cast<int>((*it)->Pos().y) % 64;
 		gcn::Point p( (desp.x-desp.y)/2,(desp.x+desp.y)/4);
 		pScreen += p;
-		( *it )->Draw( 	game.getGui().getGraphics(),
+		( *it )->Draw( 	Model().game().getGui().getGraphics(),
 						pScreen.x ,
 						pScreen.y );
 
@@ -363,9 +346,23 @@ void PlayViewZone::PaintAllActor( const gcn::Point& pMap ) {
 	 ActorCell.end(),
 	 boost::bind(	&CActorMapa::Draw,
 	 _1,
-	 game.getGui().getGraphics(),
+	 Model().game().getGui().getGraphics(),
 	 pScreen.x,
 	 pScreen.y ) );
 	 */
+
+}
+void PlayViewZone::selectActor( CActorMapa* actor){
+
+	actor->PonSelect();
+	m_ActorSelected.push_back( actor );
+
+}
+void PlayViewZone::clearSelectActor() {
+
+	for_each( 	m_ActorSelected.begin(),
+				m_ActorSelected.end(),
+				boost::bind(	&CActorMapa::QuitaSelect,
+								_1 ) );
 
 }

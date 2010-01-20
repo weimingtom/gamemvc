@@ -9,15 +9,12 @@
 #include "MenuView.h"
 #include "MenuController.h"
 
+void CMenuState::Init( CGameEngine* game ) {
 
-
-void CMenuState::Init() {
-
-	m_model = new MenuModel();
+	m_game_ = static_cast<MyGame*>(game);
+	m_model = new MenuModel(*m_game_);
 	m_view = new MenuView( m_model );
 	m_view->initialize();
-
-//	LAPP_ <<	"CMenuState Init";
 
 }
 
@@ -27,22 +24,18 @@ void CMenuState::Cleanup() {
 	delete m_view;
 	delete m_model;
 
-//	LAPP_ <<	"CMenuState Cleanup";
-
 }
 
 void CMenuState::Pause() {
 
-	top = game.getGui().getTop();
-//	LAPP_ <<	"CMenuState Pause";
+	top = m_game_->getGui().getTop();
 
 }
 
 void CMenuState::Resume() {
 
-	game.getGui().setTop(top);
+	m_game_->getGui().setTop( top );
 	top->requestFocus();
-//	LAPP_ <<	"CMenuState Resume";
 
 }
 
@@ -54,22 +47,32 @@ void CMenuState::HandleEvents() {
 		if ( event.type == SDL_QUIT )
 			m_model->setEnd( MenuModel::QUIT );
 		else
-			game.getInput().pushInput( event );
+			m_game_->getInput().pushInput( event );
 	}
-	game.getGui().logic();
+	m_game_->getGui().logic();
 	switch ( m_model->getEnd() ) {
 
 		case MenuModel::QUIT:
-			game.Quit();
-		break;
+			m_game_->Quit();
+			break;
 
 		case MenuModel::PLAY:
-			game.PushState( &PlayState );
-			m_model->setEnd(MenuModel::CONTINUE);
-		break;
+			m_game_->PushState( &PlayState );
+			m_model->setEnd( MenuModel::CONTINUE );
+			break;
 
+		case MenuModel::CHANGERESOLUTION:
+
+			delete m_view->setController( NULL );
+			delete m_view;
+			m_game_->changeResolution(	m_model->getResolution());
+			m_view = new MenuView( m_model );
+			m_view->initialize();
+			m_model->setEnd( MenuModel::CONTINUE );
+
+			break;
 		default:
-		break;
+			break;
 	}
 
 }
@@ -83,6 +86,5 @@ void CMenuState::Update() {
 void CMenuState::Draw() {
 
 	m_model->notify();
-	SDL_Flip( game.getScreen() );
 
 }
