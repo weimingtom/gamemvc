@@ -16,6 +16,7 @@
 class MenuModel;
 class MenuController;
 
+class Interface;
 class XmlGui;
 namespace gcn {
 
@@ -41,11 +42,12 @@ public:
 
 private:
 
-	std::auto_ptr < XmlGui > xmlgui;
-	gcn::Widget* 	top;		// Container principal.
-	gcn::Window*	opt;		// Ventana para opciones
-	gcn::DropDown*	optres;		// Opciones de resolucion de pantalla.
-	gcn::CheckBox*	full;
+	const Interface&			m_interface_;
+	std::auto_ptr < XmlGui > 	xmlgui;
+	gcn::Widget* 				top;		// Container principal.
+	gcn::Window*				opt;		// Ventana para opciones
+	gcn::DropDown*				optres;		// Opciones de resolucion de pantalla.
+	gcn::CheckBox*				full;
 
 };
 

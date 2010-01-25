@@ -1,6 +1,7 @@
 #include "CIntroState.h"
 
 #include <misc/debug.h>
+#include <misc/Interface.h>
 
 #include <MyGame.h>
 #include <states/menustate/CMenuState.h>
@@ -34,31 +35,24 @@ void CIntroState::Resume() {
 
 }
 
-void CIntroState::HandleEvents( ) {
+void CIntroState::HandleEvents() {
 
-	SDL_Event event;
+    if ( m_game_->interface().input() ) {
+        m_model->setEnd( IntroModel::QUIT );
+    }
+    switch ( m_model->getEnd() ) {
 
-	while ( SDL_PollEvent( &event ) ) {
+        case IntroModel::QUIT:
+            m_game_->Quit();
+            break;
 
-		if ( event.type == SDL_QUIT )
-			m_model->setEnd( IntroModel::QUIT );
-		else
-			m_game_->getInput().pushInput( event );
-	}
-	m_game_->getGui().logic();
-	switch ( m_model->getEnd() ) {
+        case IntroModel::MENU:
+            m_game_->ChangeState( &MenuState );
+            break;
 
-		case IntroModel::QUIT:
-			m_game_->Quit();
-			break;
-
-		case IntroModel::MENU:
-			m_game_->ChangeState( &MenuState );
-			break;
-
-		default:
-			break;
-	}
+        default:
+            break;
+    }
 
 }
 

@@ -12,7 +12,6 @@
 #include <guichan.hpp>
 #include "xmlgui.h"
 
-#include "MyGame.h"
 #include "IntroModel.h"
 #include "IntroController.h"
 
@@ -20,10 +19,10 @@ IntroView::IntroView( IntroModel* model ) :
 	View < IntroModel, IntroController > ( model ) {
 
 	xmlgui.reset( new XmlGui() );
-	xmlgui->parse(  "./scripts/gui/Intro/" + Model().game().getResolution().first
+	xmlgui->parse(  "./scripts/gui/Intro/" + Model().getResolution().first
 	    			+ "/gui.xml" );
 
-	Model().game().getGui().setTop( top = xmlgui->getWidget( "top" ) );
+	Model().Gui().setTop( top = xmlgui->getWidget( "top" ) );
 	top->setFocusable( true );
 	top->requestFocus();
 
@@ -35,7 +34,7 @@ IntroView::IntroView( IntroModel* model ) :
 
 IntroView::~IntroView() {
 
-	Model().game().getGui().setTop(NULL);
+	Model().Gui().setTop(NULL);
 }
 
 void IntroView::initialize() {
@@ -52,6 +51,6 @@ void IntroView::draw() {
 	// Output an int
 	stm << std::setfill( '0' ) << std::setw( 5 ) << Model().getAlpha();
 	text->setText( stm.str() );
-	Model().game().getGui().draw();
+	Model().Gui().draw();
 
 }

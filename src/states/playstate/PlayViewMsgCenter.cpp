@@ -9,6 +9,7 @@
 
 #include <xmlgui.h>
 
+#include <misc/Interface.h>
 #include <MyGame.h>
 
 #include "PlayModel.h"
@@ -21,6 +22,7 @@
 //
 PlayViewMsgCenter::PlayViewMsgCenter( PlayModel* model, XmlGui& xmlgui ) :
 		View < PlayModel, PlayControllerMsgCenter > ( model ),
+		m_interface_(Model().interface()),
 		m_msgcenter( xmlgui.getWidget( "msgcenter" ) ),
 		m_pos(m_msgcenter->getClipRectangle()){
 
@@ -40,15 +42,15 @@ void PlayViewMsgCenter::draw() {
 	//
 	// Pintamos la parte del MsgCenter
 	//
-	Model().game().getGui().getGraphics()->pushClipArea( m_pos );
-	Model().game().getGui().getGraphics()->setColor( gcn::Color( 0xffffff ) ); // The colour to be used when drawing. From here on, white will be used.
-	Model().game().getGui().getGraphics()->drawLine(	10,
+	m_interface_.screen().getGraphics()->pushClipArea( m_pos );
+	m_interface_.screen().getGraphics()->setColor( gcn::Color( 0xffffff ) ); // The colour to be used when drawing. From here on, white will be used.
+	m_interface_.screen().getGraphics()->drawLine(	10,
 											10,
 											100,
 											100 );
-	Model().game().getGui().getGraphics()->drawText(	"Otro texto de prueba",
+	m_interface_.screen().getGraphics()->drawText(	"Otro texto de prueba",
 											15,
 											15 );
-	Model().game().getGui().getGraphics()->popClipArea();
+	m_interface_.screen().getGraphics()->popClipArea();
 
 }

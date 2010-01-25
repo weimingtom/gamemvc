@@ -22,6 +22,7 @@ class PlayViewZone;
 class PlayViewMsgLeft;
 class PlayViewMsgCenter;
 
+class Interface;
 class XmlGui;
 
 class PlayView: public View < PlayModel, PlayController >
@@ -40,6 +41,8 @@ public:
 	void resetMouse() const;
 
 private:
+
+	const Interface&			m_interface_;
 
 	std::auto_ptr < XmlGui > xmlgui;
 

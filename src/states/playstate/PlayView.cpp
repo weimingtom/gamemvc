@@ -13,6 +13,7 @@
 #include <guichan.hpp>
 #include <xmlgui.h>
 
+#include <misc/Interface.h>
 #include <misc/debug.h>
 
 #include <MyGame.h>
@@ -29,12 +30,13 @@
 #include "PlayControllerMsgCenter.h"
 
 PlayView::PlayView( PlayModel* model ) :
-	View < PlayModel, PlayController > ( model ) {
+	View < PlayModel, PlayController > ( model ),
+			m_interface_(Model().interface()) {
 
 	xmlgui.reset( new XmlGui() );
-	xmlgui->parse( "./scripts/gui/Play/" + Model().game().getResolution().first
+	xmlgui->parse( "./scripts/gui/Play/" + m_interface_.actualResolution().first
 			+ "/gui.xml" );
-	Model().game().getGui().setTop( top = xmlgui->getWidget( "top" ) );
+	m_interface_.screen().setTop( top = xmlgui->getWidget( "top" ) );
 
 	top->requestFocus();
 
@@ -53,7 +55,7 @@ PlayView::~PlayView() {
 	delete m_MsgLeftView->setController( NULL );
 	delete m_ZoneView->setController( NULL );
 
-	Model().game().getGui().setTop(NULL);
+	m_interface_.screen().setTop(NULL);
 
 }
 
@@ -81,6 +83,6 @@ void PlayView::draw() {
 		m_MsgLeftView->resetMsgLeft();
 
 	}
-	Model().game().getGui().draw();
+	m_interface_.screen().draw();
 
 }

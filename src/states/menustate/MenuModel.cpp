@@ -13,7 +13,7 @@ MenuModel::MenuModel(MyGame& game) :
 	Model(),
 	m_game_(game),
 	m_endtype( MenuModel::CONTINUE ),
-	m_res_(m_game_.getResolution()){
+	m_res_(m_game_.interface().actualResolution()){
 
 }
 
@@ -37,18 +37,18 @@ MenuModel::EndTypes MenuModel::getEnd() const {
 	return m_endtype;
 
 }
-void MenuModel::changeResolution( const std::pair < std::string, bool >& res ) {
+const Interface& MenuModel::interface() const{
+
+	return m_game_.interface();
+
+}
+
+void MenuModel::changeResolution( const Interface::ScreenResolutionType& res ) {
 
 	m_endtype = MenuModel::CHANGERESOLUTION;
 	m_res_ = res;
 
 }
-const std::pair<std::string,bool>& MenuModel::getResolution() const{
+const Interface::ScreenResolutionType& MenuModel::getResolution() const{
 	return m_res_;
-}
-int MenuModel::getPosResolution(){
-	return game().getPosResolution();
-}
-MyGame& MenuModel::game(){
-	return m_game_;
 }

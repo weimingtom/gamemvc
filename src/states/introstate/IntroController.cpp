@@ -23,7 +23,6 @@ IntroController::~IntroController() {
 
 void IntroController::keyPressed( gcn::KeyEvent& keyEvent ) {
 
-//	LAPP_ <<	"Key pressed: " << keyEvent.getKey().getValue();
 	if ( keyEvent.getKey().getValue() == gcn::Key::ESCAPE ) {
 
 		Model().setFinal(); //! Paramos el bucle asi?.......

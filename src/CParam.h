@@ -20,8 +20,10 @@ struct CParam
 	struct screen
 	{
 
-		std::string 	resolution;
-		bool 	full; // Fullscreen.
+		std::string 	resolution;		// Resolucion pantalla.
+		bool 			full; 			// Fullscreen.
+		std::string		icon;			// Icono del programa.
+		std::string 	font;			// Font por defecto guichan.
 
 	} screen;
 

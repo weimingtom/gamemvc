@@ -39,6 +39,7 @@ class CActor_PathPlanner;
 class CActorMapa;
 class Wall2D;
 class MyGame;
+class Interface;
 
 class PlayModel: public Model
 {
@@ -122,7 +123,7 @@ public:
 							double BoundingRadius ) const;
 	int cxClient() const;
 	int cyClient() const;
-	MyGame&	game();
+	const Interface& interface() const;
 
 private:
 

@@ -10,9 +10,14 @@
 
 #include <string>
 
-#include "mvc/Model.h"
+#include <misc/Interface.h>
+#include <mvc/Model.h>
 
 class MyGame;
+namespace gcn {
+	class Gui;
+}
+class Interface;
 
 class MenuModel: public Model
 {
@@ -26,7 +31,7 @@ public:
 		CHANGERESOLUTION,
 	};
 
-	MenuModel(MyGame& game);
+	MenuModel( MyGame& game );
 	virtual ~MenuModel();
 
 	bool isEnd();
@@ -35,17 +40,16 @@ public:
 
 	void Update();
 
-	void changeResolution(const std::pair < std::string, bool >& res );
-	const std::pair<std::string,bool>& getResolution() const;
-	int getPosResolution();
+	const Interface& interface() const;
 
-	MyGame& game();
+	void changeResolution( const Interface::ScreenResolutionType& res );
+	const Interface::ScreenResolutionType& getResolution() const;
 
 private:
 
-	MyGame&						m_game_;
-	MenuModel::EndTypes 		m_endtype;
-	std::pair<std::string,bool>	m_res_;
+	MyGame& m_game_;
+	MenuModel::EndTypes m_endtype;
+	Interface::ScreenResolutionType m_res_;
 
 };
 

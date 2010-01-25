@@ -9,19 +9,19 @@
 
 #include <tinyxml.h>
 
+#include <misc/Interface.h>
 #include <misc/debug.h>
-
 #include <2d/WallIntersectionTests.h>
 #include <Graph/HandyGraphFunctions.h>
 #include <Messaging/MessageDispatcher.h>
-
 #include <game/GameException.h>
 #include <Lua/CLuaManager.h>
+
+#include <MyGame.h>
 
 #include "lua/Raven_Scriptor.h"
 
 #include "CActor_PathPlanner.h"
-
 #include "CTerrainMapa.h"
 #include "CBuildingMapa.h"
 #include "CResourceMapa.h"
@@ -265,8 +265,8 @@ int PlayModel::cxClient() const{
 int PlayModel::cyClient() const{
 	return m_iSizeY;
 }
-MyGame& PlayModel::game(){
-	return m_game_;
+const Interface& PlayModel::interface() const{
+	return m_game_.interface();
 }
 //------------------------- isPathObstructed ----------------------------------
 //

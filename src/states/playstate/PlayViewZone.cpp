@@ -10,6 +10,8 @@
 #include <xmlgui.h>
 #include <IsoHex/MapFactory.hpp>
 
+#include <misc/Interface.h>
+
 #include <MyGame.h>
 
 #include "PlayModel.h"
@@ -23,6 +25,7 @@
 PlayViewZone::PlayViewZone( PlayModel* model,
 							XmlGui& xmlgui ) :
 			View < PlayModel, PlayControllerZone > ( model ),
+			m_interface_(Model().interface()),
 			m_zone( xmlgui.getWidget( "zone" ) ),
 			m_areaZone( m_zone->getChildrenArea() ),
 			m_pos(m_zone->getClipRectangle()),
@@ -72,7 +75,7 @@ void PlayViewZone::draw() {
 	//
 	// Dibujamos la parte del zone.
 	//
-	Model().game().getGui().getGraphics()->pushClipArea( m_pos );
+	m_interface_.screen().getGraphics()->pushClipArea( m_pos );
 	/*
 	 * Actualizar el campo isometrico.
 	 *
@@ -129,11 +132,11 @@ void PlayViewZone::draw() {
 	//
 	if ( m_selection ) {
 
-		Model().game().getGui().getGraphics()->setColor( gcn::Color( 0xff0000 ) ); // The colour to be used when drawing. From here on, white will be used.
-		Model().game().getGui().getGraphics()->drawRectangle( m_selectarea );
+		m_interface_.screen().getGraphics()->setColor( gcn::Color( 0xff0000 ) ); // The colour to be used when drawing. From here on, white will be used.
+		m_interface_.screen().getGraphics()->drawRectangle( m_selectarea );
 
 	}
-	Model().game().getGui().getGraphics()->popClipArea();
+	m_interface_.screen().getGraphics()->popClipArea();
 
 }
 void PlayViewZone::updateMoveView( 	int X,
@@ -283,7 +286,7 @@ void PlayViewZone::PaintAllTerrain( const gcn::Point& pMap ) {
 					terrainCell.end(),
 					boost::bind(	&CTerrainMapa::Draw,
 									_1,
-									Model().game().getGui().getGraphics(),
+									m_interface_.screen().getGraphics(),
 									pScreen.x,
 									pScreen.y ) );
 
@@ -300,7 +303,7 @@ void PlayViewZone::PaintAllBuilding( const gcn::Point& pLocal ) {
 	 buildingCell.end(),
 	 boost::bind(	&CBuildingMapa::Draw,
 	 _1,
-	 Model().game().getGui().getGraphics(),
+	 m_interface_.screen().getGraphics(),
 	 pScreen.x,
 	 pScreen.y ) );
 	 */
@@ -316,7 +319,7 @@ void PlayViewZone::PaintAllResource( const gcn::Point& pLocal ) {
 	 ResourceCell.end(),
 	 boost::bind(	&CResourceMapa::Draw,
 	 _1,
-	 Model().game().getGui().getGraphics(),
+	 m_interface_.screen().getGraphics(),
 	 pScreen.x,
 	 pScreen.y ) );
 	 */
@@ -336,7 +339,7 @@ void PlayViewZone::PaintAllActor( const gcn::Point& pMap ) {
 		desp.y = static_cast<int>((*it)->Pos().y) % 64;
 		gcn::Point p( (desp.x-desp.y)/2,(desp.x+desp.y)/4);
 		pScreen += p;
-		( *it )->Draw( 	Model().game().getGui().getGraphics(),
+		( *it )->Draw( 	m_interface_.screen().getGraphics(),
 						pScreen.x ,
 						pScreen.y );
 
@@ -346,7 +349,7 @@ void PlayViewZone::PaintAllActor( const gcn::Point& pMap ) {
 	 ActorCell.end(),
 	 boost::bind(	&CActorMapa::Draw,
 	 _1,
-	 Model().game().getGui().getGraphics(),
+	 m_interface_.screen().getGraphics(),
 	 pScreen.x,
 	 pScreen.y ) );
 	 */

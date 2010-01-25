@@ -3,6 +3,7 @@
 #include <misc/debug.h>
 
 #include <MyGame.h>
+#include <misc/Interface.h>
 #include <states/playstate/CPlayState.h>
 
 #include "MenuModel.h"
@@ -28,28 +29,22 @@ void CMenuState::Cleanup() {
 
 void CMenuState::Pause() {
 
-	top = m_game_->getGui().getTop();
+	top = m_game_->interface().screen().getTop();
 
 }
 
 void CMenuState::Resume() {
 
-	m_game_->getGui().setTop( top );
+	m_game_->interface().screen().setTop( top );
 	top->requestFocus();
 
 }
 
 void CMenuState::HandleEvents() {
 
-	SDL_Event event;
-
-	while ( SDL_PollEvent( &event ) ) {
-		if ( event.type == SDL_QUIT )
-			m_model->setEnd( MenuModel::QUIT );
-		else
-			m_game_->getInput().pushInput( event );
+	if (m_game_->interface().input()){
+		m_model->setEnd( MenuModel::QUIT );
 	}
-	m_game_->getGui().logic();
 	switch ( m_model->getEnd() ) {
 
 		case MenuModel::QUIT:
@@ -65,7 +60,7 @@ void CMenuState::HandleEvents() {
 
 			delete m_view->setController( NULL );
 			delete m_view;
-			m_game_->changeResolution(	m_model->getResolution());
+			m_game_->interface().changeScreenResolution( m_model->getResolution());
 			m_view = new MenuView( m_model );
 			m_view->initialize();
 			m_model->setEnd( MenuModel::CONTINUE );

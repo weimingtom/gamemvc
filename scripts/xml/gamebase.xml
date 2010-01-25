@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 	<!--Definicion de todos los elementos fijos del juego.-->
-<gamebase MouseMap="./data/iso_64.bmp">
+<gamebase>
 	<terrain>
 		<TerrainType name="Desierto">
 			<tile image="./data/terrain/desierto/G1500001.PNG" />

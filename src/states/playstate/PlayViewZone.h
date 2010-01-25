@@ -18,6 +18,7 @@
 
 #include "CActorMapa.h"
 
+class Interface;
 class PlayControllerZone;
 class PlayModel;
 class XmlGui;
@@ -47,6 +48,8 @@ public:
 	const gcn::Rectangle& area() const;
 
 private:
+
+	const Interface&			m_interface_;
 
 	gcn::Widget* m_zone;
 	gcn::Rectangle m_areaZone;

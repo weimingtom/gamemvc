@@ -7,7 +7,10 @@
 
 #include "CPlayState.h"
 
+#include <SDL/SDL.h>
+
 #include <misc/debug.h>
+#include <misc/Interface.h>
 
 #include <MyGame.h>
 
@@ -42,15 +45,10 @@ void CPlayState::Resume() {
 
 void CPlayState::HandleEvents() {
 
-	SDL_Event event;
 
-	while ( SDL_PollEvent( &event ) ) {
-		if ( event.type == SDL_QUIT )
-			m_model->setEnd( PlayModel::QUIT );
-		else
-			m_game_->getInput().pushInput( event );
+	if (m_game_->interface().input()){
+		m_model->setEnd( PlayModel::QUIT );
 	}
-	m_game_->getGui().logic();
 	switch ( m_model->getEnd() ) {
 
 		case PlayModel::QUIT:

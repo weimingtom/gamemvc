@@ -12,18 +12,21 @@
 #include <guichan.hpp>
 #include <xmlgui.h>
 
+#include <misc/Interface.h>
+
 #include <MyGame.h>
 
 #include "MenuModel.h"
 #include "MenuController.h"
 
 MenuView::MenuView( MenuModel* model ) :
-	View < MenuModel, MenuController > ( model ) {
+	View < MenuModel, MenuController > ( model ),
+	m_interface_(Model().interface()){
 
 	xmlgui.reset( new XmlGui() );
-	xmlgui->parse( "./scripts/gui/Menu/" + Model().game().getResolution().first
+	xmlgui->parse( "./scripts/gui/Menu/" + m_interface_.actualResolution().first
 			+ "/gui.xml" );
-	Model().game().getGui().setTop( top = xmlgui->getWidget( "top" ) );
+	m_interface_.screen().setTop( top = xmlgui->getWidget( "top" ) );
 
 	top->setFocusable( true );
 	top->requestFocus();
@@ -34,7 +37,7 @@ MenuView::MenuView( MenuModel* model ) :
 }
 
 MenuView::~MenuView() {
-	Model().game().getGui().setTop( NULL );
+	m_interface_.screen().setTop( NULL );
 }
 
 void MenuView::initialize() {
@@ -49,31 +52,31 @@ void MenuView::initialize() {
 
 void MenuView::draw() {
 
-	Model().game().getGui().draw();
-	Model().game().getGui().getGraphics()->pushClipArea( top->getDimension() );
+	m_interface_.screen().draw();
+	m_interface_.screen().getGraphics()->pushClipArea( top->getDimension() );
 
-	Model().game().getGui().getGraphics()->setColor( gcn::Color( 0xffffff ) ); // The colour to be used when drawing. From here on, white will be used.
-	Model().game().getGui().getGraphics()->drawLine(	10,
+	m_interface_.screen().getGraphics()->setColor( gcn::Color( 0xffffff ) ); // The colour to be used when drawing. From here on, white will be used.
+	m_interface_.screen().getGraphics()->drawLine(	10,
 														10,
 														100,
 														100 );
-	Model().game().getGui().getGraphics()->drawRectangle( gcn::Rectangle(	0,
+	m_interface_.screen().getGraphics()->drawRectangle( gcn::Rectangle(	0,
 																			0,
 																			250,
 																			250 ) );
-	Model().game().getGui().getGraphics()->drawText(	"Texto de prueba",
+	m_interface_.screen().getGraphics()->drawText(	"Texto de prueba",
 														10,
 														10 );
 
-	Model().game().getGui().getGraphics()->popClipArea();
+	m_interface_.screen().getGraphics()->popClipArea();
 
 }
 void MenuView::ActivateOpt() {
 
 	opt->setVisible( true );
 	opt->requestModalFocus();
-	optres->setSelected( Model().getPosResolution() );
-	full->setSelected(Model().getResolution().second);
+	optres->setSelected( m_interface_.indexResolution(m_interface_.actualResolution().first) );
+	full->setSelected( m_interface_.actualResolution().second );
 
 }
 void MenuView::DeactivateOpt() {
@@ -83,10 +86,10 @@ void MenuView::DeactivateOpt() {
 
 void MenuView::changeResolution() {
 
-	std::pair < std::string, bool >
+	Interface::ScreenResolutionType
 			res( 	optres->getListModel()->getElementAt( optres->getSelected() ),
 					full->isSelected() );
-	if ( res == Model().getResolution() ) {
+	if ( res == m_interface_.actualResolution() ) {
 
 		// Se ha seleccionado la misma resolucion que ya teniamos.
 		DeactivateOpt(); // Quitamos el windows de opciones.

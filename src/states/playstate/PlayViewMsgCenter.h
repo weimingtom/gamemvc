@@ -13,8 +13,8 @@
 
 class PlayControllerMsgCenter;
 class PlayModel;
-class PlayView;
 class XmlGui;
+class Interface;
 
 class PlayViewMsgCenter : public View < PlayModel, PlayControllerMsgCenter >
 {
@@ -26,8 +26,9 @@ public:
 
 private:
 
-	gcn::Widget*	m_msgcenter;
-	gcn::Rectangle	m_pos; // Posicion absoluta del widget..
+	const Interface&	m_interface_;
+	gcn::Widget*		m_msgcenter;
+	gcn::Rectangle		m_pos; // Posicion absoluta del widget..
 
 };
 
