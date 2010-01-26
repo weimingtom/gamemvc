@@ -30,7 +30,7 @@ PlayViewZone::PlayViewZone( PlayModel* model,
 			m_zone( xmlgui.getWidget( "zone" ) ),
 			m_areaZone( m_zone->getChildrenArea() ),
 			m_pos(m_zone->getClipRectangle()),
-			ptMouseMap( new MouseMap( Model().getMouseMap() ) ),
+			ptMouseMap( new MouseMap( Model().getNameMouseMap() ) ),
 			m_tileAnchor( gcn::Point( 	ptMouseMap->w() / 2,
 										ptMouseMap->h() / 2 ) ),
 			ptIsoMap( new MapFactory(	IMap::ISO_DIAMOND_MAP_TYPE,
@@ -327,33 +327,24 @@ void PlayViewZone::PaintAllResource( const gcn::Point& pLocal ) {
 }
 void PlayViewZone::PaintAllActor( const gcn::Point& pMap ) {
 
-	std::vector < CActorMapa* >
-			ActorCell = Model().ObtainActorCell( Model().Map().MapToLocal <
-					gcn::Point > ( pMap ) );
+    std::vector < CActorMapa* >
+            ActorCell = Model().ObtainActorCell( Model().Map().MapToLocal <
+                    gcn::Point > ( pMap ) );
 
-	std::vector < CActorMapa* >::iterator it;
-	for ( it = ActorCell.begin(); it != ActorCell.end(); ++it ) {
+    std::vector < CActorMapa* >::iterator it;
+    for ( it = ActorCell.begin(); it != ActorCell.end(); ++it ) {
 
-		gcn::Point pScreen = ptScroller->plot( pMap ) - gcn::Point(0,m_tileAnchor.y);
-		gcn::Point desp;
-		desp.x = static_cast<int>((*it)->Pos().x) % 64; // Ojo Ojo Ojo
-		desp.y = static_cast<int>((*it)->Pos().y) % 64;
-		gcn::Point p( (desp.x-desp.y)/2,(desp.x+desp.y)/4);
-		pScreen += p;
-		( *it )->Draw( 	m_interface_.screen().getGraphics(),
-						pScreen.x ,
-						pScreen.y );
+        gcn::Point
+                pScreen =
+                        Model().Map().LocalToScreen( ( *it )->Pos(),
+                                                     ptScroller->plot( pMap )
+                                                             - gcn::Point( 0,
+                                                                           m_tileAnchor.y ) );
+        ( *it )->Draw( m_interface_.screen().getGraphics(),
+                       pScreen.x,
+                       pScreen.y );
 
-	}
-	/*
-	 std::for_each( 	ActorCell.begin(),
-	 ActorCell.end(),
-	 boost::bind(	&CActorMapa::Draw,
-	 _1,
-	 m_interface_.screen().getGraphics(),
-	 pScreen.x,
-	 pScreen.y ) );
-	 */
+    }
 
 }
 void PlayViewZone::selectActor( CActorMapa* actor){

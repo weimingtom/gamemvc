@@ -28,6 +28,13 @@ public:
 
 		return pLocal;
 	}
+	/**!
+	 *
+	 * @param local
+	 * @param screen
+	 * @return
+	 */
+	gcn::Point LocalToScreen(const Vector2D& local, const gcn::Point& screen) const;
 	int getSize() const {
 		return m_LocalSize;
 	}

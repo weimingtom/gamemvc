@@ -77,10 +77,13 @@ void GraphHelper_CreateGridOwn( graph_type& graph,
 PlayModel::PlayModel(MyGame& game) :
 	Model(),
 	m_game_(game),
-	m_endtype( PlayModel::CONTINUE ), m_maplocal( SIZELOCAL ),
-			m_ismouse( false ), m_pMapaPartition( NULL ),
-			m_pSpacePartition( NULL ), m_pNavGraph( NULL ),
-			m_pPathManager( NULL ) {
+	m_endtype( PlayModel::CONTINUE ),
+	m_maplocal( SIZELOCAL ),
+	m_ismouse( false ),
+	m_pMapaPartition( NULL ),
+	m_pSpacePartition( NULL ),
+	m_pNavGraph( NULL ),
+	m_pPathManager( NULL ) {
 
 	//
 	//	Cargar los datos de este juego.
@@ -253,7 +256,7 @@ int PlayModel::getTopPadding() const {
 	return m_iTopPadding;
 
 }
-const std::string& PlayModel::getMouseMap() const {
+const std::string& PlayModel::getNameMouseMap() const {
 	return m_sMouseMap;
 }
 const MapLocal& PlayModel::Map() const {
@@ -267,6 +270,10 @@ int PlayModel::cyClient() const{
 }
 const Interface& PlayModel::interface() const{
 	return m_game_.interface();
+}
+int PlayModel::getSizeLocal() const {
+
+    return SIZELOCAL;
 }
 //------------------------- isPathObstructed ----------------------------------
 //

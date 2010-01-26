@@ -71,7 +71,7 @@ public:
 
 	int getResolution() const;
 	int getTopPadding() const;
-	const std::string& getMouseMap() const;
+	const std::string& getNameMouseMap() const;
 
 	const MapLocal& Map() const;
 
@@ -124,6 +124,7 @@ public:
 	int cxClient() const;
 	int cyClient() const;
 	const Interface& interface() const;
+	int getSizeLocal() const;
 
 private:
 
