@@ -9,38 +9,36 @@
 #define MYGAME_H_
 
 #include <string>
-#include <boost/utility.hpp>
-#include <boost/property_tree/ptree.hpp>
-#include <boost/property_tree/ini_parser.hpp>
+#include <memory>
 
 #include <game/CGameEngine.h>
 
-namespace pt = boost::property_tree;
 class Interface;
+class Param;
 
-class MyGame: public CGameEngine
-{
+class MyGame: public CGameEngine {
 public:
 
-    MyGame();
-    virtual ~MyGame();
+	MyGame();
+	virtual ~MyGame();
 
-    void Init( const std::string& config );
-    void Cleanup();
+	void Init(const std::string& config);
+	void Cleanup();
 
-    Interface& interface() const;
+	Interface& interface() const;
+	Param&	   param() const;
 
 private:
 
-    std::auto_ptr < Interface > m_interface_;
-    pt::ptree pt;
+	std::auto_ptr<Interface> 	m_interface_;
+	std::auto_ptr<Param> 		m_param_;
 
-    /*
-     * Procedimientos privados.
-     */
-    void InitParam( const std::string& config );
-    void InitInterface();
-    void InitLua();
+	/*
+	 * Procedimientos privados.
+	 */
+	void InitParam(const std::string& config);
+	void InitInterface();
+	void InitLua();
 
 };
 

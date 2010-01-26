@@ -18,6 +18,7 @@
 #include "MyGame.h"
 
 namespace po = boost::program_options;
+namespace pt = boost::property_tree;
 
 #ifdef DEBUG
 // Con esto los mensajes en la consola.

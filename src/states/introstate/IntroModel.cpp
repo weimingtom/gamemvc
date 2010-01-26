@@ -18,7 +18,7 @@
 #include <game/database/CActorManager.h>
 
 #include <MyGame.h>
-#include <CParam.h>
+#include <Param.h>
 
 IntroModel::IntroModel( MyGame& game ) :
     Model(),
@@ -113,7 +113,7 @@ int IntroModel::run(){
     int res = 0;
     try {
 
-        TiXmlDocument doc( param.gamedata );
+        TiXmlDocument doc( m_game_.param().gamedata );
         if ( doc.LoadFile() ) {
 
             if (LoadXML( doc.FirstChildElement( "gamebase" ) )){

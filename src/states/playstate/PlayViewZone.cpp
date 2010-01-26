@@ -8,8 +8,9 @@
 #include "PlayViewZone.h"
 
 #include <xmlgui.h>
-#include <IsoHex/MapFactory.hpp>
+#include <boost/bind.hpp>
 
+#include <IsoHex/MapFactory.hpp>
 #include <misc/Interface.h>
 
 #include <MyGame.h>
