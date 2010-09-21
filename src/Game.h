@@ -16,7 +16,6 @@
 
 #include <IsoHex/MouseMap.hpp>
 #include <IsoHex/IMap.hpp>
-#include <IsoHex/Screen.hpp>
 
 #include "Tile.h"
 
