@@ -1,0 +1,28 @@
+<container name="top" x="0" y="0" width="1024" height="768"
+	focusable="true">
+
+	<container name="cab" x="0" y="0" width="1024" height="20" basecolor="0xD3AB7F">
+	</container>
+
+	<container name="zone" x="0" y="20" width="1024" height="652"
+		basecolor="0x000000">
+	</container>
+
+	<container name="adj" x="0" y="672" width="1024" height="96">
+		<container name="msgleft" x="0" y="0" width="160" height="96">
+
+			<textfield name="name" x="10" y="10" width="60" height="20" />
+			<textfield name="X" x="10" y="32" width="30" height="20" />
+			<textfield name="Y" x="10" y="54" width="30" height="20" />
+
+		</container>
+
+		<container name="msgcenter" x="160" y="0" width="704"
+			height="96" basecolor="0x00FF00">
+		</container>
+		<container name="msgright" x="864" y="0" width="160" height="80"
+			basecolor="0x0000FF">
+		</container>
+	</container>
+
+</container>

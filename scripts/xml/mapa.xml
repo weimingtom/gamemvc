@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<map name="SDL++" resolution="18" toppadding="32" mouse="./data/iso_64.bmp">
+
+	<TerrainGroup default="Desierto">
+	</TerrainGroup>
+
+	<BuildingGroup>
+		<building x="1" y="0">Casa</building>
+		<building x="1" y="5">Casa</building>
+		<building x="3" y="8">Casa</building>
+		<building x="8" y="8">Cuartel</building>
+	</BuildingGroup>
+	<ActorGroup>
+	
+		<actor x="0" y="4">Harry</actor>	
+	
+		<actor x="8" y="4">Harry</actor>
+		<actor x="14" y="7">Harry</actor>
+
+	
+		<actor x="2" y="1">Aldeano</actor>
+		<actor x="3" y="1">Aldeano</actor>
+		<actor x="4" y="1">Aldeano</actor>
+		<actor x="5" y="1">Aldeano</actor>
+
+		<actor x="1" y="10">Aldeano</actor>
+		<actor x="2" y="10">Aldeano</actor>
+		<actor x="3" y="10">Aldeano</actor>
+		<actor x="4" y="10">Aldeano</actor>
+		<actor x="5" y="10">Aldeano</actor>
+
+		<actor x="1" y="11">Aldeano</actor>
+		<actor x="2" y="11">Aldeano</actor>
+		<actor x="3" y="11">Aldeano</actor>
+		<actor x="4" y="11">Aldeano</actor>
+		<actor x="5" y="11">Aldeano</actor>
+
+		<actor x="1" y="12">Aldeano</actor>
+		<actor x="2" y="12">Aldeano</actor>
+		<actor x="3" y="12">Aldeano</actor>
+		<actor x="4" y="12">Aldeano</actor>
+		<actor x="5" y="12">Aldeano</actor>
+
+		<actor x="1" y="13">Aldeano</actor>
+		<actor x="2" y="13">Aldeano</actor>
+		<actor x="3" y="13">Aldeano</actor>
+		<actor x="4" y="13">Aldeano</actor>
+		<actor x="5" y="13">Aldeano</actor>
+
+		<actor x="1" y="14">Aldeano</actor>
+		<actor x="2" y="14">Aldeano</actor>
+		<actor x="3" y="14">Aldeano</actor>
+		<actor x="4" y="14">Aldeano</actor>
+		<actor x="5" y="14">Aldeano</actor>
+
+		<actor x="1" y="15">Aldeano</actor>
+		<actor x="2" y="15">Aldeano</actor>
+		<actor x="3" y="15">Aldeano</actor>
+		<actor x="4" y="15">Aldeano</actor>
+		<actor x="5" y="15">Aldeano</actor>
+
+		<actor x="1" y="16">Aldeano</actor>
+		<actor x="2" y="16">Aldeano</actor>
+		<actor x="3" y="16">Aldeano</actor>
+		<actor x="4" y="16">Aldeano</actor>
+		<actor x="5" y="16">Aldeano</actor>
+
+		<actor x="1" y="17">Aldeano</actor>
+		<actor x="2" y="17">Aldeano</actor>
+		<actor x="3" y="17">Aldeano</actor>
+		<actor x="4" y="17">Aldeano</actor>
+		<actor x="5" y="17">Aldeano</actor>
+
+		<actor x="12" y="3">Aldeano</actor>
+		<actor x="11" y="4">Aldeano</actor>
+		<actor x="0" y="9">Lilly</actor>
+
+	</ActorGroup>
+	<ResourceGroup>
+
+		<resource x="4" y="5">Arbol</resource>
+		<resource x="4" y="3">Arbol</resource>
+
+		<resource x="8" y="10">Arbol</resource>
+		<resource x="8" y="12">Arbol</resource>
+		<resource x="8" y="14">Arbol</resource>
+
+		<resource x="11" y="10">Arbol</resource>
+		<resource x="11" y="12">Arbol</resource>
+		<resource x="11" y="14">Arbol</resource>
+
+		<resource x="14" y="10">Arbol1</resource>
+		<resource x="14" y="11">Arbol1</resource>
+		<resource x="14" y="12">Arbol1</resource>
+
+	</ResourceGroup>
+</map>
