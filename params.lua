@@ -1,5 +1,5 @@
 
-NumAgents           =     100
+NumAgents            =     100
 
 NumObstacles         =    7
 MinObstacleRadius    =    40
