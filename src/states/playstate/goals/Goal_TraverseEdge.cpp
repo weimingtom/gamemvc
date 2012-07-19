@@ -1,7 +1,7 @@
 #include "Goal_TraverseEdge.h"
 
-#include <misc\debug.h>
-#include <misc\Log.h>
+#include <misc/debug.h>
+#include <misc/Log.h>
 
 #include "../cactormapa.h"
 #include "Raven_Goal_Types.h"

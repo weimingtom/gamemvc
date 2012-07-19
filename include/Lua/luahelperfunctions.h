@@ -1,13 +1,9 @@
 #ifndef LUA_HELPER_FUNCS
 #define LUA_HELPER_FUNCS
 
-extern "C" {
-#include <lua.h>
-#include <lualib.h>
-#include <lauxlib.h>
-}
-
 #include <string>
+#include <lua.hpp>
+
 #include "misc/utils.h"
 #include "misc/Stream_Utility_Functions.h"
 
