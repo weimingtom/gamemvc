@@ -1,7 +1,7 @@
 #include "Goal_SeekToPosition.h"
 
-#include <misc\debug.h>
-#include <misc\Log.h>
+#include <misc/debug.h>
+#include <misc/Log.h>
 
 #include "../cactormapa.h"
 #include "../steeringbehaviors.h"

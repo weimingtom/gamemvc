@@ -9,11 +9,8 @@
 //  Desc:   class encapsulating the basic functionality necessary to read a
 //          Lua config file
 //-----------------------------------------------------------------------------
-extern "C" {
-#include <lua.h>
-#include <lualib.h>
-#include <lauxlib.h>
-}
+
+#include "lua.hpp"
 
 #include "Lua/luahelperfunctions.h"
 
