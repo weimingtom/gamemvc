@@ -15,8 +15,6 @@
 #include <SDL/SDL_image.h>
 #include <SDL/SDL_ttf.h>
 
-#include "Log.h"
-
 Interface::Interface( const std::string& icon,
                       const std::string& font,
                       const ScreenResolutionType& res )

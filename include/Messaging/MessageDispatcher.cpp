@@ -3,7 +3,7 @@
 #include <iostream>
 
 #include <misc/debug.h>
-#include <misc/Log.h>
+#include <Time/CrudeTimer.hpp>
 
 #include <game/BaseGameEntity.h>
 #include <game/EntityManager.h>
@@ -28,7 +28,7 @@ void MessageDispatcher::Discharge( BaseGameEntity* pReceiver,
 {
   if ( !pReceiver->HandleMessage( telegram ) ) {
     //telegram could not be handled
-    LERR_( "Message not handled **********----------*******" );
+//    LERR_( "Message not handled **********----------*******" );
   }
 }
 /*
@@ -49,7 +49,7 @@ void MessageDispatcher::DispatchMsg( double delay,
 
   //make sure the receiver is valid
   if ( pReceiver == NULL) {
-    LERR_( "Warning! No Receiver with ID of " << receiver << " found" );
+//  //  LERR_( "Warning! No Receiver with ID of " << receiver << " found" );
 
     return;
   }
@@ -63,7 +63,7 @@ void MessageDispatcher::DispatchMsg( double delay,
 
   //if there is no delay, route telegram immediately
   if ( delay <= 0.0f ) {
-    LDBG_( "Instant telegram dispatched at time: " << Clock.GetCurrentTime() << " by " << sender << " for " << receiver << ". Msg is " << msg );
+    // LDBG_( "Instant telegram dispatched at time: " << Clock.GetCurrentTime() << " by " << sender << " for " << receiver << ". Msg is " << msg );
 
     //send the telegram to the recipient
     Discharge( pReceiver,
@@ -79,7 +79,7 @@ void MessageDispatcher::DispatchMsg( double delay,
     //and put it in the queue
     PriorityQ.insert( telegram );
 
-    LDBG_( "Delayed telegram from " << sender << " recorded at time " << Clock.GetCurrentTime() << " for " << receiver << ". Msg is " << msg );
+//    LDBG_( "Delayed telegram from " << sender << " recorded at time " << Clock.GetCurrentTime() << " for " << receiver << ". Msg is " << msg );
 
   }
 }
@@ -107,7 +107,7 @@ void MessageDispatcher::DispatchDelayedMessages()
     //find the recipient
     BaseGameEntity* pReceiver = EntityMgr->GetEntityFromID( telegram.Receiver );
 
-    LDBG_( "Queued telegram ready for dispatch: Sent to " << pReceiver->ID() << ". Msg is " << telegram.Msg );
+    // LDBG_( "Queued telegram ready for dispatch: Sent to " << pReceiver->ID() << ". Msg is " << telegram.Msg );
 
     //send the telegram to the recipient
     Discharge( pReceiver,

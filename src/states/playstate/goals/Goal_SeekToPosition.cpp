@@ -1,7 +1,6 @@
 #include "Goal_SeekToPosition.h"
 
 #include <misc/debug.h>
-#include <misc/Log.h>
 
 #include "../cactormapa.h"
 #include "../steeringbehaviors.h"
@@ -14,7 +13,7 @@ Goal_SeekToPosition::Goal_SeekToPosition( CActorMapa* pBot,
                                           Vector2D target ) :
 
     Goal < CActorMapa >( pBot,
-                         goal_seek_to_position ), m_vPosition( target ), m_dTimeToReachPos( 0.0 )
+                         goal_seek_to_position ), m_vPosition( target ), m_dTimeToReachPos( 0.0 ),m_dStartTime(0.0)
 {
 }
 
@@ -83,7 +82,7 @@ bool Goal_SeekToPosition::isStuck() const
 
   if ( TimeTaken > m_dTimeToReachPos ) {
 
-    LDBG_( "BOT " << m_pOwner->ID() << " IS STUCK!!" );
+  //  LDBG_( "BOT " << m_pOwner->ID() << " IS STUCK!!" );
 
     return true;
   }

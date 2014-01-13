@@ -1,7 +1,6 @@
 #include "Goal_TraverseEdge.h"
 
 #include <misc/debug.h>
-#include <misc/Log.h>
 
 #include "../cactormapa.h"
 #include "Raven_Goal_Types.h"
@@ -17,7 +16,7 @@ Goal_TraverseEdge::Goal_TraverseEdge( CActorMapa* pBot,
                                       bool LastEdge ) :
 
     Goal < CActorMapa >( pBot,
-                         goal_traverse_edge ), m_Edge( edge ), m_bLastEdgeInPath( LastEdge ), m_dTimeExpected( 0.0 )
+                         goal_traverse_edge ), m_Edge( edge ), m_bLastEdgeInPath( LastEdge ), m_dTimeExpected( 0.0 ),m_dStartTime(0.0)
 {
 }
 
@@ -113,7 +112,7 @@ bool Goal_TraverseEdge::isStuck() const
 
   if ( TimeTaken > m_dTimeExpected ) {
 
-    LDBG_( "BOT " << m_pOwner->ID() << " IS STUCK!!" << "[Goal_TraverseEdge]" );
+//    LDBG_( "BOT " << m_pOwner->ID() << " IS STUCK!!" << "[Goal_TraverseEdge]" );
 
     return true;
   }

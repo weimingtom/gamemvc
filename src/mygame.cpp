@@ -10,7 +10,6 @@
 #include <SDL/SDL_ttf.h>
 
 #include <misc/debug.h>
-#include <misc/Log.h>
 #include <misc/Interface.h>
 #include <Lua/CLuaManager.h>
 

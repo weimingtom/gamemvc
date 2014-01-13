@@ -13,7 +13,6 @@
 #include <guichan/gui.hpp>
 
 #include <misc/debug.h>
-#include <misc/Log.h>
 
 #include <game/database/CTerrainManager.h>
 #include <game/database/CBuildingManager.h>
@@ -81,7 +80,7 @@ void IntroModel::Update()
     }
 
   }
-  LDBG_( msg );
+//  LDBG_( msg );
 }
 //-------------------------------------------------------------------------------
 //
@@ -152,7 +151,7 @@ int IntroModel::Run()
 
   } catch ( boost::thread_interrupted const& ) {
 
-    LDBG_( "Interrumpida la carga de XML" );
+ //   LDBG_( "Interrumpida la carga de XML" );
     return 2;
   }
   return 0;

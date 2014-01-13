@@ -14,7 +14,6 @@
 #include <boost/property_tree/ini_parser.hpp>
 
 #include <misc/debug.h>
-#include <misc/Log.h>
 #include <misc/Interface.h>
 
 #include <states/introstate/introstate.h>
@@ -23,22 +22,6 @@
 
 namespace po = boost::program_options;
 namespace pt = boost::property_tree;
-
-#ifdef DEBUG
-/**!
- *
- *  Con esto los mensajes de error en la consola.
- *
- * Sin esto no funciona el nvwa ....
- * seguro que es el catch que hace el SDL para enviarlos
- * a un fichero ...... y posiblemente sea el buffer o similar.
- *
- */
-#ifdef main
-#undef main
-#endif
-
-#endif
 
 int main( int argc,
           char *argv[] )
@@ -49,18 +32,6 @@ int main( int argc,
     FPSmanager manager;
     MyGame game;
 
-#ifdef DEBUG
-
-    std::cout.setf( std::ios::unitbuf ); // Quito el buffer al estar bajo debug....
-    init_logs();
-    g_log_filter()->set_enabled( boost::logging::level::debug );
-
-#else
-
-    init_logs();
-    g_log_filter()->set_enabled( boost::logging::level::error );
-
-#endif
 
     std::string config;
     po::options_description desc( "Allowed options" );
@@ -105,28 +76,28 @@ int main( int argc,
 
   } catch ( po::error const &e ) {
 
-    LERR_( e.what() );
+ //   LERR_( e.what() );
     return EXIT_FAILURE;
 
   } catch ( pt::ini_parser_error const &e ) {
 
-    LERR_( e.what() );
+//    LERR_( e.what() );
     return EXIT_FAILURE;
 
   } catch ( gcn::Exception const &e ) {
 
-    LERR_( e.getMessage() );
+  //  LERR_( e.getMessage() );
     return EXIT_FAILURE;
 
   } catch ( boost::exception const &e ) {
 
-    LERR_( boost::diagnostic_information( e ) );
+//    LERR_( boost::diagnostic_information( e ) );
     return EXIT_FAILURE;
 
   } catch ( ... ) {
 
-    LERR_( "Unhandled exception!" );
-    LERR_( boost::current_exception_diagnostic_information() );
+//    LERR_( "Unhandled exception!" );
+//    LERR_( boost::current_exception_diagnostic_information() );
     return EXIT_FAILURE;
 
   }
