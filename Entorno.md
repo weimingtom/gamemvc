@@ -1,0 +1,3 @@
+Voy a intentar definir cuales son los pasos que he seguido para tener un entorno de desarrollo tanto en [Windows](Windows.md) como en [Linux](Linux.md) para obtener los mismos resultados en ambos entornos.
+
+He de indicar que lo que intento obtener es que con el mismo código fuente de los programas que voy a ir desarrollando, se puedan ejecutar en ambos entornos sin cambios en el mencionado código fuente.
